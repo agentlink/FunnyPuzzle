@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <SVGKit/SVGKFastImageView.h>
 @interface Segment : UIView
-
+@property (nonatomic) CGRect rect;
+@property (nonatomic, strong) SVGKImage *image;
 @end

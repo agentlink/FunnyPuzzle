@@ -11,7 +11,7 @@
 @interface Segment ()
 
 //- (IBAction)ViewClick:(id)sender;
-
+@property (nonatomic, weak) IBOutlet SVGKFastImageView *imageWiew;
 @end
 
 @implementation Segment
@@ -43,7 +43,11 @@ int i=1;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self addGestureRecognizer:pan];
 }
-
+- (void)setImage:(SVGKImage *)image
+{
+    _image = image;
+    _imageWiew.image = image;
+}
 
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
