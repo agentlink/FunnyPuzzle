@@ -20,6 +20,8 @@
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
+
+
 @end
 
 @implementation GamePlayViewController
@@ -37,8 +39,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    FPGameType *gt=[GameObject sharedInstance].gameType;
-       
+    //FPGameType *gt=[GameObject sharedInstance].gameType;
+    FPGameType gt=FPGameModeFirs;
+    switch (gt) {
+        case FPGameModeFirs:
+            NSLog(@"Hello1 x  %f   y  %f", self.rightView.frame.origin.x, self.rightView.frame.origin.y);
+            
+            break;
+        case FPGameModeSecond:
+            NSLog(@"Hello2");
+            break;
+        case FPGameModeBonus:
+            NSLog(@"Hello3");
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning
