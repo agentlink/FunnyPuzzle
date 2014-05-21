@@ -7,7 +7,19 @@
 //
 
 #import "FPObjectsManager.h"
+@interface FPObjectsManager ()
+
+@end
 
 @implementation FPObjectsManager
-
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
+        _segments = [NSArray arrayWithContentsOfFile:plistPath];
+        
+    }
+    return self;
+}
 @end
