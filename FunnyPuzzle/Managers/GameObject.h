@@ -12,6 +12,7 @@
 @interface GameObject : NSObject
 @property (nonatomic) FPGameMode *gameMode;
 @property (nonatomic) FPGameType *gameType;
+@property (nonatomic) int points;
 
 + (GameObject *)sharedInstance;
 @end
