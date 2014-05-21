@@ -1,0 +1,13 @@
+"ice_cream_gray_lines.svg" & "ice_cream_gray.svg" & "ice_cream.svg":
+X - 420 px
+Y - 140 px
+width - 200 px
+height - 400 px
+
+ice_cream1.svg:
+X - 18 px
+Y - 5 px
+
+ice_cream2.svg:
+X - 18 px
+Y - 167 px

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Segment.h"
 @interface FPObjectsManager : NSObject
 //@property (nonatomic, strong)
 @end
