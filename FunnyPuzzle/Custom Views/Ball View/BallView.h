@@ -11,4 +11,5 @@
 #import <SVGKImage.h>
 @interface BallView : UIView
 @property (nonatomic, strong) SVGKImage *image;
+@property (nonatomic) BOOL isVisible;
 @end

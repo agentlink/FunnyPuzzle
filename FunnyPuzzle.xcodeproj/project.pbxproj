@@ -16,6 +16,7 @@
 		7F31616F192CA02C00C49EAE /* ball2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7F31616D192CA02C00C49EAE /* ball2.svg */; };
 		7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316173192CA05A00C49EAE /* GamePlayViewController.m */; };
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
+		7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31617C192CAA4500C49EAE /* FPObjectsManager.m */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
 		7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
@@ -59,6 +60,8 @@
 		7F316173192CA05A00C49EAE /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlayViewController.m; path = "View Controllers/GamePlay/GamePlayViewController.m"; sourceTree = "<group>"; };
 		7F316174192CA05A00C49EAE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartViewController.h; path = "View Controllers/Start View Controller/StartViewController.h"; sourceTree = "<group>"; };
 		7F316175192CA05A00C49EAE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = "View Controllers/Start View Controller/StartViewController.m"; sourceTree = "<group>"; };
+		7F31617B192CAA4500C49EAE /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPObjectsManager.h; path = Managers/FPObjectsManager.h; sourceTree = "<group>"; };
+		7F31617C192CAA4500C49EAE /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPObjectsManager.m; path = Managers/FPObjectsManager.m; sourceTree = "<group>"; };
 		7FA4BA3E192C9AFD00A772BA /* FunnyPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA4BA41192C9AFD00A772BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,8 @@
 			children = (
 				7F316166192C9FF500C49EAE /* GameObject.h */,
 				7F316167192C9FF500C49EAE /* GameObject.m */,
+				7F31617B192CAA4500C49EAE /* FPObjectsManager.h */,
+				7F31617C192CAA4500C49EAE /* FPObjectsManager.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				7F316168192C9FF500C49EAE /* GameObject.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
+				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7FA4BA58192C9AFD00A772BA /* FPViewController.m in Sources */,
