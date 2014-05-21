@@ -28,8 +28,13 @@
         _imageVeiw.image = image;
     }
 }
-
-
+- (void)setIsVisible:(BOOL)isVisible
+{
+    _isVisible = isVisible;
+    if (isVisible) {
+        //[self startAnimation];
+    }
+}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -42,7 +47,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self startAnimation];
+        //[self startAnimation];
         //self.layer.cornerRadius = CGRectGetHeight(self.bounds)/2;
         //self.layer.borderColor = [[UIColor redColor] CGColor];
         //self.layer.borderWidth = 5;
@@ -59,7 +64,8 @@
         [UIView animateWithDuration:(double)(2+arc4random()%3) animations:^{
             self.transform = t;
         } completion:^(BOOL finished) {
-            [self startAnimation];
+            //if (_isVisible)
+            //[self startAnimation];
         }];
     }];
 

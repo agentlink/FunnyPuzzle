@@ -42,10 +42,17 @@
     //SVGKImage *svg = [SVGKImage imageNamed:@"chicken_gray.svg"];
     //[self.view addSubview:[[SVGKFastImageView alloc] initWithSVGKImage:svg]];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:im];
-    
-    
 }
-
+- (void)viewDidDisappear:(BOOL)animated
+{
+    _gamemodeFirst.isVisible = NO;
+    _gamemodeSecond.isVisible = NO;
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    _gamemodeSecond.isVisible = YES;
+    _gamemodeFirst.isVisible = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self startAnimation];
+        //[self startAnimation];
     }
     return self;
 }
@@ -26,7 +26,7 @@
         //CGRect startRect = self.frame;
         //startRect.origin.x = 0;//-CGRectGetHeight(self.frame);
         //self.frame = startRect;
-        [self startAnimation];
+        //[self startAnimation];
     }
     return self;
 }
