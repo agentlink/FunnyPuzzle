@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04669194192CDD570095E1A8 /* pencil_gray_lines.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0466918E192CDD570095E1A8 /* pencil_gray_lines.svg */; };
+		04669195192CDD570095E1A8 /* pencil_gray.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0466918F192CDD570095E1A8 /* pencil_gray.svg */; };
+		04669196192CDD570095E1A8 /* pencil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04669190192CDD570095E1A8 /* pencil.jpg */; };
+		04669197192CDD570095E1A8 /* pencil.svg in Resources */ = {isa = PBXBuildFile; fileRef = 04669191192CDD570095E1A8 /* pencil.svg */; };
+		04669198192CDD570095E1A8 /* pencil1.svg in Resources */ = {isa = PBXBuildFile; fileRef = 04669192192CDD570095E1A8 /* pencil1.svg */; };
+		04669199192CDD570095E1A8 /* pencil2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 04669193192CDD570095E1A8 /* pencil2.svg */; };
 		6661D472BFF245DDB705F619 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F279C6C4F84A42CA90619595 /* libPods.a */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
@@ -45,6 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0466918E192CDD570095E1A8 /* pencil_gray_lines.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil_gray_lines.svg; path = "../../../../Downloads/Game 1/pencil/pencil_gray_lines.svg"; sourceTree = "<group>"; };
+		0466918F192CDD570095E1A8 /* pencil_gray.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil_gray.svg; path = "../../../../Downloads/Game 1/pencil/pencil_gray.svg"; sourceTree = "<group>"; };
+		04669190192CDD570095E1A8 /* pencil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pencil.jpg; path = "../../../../Downloads/Game 1/pencil/pencil.jpg"; sourceTree = "<group>"; };
+		04669191192CDD570095E1A8 /* pencil.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil.svg; path = "../../../../Downloads/Game 1/pencil/pencil.svg"; sourceTree = "<group>"; };
+		04669192192CDD570095E1A8 /* pencil1.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil1.svg; path = "../../../../Downloads/Game 1/pencil/pencil1.svg"; sourceTree = "<group>"; };
+		04669193192CDD570095E1A8 /* pencil2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil2.svg; path = "../../../../Downloads/Game 1/pencil/pencil2.svg"; sourceTree = "<group>"; };
 		09B2AE5F26204B769DFEAAF9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
@@ -197,6 +209,12 @@
 		7F316179192CA08300C49EAE /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				0466918E192CDD570095E1A8 /* pencil_gray_lines.svg */,
+				0466918F192CDD570095E1A8 /* pencil_gray.svg */,
+				04669190192CDD570095E1A8 /* pencil.jpg */,
+				04669191192CDD570095E1A8 /* pencil.svg */,
+				04669192192CDD570095E1A8 /* pencil1.svg */,
+				04669193192CDD570095E1A8 /* pencil2.svg */,
 				7F316172192CA05A00C49EAE /* GamePlayViewController.h */,
 				7F316173192CA05A00C49EAE /* GamePlayViewController.m */,
 			);
@@ -373,9 +391,15 @@
 			files = (
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
+				04669196192CDD570095E1A8 /* pencil.jpg in Resources */,
+				04669198192CDD570095E1A8 /* pencil1.svg in Resources */,
+				04669195192CDD570095E1A8 /* pencil_gray.svg in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
+				04669197192CDD570095E1A8 /* pencil.svg in Resources */,
+				04669194192CDD570095E1A8 /* pencil_gray_lines.svg in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F31616F192CA02C00C49EAE /* ball2.svg in Resources */,
+				04669199192CDD570095E1A8 /* pencil2.svg in Resources */,
 				7F31616E192CA02C00C49EAE /* ball1.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

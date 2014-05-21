@@ -174,8 +174,8 @@
                                 <rect key="frame" x="200" y="0.0" width="368" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8L-N0K">
-                                        <rect key="frame" x="157" y="60" width="185" height="202"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8L-N0K">
+                                        <rect key="frame" x="157" y="87" width="171" height="168"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.86274516582489014" green="0.58431375026702881" blue="0.062745101749897003" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -183,8 +183,6 @@
                                 <color key="backgroundColor" red="0.95686280729999995" green="0.97254908080000002" blue="0.047058828179999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="500" constant="158" id="L10-cT-AwT"/>
-                                    <constraint firstAttribute="trailing" secondItem="vcS-8L-N0K" secondAttribute="trailing" constant="26" id="hEv-aw-XVZ"/>
-                                    <constraint firstItem="vcS-8L-N0K" firstAttribute="top" secondItem="fKJ-wF-Tqt" secondAttribute="top" constant="60" id="s6z-gB-iHo"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-pj-TXI">
@@ -226,26 +224,6 @@
                                     <action selector="back:" destination="zUh-2g-a9E" eventType="touchUpInside" id="O1Q-KD-hey"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AzX-R0-tdM" customClass="Segment">
-                                <rect key="frame" x="258" y="134" width="51" height="53"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14901961389999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzN-Yl-BfZ" customClass="Segment">
-                                <rect key="frame" x="159" y="33" width="51" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14901961389999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Son-uu-fvf" customClass="Segment">
-                                <rect key="frame" x="253" y="130" width="62" height="60"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14901961389999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kct-Ah-qBS" customClass="Segment">
-                                <rect key="frame" x="177" y="227" width="57" height="55"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14901961389999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
