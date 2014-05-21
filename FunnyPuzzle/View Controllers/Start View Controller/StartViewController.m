@@ -11,6 +11,7 @@
 #import <SVGKit/SVGKit.h>
 #import <SVGKFastImageView.h>
 #import "BallView.h"
+#import "FPObjectsManager.h"
 @interface StartViewController ()
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
@@ -42,6 +43,8 @@
     //SVGKImage *svg = [SVGKImage imageNamed:@"chicken_gray.svg"];
     //[self.view addSubview:[[SVGKFastImageView alloc] initWithSVGKImage:svg]];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+    FPObjectsManager *man = [FPObjectsManager new];
+    
 }
 - (void)viewDidDisappear:(BOOL)animated
 {

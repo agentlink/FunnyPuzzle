@@ -11,7 +11,7 @@
 @interface Segment ()
 
 //- (IBAction)ViewClick:(id)sender;
-@property (nonatomic, weak) IBOutlet SVGKFastImageView *imageWiew;
+@property (nonatomic, strong) IBOutlet SVGKFastImageView *imageWiew;
 @end
 
 @implementation Segment
@@ -25,6 +25,10 @@ int i=1;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        if (_imageWiew) {
+            _imageWiew = [[SVGKFastImageView alloc] initWithFrame:frame];
+            [self addSubview:_imageWiew];
+        }
         [self config];
         }
     return self;
@@ -33,6 +37,10 @@ int i=1;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        if (_imageWiew) {
+            _imageWiew = [[SVGKFastImageView alloc] initWithFrame:self.frame];
+            [self addSubview:_imageWiew];
+        }
         [self config];
         }
     return self;
@@ -87,7 +95,12 @@ int i=1;
     //[recognizer setTranslation:CGPointMake(0.0f, 0.0f) inView:self];
     
 }
-
+- (void)dealloc
+{
+    for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
+        [self removeGestureRecognizer:recognizer];
+    }
+}
 
 
 /*

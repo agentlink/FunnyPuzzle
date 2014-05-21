@@ -7,7 +7,7 @@
 //
 
 #import "FPViewController.h"
-
+#import "GameObject.h"
 @interface FPViewController ()
 
 @end
@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    //[GameObject sharedInstance].manager.items
 }
 
 - (void)didReceiveMemoryWarning
