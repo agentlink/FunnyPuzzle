@@ -37,7 +37,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    FPGameType *gt=[GameObject sharedInstance].gameType;
+       
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +57,11 @@
 - (IBAction)back:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) dealloc
+{
+  
 }
 
 /*
