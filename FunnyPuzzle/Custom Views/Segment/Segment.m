@@ -11,9 +11,7 @@
 @interface Segment ()
 
 //- (IBAction)ViewClick:(id)sender;
-@property (nonatomic, weak) IBOutlet SVGKFastImageView *imageWiew;
-
-
+@property (nonatomic, strong) IBOutlet SVGKFastImageView *imageWiew;
 @end
 
 @implementation Segment

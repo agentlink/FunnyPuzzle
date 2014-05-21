@@ -10,6 +10,8 @@
 #import "GameObject.h"
 #import <SVGKit/SVGKFastImageView.h>
 #import "Segment.h"
+#import "FPObjectsManager.h"
+
 
 @interface GamePlayViewController ()
 {
@@ -47,30 +49,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //FPGameType *gt=[GameObject sharedInstance].gameType;
-    
-    SVGKImage *im1=[SVGKImage imageNamed:@"pencil1.svg"];
-    SVGKImage *im2=[SVGKImage imageNamed:@"pencil2.svg"];
-    Segment *s1 = [Segment new];
-    Segment *s2 = [Segment new];
-    s1.rect=CGRectMake(10, 15, 50, 50);
-    s2.rect=CGRectMake(10, 10, 50, 50);
-    s1.image = im1;
-    s2.image = im2;
-    [self.view addSubview:s1];
-    [self.view addSubview:s2];
-   // SVGKImage *im3=[SVGKImage imageNamed:@"pencil_gray.svg"];
-  //  SVGKImage *im4=[SVGKImage imageNamed:@"pencil.svg"];
-    
-    
-    
-    images=[NSArray arrayWithObjects:im1,im2, nil];
+
+
   
     FPGameType gt=FPGameModeFirs;
     switch (gt) {
         case FPGameModeFirs:
             
             NSLog(@"Hello1 x  %f   y  %f", self.rightView.frame.origin.x, self.rightView.frame.origin.y);
-            
+        
             break;
         case FPGameModeSecond:
             NSLog(@"Hello2");

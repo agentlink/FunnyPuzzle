@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Segment.h"
 #import <SVGKImage.h>
+
 @interface FPObjectsManager : NSObject
+
 @property (nonatomic, strong) NSArray *segments;
 @property (nonatomic, strong) UIView *fieldImage;
 

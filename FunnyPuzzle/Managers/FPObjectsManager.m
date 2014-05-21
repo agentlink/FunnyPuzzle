@@ -12,6 +12,7 @@
 @end
 
 @implementation FPObjectsManager
+
 - (id)init
 {
     self = [super init];
