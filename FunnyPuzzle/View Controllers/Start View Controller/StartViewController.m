@@ -8,7 +8,6 @@
 
 #import "StartViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "UIImage+SVG.h"
 #import <SVGKit/SVGKit.h>
 #import <SVGKFastImageView.h>
 #import "BallView.h"
