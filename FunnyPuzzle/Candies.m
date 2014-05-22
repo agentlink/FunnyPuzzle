@@ -43,15 +43,15 @@
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
     CGRect candieFrame = self.frame;
-    candieFrame.origin.x=self.frame.origin.x+self.frame.size.width/2;
-    candieFrame.origin.y=self.frame.origin.y+self.frame.size.height/2;
+    candieFrame.origin.x=self.frame.origin.x;
+    candieFrame.origin.y=self.frame.origin.y;
     
     CGRect displacedFrame = candieFrame;
-    displacedFrame.origin.x = self.centrBascket.origin.x+self.centrBascket.size.width/2-self.frame.size.width/2;
-    displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height/2-self.frame.size.height/2;
+    displacedFrame.origin.x = self.centrBascket.origin.x-self.frame.size.width/4;
+    displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height;
     
     
-    [UIView animateWithDuration:1.3 animations:^{
+    [UIView animateWithDuration:1.8 animations:^{
         self.frame = displacedFrame;
     } completion:^(BOOL finished){
         self.backgroundColor=[UIColor clearColor];
@@ -64,6 +64,8 @@
 {
     _centrBascket=centrBascket;
 }
+
+
 
 
 /*
