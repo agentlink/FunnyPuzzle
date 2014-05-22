@@ -7,6 +7,7 @@
 //
 
 #import "CloudView.h"
+#import <PDFImage/PDFImage.h>
 @implementation CloudView
 
 - (id)initWithFrame:(CGRect)frame
@@ -22,26 +23,28 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        //CGRect startRect = self.frame;
-        //startRect.origin.x = 0;//-CGRectGetHeight(self.frame);
-        //self.frame = startRect;
-        //[self startAnimation];
+        CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+        CGMutablePathRef aPath = CGPathCreateMutable();
+        float x = CGRectGetMidX(self.frame);
+        float y = CGRectGetMidY(self.frame);
+        float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        self.layer.anchorPoint = CGPointMake(0.5, 0.8);
+        CGPathMoveToPoint(aPath,nil,0-CGRectGetWidth(self.frame),y);        //Origin Point
+        CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                              wx+(CGRectGetWidth(self.frame)/2),y+5,  //Control Point 2
+                              wx+CGRectGetWidth(self.frame),y); // End Point
+        animation.rotationMode = @"auto";
+        animation.path = aPath;
+        animation.duration = 10+arc4random()%30;
+        animation.autoreverses = NO;
+        animation.removedOnCompletion = NO;
+        animation.repeatCount = 100.0f;
+        animation.timingFunction = [CAMediaTimingFunction
+                                    functionWithName:kCAMediaTimingFunctionLinear];
+        [self.layer addAnimation:animation forKey:@"position"];
+        [animation setDelegate:self];
     }
     return self;
-}
-- (void)startAnimation
-{
-    CGRect rect = self.frame;
-    rect.origin.x = CGRectGetWidth(self.superview.frame);
-    //CGAffineTransform t = self.transform;
-    [UIView animateWithDuration:(double)(10+arc4random()%20) animations:^{
-        self.frame = rect;
-    } completion:^(BOOL finished) {
-        CGRect rect = self.frame;
-        rect.origin.x = -CGRectGetWidth(self.frame);
-        self.frame = rect;
-        [self startAnimation];
-    }];
 }
 
 /*

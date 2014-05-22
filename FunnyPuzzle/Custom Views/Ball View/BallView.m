@@ -7,16 +7,58 @@
 //
 
 #import "BallView.h"
+#import <QuartzCore/CAAnimation.h>
 @interface BallView ()
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic) BOOL isVisible;
 @property (nonatomic, strong) PDFImageView *imageVeiw;
+@property (nonatomic) UIDynamicAnimator *animator;
 @end
 @implementation BallView
 #pragma mark - Custom Accssesors
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        //[self setupBehaviors];
+        CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+        CGMutablePathRef aPath = CGPathCreateMutable();
+        float x = CGRectGetMidX(self.frame);
+        float y = CGRectGetMidY(self.frame);
+        self.layer.anchorPoint = CGPointMake(0.5, 0.8);
+        CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+        CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                              x+7,y+0.5,  //Control Point 2
+                              x+15,y); // End Point
+        animation.rotationMode = @"auto";
+        animation.path = aPath;
+        animation.duration = 2+arc4random()%3;
+        animation.autoreverses = YES;
+        animation.removedOnCompletion = NO;
+        animation.repeatCount = 100.0f;
+        animation.timingFunction = [CAMediaTimingFunction
+                                    functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [self.layer addAnimation:animation forKey:@"position"];
+        [animation setDelegate:self];
+        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+        [self addGestureRecognizer:tap];
+    }
+    return self;
+}
+- (void)tap:(UITapGestureRecognizer *)tap
+{
+    if (_tap) {
+        _tap();
+    }
+}
+- (void)setupBehaviors
+{
+    
+}
 - (void)setImage:(PDFImage *)image
 {
     if (!_imageVeiw) {
         _imageVeiw = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-        [self.layer setCornerRadius:CGRectGetHeight(_imageVeiw.frame)/2];
         [self addSubview:_imageVeiw];
         float h = CGRectGetHeight(_imageVeiw.frame);
         float w = CGRectGetWidth(_imageVeiw.frame);
@@ -59,17 +101,7 @@
     }
     return self;
 }
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        //[self startAnimation];
-        //self.layer.cornerRadius = CGRectGetHeight(self.bounds)/2;
-        //self.layer.borderColor = [[UIColor redColor] CGColor];
-        //self.layer.borderWidth = 5;
-    }
-    return self;
-}
+
 - (void)startAnimation
 {
     CGAffineTransform t = self.transform;
