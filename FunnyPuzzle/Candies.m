@@ -15,8 +15,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-       // CGPoint p=CGPointMake(170, 147);
-     //   self.centrBascket=&(p);
+        [self config];
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self=[super initWithCoder:aDecoder];
+    if (self)
+    {
+        CGRect r=CGRectMake(67 , 113, 104, 81);
+        self.centrBascket = r;
         
         [self config];
     }
@@ -32,29 +42,25 @@
 
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
-    CGPoint candie=CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
-    CGPoint point0 = self.layer.position;
-    CGPoint point1 = { point0.x + 50, point0.y };
+    CGRect candieFrame = self.frame;
+    candieFrame.origin.x=self.frame.origin.x+self.frame.size.width/2;
+    candieFrame.origin.y=self.frame.origin.y+self.frame.size.height/2;
     
-    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"position.x"];
-    anim.fromValue    = @(point0.x);
-    anim.toValue  = @(point1.x);
-    anim.duration   = 1.5f;
-    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    CGRect displacedFrame = candieFrame;
+    displacedFrame.origin.x = self.centrBascket.origin.x+self.centrBascket.size.width/2-self.frame.size.width/2;
+    displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height/2-self.frame.size.height/2;
     
-    // First we update the model layer's property.
-    self.layer.position = point1;
     
-    // Now we attach the animation.
-    [self.layer  addAnimation:anim forKey:@"position.x"];
+    [UIView animateWithDuration:1.3 animations:^{
+        self.frame = displacedFrame;
+    } completion:^(BOOL finished){
+        self.backgroundColor=[UIColor clearColor];
+    }
+     ];
+    
 }
 
--(void)setCandieRect:(CGRect *)CandieRect
-{
-    _CandieRect = CandieRect;
-}
-
--(void)setCentrBascket:(CGPoint *)centrBascket
+-(void)setCentrBascket:(CGRect)centrBascket
 {
     _centrBascket=centrBascket;
 }

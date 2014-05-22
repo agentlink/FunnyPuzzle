@@ -10,7 +10,6 @@
 
 @interface Candies : UIView
 
-@property (nonatomic) CGPoint *centrBascket;
-@property (nonatomic) CGRect *CandieRect;
+@property (nonatomic) CGRect centrBascket;
 
 @end

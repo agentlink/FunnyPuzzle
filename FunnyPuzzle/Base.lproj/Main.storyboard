@@ -174,7 +174,7 @@
                                 <rect key="frame" x="200" y="0.0" width="368" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8L-N0K">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8L-N0K">
                                         <rect key="frame" x="157" y="87" width="171" height="168"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.86274516582489014" green="0.58431375026702881" blue="0.062745101749897003" alpha="1" colorSpace="deviceRGB"/>
@@ -183,6 +183,7 @@
                                 <color key="backgroundColor" red="0.95686280729999995" green="0.97254908080000002" blue="0.047058828179999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="500" constant="158" id="L10-cT-AwT"/>
+                                    <constraint firstAttribute="trailing" secondItem="vcS-8L-N0K" secondAttribute="trailing" constant="40" id="csC-lh-YCK"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-pj-TXI">
@@ -325,12 +326,27 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basket_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="LhU-Al-ZxP">
+                                <rect key="frame" x="229" y="133" width="110" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="HYM-4F-VkH"/>
+                                    <constraint firstAttribute="height" constant="98" id="frs-UB-44W"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0039215688593685627" green="0.89411771297454834" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="LhU-Al-ZxP" firstAttribute="centerX" secondItem="Zl1-aV-xGU" secondAttribute="centerX" id="EPf-jq-Pbi"/>
+                            <constraint firstItem="fTF-Mt-lPc" firstAttribute="top" secondItem="LhU-Al-ZxP" secondAttribute="bottom" constant="89" id="vfG-ZL-Byw"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="gnL-g2-nfh"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="BasketImage" destination="LhU-Al-ZxP" id="vD6-8t-BbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEf-oI-tqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,6 +373,7 @@
     </scenes>
     <resources>
         <image name="Image" width="151" height="136"/>
+        <image name="basket_icon.png" width="151" height="151"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

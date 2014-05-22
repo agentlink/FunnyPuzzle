@@ -11,6 +11,7 @@
 
 @interface FPBonusViewController ()
 @property (weak, nonatomic) IBOutlet Candies *Candie;
+@property (weak, nonatomic) IBOutlet UIImageView *BasketImage;
 
 
 @end
@@ -23,6 +24,7 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -30,7 +32,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    int x=20;
+    int y=20;
+    for(int i=1; i<10; i++)
+    {
+     Candies *c=[Candies new];
+     c.centrBascket=self.BasketImage.frame;
+     UIImage *im=[UIImage imageNamed:@"candy_icon.png"];
+     c.backgroundColor=[UIColor colorWithPatternImage:im];
+     CGRect r=CGRectMake(x, y, 55, 55);
+     c.frame = r;
+     [self.view addSubview:c];
+     x+=50;
+    }
+ 
   
+//    int x=self.BasketImage.layer.position.x;
+  //  int y=self.BasketImage.layer.position.y;
 }
 
 - (void)didReceiveMemoryWarning
