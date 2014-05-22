@@ -13,4 +13,5 @@
 @property (nonatomic) CGRect rect;
 @property (nonatomic, strong) PDFImage *image;
 @property (nonatomic, strong) NSString *imagePath;
+
 @end
