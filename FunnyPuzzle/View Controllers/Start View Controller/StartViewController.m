@@ -7,11 +7,11 @@
 //
 
 #import "StartViewController.h"
-#import <SpriteKit/SpriteKit.h>
-#import <SVGKit/SVGKit.h>
-#import <SVGKFastImageView.h>
 #import "BallView.h"
 #import "FPObjectsManager.h"
+#import "GameObject.h"
+#import <PDFImage/PDFImage.h>
+
 @interface StartViewController ()
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
@@ -32,19 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    SVGKImage *fImage = [SVGKImage imageNamed:@"ball1.svg"];
-    SVGKImage *sImage = [SVGKImage imageNamed:@"ball2.svg"];
-    _gamemodeFirst.image = fImage;
-    _gamemodeSecond.image = sImage;
-//    UIImage *im = [svg exportUIImageAntiAliased:YES curveFlatnessFactor:1 interpolationQuality:8];
-//    UIImageView *imView = (UIImageView *) [self.view viewWithTag:123];
-//    [imView setImage:im];
-    //SVGKImage *svg = [SVGKImage imageNamed:@"chicken_gray.svg"];
-    //[self.view addSubview:[[SVGKFastImageView alloc] initWithSVGKImage:svg]];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:im];
-    FPObjectsManager *man = [FPObjectsManager new];
-    
+    _gamemodeFirst.image = [PDFImage imageNamed:@"ball1.pdf"];
+    _gamemodeSecond.image = [PDFImage imageNamed:@"ball2.pdf"];
 }
 - (void)viewDidDisappear:(BOOL)animated
 {

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SVGKit/SVGKFastImageView.h>
+#import <PDFImage/PDFImage.h>
 @interface Segment : UIView
 @property (nonatomic) CGRect rect;
-@property (nonatomic, strong) SVGKImage *image;
+@property (nonatomic, strong) PDFImage *image;
+@property (nonatomic, strong) NSString *imagePath;
 @end

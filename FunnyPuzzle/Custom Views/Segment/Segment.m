@@ -11,7 +11,7 @@
 @interface Segment ()
 
 //- (IBAction)ViewClick:(id)sender;
-@property (nonatomic, strong) IBOutlet SVGKFastImageView *imageWiew;
+@property (nonatomic, strong) IBOutlet PDFImageView *imageView;
 @end
 
 @implementation Segment
@@ -25,9 +25,9 @@ int i=1;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        if (_imageWiew) {
-            _imageWiew = [[SVGKFastImageView alloc] initWithFrame:frame];
-            [self addSubview:_imageWiew];
+        if (_imageView) {
+            _imageView = [[PDFImageView alloc] initWithFrame:frame];
+            [self addSubview:_imageView];
         }
         [self config];
         }
@@ -37,9 +37,9 @@ int i=1;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        if (_imageWiew) {
-            _imageWiew = [[SVGKFastImageView alloc] initWithFrame:self.frame];
-            [self addSubview:_imageWiew];
+        if (_imageView) {
+            _imageView = [[PDFImageView alloc] initWithFrame:self.frame];
+            [self addSubview:_imageView];
         }
         [self config];
         }
@@ -51,12 +51,26 @@ int i=1;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self addGestureRecognizer:pan];
 }
-- (void)setImage:(SVGKImage *)image
+- (void)setImage:(PDFImage *)image
 {
     _image = image;
-    _imageWiew.image = image;
+    if (!_imageView) {
+        _imageView = [[PDFImageView alloc] initWithFrame:self.frame];
+        [self addSubview:_imageView];
+    }
+    _imageView.image = image;
 }
-
+- (void)setImagePath:(NSString *)imagePath
+{
+    _imagePath = imagePath;
+    if (imagePath)
+    {
+        _image = [PDFImage imageNamed:imagePath];
+        self.frame = CGRectMake(0, 0, _image.size.width, _image.size.height);
+    } else {
+        [_imageView removeFromSuperview];
+    }
+}
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
     // CGPoint location = [recognizer locationInView:self];
