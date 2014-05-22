@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Mobilez365. All rights reserved.
 //
 
-#import "Preferencces.h"
-@interface Preferencces ()
+#import "Preferences.h"
+@interface Preferences ()
 - (IBAction)back:(id)sender;
 @end
 
-@implementation Preferencces
+@implementation Preferences
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -50,7 +50,7 @@
     Candies *c=[Candies new];
     c.centrBascket=self.BasketImage.frame;
     c.layer.zPosition=0;
-    UIImage *im=[UIImage imageNamed:@"candy_icon.png"];
+    UIImage *im=[UIImage imageNamed:@"candy_icon"];
     c.backgroundColor=[UIColor colorWithPatternImage:im];
     CGRect r=CGRectMake(x, y, 55, 55);
     c.frame = r;

@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0439AD61192E104400BD1FE3 /* basket_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0439AD5F192E104400BD1FE3 /* basket_icon.png */; };
-		0439AD62192E104400BD1FE3 /* basket_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0439AD60192E104400BD1FE3 /* basket_icon@2x.png */; };
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
 		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
-		04802DD3192E0D0900787C67 /* candy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04802DD1192E0D0900787C67 /* candy_icon.png */; };
-		04802DD4192E0D0900787C67 /* candy_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04802DD2192E0D0900787C67 /* candy_icon@2x.png */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
@@ -21,11 +17,10 @@
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
 		7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31617C192CAA4500C49EAE /* FPObjectsManager.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
-		7F316182192D092300C49EAE /* Preferencces.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferencces.m */; };
+		7F316182192D092300C49EAE /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferences.m */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
-		7F8A15C6192E389A006A9D6B /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
 		7F8A15C8192E3BA1006A9D6B /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C7192E3BA1006A9D6B /* GameField.storyboard */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
@@ -34,13 +29,18 @@
 		7FA4BA4E192C9AFD00A772BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA4D192C9AFD00A772BA /* main.m */; };
 		7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */; };
 		7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA53192C9AFD00A772BA /* Main.storyboard */; };
-		7FA4BA58192C9AFD00A772BA /* FPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA57192C9AFD00A772BA /* FPViewController.m */; };
 		7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA59192C9AFD00A772BA /* Images.xcassets */; };
 		7FA4BA61192C9AFD00A772BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA60192C9AFD00A772BA /* XCTest.framework */; };
 		7FA4BA62192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA63192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
 		7FA4BA6B192C9AFD00A772BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA69192C9AFD00A772BA /* InfoPlist.strings */; };
 		7FA4BA6D192C9AFD00A772BA /* FunnyPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */; };
+		84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85B93192E42DA00BDECB5 /* FPSoundManager.m */; };
+		84F85BA0192E489400BDECB5 /* backGroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */; };
+		84F85BA1192E489400BDECB5 /* exelentSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */; };
+		84F85BA2192E489400BDECB5 /* exelentSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */; };
+		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
+		84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,14 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0439AD5F192E104400BD1FE3 /* basket_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = basket_icon.png; path = "View Controllers/basket_icon.png"; sourceTree = "<group>"; };
-		0439AD60192E104400BD1FE3 /* basket_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basket_icon@2x.png"; path = "View Controllers/basket_icon@2x.png"; sourceTree = "<group>"; };
 		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBonusViewController.h; sourceTree = "<group>"; };
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBonusViewController.m; sourceTree = "<group>"; };
 		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candies.h; sourceTree = "<group>"; };
 		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candies.m; sourceTree = "<group>"; };
-		04802DD1192E0D0900787C67 /* candy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = candy_icon.png; path = "View Controllers/candy_icon.png"; sourceTree = "<group>"; };
-		04802DD2192E0D0900787C67 /* candy_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "candy_icon@2x.png"; path = "View Controllers/candy_icon@2x.png"; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
 		7F31615E192C9FC200C49EAE /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = "Custom Views/CloudView/CloudView.h"; sourceTree = "<group>"; };
@@ -70,7 +66,6 @@
 		7F316163192C9FDA00C49EAE /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Segment.m; path = "Custom Views/Segment/Segment.m"; sourceTree = "<group>"; };
 		7F316166192C9FF500C49EAE /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = Managers/GameObject.h; sourceTree = "<group>"; };
 		7F316167192C9FF500C49EAE /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = Managers/GameObject.m; sourceTree = "<group>"; };
-		7F31616A192CA01000C49EAE /* Constansts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constansts.h; path = "Oser Classes/Constansts.h"; sourceTree = "<group>"; };
 		7F316172192CA05A00C49EAE /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayViewController.h; path = "View Controllers/GamePlay/GamePlayViewController.h"; sourceTree = "<group>"; };
 		7F316173192CA05A00C49EAE /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlayViewController.m; path = "View Controllers/GamePlay/GamePlayViewController.m"; sourceTree = "<group>"; };
 		7F316174192CA05A00C49EAE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartViewController.h; path = "View Controllers/Start View Controller/StartViewController.h"; sourceTree = "<group>"; };
@@ -78,8 +73,8 @@
 		7F31617B192CAA4500C49EAE /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPObjectsManager.h; path = Managers/FPObjectsManager.h; sourceTree = "<group>"; };
 		7F31617C192CAA4500C49EAE /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPObjectsManager.m; path = Managers/FPObjectsManager.m; sourceTree = "<group>"; };
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
-		7F316180192D092300C49EAE /* Preferencces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferencces.h; path = "View Controllers/Preferensses/Preferencces.h"; sourceTree = "<group>"; };
-		7F316181192D092300C49EAE /* Preferencces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferencces.m; path = "View Controllers/Preferensses/Preferencces.m"; sourceTree = "<group>"; };
+		7F316180192D092300C49EAE /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = "View Controllers/Preferenсes/Preferences.h"; sourceTree = "<group>"; };
+		7F316181192D092300C49EAE /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = "View Controllers/Preferenсes/Preferences.m"; sourceTree = "<group>"; };
 		7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFImage.framework; path = FunnyPuzzle/Frameworks/PDFImage.framework; sourceTree = "<group>"; };
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
@@ -96,14 +91,19 @@
 		7FA4BA50192C9AFD00A772BA /* FPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPAppDelegate.h; sourceTree = "<group>"; };
 		7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPAppDelegate.m; sourceTree = "<group>"; };
 		7FA4BA54192C9AFD00A772BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7FA4BA56192C9AFD00A772BA /* FPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPViewController.h; sourceTree = "<group>"; };
-		7FA4BA57192C9AFD00A772BA /* FPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPViewController.m; sourceTree = "<group>"; };
 		7FA4BA59192C9AFD00A772BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FA4BA5F192C9AFD00A772BA /* FunnyPuzzleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunnyPuzzleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA4BA60192C9AFD00A772BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7FA4BA68192C9AFD00A772BA /* FunnyPuzzleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunnyPuzzleTests-Info.plist"; sourceTree = "<group>"; };
 		7FA4BA6A192C9AFD00A772BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunnyPuzzleTests.m; sourceTree = "<group>"; };
+		84F85B92192E42DA00BDECB5 /* FPSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSoundManager.h; path = Managers/FPSoundManager.h; sourceTree = "<group>"; };
+		84F85B93192E42DA00BDECB5 /* FPSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSoundManager.m; path = Managers/FPSoundManager.m; sourceTree = "<group>"; };
+		84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backGroundMusic.mp3; sourceTree = "<group>"; };
+		84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound1.mp3; sourceTree = "<group>"; };
+		84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound2.mp3; sourceTree = "<group>"; };
+		84F85BA4192E67CA00BDECB5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */,
 				7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */,
 				7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */,
 				7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */,
@@ -134,10 +135,6 @@
 		0466919D192CE8930095E1A8 /* Bonus */ = {
 			isa = PBXGroup;
 			children = (
-				04802DD1192E0D0900787C67 /* candy_icon.png */,
-				04802DD2192E0D0900787C67 /* candy_icon@2x.png */,
-				0439AD5F192E104400BD1FE3 /* basket_icon.png */,
-				0439AD60192E104400BD1FE3 /* basket_icon@2x.png */,
 				0466919A192CE88D0095E1A8 /* FPBonusViewController.h */,
 				0466919B192CE88D0095E1A8 /* FPBonusViewController.m */,
 			);
@@ -191,30 +188,34 @@
 			name = Segment;
 			sourceTree = "<group>";
 		};
-		7F316169192C9FFC00C49EAE /* Objects */ = {
+		7F316169192C9FFC00C49EAE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				7F316166192C9FF500C49EAE /* GameObject.h */,
 				7F316167192C9FF500C49EAE /* GameObject.m */,
 				7F31617B192CAA4500C49EAE /* FPObjectsManager.h */,
 				7F31617C192CAA4500C49EAE /* FPObjectsManager.m */,
+				84F85B92192E42DA00BDECB5 /* FPSoundManager.h */,
+				84F85B93192E42DA00BDECB5 /* FPSoundManager.m */,
 			);
-			name = Objects;
+			name = Managers;
 			sourceTree = "<group>";
 		};
-		7F31616B192CA01500C49EAE /* Other */ = {
+		7F31616B192CA01500C49EAE /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7F31616A192CA01000C49EAE /* Constansts.h */,
+				84F85BA4192E67CA00BDECB5 /* Constants.h */,
 			);
-			name = Other;
+			path = "Other Classes";
 			sourceTree = "<group>";
 		};
 		7F316170192CA03200C49EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84F85B9C192E489400BDECB5 /* Music */,
 				7F31617E192CCBE200C49EAE /* Levels */,
 				7F316171192CA04200C49EAE /* Start */,
+				7FA4BA59192C9AFD00A772BA /* Images.xcassets */,
 				7F8A15C2192E2069006A9D6B /* Localizable.strings */,
 			);
 			name = Resources;
@@ -229,15 +230,15 @@
 			name = Start;
 			sourceTree = "<group>";
 		};
-		7F316178192CA06100C49EAE /* VirewControllers */ = {
+		7F316178192CA06100C49EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F3161D8192DBB9C00C49EAE /* Prefs */,
+				7F3161D8192DBB9C00C49EAE /* Preferences */,
 				7F316179192CA08300C49EAE /* Gameplay */,
 				7F31617A192CA08F00C49EAE /* Start */,
 				0466919D192CE8930095E1A8 /* Bonus */,
 			);
-			name = VirewControllers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		7F316179192CA08300C49EAE /* Gameplay */ = {
@@ -259,13 +260,13 @@
 			name = Start;
 			sourceTree = "<group>";
 		};
-		7F3161D8192DBB9C00C49EAE /* Prefs */ = {
+		7F3161D8192DBB9C00C49EAE /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				7F316180192D092300C49EAE /* Preferencces.h */,
-				7F316181192D092300C49EAE /* Preferencces.m */,
+				7F316180192D092300C49EAE /* Preferences.h */,
+				7F316181192D092300C49EAE /* Preferences.m */,
 			);
-			name = Prefs;
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		7FA4BA35192C9AFD00A772BA = {
@@ -290,6 +291,7 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */,
 				7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */,
 				7FA4BA41192C9AFD00A772BA /* Foundation.framework */,
 				7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */,
@@ -303,16 +305,13 @@
 			isa = PBXGroup;
 			children = (
 				7F316170192CA03200C49EAE /* Resources */,
-				7F316178192CA06100C49EAE /* VirewControllers */,
+				7F316178192CA06100C49EAE /* ViewControllers */,
 				7FA4BA50192C9AFD00A772BA /* FPAppDelegate.h */,
 				7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */,
 				7FA4BA53192C9AFD00A772BA /* Main.storyboard */,
-				7FA4BA56192C9AFD00A772BA /* FPViewController.h */,
-				7FA4BA57192C9AFD00A772BA /* FPViewController.m */,
-				7F316169192C9FFC00C49EAE /* Objects */,
+				7F316169192C9FFC00C49EAE /* Managers */,
 				7F31615C192C9FA400C49EAE /* Views */,
-				7FA4BA59192C9AFD00A772BA /* Images.xcassets */,
-				7F31616B192CA01500C49EAE /* Other */,
+				7F31616B192CA01500C49EAE /* Other Classes */,
 				7FA4BA48192C9AFD00A772BA /* Supporting Files */,
 			);
 			path = FunnyPuzzle;
@@ -345,6 +344,17 @@
 				7FA4BA69192C9AFD00A772BA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84F85B9C192E489400BDECB5 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */,
+				84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */,
+				84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */,
+			);
+			name = Music;
+			path = Resources/Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,17 +435,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
-				0439AD61192E104400BD1FE3 /* basket_icon.png in Resources */,
+				84F85BA2192E489400BDECB5 /* exelentSound2.mp3 in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
-				0439AD62192E104400BD1FE3 /* basket_icon@2x.png in Resources */,
+				84F85BA0192E489400BDECB5 /* backGroundMusic.mp3 in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
 				7F8A15C8192E3BA1006A9D6B /* GameField.storyboard in Resources */,
+				84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */,
 				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
-				7F8A15C6192E389A006A9D6B /* ball2.pdf in Resources */,
-				04802DD4192E0D0900787C67 /* candy_icon@2x.png in Resources */,
-				04802DD3192E0D0900787C67 /* candy_icon.png in Resources */,
+				84F85BA1192E489400BDECB5 /* exelentSound1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,10 +470,10 @@
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
-				7F316182192D092300C49EAE /* Preferencces.m in Sources */,
+				7F316182192D092300C49EAE /* Preferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
-				7FA4BA58192C9AFD00A772BA /* FPViewController.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
+				84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
 				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
 			);
@@ -602,7 +611,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/misha2g/Desktop,
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -621,7 +629,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/misha2g/Desktop,
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
