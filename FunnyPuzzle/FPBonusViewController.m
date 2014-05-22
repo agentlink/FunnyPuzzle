@@ -12,8 +12,7 @@
 @interface FPBonusViewController ()
 
 {
-    int pointsX[10];
-    int pointsY[10];
+    int points[10];
     NSMutableArray *candies;
 }
 
@@ -43,10 +42,11 @@
     
     int x=20;
     int y=20;
-   
+    candies=[[NSMutableArray alloc]init];
     self.BasketImage.layer.zPosition=1;
     for(int i=1; i<10; i++)
     {
+        points[i-1]=x;
     Candies *c=[Candies new];
     c.centrBascket=self.BasketImage.frame;
     c.layer.zPosition=0;
@@ -55,6 +55,7 @@
     CGRect r=CGRectMake(x, y, 55, 55);
     c.frame = r;
     [self.view addSubview:c];
+        [candies insertObject:c atIndex:i-1];
     x+=50;
         
      //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Hello World" message:@"This is my first app!" delegate:nil cancelButtonTitle:@"Awesome" otherButtonTitles:nil];
@@ -80,18 +81,17 @@
 {
     if (motion == UIEventSubtypeMotionShake)
     {
-        self.view.backgroundColor=[UIColor blackColor];
         int m;
         m=arc4random()%10;
-        if ((pointsX[m]!=-1)&&(pointsY[m]!=-1))
+        if (points[m]!=-1)
         {
             Candies *c=[Candies new];
-            c.frame=CGRectMake(pointsX[m], pointsY[m], 55, 55);
-            
-            c.layer.zPosition=0;
-            [UIView animateWithDuration:2.0 animations:^{
-                c.frame=CGRectMake(pointsX[m], 200, 55, 55);
+            c=candies[m];
+            NSLog(@"%f",self.view.frame.size.height);
+            [UIView animateWithDuration:1.0 animations:^{
+                c.frame=CGRectMake(c.frame.origin.x, 200, 55, 55);
             }];
+            points[m]=-1;
         }
     }
 }
