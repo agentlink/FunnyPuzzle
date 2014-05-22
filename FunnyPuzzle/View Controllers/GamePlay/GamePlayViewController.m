@@ -57,7 +57,7 @@
     for (Segment *s in _man.segments) {
         [self.view addSubview:s];
     }
-    //[_centerView addSubview:_man.fieldImage];
+    [_centerView addSubview:_man.colorField];
 }
 - (void)didReceiveMemoryWarning
 {

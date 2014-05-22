@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="d3a-yJ-xw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="d3a-yJ-xw9">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -116,12 +116,28 @@
                                             <segue destination="zUh-2g-a9E" kind="push" id="xX6-At-Y7p"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Vp-tkv">
+                                        <rect key="frame" x="218" y="192" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="CuE-xy-pue"/>
+                                            <constraint firstAttribute="height" constant="30" id="MNa-xw-x10"/>
+                                        </constraints>
+                                        <state key="normal" title="Play">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="play:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="b7d-v5-Y2b"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="c66-cM-VBm" secondAttribute="centerX" id="EcH-0M-wO5"/>
                                     <constraint firstAttribute="bottom" secondItem="57H-rU-wtA" secondAttribute="bottom" constant="45" id="Hya-UO-a3t"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hpv-Vp-tkv" secondAttribute="trailing" constant="20" id="MbA-WF-YQf"/>
                                     <constraint firstAttribute="trailing" secondItem="57H-rU-wtA" secondAttribute="trailing" constant="20" id="T31-pD-LsT"/>
+                                    <constraint firstItem="57H-rU-wtA" firstAttribute="top" secondItem="Hpv-Vp-tkv" secondAttribute="bottom" constant="23" id="hUr-dB-kn2"/>
                                     <constraint firstItem="c66-cM-VBm" firstAttribute="top" secondItem="zrp-Nq-Tf2" secondAttribute="top" constant="50" id="o1E-p2-34y"/>
                                 </constraints>
                             </view>
@@ -148,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376" y="-109"/>
+            <point key="canvasLocation" x="374" y="-97"/>
         </scene>
         <!--Game Play View Controller-->
         <scene sceneID="W9B-iO-8HY">

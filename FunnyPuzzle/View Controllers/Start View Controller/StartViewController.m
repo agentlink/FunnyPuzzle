@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
 
+- (IBAction)play:(id)sender;
 @end
 
 @implementation StartViewController
@@ -53,6 +54,11 @@
 - (void)layerAnimate
 {
     
+}
+- (IBAction)play:(id)sender
+{
+    UIViewController *cont = [[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
+    [self.navigationController pushViewController:cont animated:YES];
 }
 /*
 #pragma mark - Navigation
