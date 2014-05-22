@@ -10,6 +10,7 @@
 #import "Constansts.h"
 #import <PDFImage/PDFImage.h>
 @interface FPObjectsManager : NSObject
+
 @property (nonatomic, strong) NSArray *segments;
 @property (nonatomic) NSArray *segmentsStrings;
 @property (nonatomic, strong) PDFImageView *colorField;

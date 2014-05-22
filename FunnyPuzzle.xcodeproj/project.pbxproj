@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0439AD61192E104400BD1FE3 /* basket_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0439AD5F192E104400BD1FE3 /* basket_icon.png */; };
+		0439AD62192E104400BD1FE3 /* basket_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0439AD60192E104400BD1FE3 /* basket_icon@2x.png */; };
+		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
+		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
+		04802DD3192E0D0900787C67 /* candy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04802DD1192E0D0900787C67 /* candy_icon.png */; };
+		04802DD4192E0D0900787C67 /* candy_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04802DD2192E0D0900787C67 /* candy_icon@2x.png */; };
 		6661D472BFF245DDB705F619 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F279C6C4F84A42CA90619595 /* libPods.a */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
@@ -50,6 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0439AD5F192E104400BD1FE3 /* basket_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = basket_icon.png; path = "View Controllers/basket_icon.png"; sourceTree = "<group>"; };
+		0439AD60192E104400BD1FE3 /* basket_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basket_icon@2x.png"; path = "View Controllers/basket_icon@2x.png"; sourceTree = "<group>"; };
+		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBonusViewController.h; sourceTree = "<group>"; };
+		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBonusViewController.m; sourceTree = "<group>"; };
+		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candies.h; sourceTree = "<group>"; };
+		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candies.m; sourceTree = "<group>"; };
+		04802DD1192E0D0900787C67 /* candy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = candy_icon.png; path = "View Controllers/candy_icon.png"; sourceTree = "<group>"; };
+		04802DD2192E0D0900787C67 /* candy_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "candy_icon@2x.png"; path = "View Controllers/candy_icon@2x.png"; sourceTree = "<group>"; };
 		09B2AE5F26204B769DFEAAF9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
@@ -123,12 +137,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0466919D192CE8930095E1A8 /* Bonus */ = {
+			isa = PBXGroup;
+			children = (
+				04802DD1192E0D0900787C67 /* candy_icon.png */,
+				04802DD2192E0D0900787C67 /* candy_icon@2x.png */,
+				0439AD5F192E104400BD1FE3 /* basket_icon.png */,
+				0439AD60192E104400BD1FE3 /* basket_icon@2x.png */,
+				0466919A192CE88D0095E1A8 /* FPBonusViewController.h */,
+				0466919B192CE88D0095E1A8 /* FPBonusViewController.m */,
+			);
+			name = Bonus;
+			sourceTree = "<group>";
+		};
+		046691A1192CE9A40095E1A8 /* Candies */ = {
+			isa = PBXGroup;
+			children = (
+				0466919E192CE99A0095E1A8 /* Candies.h */,
+				0466919F192CE99A0095E1A8 /* Candies.m */,
+			);
+			name = Candies;
+			sourceTree = "<group>";
+		};
 		7F31615C192C9FA400C49EAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7F316165192C9FDF00C49EAE /* Segment */,
 				7F316161192C9FC600C49EAE /* Cloud */,
 				7F31615D192C9FAF00C49EAE /* Ball */,
+				046691A1192CE9A40095E1A8 /* Candies */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -206,6 +243,7 @@
 				7F3161D8192DBB9C00C49EAE /* Prefs */,
 				7F316179192CA08300C49EAE /* Gameplay */,
 				7F31617A192CA08F00C49EAE /* Start */,
+				0466919D192CE8930095E1A8 /* Bonus */,
 			);
 			name = VirewControllers;
 			sourceTree = "<group>";
@@ -398,7 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
+				0439AD61192E104400BD1FE3 /* basket_icon.png in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
+				0439AD62192E104400BD1FE3 /* basket_icon@2x.png in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
@@ -458,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
+				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameObject.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
@@ -468,6 +509,7 @@
 				7FA4BA58192C9AFD00A772BA /* FPViewController.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
+				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,12 @@
 #import "FPObjectsManager.h"
 
 @interface GameObject : NSObject
+
 @property (nonatomic) FPGameMode *gameMode;
 @property (nonatomic) FPGameType *gameType;
 @property (nonatomic) int points;
 @property (nonatomic, strong) FPObjectsManager *manager;
 
 + (GameObject *)sharedInstance;
+
 @end

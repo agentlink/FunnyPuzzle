@@ -10,6 +10,9 @@
 #import "GameObject.h"
 #import "Segment.h"
 @interface GamePlayViewController ()
+{
+  NSArray *images;
+}
 @property (nonatomic, weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *rightView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
@@ -21,6 +24,7 @@
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
+
 
 
 @end

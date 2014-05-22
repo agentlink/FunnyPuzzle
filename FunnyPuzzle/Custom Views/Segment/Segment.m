@@ -50,6 +50,7 @@ int i=1;
 {
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self addGestureRecognizer:pan];
+    
 }
 - (void)setImage:(PDFImage *)image
 {
@@ -73,40 +74,18 @@ int i=1;
 }
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
-    // CGPoint location = [recognizer locationInView:self];
-    //CGSize size = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-    //[recognizer setTranslation:CGPointZero inView:recognizer.view];
-    
-    
-    
     if (recognizer.state==UIGestureRecognizerStateBegan)
         {
             pp = CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
             p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
             
             }
-    
-    
-    
-    
-    //CGFloat newY = self.frame.origin.y + translation.y;
-    //CGFloat newX = self.frame.origin.x + translation.x;
-    
-    
-    if (recognizer.state == UIGestureRecognizerStateChanged) {
-        //if (newY >= 0 &&
-        //newX >= 0 &&
-        //newY <= [UIScreen mainScreen].bounds.size.height &&
-        //newX <= [UIScreen mainScreen].bounds.size.width) {
-        //self.transform = CGAffineTransformConcat(self.transform, CGAffineTransformMakeTranslation(translation.x, translation.y));
-        //}
+    if (recognizer.state == UIGestureRecognizerStateChanged)
+    {
             CGPoint p2=CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
             CGPoint p1 = CGPointMake(p2.x-p.x, p2.y-p.y);
-        
             self.layer.position=p1;
-        
-        }
-    //[recognizer setTranslation:CGPointMake(0.0f, 0.0f) inView:self];
+    }
     
 }
 - (void)dealloc
