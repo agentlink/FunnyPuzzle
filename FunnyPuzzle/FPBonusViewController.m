@@ -82,14 +82,14 @@
     if (motion == UIEventSubtypeMotionShake)
     {
         int m;
-        m=arc4random()%10;
+        m=arc4random()%9;
         if (points[m]!=-1)
         {
             Candies *c=[Candies new];
             c=candies[m];
             NSLog(@"%f",self.view.frame.size.height);
             [UIView animateWithDuration:1.0 animations:^{
-                c.frame=CGRectMake(c.frame.origin.x, 200, 55, 55);
+                c.frame=CGRectMake(c.frame.origin.x, self.view.frame.size.height-c.frame.size.height, 55, 55);
             }];
             points[m]=-1;
         }
