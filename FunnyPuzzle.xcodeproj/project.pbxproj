@@ -7,40 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
-		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
-		7F316168192C9FF500C49EAE /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316167192C9FF500C49EAE /* GameObject.m */; };
 		7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316173192CA05A00C49EAE /* GamePlayViewController.m */; };
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
-		7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31617C192CAA4500C49EAE /* FPObjectsManager.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
 		7F316182192D092300C49EAE /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferences.m */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
-		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
-		7F8A15C8192E3BA1006A9D6B /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C7192E3BA1006A9D6B /* GameField.storyboard */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
 		7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
-		7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */; };
-		7FA4BA4E192C9AFD00A772BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA4D192C9AFD00A772BA /* main.m */; };
 		7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */; };
-		7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA53192C9AFD00A772BA /* Main.storyboard */; };
 		7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA59192C9AFD00A772BA /* Images.xcassets */; };
 		7FA4BA61192C9AFD00A772BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA60192C9AFD00A772BA /* XCTest.framework */; };
 		7FA4BA62192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA63192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
 		7FA4BA6B192C9AFD00A772BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA69192C9AFD00A772BA /* InfoPlist.strings */; };
 		7FA4BA6D192C9AFD00A772BA /* FunnyPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */; };
-		84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85B93192E42DA00BDECB5 /* FPSoundManager.m */; };
 		84F85BA0192E489400BDECB5 /* backGroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */; };
 		84F85BA1192E489400BDECB5 /* exelentSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */; };
 		84F85BA2192E489400BDECB5 /* exelentSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */; };
 		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
 		84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */; };
+		84F85BA9192E934D00BDECB5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA8192E934D00BDECB5 /* AudioToolbox.framework */; };
+		84F85BBA192E972E00BDECB5 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BB9192E972E00BDECB5 /* libGoogleAdMobAds.a */; };
+		84F85BC1192E97BB00BDECB5 /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BBD192E97BB00BDECB5 /* FPObjectsManager.m */; };
+		84F85BC2192E97BB00BDECB5 /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
+		84F85BCA192E994400BDECB5 /* FunnyPuzzle-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F85BC6192E994400BDECB5 /* FunnyPuzzle-Info.plist */; };
+		84F85BCB192E994400BDECB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC8192E994400BDECB5 /* main.m */; };
+		84F85BD2192E998200BDECB5 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BD1192E998200BDECB5 /* GameObject.m */; };
+		84F85BD6192E99B900BDECB5 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BD5192E99B900BDECB5 /* Candies.m */; };
+		84F85BDA192E9A0700BDECB5 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BD9192E9A0700BDECB5 /* FPBonusViewController.m */; };
+		84F85BDC192E9A2400BDECB5 /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F85BDB192E9A2400BDECB5 /* GameField.storyboard */; };
+		84F85BE0192E9CE800BDECB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F85BDD192E9A9900BDECB5 /* Main.storyboard */; };
+		84F85BE1192E9D6700BDECB5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F85BC4192E994400BDECB5 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,24 +56,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBonusViewController.h; sourceTree = "<group>"; };
-		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBonusViewController.m; sourceTree = "<group>"; };
-		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candies.h; sourceTree = "<group>"; };
-		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candies.m; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
 		7F31615E192C9FC200C49EAE /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = "Custom Views/CloudView/CloudView.h"; sourceTree = "<group>"; };
 		7F31615F192C9FC200C49EAE /* CloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudView.m; path = "Custom Views/CloudView/CloudView.m"; sourceTree = "<group>"; };
 		7F316162192C9FDA00C49EAE /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Segment.h; path = "Custom Views/Segment/Segment.h"; sourceTree = "<group>"; };
 		7F316163192C9FDA00C49EAE /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Segment.m; path = "Custom Views/Segment/Segment.m"; sourceTree = "<group>"; };
-		7F316166192C9FF500C49EAE /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = Managers/GameObject.h; sourceTree = "<group>"; };
-		7F316167192C9FF500C49EAE /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = Managers/GameObject.m; sourceTree = "<group>"; };
 		7F316172192CA05A00C49EAE /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayViewController.h; path = "View Controllers/GamePlay/GamePlayViewController.h"; sourceTree = "<group>"; };
 		7F316173192CA05A00C49EAE /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlayViewController.m; path = "View Controllers/GamePlay/GamePlayViewController.m"; sourceTree = "<group>"; };
 		7F316174192CA05A00C49EAE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartViewController.h; path = "View Controllers/Start View Controller/StartViewController.h"; sourceTree = "<group>"; };
 		7F316175192CA05A00C49EAE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = "View Controllers/Start View Controller/StartViewController.m"; sourceTree = "<group>"; };
-		7F31617B192CAA4500C49EAE /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPObjectsManager.h; path = Managers/FPObjectsManager.h; sourceTree = "<group>"; };
-		7F31617C192CAA4500C49EAE /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPObjectsManager.m; path = Managers/FPObjectsManager.m; sourceTree = "<group>"; };
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
 		7F316180192D092300C49EAE /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = "View Controllers/Preferenсes/Preferences.h"; sourceTree = "<group>"; };
 		7F316181192D092300C49EAE /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = "View Controllers/Preferenсes/Preferences.m"; sourceTree = "<group>"; };
@@ -79,15 +73,10 @@
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
 		7F8A15C4192E389A006A9D6B /* ball2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball2.pdf; path = Resources/General/ball2.pdf; sourceTree = "<group>"; };
-		7F8A15C7192E3BA1006A9D6B /* GameField.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameField.storyboard; sourceTree = "<group>"; };
 		7FA4BA3E192C9AFD00A772BA /* FunnyPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA4BA41192C9AFD00A772BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7FA4BA45192C9AFD00A772BA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		7FA4BA49192C9AFD00A772BA /* FunnyPuzzle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunnyPuzzle-Info.plist"; sourceTree = "<group>"; };
-		7FA4BA4B192C9AFD00A772BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7FA4BA4D192C9AFD00A772BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7FA4BA4F192C9AFD00A772BA /* FunnyPuzzle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FunnyPuzzle-Prefix.pch"; sourceTree = "<group>"; };
 		7FA4BA50192C9AFD00A772BA /* FPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPAppDelegate.h; sourceTree = "<group>"; };
 		7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPAppDelegate.m; sourceTree = "<group>"; };
 		7FA4BA54192C9AFD00A772BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,13 +86,41 @@
 		7FA4BA68192C9AFD00A772BA /* FunnyPuzzleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunnyPuzzleTests-Info.plist"; sourceTree = "<group>"; };
 		7FA4BA6A192C9AFD00A772BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunnyPuzzleTests.m; sourceTree = "<group>"; };
-		84F85B92192E42DA00BDECB5 /* FPSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSoundManager.h; path = Managers/FPSoundManager.h; sourceTree = "<group>"; };
-		84F85B93192E42DA00BDECB5 /* FPSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSoundManager.m; path = Managers/FPSoundManager.m; sourceTree = "<group>"; };
 		84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backGroundMusic.mp3; sourceTree = "<group>"; };
 		84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound1.mp3; sourceTree = "<group>"; };
 		84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound2.mp3; sourceTree = "<group>"; };
-		84F85BA4192E67CA00BDECB5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84F85BA8192E934D00BDECB5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84F85BAB192E970200BDECB5 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		84F85BAC192E970200BDECB5 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		84F85BAD192E970200BDECB5 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		84F85BAE192E970200BDECB5 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		84F85BAF192E970200BDECB5 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		84F85BB0192E970200BDECB5 /* GADInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchase.h; sourceTree = "<group>"; };
+		84F85BB1192E970200BDECB5 /* GADInAppPurchaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchaseDelegate.h; sourceTree = "<group>"; };
+		84F85BB2192E970200BDECB5 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		84F85BB3192E970200BDECB5 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		84F85BB4192E970200BDECB5 /* GADModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADModules.h; sourceTree = "<group>"; };
+		84F85BB5192E970200BDECB5 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		84F85BB6192E970200BDECB5 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		84F85BB9192E972E00BDECB5 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = "FunnyPuzzle/Frameworks/lib GoogleAdMob/libGoogleAdMobAds.a"; sourceTree = "<group>"; };
+		84F85BBC192E97BB00BDECB5 /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPObjectsManager.h; sourceTree = "<group>"; };
+		84F85BBD192E97BB00BDECB5 /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPObjectsManager.m; sourceTree = "<group>"; };
+		84F85BBF192E97BB00BDECB5 /* FPSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSoundManager.h; sourceTree = "<group>"; };
+		84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSoundManager.m; sourceTree = "<group>"; };
+		84F85BC5192E994400BDECB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84F85BC6192E994400BDECB5 /* FunnyPuzzle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FunnyPuzzle-Info.plist"; sourceTree = "<group>"; };
+		84F85BC7192E994400BDECB5 /* FunnyPuzzle-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FunnyPuzzle-Prefix.pch"; sourceTree = "<group>"; };
+		84F85BC8192E994400BDECB5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84F85BCE192E998200BDECB5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		84F85BD0192E998200BDECB5 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		84F85BD1192E998200BDECB5 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObject.m; sourceTree = "<group>"; };
+		84F85BD4192E99B900BDECB5 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candies.h; sourceTree = "<group>"; };
+		84F85BD5192E99B900BDECB5 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candies.m; sourceTree = "<group>"; };
+		84F85BD8192E9A0700BDECB5 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBonusViewController.h; sourceTree = "<group>"; };
+		84F85BD9192E9A0700BDECB5 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBonusViewController.m; sourceTree = "<group>"; };
+		84F85BDB192E9A2400BDECB5 /* GameField.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameField.storyboard; path = "View Controllers/GamePlay/GameField.storyboard"; sourceTree = "<group>"; };
+		84F85BDE192E9A9900BDECB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FunnyPuzzle/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +128,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F85BBA192E972E00BDECB5 /* libGoogleAdMobAds.a in Frameworks */,
+				84F85BA9192E934D00BDECB5 /* AudioToolbox.framework in Frameworks */,
 				84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */,
 				7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */,
 				7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */,
@@ -132,33 +151,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0466919D192CE8930095E1A8 /* Bonus */ = {
-			isa = PBXGroup;
-			children = (
-				0466919A192CE88D0095E1A8 /* FPBonusViewController.h */,
-				0466919B192CE88D0095E1A8 /* FPBonusViewController.m */,
-			);
-			name = Bonus;
-			sourceTree = "<group>";
-		};
-		046691A1192CE9A40095E1A8 /* Candies */ = {
-			isa = PBXGroup;
-			children = (
-				0466919E192CE99A0095E1A8 /* Candies.h */,
-				0466919F192CE99A0095E1A8 /* Candies.m */,
-			);
-			name = Candies;
-			sourceTree = "<group>";
-		};
-		7F31615C192C9FA400C49EAE /* Views */ = {
+		7F31615C192C9FA400C49EAE /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				7F316165192C9FDF00C49EAE /* Segment */,
 				7F316161192C9FC600C49EAE /* Cloud */,
 				7F31615D192C9FAF00C49EAE /* Ball */,
-				046691A1192CE9A40095E1A8 /* Candies */,
+				84F85BD3192E99B900BDECB5 /* Candies */,
 			);
-			name = Views;
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 		7F31615D192C9FAF00C49EAE /* Ball */ = {
@@ -191,22 +192,10 @@
 		7F316169192C9FFC00C49EAE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				7F316166192C9FF500C49EAE /* GameObject.h */,
-				7F316167192C9FF500C49EAE /* GameObject.m */,
-				7F31617B192CAA4500C49EAE /* FPObjectsManager.h */,
-				7F31617C192CAA4500C49EAE /* FPObjectsManager.m */,
-				84F85B92192E42DA00BDECB5 /* FPSoundManager.h */,
-				84F85B93192E42DA00BDECB5 /* FPSoundManager.m */,
+				84F85BBB192E97BB00BDECB5 /* Objects Manager */,
+				84F85BBE192E97BB00BDECB5 /* Sound Manager */,
 			);
 			name = Managers;
-			sourceTree = "<group>";
-		};
-		7F31616B192CA01500C49EAE /* Other Classes */ = {
-			isa = PBXGroup;
-			children = (
-				84F85BA4192E67CA00BDECB5 /* Constants.h */,
-			);
-			path = "Other Classes";
 			sourceTree = "<group>";
 		};
 		7F316170192CA03200C49EAE /* Resources */ = {
@@ -233,22 +222,22 @@
 		7F316178192CA06100C49EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84F85BD7192E9A0700BDECB5 /* Bonus View Controller */,
 				7F3161D8192DBB9C00C49EAE /* Preferences */,
-				7F316179192CA08300C49EAE /* Gameplay */,
+				7F316179192CA08300C49EAE /* GamePlay */,
 				7F31617A192CA08F00C49EAE /* Start */,
-				0466919D192CE8930095E1A8 /* Bonus */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		7F316179192CA08300C49EAE /* Gameplay */ = {
+		7F316179192CA08300C49EAE /* GamePlay */ = {
 			isa = PBXGroup;
 			children = (
 				7F316172192CA05A00C49EAE /* GamePlayViewController.h */,
 				7F316173192CA05A00C49EAE /* GamePlayViewController.m */,
-				7F8A15C7192E3BA1006A9D6B /* GameField.storyboard */,
+				84F85BDB192E9A2400BDECB5 /* GameField.storyboard */,
 			);
-			name = Gameplay;
+			name = GamePlay;
 			sourceTree = "<group>";
 		};
 		7F31617A192CA08F00C49EAE /* Start */ = {
@@ -272,6 +261,7 @@
 		7FA4BA35192C9AFD00A772BA = {
 			isa = PBXGroup;
 			children = (
+				84F85BDD192E9A9900BDECB5 /* Main.storyboard */,
 				7FA4BA47192C9AFD00A772BA /* FunnyPuzzle */,
 				7FA4BA66192C9AFD00A772BA /* FunnyPuzzleTests */,
 				7FA4BA40192C9AFD00A772BA /* Frameworks */,
@@ -291,6 +281,9 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84F85BB9192E972E00BDECB5 /* libGoogleAdMobAds.a */,
+				84F85BAA192E970200BDECB5 /* lib GoogleAdMob */,
+				84F85BA8192E934D00BDECB5 /* AudioToolbox.framework */,
 				84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */,
 				7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */,
 				7FA4BA41192C9AFD00A772BA /* Foundation.framework */,
@@ -310,22 +303,11 @@
 				7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */,
 				7FA4BA53192C9AFD00A772BA /* Main.storyboard */,
 				7F316169192C9FFC00C49EAE /* Managers */,
-				7F31615C192C9FA400C49EAE /* Views */,
-				7F31616B192CA01500C49EAE /* Other Classes */,
-				7FA4BA48192C9AFD00A772BA /* Supporting Files */,
+				7F31615C192C9FA400C49EAE /* Custom Views */,
+				84F85BCC192E998200BDECB5 /* Other Classes */,
+				84F85BC3192E994400BDECB5 /* Supporting Files */,
 			);
 			path = FunnyPuzzle;
-			sourceTree = "<group>";
-		};
-		7FA4BA48192C9AFD00A772BA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7FA4BA49192C9AFD00A772BA /* FunnyPuzzle-Info.plist */,
-				7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */,
-				7FA4BA4D192C9AFD00A772BA /* main.m */,
-				7FA4BA4F192C9AFD00A772BA /* FunnyPuzzle-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7FA4BA66192C9AFD00A772BA /* FunnyPuzzleTests */ = {
@@ -355,6 +337,103 @@
 			);
 			name = Music;
 			path = Resources/Music;
+			sourceTree = "<group>";
+		};
+		84F85BAA192E970200BDECB5 /* lib GoogleAdMob */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BAB192E970200BDECB5 /* GADAdMobExtras.h */,
+				84F85BAC192E970200BDECB5 /* GADAdNetworkExtras.h */,
+				84F85BAD192E970200BDECB5 /* GADAdSize.h */,
+				84F85BAE192E970200BDECB5 /* GADBannerView.h */,
+				84F85BAF192E970200BDECB5 /* GADBannerViewDelegate.h */,
+				84F85BB0192E970200BDECB5 /* GADInAppPurchase.h */,
+				84F85BB1192E970200BDECB5 /* GADInAppPurchaseDelegate.h */,
+				84F85BB2192E970200BDECB5 /* GADInterstitial.h */,
+				84F85BB3192E970200BDECB5 /* GADInterstitialDelegate.h */,
+				84F85BB4192E970200BDECB5 /* GADModules.h */,
+				84F85BB5192E970200BDECB5 /* GADRequest.h */,
+				84F85BB6192E970200BDECB5 /* GADRequestError.h */,
+			);
+			name = "lib GoogleAdMob";
+			path = "FunnyPuzzle/Frameworks/lib GoogleAdMob";
+			sourceTree = "<group>";
+		};
+		84F85BBB192E97BB00BDECB5 /* Objects Manager */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BBC192E97BB00BDECB5 /* FPObjectsManager.h */,
+				84F85BBD192E97BB00BDECB5 /* FPObjectsManager.m */,
+			);
+			name = "Objects Manager";
+			path = "Managers/Objects Manager";
+			sourceTree = "<group>";
+		};
+		84F85BBE192E97BB00BDECB5 /* Sound Manager */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BBF192E97BB00BDECB5 /* FPSoundManager.h */,
+				84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */,
+			);
+			name = "Sound Manager";
+			path = "Managers/Sound Manager";
+			sourceTree = "<group>";
+		};
+		84F85BC3192E994400BDECB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BC4192E994400BDECB5 /* InfoPlist.strings */,
+				84F85BC6192E994400BDECB5 /* FunnyPuzzle-Info.plist */,
+				84F85BC7192E994400BDECB5 /* FunnyPuzzle-Prefix.pch */,
+				84F85BC8192E994400BDECB5 /* main.m */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84F85BCC192E998200BDECB5 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BCD192E998200BDECB5 /* Constants */,
+				84F85BCF192E998200BDECB5 /* Game Object */,
+			);
+			path = "Other Classes";
+			sourceTree = "<group>";
+		};
+		84F85BCD192E998200BDECB5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BCE192E998200BDECB5 /* Constants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		84F85BCF192E998200BDECB5 /* Game Object */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BD0192E998200BDECB5 /* GameObject.h */,
+				84F85BD1192E998200BDECB5 /* GameObject.m */,
+			);
+			path = "Game Object";
+			sourceTree = "<group>";
+		};
+		84F85BD3192E99B900BDECB5 /* Candies */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BD4192E99B900BDECB5 /* Candies.h */,
+				84F85BD5192E99B900BDECB5 /* Candies.m */,
+			);
+			name = Candies;
+			path = "Custom Views/Candies";
+			sourceTree = "<group>";
+		};
+		84F85BD7192E9A0700BDECB5 /* Bonus View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BD8192E9A0700BDECB5 /* FPBonusViewController.h */,
+				84F85BD9192E9A0700BDECB5 /* FPBonusViewController.m */,
+			);
+			name = "Bonus View Controller";
+			path = "View Controllers/Bonus View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,16 +513,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F85BE0192E9CE800BDECB5 /* Main.storyboard in Resources */,
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
+				84F85BDC192E9A2400BDECB5 /* GameField.storyboard in Resources */,
 				84F85BA2192E489400BDECB5 /* exelentSound2.mp3 in Resources */,
-				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
 				84F85BA0192E489400BDECB5 /* backGroundMusic.mp3 in Resources */,
-				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
-				7F8A15C8192E3BA1006A9D6B /* GameField.storyboard in Resources */,
+				84F85BCA192E994400BDECB5 /* FunnyPuzzle-Info.plist in Resources */,
 				84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */,
-				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
+				84F85BE1192E9D6700BDECB5 /* InfoPlist.strings in Resources */,
 				84F85BA1192E489400BDECB5 /* exelentSound1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,19 +542,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F85BD2192E998200BDECB5 /* GameObject.m in Sources */,
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
-				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
-				7F316168192C9FF500C49EAE /* GameObject.m in Sources */,
+				84F85BDA192E9A0700BDECB5 /* FPBonusViewController.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
+				84F85BC1192E97BB00BDECB5 /* FPObjectsManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
-				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
-				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
+				84F85BC2192E97BB00BDECB5 /* FPSoundManager.m in Sources */,
 				7F316182192D092300C49EAE /* Preferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
-				84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
-				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
+				84F85BCB192E994400BDECB5 /* main.m in Sources */,
+				84F85BD6192E99B900BDECB5 /* Candies.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,14 +586,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FA4BA4B192C9AFD00A772BA /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		7FA4BA53192C9AFD00A772BA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -529,6 +600,22 @@
 				7FA4BA6A192C9AFD00A772BA /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84F85BC4192E994400BDECB5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F85BC5192E994400BDECB5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84F85BDD192E9A9900BDECB5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F85BDE192E9A9900BDECB5 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -566,6 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -598,6 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -614,9 +703,14 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FunnyPuzzle/FunnyPuzzle-Prefix.pch";
-				INFOPLIST_FILE = "FunnyPuzzle/FunnyPuzzle-Info.plist";
+				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
+				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/lib",
+					GoogleAdMob,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -632,9 +726,14 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FunnyPuzzle/FunnyPuzzle-Prefix.pch";
-				INFOPLIST_FILE = "FunnyPuzzle/FunnyPuzzle-Info.plist";
+				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
+				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/lib",
+					GoogleAdMob,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
