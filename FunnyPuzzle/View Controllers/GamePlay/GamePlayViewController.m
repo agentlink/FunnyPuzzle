@@ -24,7 +24,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
-
+@property (nonatomic) FPObjectsManager *man;
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
@@ -49,27 +49,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //FPGameType *gt=[GameObject sharedInstance].gameType;
-
-
-  
-    FPGameType gt=FPGameModeFirs;
-    switch (gt) {
-        case FPGameModeFirs:
-            
-            NSLog(@"Hello1 x  %f   y  %f", self.rightView.frame.origin.x, self.rightView.frame.origin.y);
-        
-            break;
-        case FPGameModeSecond:
-            NSLog(@"Hello2");
-            break;
-        case FPGameModeBonus:
-            NSLog(@"Hello3");
-            break;
-        default:
-            break;
-    }
+    //FPObjectsManager *man = [GameObject sharedInstance].manager;
+    _man = [GameObject sharedInstance].manager;
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    for (Segment *s in _man.segments) {
+        [self.view addSubview:s];
+    }
+    //[_centerView addSubview:_man.fieldImage];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -7,7 +7,6 @@
 //
 
 #import "CloudView.h"
-#import <SVGKit/SVGKImage.h>
 @implementation CloudView
 
 - (id)initWithFrame:(CGRect)frame

@@ -11,7 +11,7 @@ typedef enum {
 }FPGameMode;
 
 typedef enum {
-    FPGameModeFirs,
-    FPGameModeSecond,
-    FPGameModeBonus
+    FPGameTypeFirs,
+    FPGameTypeSecond,
+    FPGameTypeBonus
 }FPGameType;

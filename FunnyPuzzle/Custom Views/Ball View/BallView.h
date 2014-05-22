@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SVGKFastImageView.h>
-#import <SVGKImage.h>
+#import <PDFImage/PDFImage.h>
 @interface BallView : UIView
-@property (nonatomic, strong) SVGKImage *image;
+@property (nonatomic, weak) PDFImage *image;
+@property (nonatomic, strong) NSString *imageName;
 @property (nonatomic) BOOL isVisible;
 @end

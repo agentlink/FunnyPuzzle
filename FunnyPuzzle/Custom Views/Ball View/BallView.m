@@ -8,17 +8,19 @@
 
 #import "BallView.h"
 @interface BallView ()
-@property (nonatomic, strong) SVGKFastImageView *imageVeiw;
+@property (nonatomic, strong) PDFImageView *imageVeiw;
 @end
 @implementation BallView
 #pragma mark - Custom Accssesors
-- (void)setImage:(SVGKImage *)image
+
+- (void)setImage:(PDFImage *)image
 {
     if (!_imageVeiw) {
-        _imageVeiw = [[SVGKFastImageView alloc] initWithSVGKImage:image];
+        _imageVeiw = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         [self addSubview:_imageVeiw];
         float h = CGRectGetHeight(_imageVeiw.frame);
         float w = CGRectGetWidth(_imageVeiw.frame);
+        _imageVeiw.image = image;
         if (h>w) {
             _imageVeiw.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), (CGRectGetHeight(self.frame))*(h/w));
         } else {
@@ -27,6 +29,20 @@
     } else {
         _imageVeiw.image = image;
     }
+    image = nil;
+}
+- (void)setImageName:(NSString *)imageName
+{
+    _imageName = imageName;
+    [_imageVeiw setImage:[PDFImage imageNamed:imageName]];
+}
+- (PDFImageView *)imageVeiw
+{
+    if (!_imageVeiw) {
+        _imageVeiw = [[PDFImageView alloc] init];
+        [self addSubview:_imageVeiw];
+    }
+    return _imageVeiw;
 }
 - (void)setIsVisible:(BOOL)isVisible
 {

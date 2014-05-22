@@ -11,6 +11,10 @@
 @implementation GameObject
 static GameObject *_instance = nil;
 
+- (FPObjectsManager *)manager
+{
+    return [FPObjectsManager gameObjectsWithType:FPGameTypeFirs mode:FPGameModeEase level:0];
+}
 
 
 

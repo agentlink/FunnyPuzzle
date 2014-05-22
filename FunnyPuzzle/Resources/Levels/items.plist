@@ -5,12 +5,12 @@
 	<array>
 		<dict>
 			<key>color</key>
-			<string>ice_cream.svg</string>
+			<string>ice_cream</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>ice_cream1.svg</string>
+					<string>ice_cream1</string>
 					<key>point</key>
 					<dict>
 						<key>x</key>
@@ -21,7 +21,7 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>ice_cream2.svg</string>
+					<string>ice_cream2</string>
 					<key>point</key>
 					<dict>
 						<key>x</key>
@@ -34,9 +34,9 @@
 			<key>folder</key>
 			<string>2_ice_cream</string>
 			<key>gray</key>
-			<string>ice_cream_gray.svg</string>
+			<string>ice_cream_gray</string>
 			<key>gray_lined</key>
-			<string>ice_cream_gray_lines.svg</string>
+			<string>ice_cream_gray_lines</string>
 			<key>name</key>
 			<string>Ice Cream</string>
 			<key>size</key>

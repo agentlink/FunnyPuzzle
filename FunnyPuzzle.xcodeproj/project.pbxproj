@@ -24,6 +24,11 @@
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
 		7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31617C192CAA4500C49EAE /* FPObjectsManager.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
+		7F316182192D092300C49EAE /* Preferencces.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferencces.m */; };
+		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
+		7F8A15BC192E1620006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15BA192E1620006A9D6B /* ball1.pdf */; };
+		7F8A15BD192E1620006A9D6B /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15BB192E1620006A9D6B /* ball2.pdf */; };
+		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
 		7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
@@ -78,6 +83,12 @@
 		7F31617B192CAA4500C49EAE /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPObjectsManager.h; path = Managers/FPObjectsManager.h; sourceTree = "<group>"; };
 		7F31617C192CAA4500C49EAE /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPObjectsManager.m; path = Managers/FPObjectsManager.m; sourceTree = "<group>"; };
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
+		7F316180192D092300C49EAE /* Preferencces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferencces.h; path = "View Controllers/Preferensses/Preferencces.h"; sourceTree = "<group>"; };
+		7F316181192D092300C49EAE /* Preferencces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferencces.m; path = "View Controllers/Preferensses/Preferencces.m"; sourceTree = "<group>"; };
+		7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFImage.framework; path = FunnyPuzzle/Frameworks/PDFImage.framework; sourceTree = "<group>"; };
+		7F8A15BA192E1620006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
+		7F8A15BB192E1620006A9D6B /* ball2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball2.pdf; path = Resources/General/ball2.pdf; sourceTree = "<group>"; };
+		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7FA4BA3E192C9AFD00A772BA /* FunnyPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA4BA41192C9AFD00A772BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */,
 				7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */,
 				7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */,
 				7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */,
@@ -196,12 +208,12 @@
 			name = Objects;
 			sourceTree = "<group>";
 		};
-		7F31616B192CA01500C49EAE /* Oser */ = {
+		7F31616B192CA01500C49EAE /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				7F31616A192CA01000C49EAE /* Constansts.h */,
 			);
-			name = Oser;
+			name = Other;
 			sourceTree = "<group>";
 		};
 		7F316170192CA03200C49EAE /* Resources */ = {
@@ -209,6 +221,7 @@
 			children = (
 				7F31617E192CCBE200C49EAE /* Levels */,
 				7F316171192CA04200C49EAE /* Start */,
+				7F8A15C2192E2069006A9D6B /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -216,6 +229,8 @@
 		7F316171192CA04200C49EAE /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				7F8A15BA192E1620006A9D6B /* ball1.pdf */,
+				7F8A15BB192E1620006A9D6B /* ball2.pdf */,
 				7F31616C192CA02C00C49EAE /* ball1.svg */,
 				7F31616D192CA02C00C49EAE /* ball2.svg */,
 			);
@@ -225,6 +240,7 @@
 		7F316178192CA06100C49EAE /* VirewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F3161D8192DBB9C00C49EAE /* Prefs */,
 				7F316179192CA08300C49EAE /* Gameplay */,
 				7F31617A192CA08F00C49EAE /* Start */,
 				0466919D192CE8930095E1A8 /* Bonus */,
@@ -250,6 +266,15 @@
 			name = Start;
 			sourceTree = "<group>";
 		};
+		7F3161D8192DBB9C00C49EAE /* Prefs */ = {
+			isa = PBXGroup;
+			children = (
+				7F316180192D092300C49EAE /* Preferencces.h */,
+				7F316181192D092300C49EAE /* Preferencces.m */,
+			);
+			name = Prefs;
+			sourceTree = "<group>";
+		};
 		7FA4BA35192C9AFD00A772BA = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +298,7 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */,
 				7FA4BA41192C9AFD00A772BA /* Foundation.framework */,
 				7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */,
 				7FA4BA45192C9AFD00A772BA /* UIKit.framework */,
@@ -295,7 +321,7 @@
 				7F316169192C9FFC00C49EAE /* Objects */,
 				7F31615C192C9FA400C49EAE /* Views */,
 				7FA4BA59192C9AFD00A772BA /* Images.xcassets */,
-				7F31616B192CA01500C49EAE /* Oser */,
+				7F31616B192CA01500C49EAE /* Other */,
 				7FA4BA48192C9AFD00A772BA /* Supporting Files */,
 			);
 			path = FunnyPuzzle;
@@ -415,6 +441,8 @@
 				0439AD62192E104400BD1FE3 /* basket_icon@2x.png in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
+				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
+				7F8A15BC192E1620006A9D6B /* ball1.pdf in Resources */,
 				7F31616F192CA02C00C49EAE /* ball2.svg in Resources */,
 				04802DD4192E0D0900787C67 /* candy_icon@2x.png in Resources */,
 				04802DD3192E0D0900787C67 /* candy_icon.png in Resources */,
@@ -477,6 +505,7 @@
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
+				7F316182192D092300C49EAE /* Preferencces.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7FA4BA58192C9AFD00A772BA /* FPViewController.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
@@ -504,6 +533,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7F8A15C2192E2069006A9D6B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F8A15C1192E2069006A9D6B /* Base */,
+			);
+			name = Localizable.strings;
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -607,6 +645,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/misha2g/Desktop,
+					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/FunnyPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "FunnyPuzzle/FunnyPuzzle-Info.plist";
@@ -622,6 +665,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/misha2g/Desktop,
+					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/FunnyPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "FunnyPuzzle/FunnyPuzzle-Info.plist";
