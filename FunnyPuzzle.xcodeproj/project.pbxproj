@@ -444,7 +444,8 @@
 				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
 				7F8A15BC192E1620006A9D6B /* ball1.pdf in Resources */,
 				7F31616F192CA02C00C49EAE /* ball2.svg in Resources */,
-				7F8A15BD192E1620006A9D6B /* ball2.pdf in Resources */,
+				04802DD4192E0D0900787C67 /* candy_icon@2x.png in Resources */,
+				04802DD3192E0D0900787C67 /* candy_icon.png in Resources */,
 				7F31616E192CA02C00C49EAE /* ball1.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

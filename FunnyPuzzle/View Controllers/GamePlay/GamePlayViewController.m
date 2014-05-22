@@ -8,7 +8,11 @@
 
 #import "GamePlayViewController.h"
 #import "GameObject.h"
+#import <SVGKit/SVGKFastImageView.h>
 #import "Segment.h"
+#import "FPObjectsManager.h"
+
+
 @interface GamePlayViewController ()
 {
   NSArray *images;
