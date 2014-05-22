@@ -13,9 +13,15 @@
 #import <PDFImage/PDFImage.h>
 
 @interface StartViewController ()
+{
+    UIGravityBehavior* _gravity;
+    UICollisionBehavior* _collision;
+    UISnapBehavior *snap;
+    
+}
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
-
+@property (nonatomic) UIDynamicAnimator *animator;
 - (IBAction)play:(id)sender;
 @end
 
@@ -33,8 +39,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1.pdf"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2.pdf"];
+    _animator =[[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    snap = [[UISnapBehavior alloc] initWithItem:_gamemodeFirst snapToPoint:CGPointMake(CGRectGetMidX(_gamemodeFirst.frame), CGRectGetMidY(_gamemodeFirst.frame))];
+    _gravity = [[UIGravityBehavior alloc] initWithItems:@[_gamemodeFirst]];
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[_gamemodeFirst]];
+    _collision.translatesReferenceBoundsIntoBoundary = YES;
+    snap.damping = 0;
+    _gravity.magnitude = 0.003;
+    //[_animator addBehavior:snap];
+    [_animator addBehavior:_gravity];
+    [_animator addBehavior:_collision];
 }
 - (void)viewDidDisappear:(BOOL)animated
 {

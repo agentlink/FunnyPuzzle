@@ -25,6 +25,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic) FPObjectsManager *man;
+
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;

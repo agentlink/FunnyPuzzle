@@ -12,11 +12,11 @@
 @end
 @implementation BallView
 #pragma mark - Custom Accssesors
-
 - (void)setImage:(PDFImage *)image
 {
     if (!_imageVeiw) {
         _imageVeiw = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [self.layer setCornerRadius:CGRectGetHeight(_imageVeiw.frame)/2];
         [self addSubview:_imageVeiw];
         float h = CGRectGetHeight(_imageVeiw.frame);
         float w = CGRectGetWidth(_imageVeiw.frame);
