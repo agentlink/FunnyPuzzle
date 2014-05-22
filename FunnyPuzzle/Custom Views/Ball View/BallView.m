@@ -45,8 +45,28 @@
     }
     return self;
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    
+    if (touch.phase == UITouchPhaseBegan) {
+        [UIView animateWithDuration:0.3f animations:^{
+            //self.transform = CGAffineTransformMakeScale(0.8, 0.8);// =  CATransform3DMakeScale(1, 1, 0.5);
+        }];
+    } else if (touch.phase == UITouchPhaseEnded)
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.transform = CGAffineTransformMakeScale(1, 1);// =  CATransform3DMakeScale(1, 1, 0.5);
+        }];
+    }
+    
+}
+- (void)gest:(UIGestureRecognizer *)gest {
+
+}
 - (void)tap:(UITapGestureRecognizer *)tap
 {
+    
     if (_tap) {
         _tap();
     }

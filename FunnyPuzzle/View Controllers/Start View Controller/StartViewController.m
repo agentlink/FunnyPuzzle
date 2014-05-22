@@ -39,6 +39,9 @@
     _gamemodeFirst.tap = ^{
         [self play:self];
     };
+    _gamemodeSecond.tap =  ^{
+        [self play:self];
+    };
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     CGMutablePathRef aPath = CGPathCreateMutable();
     float x = CGRectGetMidX(_gamemodeFirst.frame);

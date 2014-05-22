@@ -42,6 +42,7 @@
         animation.timingFunction = [CAMediaTimingFunction
                                     functionWithName:kCAMediaTimingFunctionLinear];
         [self.layer addAnimation:animation forKey:@"position"];
+        
         [animation setDelegate:self];
     }
     return self;
