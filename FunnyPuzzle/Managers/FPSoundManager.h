@@ -12,9 +12,8 @@
 @interface FPSoundManager : NSObject
 
 @property (nonatomic, strong) AVAudioPlayer *backGroundMusicPlayer;
-@property (nonatomic, strong) AVAudioPlayer *exelentSounPlayer;
+@property (nonatomic, strong) AVAudioPlayer *exelentSoundPlayer;
 
-@property (nonatomic, weak) NSURL *soundToPlay;
 @property (nonatomic, strong) NSURL *soundWin;
 @property (nonatomic, strong) NSURL *soundWin1;
 

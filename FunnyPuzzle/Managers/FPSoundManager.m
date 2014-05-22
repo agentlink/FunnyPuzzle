@@ -26,9 +26,8 @@ static FPSoundManager *_instance=nil;
             _instance.soundWin = [NSURL URLWithString:soundPath];
             soundPath = [[NSBundle mainBundle] pathForResource:@"exelentSound2" ofType:@"mp3"];
             _instance.soundWin1 = [NSURL URLWithString:soundPath];
-            _instance.soundToPlay = _instance.soundWin1;
-            _instance.exelentSounPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.soundToPlay error:&error];
-            _instance.exelentSounPlayer.numberOfLoops=0;
+            _instance.exelentSoundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.soundWin error:&error];
+            _instance.exelentSoundPlayer.numberOfLoops=0;
             
 
         }
@@ -44,24 +43,30 @@ static FPSoundManager *_instance=nil;
     [_backGroundMusicPlayer stop];
 }
 
-- (void) playSound:(NSString*)sound{
+- (void) playSound:(FPGameSounds)sound{
     NSError *error;
-    if ([sound isEqualToString:@"soundWin1"]) {
-        [_exelentSounPlayer stop];
-        _exelentSounPlayer = [_exelentSounPlayer initWithContentsOfURL:_soundWin error:&error];
+    [_exelentSoundPlayer stop];
+    switch (sound) {
+        case SoundChicken:
+            _exelentSoundPlayer = [_exelentSoundPlayer initWithContentsOfURL:_soundWin error:&error];
+        break;
+        case SoundFrog:
+            _exelentSoundPlayer = [_exelentSoundPlayer initWithContentsOfURL:_soundWin error:&error];
+        break;
+        case SoundPig:
+            _exelentSoundPlayer = [_exelentSoundPlayer initWithContentsOfURL:_soundWin error:&error];
+        break;
+        default:
+        break;
     }
-    else{
-        [_exelentSounPlayer stop];
-        _exelentSounPlayer = [_exelentSounPlayer initWithContentsOfURL:_soundWin1 error:&error];
-    }
-    [_exelentSounPlayer prepareToPlay];
-    [_exelentSounPlayer play];
+    [_exelentSoundPlayer prepareToPlay];
+    [_exelentSoundPlayer play];
 }
 
 
 - (void) dealloc{
     _backGroundMusicPlayer=nil;
-    _exelentSounPlayer=nil;
+    _exelentSoundPlayer=nil;
 }
 
 
