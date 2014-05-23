@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.Animation=false;
         [self config];
     }
     return self;
@@ -27,6 +28,7 @@
     {
         CGRect r=CGRectMake(67 , 113, 104, 81);
         self.centrBascket = r;
+          self.Animation=false;
         
         [self config];
     }
@@ -42,21 +44,26 @@
 
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
-    CGRect candieFrame = self.frame;
-    candieFrame.origin.x=self.frame.origin.x;
-    candieFrame.origin.y=self.frame.origin.y;
-    
-    CGRect displacedFrame = candieFrame;
-    displacedFrame.origin.x = self.centrBascket.origin.x-self.frame.size.width/4;
-    displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height;
-    
-    
-    [UIView animateWithDuration:1.8 animations:^{
-        self.frame = displacedFrame;
-    } completion:^(BOOL finished){
-        self.backgroundColor=[UIColor clearColor];
+    if (self.BonusLevelKind==0) {
+        if (self.Animation==true) {
+            CGRect candieFrame = self.frame;
+            candieFrame.origin.x=self.frame.origin.x;
+            candieFrame.origin.y=self.frame.origin.y;
+            
+            CGRect displacedFrame = candieFrame;
+            displacedFrame.origin.x = self.centrBascket.origin.x-self.frame.size.width/4;
+            displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height;
+            
+            
+            [UIView animateWithDuration:1.8 animations:^{
+                self.frame = displacedFrame;
+            } completion:^(BOOL finished){
+                self.backgroundColor=[UIColor clearColor];
+            }
+             ];
+        }
     }
-     ];
+    
     
 }
 
