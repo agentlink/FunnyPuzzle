@@ -11,6 +11,9 @@
 @interface FPObjectsManager ()
 @property (nonatomic, strong) NSArray *levels;
 @property (nonatomic) float multiplayer;
+@property (nonatomic) NSString *pathToColor;
+@property (nonatomic) NSString *folderName;
+@property (nonatomic) NSString *pathToLevel;
 @end
 
 @implementation FPObjectsManager
@@ -25,27 +28,57 @@
 - (void)parce
 {
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
-    _levels = [[NSArray arrayWithContentsOfFile:plistPath] objectAtIndex:(long)_gameType];
-    [self configFields:[_levels objectAtIndex:_level]];
-    _segments = [self configSegments:[_levels objectAtIndex:_level]];
+    _levels = [[NSArray arrayWithContentsOfFile:plistPath] objectAtIndex:_gameType];
+    //[self configFields:[_levels objectAtIndex:_level]];
+    //_segments = [self getSegmentsFromElements:[_levels objectAtIndex:_level]];
+    [self initField:[_levels objectAtIndex:_level]];
    
 }
-- (NSArray *)configSegments:(NSDictionary *)level
+- (void)initField:(NSDictionary *)level
 {
-    NSArray *elements = [level valueForKey:@"elements"];
-    _levelName = [level valueForKey:@"name"];
-    NSMutableArray *result = [NSMutableArray new];
-    for (NSDictionary *segmentEl in elements) {
-        NSString *path = [NSString stringWithFormat:@"Levels/%@/%@",[level valueForKey:@"folder"],[segmentEl valueForKey:@"name"]];
-        PDFImage *im = [PDFImage imageNamed:path];
-        Segment *ss = [[Segment alloc] initWithFrame:CGRectMake(0, 0, im.size.width, im.size.height)];
-        CGPoint point = CGPointMake([[[segmentEl valueForKey:@"point"] valueForKey:@"x"] floatValue]*multiplayer, [[[segmentEl valueForKey:@"point"] valueForKey:@"y"] floatValue]*multiplayer);
-        ss.frame = CGRectMake(0, 0, im.size.width*multiplayer, im.size.height*multiplayer);
-        ss.rect = CGRectMake(point.x*multiplayer, point.y*multiplayer, im.size.width*multiplayer, im.size.height*multiplayer);
-        ss.image = im;
-        [result addObject:ss];
+    _pathToLevel = [NSString stringWithFormat:@"Levels/%@",
+                    [level valueForKey:@"folder"],
+                    nil];
+    _pathToColor = [NSString stringWithFormat:@"%@/%@", _pathToLevel, [level valueForKey:@"color"]];
+    PDFImage *color = [PDFImage imageNamed:_pathToColor];
+    PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
+    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray_lines", _pathToColor]];
+    [self calcMultiplayerFromSize:color.size];
+    _colorField = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
+    _grayField = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
+    _grayLinedFiewld = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
+    _colorField.image = color;
+    _grayField.image = gray;
+    _grayLinedFiewld.image = gray_lined;
+    _segments = [self getSegmentsFromElements:[level valueForKey:@"elements"]];
+    _soundURL = [self getSoundURL];
+    
+}
+- (NSArray *)getSegmentsFromElements:(NSArray *)elements
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *element in elements) {
+        CGPoint nativePoint = CGPointMake([[[element valueForKey:@"point"] valueForKey:@"x"] floatValue], [[[element valueForKey:@"point"] valueForKey:@"y"] floatValue]);
+        NSString *path = [NSString stringWithFormat:@"%@%i",
+                          _pathToColor,
+                          [elements indexOfObject:element]+1, nil];
+        
+        PDFImage *image = [PDFImage imageNamed:path];
+        CGRect adaptedFrame = CGRectMake(nativePoint.x*multiplayer, nativePoint.y*multiplayer, image.size.width*multiplayer, image.size.height*multiplayer);
+        Segment *segment = [[Segment alloc] initWithFrame:[self getAdaptedRectFromSize:image.size]];
+        segment.image = image;
+        segment.rect = adaptedFrame;
+        segment.backgroundColor = [UIColor redColor];
+        [result addObject:segment];
     }
+    
     return [NSArray arrayWithArray:result];
+}
+- (CGRect)getAdaptedRectFromSize:(CGSize)size
+{
+    CGRect rect = CGRectMake(0, 0, size.width*multiplayer, size.height*multiplayer);
+    return rect;
 }
 - (void)configFields:(NSDictionary *)level
 {
@@ -61,8 +94,32 @@
     _grayLinedFiewld = [[PDFImageView alloc] initWithFrame:rect];
     _grayLinedFiewld.image = gray_lined;
 }
-- (void)dealloc
+
+- (void)calcMultiplayerFromSize:(CGSize)size
 {
+    if (size.width>=280)
+    {
+        multiplayer = 280/size.width;
+    }
+    else if (size.height>=280)
+    {
+        multiplayer = 280/size.height;
+    } else {
+        multiplayer = 1.0f;
+    }
+}
+- (NSURL *)getSoundURL
+{
+    NSURL *result;
+    NSString *suffix = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *path_ = [NSString stringWithFormat:@"%@_%@", _pathToColor, suffix];
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:path_ ofType:@"mp3"];
+    if (fullPath) {
+        result = [NSURL URLWithString:fullPath];
+    } else {
+        result = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:_pathToColor ofType:@"mp3"]];
+    }
+    return result;
 }
 - (void)calcMultiplayer:(CGRect)rect
 {

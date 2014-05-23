@@ -9,8 +9,6 @@
 			<key>elements</key>
 			<array>
 				<dict>
-					<key>name</key>
-					<string>ice_cream1</string>
 					<key>point</key>
 					<dict>
 						<key>x</key>
@@ -20,8 +18,6 @@
 					</dict>
 				</dict>
 				<dict>
-					<key>name</key>
-					<string>ice_cream2</string>
 					<key>point</key>
 					<dict>
 						<key>x</key>
@@ -46,6 +42,68 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>pencil</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>7</integer>
+						<key>y</key>
+						<integer>114</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>63</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>2_pencil</string>
+			<key>gray</key>
+			<string>pencil_gray</string>
+			<key>gray_lined</key>
+			<string>pencil_gray_lines</string>
+			<key>name</key>
+			<string>Pencil</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>toad</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>2</integer>
+						<key>y</key>
+						<integer>176</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>152</integer>
+						<key>y</key>
+						<integer>17</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>2_toad</string>
+			<key>name</key>
+			<string>Toad</string>
 		</dict>
 	</array>
 </array>

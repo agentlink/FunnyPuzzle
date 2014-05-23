@@ -1,0 +1,13 @@
+"pencil_gray_lines.svg" & "pencil_gray.svg" & "pencil.svg":
+X - 500 px
+Y - 70 px
+width - 205 px
+height - 355 px
+
+pencil1.svg:
+X - 7 px
+Y - 114 px
+
+octopus2.svg:
+X - 63 px
+Y - 8 px

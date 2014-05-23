@@ -18,6 +18,7 @@
 @property (nonatomic) FPGameType gameType;
 @property (nonatomic) int level;
 @property (nonatomic) NSString *levelName;
+@property (nonatomic) NSURL *soundURL;
 //@property (nonatomic, strong)
 
 +(FPObjectsManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
