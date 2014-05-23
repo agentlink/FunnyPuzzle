@@ -14,8 +14,8 @@
 
 + (FPSoundManager*)sharedInstance;
 
-- (void) playMusic;
-- (void) stopMusic;
+- (void) playBackgroundMusic;
+- (void) stopBackgroundMusic;
 - (void) playSound:(FPGameSounds)sound;
 
 - (void) vibrate;
