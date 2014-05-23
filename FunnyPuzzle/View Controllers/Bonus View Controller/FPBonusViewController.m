@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    Numb=1;
+    Numb=0;
     switch (Numb) {
         case 0:
         {
@@ -63,6 +63,26 @@
                 [self.view addSubview:c];
                 [objects insertObject:c atIndex:i-1];
                 x+=50;
+                
+                CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+                CGMutablePathRef aPath = CGPathCreateMutable();
+                float x = CGRectGetMidX(c.frame);
+                float y = CGRectGetMidY(c.frame);
+                
+                CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+                CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                                      x,y+1,  //Control Point 2
+                                      x+1,y-1); // End Point
+                
+                animation.rotationMode = @"auto";
+                animation.path = aPath;
+                animation.duration = 0.8+arc4random()%4;
+                animation.autoreverses = YES;
+                animation.removedOnCompletion = YES;
+                animation.repeatCount = 100.0f;
+          
+                [c.layer addAnimation:animation forKey:@"position" ];
+             
             }
             break;
         }
@@ -123,11 +143,30 @@
                 
                 Candies *c=[Candies new];
                 c=objects[m];
-                NSLog(@"%f",self.view.frame.size.height);
-                [UIView animateWithDuration:1.0 animations:^{
-                    c.frame=CGRectMake(c.frame.origin.x, self.view.frame.size.height-c.frame.size.height, 55, 55);
-                    c.Animation=true;
-                }];
+                
+               CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+                
+               CGMutablePathRef aPath = CGPathCreateMutable();
+                
+                float x = CGRectGetMidX(c.frame);
+                float y = CGRectGetMidY(c.frame);
+                
+              
+                CGPathMoveToPoint(aPath, nil, c.layer.position.x, c.layer.position.y);
+               
+                CGPathAddCurveToPoint(aPath, nil, x, y, c.layer.position.x, self.view.frame.size.height-c.frame.size.height/2, c.layer.position.x, self.view.frame.size.height-c.frame.size.height/2);
+                
+                
+             //   animation.rotationMode = @"auto";
+                animation.path = aPath;
+                animation.duration = 1.0;
+                animation.autoreverses = NO;
+                animation.removedOnCompletion = YES;
+//                animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+                [c.layer addAnimation:animation forKey:@"position" ];
+                CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.height-c.frame.size.height , 55, 55);
+        
+                c.frame=rec;
                 points[m]=-1;
             }
         }
