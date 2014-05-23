@@ -35,7 +35,7 @@
                               wx+CGRectGetWidth(self.frame),y); // End Point
         animation.rotationMode = @"auto";
         animation.path = aPath;
-        animation.duration = 10+arc4random()%30;
+        animation.duration = 30+arc4random()%60;
         animation.autoreverses = NO;
         animation.removedOnCompletion = NO;
         animation.repeatCount = 100.0f;
@@ -45,7 +45,7 @@
         
         [animation setDelegate:self];
         NSArray *clouds = @[@"cloud1", @"cloud2", @"cloud3"];
-        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:(int)arc4random()%(clouds.count-1)]];
+        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count-1)]];
         PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:self.bounds];
         cloudView.image = cloud;
         self.backgroundColor = [UIColor clearColor];
