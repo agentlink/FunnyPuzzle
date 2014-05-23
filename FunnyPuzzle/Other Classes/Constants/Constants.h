@@ -14,6 +14,7 @@
 #define VIBRATE_WHEN_DRAG_PUZZLES @"vibrateWhenDragPuzzles"
 #define VIBRATE_WHEN_PIECE_IN_PLACE @"vibrateWhenPieceInPlace"
 #define MUSIC @"music"
+#define GOOGLE_ADMOBS_ID @"id"
 
 #endif
 

@@ -8,7 +8,9 @@
 
 #import "FPGameManager.h"
 
-@implementation FPGameManager
+@implementation FPGameManager{
+    GADInterstitial *interstitial_;
+}
 
 
 static FPGameManager *_instance=nil;
@@ -17,7 +19,10 @@ static FPGameManager *_instance=nil;
     @synchronized(self){
         if (nil==_instance) {
             _instance=[[self alloc] init];
-        }
+            _instance->interstitial_ = [[GADInterstitial alloc] init];
+            _instance->interstitial_.adUnitID = GOOGLE_ADMOBS_ID;
+            [_instance->interstitial_ loadRequest:[GADRequest request]];
+        }        
     }
     return _instance;
 }

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GADInterstitial.h"
+
 @interface FPGameManager : NSObject
 
 + (FPGameManager*) sharedInstance;
