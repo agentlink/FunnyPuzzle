@@ -7,7 +7,7 @@
 //
 
 #import "GamePlayViewController.h"
-#import "GameObject.h"
+#import "GameModel.h"
 #import "Segment.h"
 #import "FPObjectsManager.h"
 
@@ -50,7 +50,7 @@
     // Do any additional setup after loading the view.
     //FPGameType *gt=[GameObject sharedInstance].gameType;
     //FPObjectsManager *man = [GameObject sharedInstance].manager;
-    _man = [GameObject sharedInstance].manager;
+    _man = [GameModel sharedInstance].manager;
 }
 - (void)viewDidAppear:(BOOL)animated
 {

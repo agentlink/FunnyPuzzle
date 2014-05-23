@@ -9,12 +9,18 @@
 #import "StartViewController.h"
 #import "BallView.h"
 #import "FPObjectsManager.h"
-#import "GameObject.h"
+#import "GameModel.h"
 #import <PDFImage/PDFImage.h>
 
 @interface StartViewController ()
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
+@property (nonatomic, weak) IBOutlet PDFImageView *ground1;
+@property (nonatomic, weak) IBOutlet PDFImageView *ground2;
+@property (nonatomic, weak) IBOutlet PDFImageView *ground3;
+@property (nonatomic, weak) IBOutlet PDFImageView *ground4;
+@property (nonatomic, weak) IBOutlet PDFImageView *ground5;
+
 @property (nonatomic) UIDynamicAnimator *animator;
 - (IBAction)play:(id)sender;
 @end
@@ -61,12 +67,46 @@
                                 functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     CAKeyframeAnimation *animS = animation;
     animS.duration = 1;
+    [self cofigGround];
     //[_gamemodeFirst.layer addAnimation:animation forKey:@"position"];
     //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
     
    
 }
-
+- (void)cofigGround
+{
+    UIInterpolatingMotionEffect *horisontal1 =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horisontal1.minimumRelativeValue = @(-10);
+    horisontal1.maximumRelativeValue = @(10);
+    
+    UIInterpolatingMotionEffect *horisontal2 =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horisontal2.minimumRelativeValue = @(-15);
+    horisontal2.maximumRelativeValue = @(15);
+    
+    UIInterpolatingMotionEffect *horisontal3 =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horisontal3.minimumRelativeValue = @(-20);
+    horisontal3.maximumRelativeValue = @(20);
+    
+    _ground1.image = [PDFImage imageNamed:@"ground1"];
+    _ground2.image = [PDFImage imageNamed:@"ground3"];
+    _ground3.image = [PDFImage imageNamed:@"ground2"];
+    _ground4.image = [PDFImage imageNamed:@"ground5"];
+    _ground5.image = [PDFImage imageNamed:@"ground4"];
+    
+    
+    [_ground1 addMotionEffect:horisontal1];
+    [_ground2 addMotionEffect:horisontal2];
+    [_ground3 addMotionEffect:horisontal3];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

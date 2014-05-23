@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 KG. All rights reserved.
 //
 
-#import "GameObject.h"
+#import "GameModel.h"
 
-@implementation GameObject
-static GameObject *_instance = nil;
+@implementation GameModel
+static GameModel *_instance = nil;
 
 - (FPObjectsManager *)manager
 {
@@ -19,7 +19,7 @@ static GameObject *_instance = nil;
 
 
 #pragma mark - Class Medoths
-+ (GameObject *)sharedInstance
++ (GameModel *)sharedInstance
 {
     @synchronized(self) {
         if (nil == _instance) {

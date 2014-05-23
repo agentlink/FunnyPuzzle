@@ -7,19 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
+		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
+		047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlovers.m */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
+		7F316168192C9FF500C49EAE /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316167192C9FF500C49EAE /* GameModel.m */; };
 		7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316173192CA05A00C49EAE /* GamePlayViewController.m */; };
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
+		7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31617C192CAA4500C49EAE /* FPObjectsManager.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
 		7F316182192D092300C49EAE /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferences.m */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
+		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
 		7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
+		7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */; };
+		7FA4BA4E192C9AFD00A772BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA4D192C9AFD00A772BA /* main.m */; };
 		7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */; };
+		7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA53192C9AFD00A772BA /* Main.storyboard */; };
 		7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA59192C9AFD00A772BA /* Images.xcassets */; };
 		7FA4BA61192C9AFD00A772BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA60192C9AFD00A772BA /* XCTest.framework */; };
 		7FA4BA62192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
@@ -93,16 +102,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBonusViewController.h; path = "View Controllers/Bonus View Controller/FPBonusViewController.h"; sourceTree = "<group>"; };
+		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBonusViewController.m; path = "View Controllers/Bonus View Controller/FPBonusViewController.m"; sourceTree = "<group>"; };
+		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candies.h; path = "Custom Views/Candies/Candies.h"; sourceTree = "<group>"; };
+		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Candies.m; path = "Custom Views/Candies/Candies.m"; sourceTree = "<group>"; };
+		047D58A1192F2C0A003CE8BC /* FPFlovers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlovers.h; sourceTree = "<group>"; };
+		047D58A2192F2C0A003CE8BC /* FPFlovers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlovers.m; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
 		7F31615E192C9FC200C49EAE /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = "Custom Views/CloudView/CloudView.h"; sourceTree = "<group>"; };
 		7F31615F192C9FC200C49EAE /* CloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudView.m; path = "Custom Views/CloudView/CloudView.m"; sourceTree = "<group>"; };
 		7F316162192C9FDA00C49EAE /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Segment.h; path = "Custom Views/Segment/Segment.h"; sourceTree = "<group>"; };
 		7F316163192C9FDA00C49EAE /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Segment.m; path = "Custom Views/Segment/Segment.m"; sourceTree = "<group>"; };
+		7F316166192C9FF500C49EAE /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameModel.h; path = Managers/GameModel.h; sourceTree = "<group>"; };
+		7F316167192C9FF500C49EAE /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameModel.m; path = Managers/GameModel.m; sourceTree = "<group>"; };
 		7F316172192CA05A00C49EAE /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayViewController.h; path = "View Controllers/GamePlay/GamePlayViewController.h"; sourceTree = "<group>"; };
 		7F316173192CA05A00C49EAE /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlayViewController.m; path = "View Controllers/GamePlay/GamePlayViewController.m"; sourceTree = "<group>"; };
 		7F316174192CA05A00C49EAE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartViewController.h; path = "View Controllers/Start View Controller/StartViewController.h"; sourceTree = "<group>"; };
 		7F316175192CA05A00C49EAE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = "View Controllers/Start View Controller/StartViewController.m"; sourceTree = "<group>"; };
+		7F31617B192CAA4500C49EAE /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPObjectsManager.h; path = "Managers/Objects Manager/FPObjectsManager.h"; sourceTree = "<group>"; };
+		7F31617C192CAA4500C49EAE /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPObjectsManager.m; path = "Managers/Objects Manager/FPObjectsManager.m"; sourceTree = "<group>"; };
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
 		7F316180192D092300C49EAE /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = "View Controllers/Preferenсes/Preferences.h"; sourceTree = "<group>"; };
 		7F316181192D092300C49EAE /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = "View Controllers/Preferenсes/Preferences.m"; sourceTree = "<group>"; };
@@ -114,6 +133,10 @@
 		7FA4BA41192C9AFD00A772BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7FA4BA45192C9AFD00A772BA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7FA4BA49192C9AFD00A772BA /* FunnyPuzzle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunnyPuzzle-Info.plist"; sourceTree = "<group>"; };
+		7FA4BA4B192C9AFD00A772BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7FA4BA4D192C9AFD00A772BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7FA4BA4F192C9AFD00A772BA /* FunnyPuzzle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FunnyPuzzle-Prefix.pch"; sourceTree = "<group>"; };
 		7FA4BA50192C9AFD00A772BA /* FPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPAppDelegate.h; sourceTree = "<group>"; };
 		7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPAppDelegate.m; sourceTree = "<group>"; };
 		7FA4BA54192C9AFD00A772BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,11 +227,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F85BA9192E934D00BDECB5 /* AudioToolbox.framework in Frameworks */,
+				7FA57033192EA8A400CE84F8 /* QuartzCore.framework in Frameworks */,
 				84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */,
 				7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */,
 				7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */,
-				84F85BF5192F2D2C00BDECB5 /* libGoogleAdMobAds.a in Frameworks */,
 				7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */,
 				7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */,
 			);
@@ -227,15 +249,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7F31615C192C9FA400C49EAE /* Custom Views */ = {
+		0466919D192CE8930095E1A8 /* Bonus */ = {
+			isa = PBXGroup;
+			children = (
+				0466919A192CE88D0095E1A8 /* FPBonusViewController.h */,
+				0466919B192CE88D0095E1A8 /* FPBonusViewController.m */,
+			);
+			name = Bonus;
+			sourceTree = "<group>";
+		};
+		046691A1192CE9A40095E1A8 /* Candies */ = {
+			isa = PBXGroup;
+			children = (
+				0466919E192CE99A0095E1A8 /* Candies.h */,
+				0466919F192CE99A0095E1A8 /* Candies.m */,
+			);
+			name = Candies;
+			sourceTree = "<group>";
+		};
+		047D58A4192F2C10003CE8BC /* Flovers */ = {
+			isa = PBXGroup;
+			children = (
+				047D58A1192F2C0A003CE8BC /* FPFlovers.h */,
+				047D58A2192F2C0A003CE8BC /* FPFlovers.m */,
+			);
+			name = Flovers;
+			sourceTree = "<group>";
+		};
+		7F31615C192C9FA400C49EAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7F316165192C9FDF00C49EAE /* Segment */,
 				7F316161192C9FC600C49EAE /* Cloud */,
 				7F31615D192C9FAF00C49EAE /* Ball */,
-				84F85BD3192E99B900BDECB5 /* Candies */,
+				046691A1192CE9A40095E1A8 /* Candies */,
+				047D58A4192F2C10003CE8BC /* Flovers */,
 			);
-			name = "Custom Views";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		7F31615D192C9FAF00C49EAE /* Ball */ = {
@@ -275,6 +325,14 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		7F31616B192CA01500C49EAE /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84F85BA4192E67CA00BDECB5 /* Constants.h */,
+			);
+			path = "Other Classes";
+			sourceTree = "<group>";
+		};
 		7F316170192CA03200C49EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,8 +348,16 @@
 		7F316171192CA04200C49EAE /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				7FA5703A192F399A00CE84F8 /* ground1.pdf */,
+				7FA5703B192F399A00CE84F8 /* ground2.pdf */,
+				7FA5703C192F399A00CE84F8 /* ground3.pdf */,
+				7FA5703D192F399A00CE84F8 /* ground4.pdf */,
+				7FA5703E192F399A00CE84F8 /* ground5.pdf */,
 				7F8A15C3192E389A006A9D6B /* ball1.pdf */,
 				7F8A15C4192E389A006A9D6B /* ball2.pdf */,
+				7FA57034192F1B3000CE84F8 /* cloud1.pdf */,
+				7FA57035192F1B3000CE84F8 /* cloud2.pdf */,
+				7FA57036192F1B3000CE84F8 /* cloud3.pdf */,
 			);
 			name = Start;
 			sourceTree = "<group>";
@@ -299,22 +365,22 @@
 		7F316178192CA06100C49EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84F85BD7192E9A0700BDECB5 /* Bonus View Controller */,
 				7F3161D8192DBB9C00C49EAE /* Preferences */,
-				7F316179192CA08300C49EAE /* GamePlay */,
+				7F316179192CA08300C49EAE /* Gameplay */,
 				7F31617A192CA08F00C49EAE /* Start */,
+				0466919D192CE8930095E1A8 /* Bonus */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		7F316179192CA08300C49EAE /* GamePlay */ = {
+		7F316179192CA08300C49EAE /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
 				7F316172192CA05A00C49EAE /* GamePlayViewController.h */,
 				7F316173192CA05A00C49EAE /* GamePlayViewController.m */,
-				84F85BDB192E9A2400BDECB5 /* GameField.storyboard */,
+				7FA57045192F42C000CE84F8 /* GameField.storyboard */,
 			);
-			name = GamePlay;
+			name = Gameplay;
 			sourceTree = "<group>";
 		};
 		7F31617A192CA08F00C49EAE /* Start */ = {
@@ -338,7 +404,6 @@
 		7FA4BA35192C9AFD00A772BA = {
 			isa = PBXGroup;
 			children = (
-				84F85BDD192E9A9900BDECB5 /* Main.storyboard */,
 				7FA4BA47192C9AFD00A772BA /* FunnyPuzzle */,
 				7FA4BA66192C9AFD00A772BA /* FunnyPuzzleTests */,
 				7FA4BA40192C9AFD00A772BA /* Frameworks */,
@@ -358,8 +423,7 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84F85BE5192F2CEC00BDECB5 /* GoogleAdMob */,
-				84F85BA8192E934D00BDECB5 /* AudioToolbox.framework */,
+				7FA57032192EA8A400CE84F8 /* QuartzCore.framework */,
 				84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */,
 				7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */,
 				7FA4BA41192C9AFD00A772BA /* Foundation.framework */,
@@ -379,11 +443,22 @@
 				7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */,
 				7FA4BA53192C9AFD00A772BA /* Main.storyboard */,
 				7F316169192C9FFC00C49EAE /* Managers */,
-				7F31615C192C9FA400C49EAE /* Custom Views */,
-				84F85BCC192E998200BDECB5 /* Other Classes */,
-				84F85BC3192E994400BDECB5 /* Supporting Files */,
+				7F31615C192C9FA400C49EAE /* Views */,
+				7F31616B192CA01500C49EAE /* Other Classes */,
+				7FA4BA48192C9AFD00A772BA /* Supporting Files */,
 			);
 			path = FunnyPuzzle;
+			sourceTree = "<group>";
+		};
+		7FA4BA48192C9AFD00A772BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FA4BA49192C9AFD00A772BA /* FunnyPuzzle-Info.plist */,
+				7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */,
+				7FA4BA4D192C9AFD00A772BA /* main.m */,
+				7FA4BA4F192C9AFD00A772BA /* FunnyPuzzle-Prefix.pch */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7FA4BA66192C9AFD00A772BA /* FunnyPuzzleTests */ = {
@@ -729,17 +804,19 @@
 				84F85BD2192E998200BDECB5 /* GameObject.m in Sources */,
 				84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */,
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
-				84F85BDA192E9A0700BDECB5 /* FPBonusViewController.m in Sources */,
+				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
+				7F316168192C9FF500C49EAE /* GameModel.m in Sources */,
+				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
-				84F85BC1192E97BB00BDECB5 /* FPObjectsManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
-				84F85BC2192E97BB00BDECB5 /* FPSoundManager.m in Sources */,
+				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
+				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
 				7F316182192D092300C49EAE /* Preferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
+				84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
-				84F85BCB192E994400BDECB5 /* main.m in Sources */,
-				84F85BD6192E99B900BDECB5 /* Candies.m in Sources */,
+				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +848,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		7FA4BA4A192C9AFD00A772BA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FA4BA4B192C9AFD00A772BA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		7FA4BA53192C9AFD00A772BA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -785,22 +870,6 @@
 				7FA4BA6A192C9AFD00A772BA /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84F85BC4192E994400BDECB5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84F85BC5192E994400BDECB5 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84F85BDD192E9A9900BDECB5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84F85BDE192E9A9900BDECB5 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -838,7 +907,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -871,7 +939,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -883,6 +950,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "Apple Configurator (A8:20:66:14:D1:2F)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
@@ -891,11 +959,8 @@
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BC549EC8-D510-47BB-89AB-C34C4CE67A84";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -913,11 +978,8 @@
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BC549EC8-D510-47BB-89AB-C34C4CE67A84";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -11,5 +11,7 @@
 @interface Candies : UIView
 
 @property (nonatomic) CGRect centrBascket;
+@property (nonatomic) bool Animation;
+@property (nonatomic) int BonusLevelKind;
 
 @end

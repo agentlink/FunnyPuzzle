@@ -44,6 +44,12 @@
         [self.layer addAnimation:animation forKey:@"position"];
         
         [animation setDelegate:self];
+        NSArray *clouds = @[@"cloud1", @"cloud2", @"cloud3"];
+        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:(int)arc4random()%(clouds.count-1)]];
+        PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:self.bounds];
+        cloudView.image = cloud;
+        self.backgroundColor = [UIColor clearColor];
+        [self addSubview:cloudView];
     }
     return self;
 }
