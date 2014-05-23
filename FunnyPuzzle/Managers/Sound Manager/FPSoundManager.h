@@ -16,7 +16,9 @@
 
 - (void) playBackgroundMusic;
 - (void) stopBackgroundMusic;
-- (void) playSound:(FPGameSounds)sound;
+- (void) playGameMusic;
+- (void) stopGameMusic;
+- (void) playSound:(NSURL*)sound;
 
 - (void) vibrate;
 

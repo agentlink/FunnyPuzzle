@@ -7,30 +7,15 @@
 //
 
 #import "FPSoundManager.h"
+#import "FPGameManager.h"
 
-@interface FPSoundManager()
+@interface FPSoundManager() <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *backGroundMusicPlayer;
 @property (nonatomic, strong) AVAudioPlayer *backGroundGamePlayer;
 @property (nonatomic, strong) AVAudioPlayer *soundPlayer;
-@property (nonatomic, strong) NSURL *apple;
-@property (nonatomic, strong) NSURL *carrot;
-@property (nonatomic, strong) NSURL *chicken;
-@property (nonatomic, strong) NSURL *cochlea;
-@property (nonatomic, strong) NSURL *dove;
-@property (nonatomic, strong) NSURL *elephant;
+@property (nonatomic, strong) NSURL *soundToPlay;
 @property (nonatomic, strong) NSURL *excellent;
-@property (nonatomic, strong) NSURL *fish;
-@property (nonatomic, strong) NSURL *lamb;
-@property (nonatomic, strong) NSURL *icecream;
-@property (nonatomic, strong) NSURL *octopus;
-@property (nonatomic, strong) NSURL *owl;
-@property (nonatomic, strong) NSURL *pencil;
-@property (nonatomic, strong) NSURL *pig;
-@property (nonatomic, strong) NSURL *rabbit;
-@property (nonatomic, strong) NSURL *snail;
-@property (nonatomic, strong) NSURL *squirrel;
-@property (nonatomic, strong) NSURL *toad;
 @property (nonatomic, strong) NSURL *well_done;
 
 @end
@@ -50,31 +35,43 @@ static FPSoundManager *_instance=nil;
 }
 
 - (void) playBackgroundMusic{
-    [_backGroundMusicPlayer play];
+    if ([FPGameManager sharedInstance].music==YES) {
+        [_backGroundMusicPlayer play];
+    }
 }
 
 - (void) stopBackgroundMusic{
     [_backGroundMusicPlayer stop];
 }
 
-- (void) playSound:(FPGameSounds)sound{
-    NSError *error;
-    [_soundPlayer stop];
-    switch (sound) {
-        case apple:
-            _soundPlayer = [_soundPlayer initWithContentsOfURL:_apple error:&error];
-        break;
-        case carrot:
-            _soundPlayer = [_soundPlayer initWithContentsOfURL:_carrot error:&error];
-        break;
-        case chicken:
-            _soundPlayer = [_soundPlayer initWithContentsOfURL:_chicken error:&error];
-        break;
-        default:
-        break;
+- (void) playGameMusic{
+    if ([FPGameManager sharedInstance].music==YES) {
+        [_backGroundMusicPlayer play];
     }
-    [_soundPlayer prepareToPlay];
-    [_soundPlayer play];
+}
+
+- (void) stopGameMusic{
+    [_backGroundGamePlayer stop];
+}
+
+- (void) playSound:(NSURL*)sound{
+    if ([FPGameManager sharedInstance].playSoundWhenImageAppear==YES){
+        NSError *error;
+        [_soundPlayer stop];
+        _soundToPlay = sound;
+        NSURL *url;
+        int random=1+arc4random()%2;
+        if (random==1) {
+            url=_well_done;
+        }
+        else{
+            url=_excellent;
+        }
+        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        _soundPlayer.delegate=(id)self;
+        [_soundPlayer prepareToPlay];
+        [_soundPlayer play];
+    }
 }
 
 - (void) vibrate{
@@ -101,16 +98,43 @@ static FPSoundManager *_instance=nil;
     _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.soundPlayer.numberOfLoops=0;
     [_instance.soundPlayer prepareToPlay];
-    
     //set sounds path
-    soundPath = [[NSBundle mainBundle] pathForResource:@"apple" ofType:@"mp3"];
-    _instance.apple = [NSURL URLWithString:soundPath];
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"ru"]){
+        soundPath = [[NSBundle mainBundle] pathForResource:@"excellent_ru" ofType:@"mp3"];
+        _instance.excellent = [NSURL URLWithString:soundPath];
+        soundPath = [[NSBundle mainBundle] pathForResource:@"well_done_ru" ofType:@"mp3"];
+        _instance.well_done = [NSURL URLWithString:soundPath];
+    }
+    else{
+        soundPath = [[NSBundle mainBundle] pathForResource:@"excellent" ofType:@"mp3"];
+        _instance.excellent = [NSURL URLWithString:soundPath];
+        soundPath = [[NSBundle mainBundle] pathForResource:@"well_done" ofType:@"mp3"];
+        _instance.well_done = [NSURL URLWithString:soundPath];
+    }
 }
 
 - (void) dealloc{
     _backGroundMusicPlayer=nil;
     _backGroundGamePlayer=nil;
     _soundPlayer=nil;
+    _excellent=nil;
+    _well_done=nil;
+    _soundToPlay=nil;
+}
+
+#pragma mark - AudioPlayerDelegate
+
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    if (flag==YES) {
+        if (_soundToPlay) {
+            [_soundPlayer stop];
+            _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundToPlay error:nil];
+            _soundPlayer.numberOfLoops=0;
+            [_soundPlayer prepareToPlay];
+            [_soundPlayer play];
+            _soundToPlay=nil;
+        }
+    }
 }
 
 
