@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
 		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
+		047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlovers.m */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
@@ -19,7 +20,6 @@
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
 		7F316182192D092300C49EAE /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferences.m */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
-		7F8A15BC192E1620006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15BA192E1620006A9D6B /* ball1.pdf */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
 		7F8A15C8192E3BA1006A9D6B /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C7192E3BA1006A9D6B /* GameField.storyboard */; };
@@ -60,6 +60,8 @@
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBonusViewController.m; sourceTree = "<group>"; };
 		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candies.h; sourceTree = "<group>"; };
 		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candies.m; sourceTree = "<group>"; };
+		047D58A1192F2C0A003CE8BC /* FPFlovers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlovers.h; sourceTree = "<group>"; };
+		047D58A2192F2C0A003CE8BC /* FPFlovers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlovers.m; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
 		7F31615E192C9FC200C49EAE /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = "Custom Views/CloudView/CloudView.h"; sourceTree = "<group>"; };
@@ -154,6 +156,15 @@
 			name = Candies;
 			sourceTree = "<group>";
 		};
+		047D58A4192F2C10003CE8BC /* Flovers */ = {
+			isa = PBXGroup;
+			children = (
+				047D58A1192F2C0A003CE8BC /* FPFlovers.h */,
+				047D58A2192F2C0A003CE8BC /* FPFlovers.m */,
+			);
+			name = Flovers;
+			sourceTree = "<group>";
+		};
 		7F31615C192C9FA400C49EAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +172,7 @@
 				7F316161192C9FC600C49EAE /* Cloud */,
 				7F31615D192C9FAF00C49EAE /* Ball */,
 				046691A1192CE9A40095E1A8 /* Candies */,
+				047D58A4192F2C10003CE8BC /* Flovers */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -471,6 +483,7 @@
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
 				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameObject.m in Sources */,
+				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7F31617D192CAA4500C49EAE /* FPObjectsManager.m in Sources */,
