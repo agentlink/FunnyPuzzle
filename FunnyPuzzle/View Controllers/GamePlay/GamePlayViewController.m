@@ -44,6 +44,25 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    for (Segment *s in _man.segments) {
+        [self.view addSubview:s];
+    }
+    [_centerView addSubview:_man.grayLinedFiewld];
+    
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
+    centerPoint.x = centerPoint.x-(CGRectGetWidth(_man.grayLinedFiewld.bounds)*.5f);
+    centerPoint.y = centerPoint.y-(CGRectGetHeight(_man.grayLinedFiewld.bounds)*.5f);
+    
+    _man.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_man.grayLinedFiewld.frame), CGRectGetHeight(_man.grayLinedFiewld.frame));
+    
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,13 +71,7 @@
     //FPObjectsManager *man = [GameObject sharedInstance].manager;
     _man = [GameModel sharedInstance].manager;
 }
-- (void)viewDidAppear:(BOOL)animated
-{
-    for (Segment *s in _man.segments) {
-        [self.view addSubview:s];
-    }
-    [_centerView addSubview:_man.colorField];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
