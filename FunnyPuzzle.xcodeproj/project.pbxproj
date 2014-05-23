@@ -26,6 +26,8 @@
 		7FA4BA63192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
 		7FA4BA6B192C9AFD00A772BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4BA69192C9AFD00A772BA /* InfoPlist.strings */; };
 		7FA4BA6D192C9AFD00A772BA /* FunnyPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */; };
+		7FA57033192EA8A400CE84F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA57032192EA8A400CE84F8 /* QuartzCore.framework */; };
+		84F85B94192E42DA00BDECB5 /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85B93192E42DA00BDECB5 /* FPSoundManager.m */; };
 		84F85BA0192E489400BDECB5 /* backGroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */; };
 		84F85BA1192E489400BDECB5 /* exelentSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */; };
 		84F85BA2192E489400BDECB5 /* exelentSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */; };
@@ -85,6 +87,9 @@
 		7FA4BA68192C9AFD00A772BA /* FunnyPuzzleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunnyPuzzleTests-Info.plist"; sourceTree = "<group>"; };
 		7FA4BA6A192C9AFD00A772BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7FA4BA6C192C9AFD00A772BA /* FunnyPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunnyPuzzleTests.m; sourceTree = "<group>"; };
+		7FA57032192EA8A400CE84F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84F85B92192E42DA00BDECB5 /* FPSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSoundManager.h; path = Managers/FPSoundManager.h; sourceTree = "<group>"; };
+		84F85B93192E42DA00BDECB5 /* FPSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSoundManager.m; path = Managers/FPSoundManager.m; sourceTree = "<group>"; };
 		84F85B9D192E489400BDECB5 /* backGroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backGroundMusic.mp3; sourceTree = "<group>"; };
 		84F85B9E192E489400BDECB5 /* exelentSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound1.mp3; sourceTree = "<group>"; };
 		84F85B9F192E489400BDECB5 /* exelentSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exelentSound2.mp3; sourceTree = "<group>"; };
