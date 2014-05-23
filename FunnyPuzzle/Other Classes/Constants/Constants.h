@@ -13,7 +13,7 @@
 #define DISPLAY_WORDS @"displayWords"
 #define VIBRATE_WHEN_DRAG_PUZZLES @"vibrateWhenDragPuzzles"
 #define VIBRATE_WHEN_PIECE_IN_PLACE @"vibrateWhenPieceInPlace"
-#define LANGUAGE @"language"
+#define MUSIC @"music"
 
 #endif
 

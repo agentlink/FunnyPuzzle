@@ -24,18 +24,20 @@ static FPGameManager *_instance=nil;
 
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:VIBRATE_WHEN_DRAG_PUZZLES]) {
+    if (![defaults boolForKey:MUSIC]) {
         [defaults setBool:YES forKey:VIBRATE_WHEN_DRAG_PUZZLES];
         [defaults setBool:YES forKey:VIBRATE_WHEN_PIECE_IN_PLACE];
         [defaults setBool:YES forKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         [defaults setBool:YES forKey:DISPLAY_INNER_BORDERS];
         [defaults setBool:YES forKey:DISPLAY_WORDS];
+        [defaults setBool:YES forKey:MUSIC];
         [defaults synchronize];
         _vibrateWhenDragPuzzles=YES;
         _vibrateWhenPieceInPlace=YES;
         _playSoundWhenImageAppear=YES;
         _displayWords=YES;
         _displayInnerBorders=YES;
+        _music=YES;
     }
     else{
         _vibrateWhenDragPuzzles=[defaults boolForKey:VIBRATE_WHEN_DRAG_PUZZLES];
@@ -43,6 +45,7 @@ static FPGameManager *_instance=nil;
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         _displayWords=[defaults boolForKey:DISPLAY_WORDS];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
+        _music=[defaults boolForKey:MUSIC];
     }
 }
 
