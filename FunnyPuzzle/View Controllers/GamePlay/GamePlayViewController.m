@@ -8,7 +8,6 @@
 
 #import "GamePlayViewController.h"
 #import "GameObject.h"
-#import <SVGKit/SVGKFastImageView.h>
 #import "Segment.h"
 #import "FPObjectsManager.h"
 
@@ -25,6 +24,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic) FPObjectsManager *man;
+
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
@@ -57,7 +57,7 @@
     for (Segment *s in _man.segments) {
         [self.view addSubview:s];
     }
-    //[_centerView addSubview:_man.fieldImage];
+    [_centerView addSubview:_man.colorField];
 }
 - (void)didReceiveMemoryWarning
 {

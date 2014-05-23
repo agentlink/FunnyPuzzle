@@ -1,5 +1,5 @@
 //
-//  FPViewController.h
+//  Preferencces.h
 //  FunnyPuzzle
 //
 //  Created by Misha on 21.05.14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FPViewController : UIViewController
+@interface Preferences : UIViewController
 
 @end

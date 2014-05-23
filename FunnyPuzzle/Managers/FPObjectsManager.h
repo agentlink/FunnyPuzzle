@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Constansts.h"
 #import <PDFImage/PDFImage.h>
 @interface FPObjectsManager : NSObject
 
