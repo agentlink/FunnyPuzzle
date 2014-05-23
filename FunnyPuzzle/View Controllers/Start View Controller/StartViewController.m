@@ -15,7 +15,7 @@
 @interface StartViewController ()
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
-
+@property (nonatomic) UIDynamicAnimator *animator;
 - (IBAction)play:(id)sender;
 @end
 
@@ -33,19 +33,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1.pdf"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2.pdf"];
+    _gamemodeFirst.tap = ^{
+        [self play:self];
+    };
+    _gamemodeSecond.tap =  ^{
+        [self play:self];
+    };
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    CGMutablePathRef aPath = CGPathCreateMutable();
+    float x = CGRectGetMidX(_gamemodeFirst.frame);
+    float y = CGRectGetMidY(_gamemodeFirst.frame);
+    _gamemodeFirst.layer.anchorPoint = CGPointMake(0.5, 0.8);
+    CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+    CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                          x+10,y+1,  //Control Point 2
+                          x+20,y); // End Point
+    animation.rotationMode = @"auto";
+    animation.path = aPath;
+    animation.duration = 3;
+    animation.autoreverses = YES;
+    animation.removedOnCompletion = NO;
+    animation.repeatCount = 100.0f;
+    animation.timingFunction = [CAMediaTimingFunction
+                                functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    CAKeyframeAnimation *animS = animation;
+    animS.duration = 1;
+    //[_gamemodeFirst.layer addAnimation:animation forKey:@"position"];
+    //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
+    
+   
 }
-- (void)viewDidDisappear:(BOOL)animated
-{
-    _gamemodeFirst.isVisible = NO;
-    _gamemodeSecond.isVisible = NO;
-}
-- (void)viewDidAppear:(BOOL)animated
-{
-    _gamemodeSecond.isVisible = YES;
-    _gamemodeFirst.isVisible = YES;
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

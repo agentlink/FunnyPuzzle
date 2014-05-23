@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <PDFImage/PDFImage.h>
+typedef void (^tap)();
 @interface BallView : UIView
 @property (nonatomic, weak) PDFImage *image;
-@property (nonatomic, strong) NSString *imageName;
-@property (nonatomic) BOOL isVisible;
+@property (nonatomic, copy) void (^tap)(void);
 @end
