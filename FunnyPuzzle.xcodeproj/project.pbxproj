@@ -246,13 +246,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0466919D192CE8930095E1A8 /* Bonus */ = {
+		0466919D192CE8930095E1A8 /* BonusLevel Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0466919A192CE88D0095E1A8 /* FPBonusViewController.h */,
 				0466919B192CE88D0095E1A8 /* FPBonusViewController.m */,
 			);
-			name = Bonus;
+			name = "BonusLevel Controller";
 			sourceTree = "<group>";
 		};
 		046691A1192CE9A40095E1A8 /* Candies */ = {
@@ -363,40 +363,40 @@
 		7F316178192CA06100C49EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F3161D8192DBB9C00C49EAE /* Preferences */,
-				7F316179192CA08300C49EAE /* Gameplay */,
-				7F31617A192CA08F00C49EAE /* Start */,
-				0466919D192CE8930095E1A8 /* Bonus */,
+				7F3161D8192DBB9C00C49EAE /* Preferences Controller */,
+				7F316179192CA08300C49EAE /* Gameplay Controller */,
+				7F31617A192CA08F00C49EAE /* Start Controller */,
+				0466919D192CE8930095E1A8 /* BonusLevel Controller */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		7F316179192CA08300C49EAE /* Gameplay */ = {
+		7F316179192CA08300C49EAE /* Gameplay Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7F316172192CA05A00C49EAE /* GamePlayViewController.h */,
 				7F316173192CA05A00C49EAE /* GamePlayViewController.m */,
 				7FA57045192F42C000CE84F8 /* GameField.storyboard */,
 			);
-			name = Gameplay;
+			name = "Gameplay Controller";
 			sourceTree = "<group>";
 		};
-		7F31617A192CA08F00C49EAE /* Start */ = {
+		7F31617A192CA08F00C49EAE /* Start Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7F316174192CA05A00C49EAE /* StartViewController.h */,
 				7F316175192CA05A00C49EAE /* StartViewController.m */,
 			);
-			name = Start;
+			name = "Start Controller";
 			sourceTree = "<group>";
 		};
-		7F3161D8192DBB9C00C49EAE /* Preferences */ = {
+		7F3161D8192DBB9C00C49EAE /* Preferences Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7F316180192D092300C49EAE /* Preferences.h */,
 				7F316181192D092300C49EAE /* Preferences.m */,
 			);
-			name = Preferences;
+			name = "Preferences Controller";
 			sourceTree = "<group>";
 		};
 		7FA4BA35192C9AFD00A772BA = {
