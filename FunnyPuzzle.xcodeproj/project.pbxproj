@@ -85,6 +85,7 @@
 		8443DE05192F4796009F1EF8 /* toad_ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDDD192F4796009F1EF8 /* toad_ru.mp3 */; };
 		8443DE06192F4796009F1EF8 /* well_done_ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDDE192F4796009F1EF8 /* well_done_ru.mp3 */; };
 		84E962D6192F512700DC785C /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPObjectsManager.m */; };
+		84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
 		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
 		84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */; };
 		84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BF8192F371D00BDECB5 /* FPGameManager.m */; };
@@ -737,6 +738,7 @@
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
 				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
+				84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +882,7 @@
 				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BC549EC8-D510-47BB-89AB-C34C4CE67A84";
+				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -899,7 +901,7 @@
 				INFOPLIST_FILE = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BC549EC8-D510-47BB-89AB-C34C4CE67A84";
+				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -12,6 +12,7 @@
 
 + (FPGameManager*) sharedInstance;
 
+@property (nonatomic) BOOL music;
 @property (nonatomic) BOOL displayInnerBorders;
 @property (nonatomic) BOOL playSoundWhenImageAppear;
 @property (nonatomic) BOOL displayWords;

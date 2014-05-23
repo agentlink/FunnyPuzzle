@@ -24,7 +24,7 @@ static FPGameManager *_instance=nil;
 
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:VIBRATE_WHEN_DRAG_PUZZLES]) {
+    if (![defaults boolForKey:MUSIC]) {
         [defaults setBool:YES forKey:VIBRATE_WHEN_DRAG_PUZZLES];
         [defaults setBool:YES forKey:VIBRATE_WHEN_PIECE_IN_PLACE];
         [defaults setBool:YES forKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
