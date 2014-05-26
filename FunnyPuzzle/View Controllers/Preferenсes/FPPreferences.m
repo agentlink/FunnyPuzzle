@@ -174,7 +174,7 @@
     if ([[FPGameManager sharedInstance].language isEqualToString:@"en"]) {
         language=@"English";
     }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]) {
+    if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]) {
         language=@"Русский";
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"fr"]) {
@@ -184,6 +184,10 @@
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
         language=@"Español";
+    }
+    else {
+        language=@"English";
+        [self setlanguage];
     }
     return language;
 }
