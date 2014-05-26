@@ -154,9 +154,13 @@
 }
 
 #pragma mark - Custom Accssesors
-- (NSInteger)count
+- (NSInteger)segmentsCount
 {
     return _segments.count;
+}
+- (NSInteger)levelsCount
+{
+    return _levels.count;
 }
 #pragma mark - Publick Medoths
 
