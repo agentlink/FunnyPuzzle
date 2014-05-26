@@ -11,8 +11,12 @@
 #import "FPObjectsManager.h"
 #import "GameModel.h"
 #import <PDFImage/PDFImage.h>
+#import "FPPreferences.h"
+#import <AVFoundation/AVFoundation.h>
+#import "FPSoundManager.h"
 
 @interface StartViewController ()
+
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground1;
@@ -23,18 +27,10 @@
 
 @property (nonatomic) UIDynamicAnimator *animator;
 - (IBAction)play:(id)sender;
+- (IBAction)goToSettings:(id)sender;
 @end
 
 @implementation StartViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -68,11 +64,14 @@
     CAKeyframeAnimation *animS = animation;
     animS.duration = 1;
     [self cofigGround];
+    [[FPGameManager sharedInstance] setSettings];
     //[_gamemodeFirst.layer addAnimation:animation forKey:@"position"];
     //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
     
-   
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[FPGameManager sharedInstance] setSettings];
 }
+
 - (void)cofigGround
 {
     UIInterpolatingMotionEffect *horisontal1 =
@@ -101,17 +100,12 @@
     _ground3.image = [PDFImage imageNamed:@"ground2"];
     _ground4.image = [PDFImage imageNamed:@"ground5"];
     _ground5.image = [PDFImage imageNamed:@"ground4"];
-    
-    
+
     [_ground1 addMotionEffect:horisontal1];
     [_ground2 addMotionEffect:horisontal2];
     [_ground3 addMotionEffect:horisontal3];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 - (void)layerAnimate
 {
     
@@ -121,15 +115,10 @@
     UIViewController *cont = [[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
     [self.navigationController pushViewController:cont animated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)goToSettings:(id)sender {
+    FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
+    [self.navigationController pushViewController:preferences animated:YES];
 }
-*/
 
 @end

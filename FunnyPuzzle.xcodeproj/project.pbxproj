@@ -17,7 +17,7 @@
 		7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316173192CA05A00C49EAE /* GamePlayViewController.m */; };
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
-		7F316182192D092300C49EAE /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* Preferences.m */; };
+		7F316182192D092300C49EAE /* FPPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* FPPreferences.m */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
@@ -87,6 +87,11 @@
 		84E962D6192F512700DC785C /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPObjectsManager.m */; };
 		84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
 		84E962E6192F737000DC785C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962E5192F737000DC785C /* libGoogleAdMobAds.a */; };
+		84E962EB192F807900DC785C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962EA192F807900DC785C /* AdSupport.framework */; };
+		84E962ED192F808E00DC785C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962EC192F808E00DC785C /* AudioToolbox.framework */; };
+		84E962EF192F809C00DC785C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962EE192F809C00DC785C /* MessageUI.framework */; };
+		84E962F1192F80A300DC785C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962F0192F80A300DC785C /* StoreKit.framework */; };
+		84E962F3192F80B200DC785C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962F2192F80B200DC785C /* SystemConfiguration.framework */; };
 		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
 		84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */; };
 		84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BF8192F371D00BDECB5 /* FPGameManager.m */; };
@@ -122,8 +127,8 @@
 		7F316174192CA05A00C49EAE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartViewController.h; path = "View Controllers/Start View Controller/StartViewController.h"; sourceTree = "<group>"; };
 		7F316175192CA05A00C49EAE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = "View Controllers/Start View Controller/StartViewController.m"; sourceTree = "<group>"; };
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
-		7F316180192D092300C49EAE /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = "View Controllers/Preferenсes/Preferences.h"; sourceTree = "<group>"; };
-		7F316181192D092300C49EAE /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = "View Controllers/Preferenсes/Preferences.m"; sourceTree = "<group>"; };
+		7F316180192D092300C49EAE /* FPPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPreferences.h; path = "View Controllers/Preferenсes/FPPreferences.h"; sourceTree = "<group>"; };
+		7F316181192D092300C49EAE /* FPPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPreferences.m; path = "View Controllers/Preferenсes/FPPreferences.m"; sourceTree = "<group>"; };
 		7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFImage.framework; path = FunnyPuzzle/Frameworks/PDFImage.framework; sourceTree = "<group>"; };
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
@@ -195,6 +200,10 @@
 		8443DDDC192F4796009F1EF8 /* squirrel_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = squirrel_ru.mp3; sourceTree = "<group>"; };
 		8443DDDD192F4796009F1EF8 /* toad_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toad_ru.mp3; sourceTree = "<group>"; };
 		8443DDDE192F4796009F1EF8 /* well_done_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = well_done_ru.mp3; sourceTree = "<group>"; };
+		84AEB9BC1933256C00DF942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84AEB9BD1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84AEB9BE1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84AEB9BF1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84E962D4192F512700DC785C /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPObjectsManager.h; sourceTree = "<group>"; };
 		84E962D5192F512700DC785C /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPObjectsManager.m; sourceTree = "<group>"; };
 		84E962D9192F737000DC785C /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
@@ -210,6 +219,12 @@
 		84E962E3192F737000DC785C /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
 		84E962E4192F737000DC785C /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		84E962E5192F737000DC785C /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		84E962E8192F802100DC785C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		84E962EA192F807900DC785C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		84E962EC192F808E00DC785C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84E962EE192F809C00DC785C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		84E962F0192F80A300DC785C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		84E962F2192F80B200DC785C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84F85BA4192E67CA00BDECB5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
 		84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84F85BBF192E97BB00BDECB5 /* FPSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSoundManager.h; sourceTree = "<group>"; };
@@ -223,6 +238,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E962F3192F80B200DC785C /* SystemConfiguration.framework in Frameworks */,
+				84E962F1192F80A300DC785C /* StoreKit.framework in Frameworks */,
+				84E962EF192F809C00DC785C /* MessageUI.framework in Frameworks */,
+				84E962ED192F808E00DC785C /* AudioToolbox.framework in Frameworks */,
+				84E962EB192F807900DC785C /* AdSupport.framework in Frameworks */,
 				7FA57033192EA8A400CE84F8 /* QuartzCore.framework in Frameworks */,
 				84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */,
 				7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */,
@@ -393,8 +413,8 @@
 		7F3161D8192DBB9C00C49EAE /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				7F316180192D092300C49EAE /* Preferences.h */,
-				7F316181192D092300C49EAE /* Preferences.m */,
+				7F316180192D092300C49EAE /* FPPreferences.h */,
+				7F316181192D092300C49EAE /* FPPreferences.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -421,6 +441,12 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84E962F2192F80B200DC785C /* SystemConfiguration.framework */,
+				84E962F0192F80A300DC785C /* StoreKit.framework */,
+				84E962EE192F809C00DC785C /* MessageUI.framework */,
+				84E962EC192F808E00DC785C /* AudioToolbox.framework */,
+				84E962EA192F807900DC785C /* AdSupport.framework */,
+				84E962E8192F802100DC785C /* libz.dylib */,
 				84E962D8192F737000DC785C /* GoogleAdMob */,
 				7FA57032192EA8A400CE84F8 /* QuartzCore.framework */,
 				84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */,
@@ -678,6 +704,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7FA4BA35192C9AFD00A772BA;
 			productRefGroup = 7FA4BA3F192C9AFD00A772BA /* Products */;
@@ -778,7 +805,7 @@
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
-				7F316182192D092300C49EAE /* Preferences.m in Sources */,
+				7F316182192D092300C49EAE /* FPPreferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
@@ -810,6 +837,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7F8A15C1192E2069006A9D6B /* Base */,
+				84AEB9BC1933256C00DF942A /* en */,
+				84AEB9BD1933328B00DF942A /* ru */,
 			);
 			name = Localizable.strings;
 			path = Resources;
@@ -819,6 +848,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7FA4BA4B192C9AFD00A772BA /* en */,
+				84AEB9BE1933328B00DF942A /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -835,6 +865,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7FA4BA6A192C9AFD00A772BA /* en */,
+				84AEB9BF1933328B00DF942A /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -876,6 +907,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -907,6 +939,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

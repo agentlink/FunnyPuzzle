@@ -8,13 +8,16 @@
 #ifndef FP_Constants_h
 #define FP_Constants_h
 
+//UserDefaults
 #define DISPLAY_INNER_BORDERS @"displayInnerBorders"
 #define PLAY_SOUND_WHEN_IMAGE_APPEAR @"playSoundWhenImageAppear"
 #define DISPLAY_WORDS @"displayWords"
-#define VIBRATE_WHEN_DRAG_PUZZLES @"vibrateWhenDragPuzzles"
-#define VIBRATE_WHEN_PIECE_IN_PLACE @"vibrateWhenPieceInPlace"
+#define VIBRATE @"vibrate"
 #define MUSIC @"music"
-#define GOOGLE_ADMOBS_ID @"id"
+#define LANGUAGE @"language"
+
+//AdMob ID
+#define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"
 
 #endif
 
@@ -32,24 +35,3 @@ typedef enum {
     FPGameTypeBonus
 }FPGameType;
 
-typedef enum {
-    apple,
-    carrot,
-    chicken,
-    cochlea,
-    dove,
-    elephant,
-    excellent,
-    fish,
-    icecream,
-    lamb,
-    octopus,
-    owl,
-    pencil,
-    pig,
-    rabbit,
-    snail,
-    squirrel,
-    toad,
-    wellDone
-}FPGameSounds;

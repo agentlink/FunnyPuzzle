@@ -9,7 +9,7 @@
 #import "FPSoundManager.h"
 #import "FPGameManager.h"
 
-@interface FPSoundManager() <AVAudioPlayerDelegate>
+@interface FPSoundManager()<AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *backGroundMusicPlayer;
 @property (nonatomic, strong) AVAudioPlayer *backGroundGamePlayer;
@@ -41,7 +41,9 @@ static FPSoundManager *_instance=nil;
 }
 
 - (void) stopBackgroundMusic{
-    [_backGroundMusicPlayer stop];
+    if ([_backGroundMusicPlayer isPlaying]==YES){
+        [_backGroundMusicPlayer stop];
+    }
 }
 
 - (void) playGameMusic{
@@ -51,7 +53,9 @@ static FPSoundManager *_instance=nil;
 }
 
 - (void) stopGameMusic{
+    if ([_backGroundGamePlayer isPlaying]==YES){
     [_backGroundGamePlayer stop];
+    }
 }
 
 - (void) playSound:(NSURL*)sound{
@@ -75,7 +79,9 @@ static FPSoundManager *_instance=nil;
 }
 
 - (void) vibrate{
-     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    if ([FPGameManager sharedInstance].vibrate==YES){
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
 }
 
 + (void) loadData{
@@ -111,7 +117,9 @@ static FPSoundManager *_instance=nil;
         soundPath = [[NSBundle mainBundle] pathForResource:@"well_done" ofType:@"mp3"];
         _instance.well_done = [NSURL URLWithString:soundPath];
     }
+
 }
+
 
 - (void) dealloc{
     _backGroundMusicPlayer=nil;

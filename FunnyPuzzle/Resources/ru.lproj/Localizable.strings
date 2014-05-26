@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"excellent" = "отлично";
+"wellDone" = "молодец";
+"apple" = "яблоко";
+"carrot" = "морковка";
+"chicken" = "курица";
+"cochlea" = "cochlea";
+"dove" = "dove";
+"elephant" = "слон";
+"fish" = "рыба";
+"iceCream" = "мороженое";
+"lamb" = "lamb";
+"octopus" = "осьминог";
+"owl" = "owl";
+"pencil" = "карандаш";
+"pig" = "свинья";
+"rabbit" = "кролик";
+"snail" = "snail";
+"squirrel" = "squirrel";
+"toad" = "toad";
+"bear" = "медведь";
+"flamingo" = "фламинго";
+"giraffe" = "жираф";
+"goat" = "goat";
+"penguin" = "пенгвин";
+"snake" = "змея";
+"zebra" = "зебра";
+"bee" = "bee";
+"dolphin" = "дельфин";
+"lion" = "лев";
+"monkyy" = "обезьяна";
+"toucan" = "тукан";
+"playMusic" = "Play music";
+"playSound" = "Play sounds";
+"borders" = "Display inner borders";
+"vibrate" = "Vibrate";
+
+"language" = "Language";
+"back" = "Back";
+"settings" = "Settings";

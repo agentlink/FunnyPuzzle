@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPGameManager.h"
 
-@interface Preferences : UIViewController
+@interface FPPreferences : UIViewController
 
 @end
