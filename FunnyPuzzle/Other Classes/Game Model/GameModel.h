@@ -7,20 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FPObjectsManager.h"
-#import "FPGameManager.h"
+#import "FPLevelManager.h"
+#import "GamePlayViewController.h"
 
 @interface GameModel : NSObject
 
-@property (nonatomic) FPGameMode *gameMode;
-@property (nonatomic) FPGameType *gameType;
+@property (nonatomic) FPGameMode gameMode;
+@property (nonatomic) FPGameType gameType;
+@property (nonatomic) int lastLevel;
+@property (nonatomic) BOOL levelWin;
 @property (nonatomic) int points;
-@property (nonatomic, strong) FPObjectsManager *manager;
+@property (nonatomic, strong) FPLevelManager *level;
 @property (nonatomic) CGRect fieldFrame;
 @property (nonatomic) CGPoint fieldOrigin;
 @property (nonatomic) PDFImageView *currentField;
+@property (nonatomic, weak) GamePlayViewController *gamePlay;
+@property (nonatomic) NSInteger objectsLeft;
 
 - (void)checkForRightPlace:(Segment *)segment;
+- (FPLevelManager *)nextLevel;
+- (FPLevelManager *)prewLevel;
+
 + (GameModel *)sharedInstance;
 
 @end

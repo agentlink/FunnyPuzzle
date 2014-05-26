@@ -22,7 +22,7 @@
 #pragma mark - enums
 
 typedef enum {
-    FPGameModeEase,
+    FPGameModeEase = 0,
     FPGameModeHard
 }FPGameMode;
 

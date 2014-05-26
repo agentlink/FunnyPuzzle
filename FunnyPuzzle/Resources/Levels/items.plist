@@ -4,6 +4,10 @@
 <array>
 	<array>
 		<dict>
+			<key>finished</key>
+			<false/>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
 			<key>color</key>
 			<string>ice_cream</string>
 			<key>elements</key>
@@ -44,6 +48,10 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>finished</key>
+			<false/>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
 			<key>color</key>
 			<string>pencil</string>
 			<key>elements</key>
@@ -77,6 +85,10 @@
 			<string>Pencil</string>
 		</dict>
 		<dict>
+			<key>finished</key>
+			<false/>
+			<key>bgColor</key>
+			<string></string>
 			<key>color</key>
 			<string>toad</string>
 			<key>elements</key>

@@ -44,6 +44,8 @@
 		7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5703D192F399A00CE84F8 /* ground4.pdf */; };
 		7FA57043192F399A00CE84F8 /* ground5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5703E192F399A00CE84F8 /* ground5.pdf */; };
 		7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA57045192F42C000CE84F8 /* GameField.storyboard */; };
+		7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */; };
+		7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */; };
 		8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */; };
 		8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */; };
 		8443DDE1192F4796009F1EF8 /* apple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB8192F4796009F1EF8 /* apple.mp3 */; };
@@ -79,7 +81,7 @@
 		8443DE04192F4796009F1EF8 /* squirrel_ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDDC192F4796009F1EF8 /* squirrel_ru.mp3 */; };
 		8443DE05192F4796009F1EF8 /* toad_ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDDD192F4796009F1EF8 /* toad_ru.mp3 */; };
 		8443DE06192F4796009F1EF8 /* well_done_ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDDE192F4796009F1EF8 /* well_done_ru.mp3 */; };
-		84E962D6192F512700DC785C /* FPObjectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPObjectsManager.m */; };
+		84E962D6192F512700DC785C /* FPLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPLevelManager.m */; };
 		84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
 		84E962E6192F737000DC785C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962E5192F737000DC785C /* libGoogleAdMobAds.a */; };
 		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
@@ -150,6 +152,8 @@
 		7FA5703D192F399A00CE84F8 /* ground4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ground4.pdf; path = Resources/General/ground4.pdf; sourceTree = "<group>"; };
 		7FA5703E192F399A00CE84F8 /* ground5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ground5.pdf; path = Resources/General/ground5.pdf; sourceTree = "<group>"; };
 		7FA57045192F42C000CE84F8 /* GameField.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameField.storyboard; path = "View Controllers/GamePlay/GameField.storyboard"; sourceTree = "<group>"; };
+		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
+		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
 		8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB8192F4796009F1EF8 /* apple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apple.mp3; sourceTree = "<group>"; };
@@ -185,8 +189,8 @@
 		8443DDDC192F4796009F1EF8 /* squirrel_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = squirrel_ru.mp3; sourceTree = "<group>"; };
 		8443DDDD192F4796009F1EF8 /* toad_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toad_ru.mp3; sourceTree = "<group>"; };
 		8443DDDE192F4796009F1EF8 /* well_done_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = well_done_ru.mp3; sourceTree = "<group>"; };
-		84E962D4192F512700DC785C /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPObjectsManager.h; sourceTree = "<group>"; };
-		84E962D5192F512700DC785C /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPObjectsManager.m; sourceTree = "<group>"; };
+		84E962D4192F512700DC785C /* FPLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLevelManager.h; sourceTree = "<group>"; };
+		84E962D5192F512700DC785C /* FPLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLevelManager.m; sourceTree = "<group>"; };
 		84E962D9192F737000DC785C /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		84E962DA192F737000DC785C /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		84E962DB192F737000DC785C /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 		7F316170192CA03200C49EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7FC9D1F719337F9F002878BD /* Fonts */,
 				84F85B9C192E489400BDECB5 /* Music */,
 				7F31617E192CCBE200C49EAE /* Levels */,
 				7F316171192CA04200C49EAE /* Start */,
@@ -468,6 +473,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7FC9D1F719337F9F002878BD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */,
+				7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */,
+			);
+			name = Fonts;
+			path = Resources/Fonts;
+			sourceTree = "<group>";
+		};
 		8443DDB4192F4796009F1EF8 /* Background music */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,8 +551,8 @@
 		84E962D3192F512700DC785C /* Object Manager */ = {
 			isa = PBXGroup;
 			children = (
-				84E962D4192F512700DC785C /* FPObjectsManager.h */,
-				84E962D5192F512700DC785C /* FPObjectsManager.m */,
+				84E962D4192F512700DC785C /* FPLevelManager.h */,
+				84E962D5192F512700DC785C /* FPLevelManager.m */,
 			);
 			name = "Object Manager";
 			path = "Managers/Object Manager";
@@ -708,9 +723,11 @@
 				8443DDF4192F4796009F1EF8 /* apple_ru.mp3 in Resources */,
 				8443DDEE192F4796009F1EF8 /* pig.mp3 in Resources */,
 				8443DDF1192F4796009F1EF8 /* squirrel.mp3 in Resources */,
+				7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */,
 				8443DE04192F4796009F1EF8 /* squirrel_ru.mp3 in Resources */,
 				8443DDF3192F4796009F1EF8 /* well_done.mp3 in Resources */,
 				8443DE02192F4796009F1EF8 /* rabbit_ru.mp3 in Resources */,
+				7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */,
 				8443DDF9192F4796009F1EF8 /* elephant_ru.mp3 in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				8443DDFE192F4796009F1EF8 /* octopus_ru.mp3 in Resources */,
@@ -756,7 +773,7 @@
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
 				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameModel.m in Sources */,
-				84E962D6192F512700DC785C /* FPObjectsManager.m in Sources */,
+				84E962D6192F512700DC785C /* FPLevelManager.m in Sources */,
 				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,

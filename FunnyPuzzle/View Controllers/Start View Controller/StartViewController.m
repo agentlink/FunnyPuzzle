@@ -8,9 +8,10 @@
 
 #import "StartViewController.h"
 #import "BallView.h"
-#import "FPObjectsManager.h"
+#import "FPLevelManager.h"
 #import "GameModel.h"
 #import <PDFImage/PDFImage.h>
+#import "GamePlayViewController.h"
 
 @interface StartViewController ()
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
@@ -118,9 +119,8 @@
 }
 - (IBAction)play:(id)sender
 {
-    [FPGameManager sharedInstance].gameType = FPGameTypeFirs;
-    UIViewController *cont = [[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
-    //cont.
+    GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
+    [GameModel sharedInstance].gameType = FPGameTypeFirs;
     [self.navigationController pushViewController:cont animated:YES];
 }
 /*

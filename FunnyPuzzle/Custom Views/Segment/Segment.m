@@ -56,7 +56,8 @@ int i=1;
 - (void)checkForRightPlace:(Segment *)segment
 {
     //[GameModel sharedInstance].manager.grayLinedFiewld.superview.backgroundColor = [UIColor redColor];
-    CGPoint currentPoint = [segment frame].origin;
+    CGPoint currentPoint = self.frame.origin;
+    CGPoint currentPointInWindow = [segment convertPoint:self.frame.origin fromView:nil];
     CGPoint oser =  [GameModel sharedInstance].fieldOrigin;
     CGPoint pointInPlace = CGPointMake(currentPoint.x+oser.x, currentPoint.y+oser.y);
     //if (CGPointEqualToPoint ())
@@ -94,22 +95,35 @@ int i=1;
     NSLog(@"%i", CGRectContainsPoint(startRect, touchLocation));
     NSLog(@"%@", [self colorOfPoint:touchLocation]);
     NSLog(@"alpha: %f", CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor]));
-    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
+    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0 && !_inPlase) {
+        self.layer.zPosition = 1;
         pp = CGPointMake([touch1 locationInView:self.superview].x, [touch1 locationInView:self.superview].y);
         p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
         _dragEnabled = YES;
+    } else if (CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
+        
+    } else if (_inPlase)
+    {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1 animations:^{
+                self.transform = CGAffineTransformMakeScale(1, 1);
+            }];
+        }];
     }
 }
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
-    if ((recognizer.state == UIGestureRecognizerStateChanged) && _dragEnabled)
+    if ((recognizer.state == UIGestureRecognizerStateChanged) && _dragEnabled && !_inPlase)
     {
             CGPoint p2=CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
             CGPoint p1 = CGPointMake(p2.x-p.x, p2.y-p.y);
             self.layer.position=p1;
-    } else if (recognizer.state == UITouchPhaseEnded)
+    } else if (recognizer.state == UITouchPhaseEnded && !_inPlase)
     {
-        [self checkForRightPlace:self];
+        [[GameModel sharedInstance] checkForRightPlace:self];
         _dragEnabled = NO;
         
     }
@@ -130,10 +144,8 @@ int i=1;
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
     
-    //NSLog(@"pixel: %d %d %d %d", pixel[0], pixel[1], pixel[2], pixel[3]);
-    
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
-    
+    NSLog(@"%@", color);
     return color;
 }
 - (void)dealloc

@@ -6,17 +6,19 @@
 //  Copyright (c) 2014 Mobilez365. All rights reserved.
 //
 
-#import "FPObjectsManager.h"
-#import "FPSoundManager.h"
-@interface FPObjectsManager ()
-@property (nonatomic, strong) NSArray *levels;
+#import "FPLevelManager.h"
+@interface FPLevelManager ()
+@property (nonatomic, strong) NSMutableArray *levels;
+@property (nonatomic) NSMutableArray *plist;
 @property (nonatomic) float multiplayer;
 @property (nonatomic) NSString *pathToColor;
 @property (nonatomic) NSString *folderName;
 @property (nonatomic) NSString *pathToLevel;
+@property (nonatomic) NSMutableDictionary *levelDict;
+
 @end
 
-@implementation FPObjectsManager
+@implementation FPLevelManager
 @synthesize multiplayer;
 - (id)init
 {
@@ -28,13 +30,12 @@
 - (void)parce
 {
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
-    _levels = [[NSArray arrayWithContentsOfFile:plistPath] objectAtIndex:_gameType];
-    //[self configFields:[_levels objectAtIndex:_level]];
-    //_segments = [self getSegmentsFromElements:[_levels objectAtIndex:_level]];
-    [self initField:[_levels objectAtIndex:_level]];
-   
+    _plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    _levels = [_plist objectAtIndex:_gameType];
+    _levelDict = [_levels objectAtIndex:_level];
+    [self initField:_levelDict];
 }
-- (void)initField:(NSDictionary *)level
+- (void)initField:(NSMutableDictionary *)level
 {
     _pathToLevel = [NSString stringWithFormat:@"Levels/%@",
                     [level valueForKey:@"folder"],
@@ -51,6 +52,7 @@
     _colorField.image = color;
     _grayField.image = gray;
     _grayLinedFiewld.image = gray_lined;
+    _levelName = [level valueForKey:@"name"];
     _segments = [self getSegmentsFromElements:[level valueForKey:@"elements"]];
     _soundURL = [self getSoundURL];
     
@@ -66,7 +68,7 @@
                           [elements indexOfObject:element]+1, nil];
         
         PDFImage *image = [PDFImage imageNamed:path];
-        CGRect adaptedFrame = CGRectMake(((nativePoint.x*.5f)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y*.5f)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
+        CGRect adaptedFrame = CGRectMake(((nativePoint.x)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
         Segment *segment = [[Segment alloc] initWithFrame:[self getAdaptedRectFromSize:image.size]];
         segment.image = image;
         segment.rect = adaptedFrame;
@@ -150,9 +152,17 @@
     result.size.width = rect.size.width*multiplayer;
     return result;
 }
-+(FPObjectsManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
+
+#pragma mark - Custom Accssesors
+- (NSInteger)count
 {
-    FPObjectsManager *manager = [FPObjectsManager new];
+    return _segments.count;
+}
+#pragma mark - Publick Medoths
+
++(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
+{
+    FPLevelManager *manager = [FPLevelManager new];
     manager.gameType = type;
     manager.level = level;
     [manager parce];

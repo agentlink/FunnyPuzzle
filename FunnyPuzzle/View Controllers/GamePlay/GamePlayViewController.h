@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GameModel.h"
 
 @interface GamePlayViewController : UIViewController
-@property (nonatomic) FPObjectsManager *level;
 
 @end

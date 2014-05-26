@@ -14,5 +14,5 @@
 @property (nonatomic, strong) PDFImage *image;
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic, readonly) PDFImageView *imageView;
-
+@property (nonatomic) BOOL inPlase;
 @end

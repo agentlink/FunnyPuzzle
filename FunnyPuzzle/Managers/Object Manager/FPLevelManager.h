@@ -10,7 +10,7 @@
 #import <PDFImage/PDFImage.h>
 #import "Segment.h"
 
-@interface FPObjectsManager : NSObject
+@interface FPLevelManager : NSObject
 
 @property (nonatomic, strong) NSArray *segments;
 @property (nonatomic) NSArray *segmentsStrings;
@@ -22,7 +22,9 @@
 @property (nonatomic) NSString *levelName;
 @property (nonatomic) NSURL *soundURL;
 @property (nonatomic) CGRect fieldFrame;
-//@property (nonatomic, strong)
+@property (nonatomic, readonly) NSInteger count;
 
-+(FPObjectsManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
+- (void)saveLevel;
++(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
+
 @end

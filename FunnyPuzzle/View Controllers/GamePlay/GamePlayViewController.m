@@ -7,7 +7,7 @@
 //
 
 #import "GamePlayViewController.h"
-
+#import "GameModel.h"
 
 @interface GamePlayViewController ()
 {
@@ -20,7 +20,10 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
-@property (nonatomic) FPObjectsManager *man;
+@property (nonatomic, weak) IBOutlet UIButton *back;
+
+@property (nonatomic) FPLevelManager *level;
+@property (nonatomic, weak) IBOutlet PDFImageView *field;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -37,43 +40,85 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-    }
+            }
     return self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    for (Segment *s in _man.segments) {
+    for (Segment *s in _level.segments) {
         [self.view addSubview:s];
+        CGRect rect = s.frame;
+        rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
+        rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
+        s.frame = rect;
+        s.transform = CGAffineTransformMakeScale(0, 0);
+        s.alpha = 0;
+        [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            s.transform = CGAffineTransformMakeScale(1.2, 1.2);
+            s.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1f animations:^{
+                s.transform = CGAffineTransformMakeScale(1, 1);
+            }];
+        }];
     }
-    [_centerView addSubview:_man.grayLinedFiewld];
-    
+    [_centerView addSubview:[GameModel sharedInstance].currentField];
+    _field = [GameModel sharedInstance].currentField;
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
     CGPoint origin;
-    centerPoint.x = centerPoint.x-(CGRectGetWidth(_man.grayLinedFiewld.bounds)*.5f);
-    centerPoint.y = centerPoint.y-(CGRectGetHeight(_man.grayLinedFiewld.bounds)*.5f);
-    [GameModel sharedInstance].manager.grayLinedFiewld = _man.grayLinedFiewld;
-    origin.x = centerPoint.x+CGRectGetMinX(_man.grayLinedFiewld.superview.frame);
-    origin.y = centerPoint.y+CGRectGetMinY(_man.grayLinedFiewld.superview.frame);
-    _man.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_man.grayLinedFiewld.frame), CGRectGetHeight(_man.grayLinedFiewld.frame));
-    
-    [GameModel sharedInstance].fieldFrame = _man.grayLinedFiewld.frame;
+    centerPoint.x = centerPoint.x-(CGRectGetWidth(_level.grayLinedFiewld.bounds)*.5f);
+    centerPoint.y = centerPoint.y-(CGRectGetHeight(_level.grayLinedFiewld.bounds)*.5f);
+    [GameModel sharedInstance].level.grayLinedFiewld = _level.grayLinedFiewld;
+    origin.x = centerPoint.x+CGRectGetMinX(_level.grayLinedFiewld.superview.frame);
+    origin.y = centerPoint.y+CGRectGetMinY(_level.grayLinedFiewld.superview.frame);
+    _level.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_level.grayLinedFiewld.frame), CGRectGetHeight(_level.grayLinedFiewld.frame));
+    [GameModel sharedInstance].fieldFrame = _level.grayLinedFiewld.frame;
     [GameModel sharedInstance].fieldOrigin = origin;
+    _field.transform = CGAffineTransformMakeScale(0, 0);
+    _field.alpha = 0;
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _field.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        _field.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1f animations:^{
+            _field.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //FPGameType *gt=[GameObject sharedInstance].gameType;
-    //FPObjectsManager *man = [GameObject sharedInstance].manager;
-    _man = _level;
+    _level = [GameModel sharedInstance].level;
+    UIFont *font = [UIFont fontWithName:@"KBCuriousSoul" size:60];
+    _next.titleLabel.font = font;
+    _prew.titleLabel.font = font;
+    _next.layer.zPosition = MAXFLOAT;
+    _prew.layer.zPosition = MAXFLOAT;
+    
 }
-
+- (void) updateLevel
+{
+    _level = [GameModel sharedInstance].level;
+    [self viewDidAppear:YES];
+}
+- (void)removeObjects
+{
+    for (UIView *v in _level.segments) {
+        [UIView animateWithDuration:0.3 animations:^{
+            v.transform = CGAffineTransformMakeScale(0, 0);
+            v.alpha = 0;
+            _field.transform = CGAffineTransformMakeScale(0, 0);
+            _field.alpha = 0;
+        } completion:^(BOOL finished) {
+            [v removeFromSuperview];
+        }];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -81,11 +126,15 @@
 }
 - (IBAction)next:(id)sender
 {
-    
+    [self removeObjects];
+    _level = [[GameModel sharedInstance] nextLevel];
+    [self updateLevel];
 }
 - (IBAction)prew:(id)sender
 {
-    
+    [self removeObjects];
+    _level = [[GameModel sharedInstance] prewLevel];
+    [self updateLevel];
 }
 - (IBAction)back:(id)sender
 {

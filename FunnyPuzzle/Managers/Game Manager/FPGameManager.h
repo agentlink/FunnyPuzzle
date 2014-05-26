@@ -20,9 +20,6 @@
 @property (nonatomic) BOOL displayWords;
 @property (nonatomic) BOOL vibrateWhenDragPuzzles;
 @property (nonatomic) BOOL vibrateWhenPieceInPlace;
-@property (nonatomic) int currentLevel;
-@property (nonatomic) FPGameMode gameMode;
-@property (nonatomic) FPGameType gameType;
 
 - (void) setSettings;
 - (void) changeSettings:(BOOL)value forKey:(NSString*)key;
