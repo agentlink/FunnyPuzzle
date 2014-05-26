@@ -24,7 +24,7 @@ static FPGameManager *_instance=nil;
         if (nil==_instance) {
             _instance=[[self alloc] init];
             [_instance loadNewAdv];
-        }        
+        }
     }
     return _instance;
 }
@@ -36,15 +36,20 @@ static FPGameManager *_instance=nil;
         [defaults setBool:YES forKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         [defaults setBool:YES forKey:DISPLAY_INNER_BORDERS];
         [defaults setBool:YES forKey:DISPLAY_WORDS];
+        [defaults setBool:YES forKey:MUSIC];
+        [defaults setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0] forKey:LANGUAGE];
         [defaults synchronize];
         _vibrate=YES;
         _playSoundWhenImageAppear=YES;
         _displayInnerBorders=YES;
+        _language = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     }
     else{
         _vibrate=[defaults boolForKey:VIBRATE];
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
+        _music=[defaults boolForKey:MUSIC];
+        _language = [defaults objectForKey:LANGUAGE];
     }
 }
 
@@ -61,7 +66,7 @@ static FPGameManager *_instance=nil;
 - (void) loadNewAdv{
     _instance->interstitial_.delegate=nil;
     _instance->interstitial_=nil;
-    _instance->interstitial_ = [[GADInterstitial alloc] init];    
+    _instance->interstitial_ = [[GADInterstitial alloc] init];
     _instance->interstitial_.delegate=_instance;
     _instance->interstitial_.adUnitID = GOOGLE_ADMOBS_ID;
     [_instance->interstitial_ loadRequest:[GADRequest request]];
