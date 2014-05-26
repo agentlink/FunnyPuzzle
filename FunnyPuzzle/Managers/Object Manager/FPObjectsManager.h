@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <PDFImage/PDFImage.h>
+#import "Segment.h"
+
 @interface FPObjectsManager : NSObject
 
 @property (nonatomic, strong) NSArray *segments;
@@ -19,6 +21,7 @@
 @property (nonatomic) int level;
 @property (nonatomic) NSString *levelName;
 @property (nonatomic) NSURL *soundURL;
+@property (nonatomic) CGRect fieldFrame;
 //@property (nonatomic, strong)
 
 +(FPObjectsManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;

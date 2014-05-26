@@ -118,7 +118,9 @@
 }
 - (IBAction)play:(id)sender
 {
+    [FPGameManager sharedInstance].gameType = FPGameTypeFirs;
     UIViewController *cont = [[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
+    //cont.
     [self.navigationController pushViewController:cont animated:YES];
 }
 /*

@@ -7,11 +7,12 @@
 //
 
 #import "Segment.h"
+#import "GameModel.h"
 
 @interface Segment ()
 
 //- (IBAction)ViewClick:(id)sender;
-@property (nonatomic, strong) IBOutlet PDFImageView *imageView;
+@property (nonatomic) BOOL dragEnabled;
 @end
 
 @implementation Segment
@@ -29,7 +30,7 @@ int i=1;
             _imageView = [[PDFImageView alloc] initWithFrame:frame];
             [self addSubview:_imageView];
         }
-        [self config];
+        //[self config];
         }
     return self;
 }
@@ -41,7 +42,7 @@ int i=1;
             _imageView = [[PDFImageView alloc] initWithFrame:self.frame];
             [self addSubview:_imageView];
         }
-        [self config];
+        //[self config];
         }
     return self;
 }
@@ -49,8 +50,16 @@ int i=1;
 - (void)config
 {
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [self addGestureRecognizer:pan];
+    [_imageView addGestureRecognizer:pan];
     
+}
+- (void)checkForRightPlace:(Segment *)segment
+{
+    //[GameModel sharedInstance].manager.grayLinedFiewld.superview.backgroundColor = [UIColor redColor];
+    CGPoint currentPoint = [segment frame].origin;
+    CGPoint oser =  [GameModel sharedInstance].fieldOrigin;
+    CGPoint pointInPlace = CGPointMake(currentPoint.x+oser.x, currentPoint.y+oser.y);
+    //if (CGPointEqualToPoint ())
 }
 - (void)setImage:(PDFImage *)image
 {
@@ -59,7 +68,10 @@ int i=1;
         _imageView = [[PDFImageView alloc] initWithFrame:self.frame];
         [self addSubview:_imageView];
     }
+    //_imageView.backgroundColor = [UIColor grayColor];
+    _imageView.clipsToBounds = YES;
     _imageView.image = image;
+    [self config];
 }
 - (void)setImagePath:(NSString *)imagePath
 {
@@ -72,21 +84,57 @@ int i=1;
         [_imageView removeFromSuperview];
     }
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+
+    UITouch *touch1 = [touches anyObject];
+    CGPoint touchLocation = [touch1 locationInView:self];
+    CGRect startRect = [self frame];
+    NSLog(@"%i", CGRectContainsPoint(startRect, touchLocation));
+    NSLog(@"%@", [self colorOfPoint:touchLocation]);
+    NSLog(@"alpha: %f", CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor]));
+    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
+        pp = CGPointMake([touch1 locationInView:self.superview].x, [touch1 locationInView:self.superview].y);
+        p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
+        _dragEnabled = YES;
+    }
+}
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
-    if (recognizer.state==UIGestureRecognizerStateBegan)
-        {
-            pp = CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
-            p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
-            
-            }
-    if (recognizer.state == UIGestureRecognizerStateChanged)
+    if ((recognizer.state == UIGestureRecognizerStateChanged) && _dragEnabled)
     {
             CGPoint p2=CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
             CGPoint p1 = CGPointMake(p2.x-p.x, p2.y-p.y);
             self.layer.position=p1;
+    } else if (recognizer.state == UITouchPhaseEnded)
+    {
+        [self checkForRightPlace:self];
+        _dragEnabled = NO;
+        
     }
     
+}
+- (UIColor *) colorOfPoint:(CGPoint)point
+{
+    unsigned char pixel[4] = {0};
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
+    
+    CGContextTranslateCTM(context, -point.x, -point.y);
+    
+    [self.layer renderInContext:context];
+    
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    //NSLog(@"pixel: %d %d %d %d", pixel[0], pixel[1], pixel[2], pixel[3]);
+    
+    UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
+    
+    return color;
 }
 - (void)dealloc
 {

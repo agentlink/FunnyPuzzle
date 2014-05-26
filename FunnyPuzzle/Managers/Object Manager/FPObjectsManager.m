@@ -7,7 +7,7 @@
 //
 
 #import "FPObjectsManager.h"
-#import "Segment.h"
+#import "FPSoundManager.h"
 @interface FPObjectsManager ()
 @property (nonatomic, strong) NSArray *levels;
 @property (nonatomic) float multiplayer;
@@ -44,9 +44,10 @@
     PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
     PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray_lines", _pathToColor]];
     [self calcMultiplayerFromSize:color.size];
-    _colorField = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
-    _grayField = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
-    _grayLinedFiewld = [[PDFImageView alloc] initWithFrame:[self getAdaptedRectFromSize:color.size]];
+    _fieldFrame = [self getAdaptedRectFromSize:color.size];
+    _colorField = [[PDFImageView alloc] initWithFrame:_fieldFrame];
+    _grayField = [[PDFImageView alloc] initWithFrame:_fieldFrame];
+    _grayLinedFiewld = [[PDFImageView alloc] initWithFrame:_fieldFrame];
     _colorField.image = color;
     _grayField.image = gray;
     _grayLinedFiewld.image = gray_lined;
@@ -65,11 +66,11 @@
                           [elements indexOfObject:element]+1, nil];
         
         PDFImage *image = [PDFImage imageNamed:path];
-        CGRect adaptedFrame = CGRectMake(nativePoint.x*multiplayer, nativePoint.y*multiplayer, image.size.width*multiplayer, image.size.height*multiplayer);
+        CGRect adaptedFrame = CGRectMake(((nativePoint.x*.5f)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y*.5f)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
         Segment *segment = [[Segment alloc] initWithFrame:[self getAdaptedRectFromSize:image.size]];
         segment.image = image;
         segment.rect = adaptedFrame;
-        segment.backgroundColor = [UIColor redColor];
+        //segment.backgroundColor = [UIColor redColor];
         [result addObject:segment];
     }
     

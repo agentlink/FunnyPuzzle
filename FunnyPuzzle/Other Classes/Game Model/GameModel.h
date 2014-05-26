@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FPObjectsManager.h"
+#import "FPGameManager.h"
 
 @interface GameModel : NSObject
 
@@ -15,7 +16,11 @@
 @property (nonatomic) FPGameType *gameType;
 @property (nonatomic) int points;
 @property (nonatomic, strong) FPObjectsManager *manager;
+@property (nonatomic) CGRect fieldFrame;
+@property (nonatomic) CGPoint fieldOrigin;
+@property (nonatomic) PDFImageView *currentField;
 
+- (void)checkForRightPlace:(Segment *)segment;
 + (GameModel *)sharedInstance;
 
 @end

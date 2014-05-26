@@ -176,11 +176,9 @@
 		8443DDD1192F4796009F1EF8 /* elephant_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elephant_ru.mp3; sourceTree = "<group>"; };
 		8443DDD2192F4796009F1EF8 /* excellent_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = excellent_ru.mp3; sourceTree = "<group>"; };
 		8443DDD3192F4796009F1EF8 /* fish_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fish_ru.mp3; sourceTree = "<group>"; };
-		8443DDD4192F4796009F1EF8 /* icecream_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = icecream_ru.mp3; sourceTree = "<group>"; };
 		8443DDD5192F4796009F1EF8 /* lamb_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lamb_ru.mp3; sourceTree = "<group>"; };
 		8443DDD6192F4796009F1EF8 /* octopus_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = octopus_ru.mp3; sourceTree = "<group>"; };
 		8443DDD7192F4796009F1EF8 /* owl_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = owl_ru.mp3; sourceTree = "<group>"; };
-		8443DDD8192F4796009F1EF8 /* pencil_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pencil_ru.mp3; sourceTree = "<group>"; };
 		8443DDD9192F4796009F1EF8 /* pig_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pig_ru.mp3; sourceTree = "<group>"; };
 		8443DDDA192F4796009F1EF8 /* rabbit_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rabbit_ru.mp3; sourceTree = "<group>"; };
 		8443DDDB192F4796009F1EF8 /* snail_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snail_ru.mp3; sourceTree = "<group>"; };
@@ -513,11 +511,9 @@
 				8443DDD1192F4796009F1EF8 /* elephant_ru.mp3 */,
 				8443DDD2192F4796009F1EF8 /* excellent_ru.mp3 */,
 				8443DDD3192F4796009F1EF8 /* fish_ru.mp3 */,
-				8443DDD4192F4796009F1EF8 /* icecream_ru.mp3 */,
 				8443DDD5192F4796009F1EF8 /* lamb_ru.mp3 */,
 				8443DDD6192F4796009F1EF8 /* octopus_ru.mp3 */,
 				8443DDD7192F4796009F1EF8 /* owl_ru.mp3 */,
-				8443DDD8192F4796009F1EF8 /* pencil_ru.mp3 */,
 				8443DDD9192F4796009F1EF8 /* pig_ru.mp3 */,
 				8443DDDA192F4796009F1EF8 /* rabbit_ru.mp3 */,
 				8443DDDB192F4796009F1EF8 /* snail_ru.mp3 */,
@@ -655,6 +651,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Mobilez365;
 				TargetAttributes = {
+					7FA4BA3D192C9AFD00A772BA = {
+						DevelopmentTeam = 6V5J5WQA79;
+					};
 					7FA4BA5E192C9AFD00A772BA = {
 						TestTargetID = 7FA4BA3D192C9AFD00A772BA;
 					};
@@ -901,7 +900,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Configurator (A8:20:66:14:D1:2F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
@@ -915,7 +915,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -925,6 +925,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
@@ -938,7 +940,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

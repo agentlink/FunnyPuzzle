@@ -7,9 +7,6 @@
 //
 
 #import "GamePlayViewController.h"
-#import "GameModel.h"
-#import "Segment.h"
-#import "FPObjectsManager.h"
 
 
 @interface GamePlayViewController ()
@@ -52,11 +49,16 @@
     [_centerView addSubview:_man.grayLinedFiewld];
     
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
+    CGPoint origin;
     centerPoint.x = centerPoint.x-(CGRectGetWidth(_man.grayLinedFiewld.bounds)*.5f);
     centerPoint.y = centerPoint.y-(CGRectGetHeight(_man.grayLinedFiewld.bounds)*.5f);
-    
+    [GameModel sharedInstance].manager.grayLinedFiewld = _man.grayLinedFiewld;
+    origin.x = centerPoint.x+CGRectGetMinX(_man.grayLinedFiewld.superview.frame);
+    origin.y = centerPoint.y+CGRectGetMinY(_man.grayLinedFiewld.superview.frame);
     _man.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_man.grayLinedFiewld.frame), CGRectGetHeight(_man.grayLinedFiewld.frame));
     
+    [GameModel sharedInstance].fieldFrame = _man.grayLinedFiewld.frame;
+    [GameModel sharedInstance].fieldOrigin = origin;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -69,7 +71,7 @@
     // Do any additional setup after loading the view.
     //FPGameType *gt=[GameObject sharedInstance].gameType;
     //FPObjectsManager *man = [GameObject sharedInstance].manager;
-    _man = [GameModel sharedInstance].manager;
+    _man = _level;
 }
 
 - (void)didReceiveMemoryWarning

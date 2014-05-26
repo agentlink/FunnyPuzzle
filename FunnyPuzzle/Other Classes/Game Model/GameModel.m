@@ -7,16 +7,22 @@
 //
 
 #import "GameModel.h"
-
 @implementation GameModel
 static GameModel *_instance = nil;
 
 - (FPObjectsManager *)manager
 {
-    return [FPObjectsManager gameObjectsWithType:FPGameTypeFirs mode:FPGameModeEase level:0];
+    _manager = [FPObjectsManager gameObjectsWithType:FPGameTypeFirs mode:FPGameModeEase level:0];
+    return _manager;
 }
 
-
+- (void)checkForRightPlace:(Segment *)segment
+{
+    CGPoint currentPoint = [segment frame].origin;
+    CGPoint oser = [_manager.grayLinedFiewld convertPoint:CGPointZero toView:segment];
+    CGPoint win = _manager.fieldFrame.origin;
+    //if (CGPointEqualToPoint ())
+}
 
 #pragma mark - Class Medoths
 + (GameModel *)sharedInstance

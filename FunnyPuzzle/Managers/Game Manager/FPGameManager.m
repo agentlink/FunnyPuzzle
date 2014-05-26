@@ -52,8 +52,8 @@ static FPGameManager *_instance=nil;
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         _displayWords=[defaults boolForKey:DISPLAY_WORDS];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
-        _currentLevel = [defaults integerForKey:@"CurrentLevel"];
-        _gameMode = [defaults integerForKey:@"FPGameMode"];
+        _currentLevel = (int)[defaults integerForKey:@"CurrentLevel"];
+        _gameMode = (int)[defaults integerForKey:@"FPGameMode"];
     }
 }
 
