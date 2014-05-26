@@ -20,7 +20,7 @@ static GameModel *_instance = nil;
     [self loadPrefs];
     if (!_level)
     _level = [FPLevelManager gameObjectsWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
-    _objectsLeft = _level.count;
+    _objectsLeft = _level.segmentsCount;
     _levelWin = [defaults boolForKey:_level.levelName];
     if (_gameMode == FPGameModeEase) {
         _currentField = _level.grayLinedFiewld;
@@ -43,8 +43,8 @@ static GameModel *_instance = nil;
 {
     CGPoint currentPoint = segment.frame.origin;
     CGPoint win = CGPointMake(CGRectGetMinX(_currentField.frame)+CGRectGetMinX(_currentField.superview.frame)+segment.rect.origin.x, CGRectGetMinY(_currentField.frame)+CGRectGetMinY(_currentField.superview.frame)+segment.rect.origin.y);
-    BOOL xPos = 20>=abs(win.x-currentPoint.x);
-    BOOL yPos = 20>=abs(win.y-currentPoint.y);
+    BOOL xPos = 10>=abs(win.x-currentPoint.x);
+    BOOL yPos = 10>=abs(win.y-currentPoint.y);
     if (xPos&&yPos)
     {
         [UIView animateWithDuration:0.2 animations:^{
@@ -65,7 +65,7 @@ static GameModel *_instance = nil;
 }
 - (FPLevelManager *)nextLevel
 {
-    if (_lastLevel+1<_level.count)
+    if (_lastLevel+1<_level.levelsCount)
     {
          _lastLevel++;
     } else {
@@ -73,7 +73,7 @@ static GameModel *_instance = nil;
     }
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
     _level = [FPLevelManager gameObjectsWithType:_gameType mode:_gameMode level:_lastLevel];
-    _objectsLeft = _level.count;
+    _objectsLeft = _level.levelsCount;
     return _level;
 }
 - (FPLevelManager *)prewLevel
@@ -82,11 +82,11 @@ static GameModel *_instance = nil;
     {
         _lastLevel--;
     } else {
-        _lastLevel = _level.count-1;
+        _lastLevel = _level.levelsCount-1;
     }
     _level = [FPLevelManager gameObjectsWithType:_gameType mode:_gameMode level:_lastLevel];
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
-    _objectsLeft = _level.count;
+    _objectsLeft = _level.levelsCount;
     return _level;
 }
 #pragma mark - Class Medoths

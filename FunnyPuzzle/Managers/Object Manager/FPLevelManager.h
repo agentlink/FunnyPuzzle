@@ -22,9 +22,9 @@
 @property (nonatomic) NSString *levelName;
 @property (nonatomic) NSURL *soundURL;
 @property (nonatomic) CGRect fieldFrame;
-@property (nonatomic, readonly) NSInteger count;
+@property (nonatomic, readonly) NSInteger segmentsCount;
+@property (nonatomic, readonly) NSInteger levelsCount;
 
-- (void)saveLevel;
 +(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
 
 @end

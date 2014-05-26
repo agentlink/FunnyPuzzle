@@ -35,9 +35,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-Uq-O54">
-                                <rect key="frame" x="20" y="260" width="46" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-Uq-O54">
+                                <rect key="frame" x="20" y="253" width="46" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="quU-kI-q5W"/>
+                                    <constraint firstAttribute="width" priority="500" constant="46" id="usJ-uH-f97"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -47,9 +51,13 @@
                                     <action selector="prew:" destination="Pkz-W3-G1h" eventType="touchUpInside" id="aDu-uz-uFy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6k-vb-8ZQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6k-vb-8ZQ">
                                 <rect key="frame" x="500" y="258" width="46" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="2bQ-gU-lWf"/>
+                                    <constraint firstAttribute="width" priority="500" constant="46" id="qdF-iE-4Rb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title=">">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -74,15 +82,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.82352941176470584" green="0.9137254901960784" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="sBM-Uq-O54" firstAttribute="leading" secondItem="So1-kI-0Mk" secondAttribute="leading" constant="20" id="7bB-nX-nf2"/>
                             <constraint firstItem="EiM-oW-fls" firstAttribute="leading" secondItem="DwG-m8-XUv" secondAttribute="trailing" id="Bch-UJ-WHP"/>
                             <constraint firstItem="DwG-m8-XUv" firstAttribute="top" secondItem="So1-kI-0Mk" secondAttribute="top" id="Ecx-pd-7Fd"/>
                             <constraint firstItem="8jE-hv-Kkd" firstAttribute="top" secondItem="So1-kI-0Mk" secondAttribute="top" constant="20" id="Fvw-pG-Wma"/>
+                            <constraint firstItem="g05-wy-6lL" firstAttribute="top" secondItem="sBM-Uq-O54" secondAttribute="bottom" constant="15" id="K4o-Wd-cxE"/>
                             <constraint firstItem="8jE-hv-Kkd" firstAttribute="leading" secondItem="So1-kI-0Mk" secondAttribute="leading" constant="20" id="VI6-Bq-SFO"/>
+                            <constraint firstAttribute="trailing" secondItem="i6k-vb-8ZQ" secondAttribute="trailing" constant="22" id="XD7-G0-RMi"/>
                             <constraint firstItem="EiM-oW-fls" firstAttribute="top" secondItem="So1-kI-0Mk" secondAttribute="top" id="Z91-uz-6jX"/>
                             <constraint firstItem="DwG-m8-XUv" firstAttribute="leading" secondItem="So1-kI-0Mk" secondAttribute="leading" id="igk-Ae-ryc"/>
                             <constraint firstAttribute="trailing" secondItem="EiM-oW-fls" secondAttribute="trailing" id="m5t-QC-pvF"/>
                             <constraint firstAttribute="bottom" secondItem="EiM-oW-fls" secondAttribute="bottom" id="mb8-Rg-TD1"/>
                             <constraint firstItem="EiM-oW-fls" firstAttribute="width" secondItem="So1-kI-0Mk" secondAttribute="width" multiplier="0.5" id="t9c-PS-jhu"/>
+                            <constraint firstItem="g05-wy-6lL" firstAttribute="top" secondItem="i6k-vb-8ZQ" secondAttribute="bottom" constant="15" id="vq0-qU-3tb"/>
                             <constraint firstAttribute="bottom" secondItem="DwG-m8-XUv" secondAttribute="bottom" id="zTg-SR-EO3"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
