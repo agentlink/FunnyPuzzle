@@ -59,6 +59,8 @@
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im;
             
+            
+            
             [self.view addSubview:imView];
             int x=20;
             int y=20;
@@ -88,12 +90,10 @@
                 float x = CGRectGetMidX(c.frame);
                 float y = CGRectGetMidY(c.frame);
                 
-              //  CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
-              //  CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-              //                        x+0.2,y,  //Control Point 2
-              //                        x+0.1,y-0.1); // End Point
-                CGPathAddArc(aPath, NULL, x, y, 360, -M_PI_2, M_PI_2, YES);
-            
+                CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+                CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                                      x+0.2,y,  //Control Point 2
+                                      x+0.1,y-0.1); // End Point
                 animation.rotationMode = @"auto";
                 animation.path = aPath;
                 animation.duration = 0.8+arc4random()%4;
@@ -125,10 +125,12 @@
             float x = CGRectGetMidX(imView.frame);
             float y = CGRectGetMidY(imView.frame);
             
-            CGPathMoveToPoint(aPath,nil,x+0.1,y);        //Origin Point
-            CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-                                  x+0.1,y+0.1,  //Control Point 2
-                                  x+0.2,y+0.2); // End Point
+           // CGPathMoveToPoint(aPath,nil,x+0.1,y);        //Origin Point
+          //  CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+           //                       x+0.1,y+0.1,  //Control Point 2
+           //                       x+0.2,y+0.2); // End Point
+            
+            CGPathAddArc(aPath, NULL, x, y, 360, -M_PI_2, M_PI_2, YES);
             
             animation.rotationMode = @"auto";
             animation.path = aPath;
