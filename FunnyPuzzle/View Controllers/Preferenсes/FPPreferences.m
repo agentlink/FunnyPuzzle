@@ -102,6 +102,9 @@
     [self showPickerView:NO];
 }
 
+- (IBAction)changeLanguage:(id)sender {
+    [self showPickerView:YES];
+}
 
 #pragma mark - Other methods
 
@@ -204,6 +207,20 @@
     return row;
 }
 
+- (void) showPickerView:(BOOL)show{
+    if (show==YES){
+        self.pickerHeight.constant=80;
+        [self.pickerView selectRow:[self getRow] inComponent:0 animated:YES];
+    }
+    else {
+        self.pickerHeight.constant=0;
+    }
+    [self.viewForPicker setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark - PickerViewDelegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
@@ -211,8 +228,7 @@
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView
-numberOfRowsInComponent:(NSInteger)component
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
 {
     return _dataSource.count;
 }
@@ -234,21 +250,5 @@ numberOfRowsInComponent:(NSInteger)component
     [self setlanguage];
 }
 
-- (IBAction)changeLanguage:(id)sender {
-    [self showPickerView:YES];
-}
 
-- (void) showPickerView:(BOOL)show{
-    if (show==YES){
-        self.pickerHeight.constant=80;
-        [self.pickerView selectRow:[self getRow] inComponent:0 animated:YES];
-    }
-    else {
-        self.pickerHeight.constant=0;
-    }
-    [self.viewForPicker setNeedsUpdateConstraints];
-    [UIView animateWithDuration:0.5f animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
 @end
