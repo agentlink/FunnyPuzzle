@@ -17,9 +17,8 @@
 @property (nonatomic) BOOL music;
 @property (nonatomic) BOOL displayInnerBorders;
 @property (nonatomic) BOOL playSoundWhenImageAppear;
-@property (nonatomic) BOOL displayWords;
-@property (nonatomic) BOOL vibrateWhenDragPuzzles;
-@property (nonatomic) BOOL vibrateWhenPieceInPlace;
+@property (nonatomic) BOOL vibrate;
+@property (nonatomic, weak) NSString* language;
 
 - (void) setSettings;
 - (void) changeSettings:(BOOL)value forKey:(NSString*)key;

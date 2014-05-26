@@ -11,6 +11,9 @@
 #import "FPLevelManager.h"
 #import "GameModel.h"
 #import <PDFImage/PDFImage.h>
+#import "FPPreferences.h"
+#import <AVFoundation/AVFoundation.h>
+#import "FPSoundManager.h"
 #import "GamePlayViewController.h"
 
 @interface StartViewController ()

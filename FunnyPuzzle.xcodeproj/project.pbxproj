@@ -194,6 +194,12 @@
 		8443DDDC192F4796009F1EF8 /* squirrel_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = squirrel_ru.mp3; sourceTree = "<group>"; };
 		8443DDDD192F4796009F1EF8 /* toad_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toad_ru.mp3; sourceTree = "<group>"; };
 		8443DDDE192F4796009F1EF8 /* well_done_ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = well_done_ru.mp3; sourceTree = "<group>"; };
+		84AEB9BC1933256C00DF942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84AEB9BD1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84AEB9BE1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84AEB9BF1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84E962D4192F512700DC785C /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPObjectsManager.h; sourceTree = "<group>"; };
+		84E962D5192F512700DC785C /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPObjectsManager.m; sourceTree = "<group>"; };
 		84E962D4192F512700DC785C /* FPLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLevelManager.h; sourceTree = "<group>"; };
 		84E962D5192F512700DC785C /* FPLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLevelManager.m; sourceTree = "<group>"; };
 		84E962D9192F737000DC785C /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
