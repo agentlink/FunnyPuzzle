@@ -8,9 +8,13 @@
 
 #import "FPGameManager.h"
 
-@implementation FPGameManager{
+@interface FPGameManager()<GADInterstitialDelegate>{
     GADInterstitial *interstitial_;
 }
+
+@end
+
+@implementation FPGameManager
 
 
 static FPGameManager *_instance=nil;
@@ -19,9 +23,7 @@ static FPGameManager *_instance=nil;
     @synchronized(self){
         if (nil==_instance) {
             _instance=[[self alloc] init];
-            _instance->interstitial_ = [[GADInterstitial alloc] init];
-            _instance->interstitial_.adUnitID = GOOGLE_ADMOBS_ID;
-            [_instance->interstitial_ loadRequest:[GADRequest request]];
+            [_instance loadNewAdv];
         }        
     }
     return _instance;
@@ -29,24 +31,19 @@ static FPGameManager *_instance=nil;
 
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:MUSIC]) {
-        [defaults setBool:YES forKey:VIBRATE_WHEN_DRAG_PUZZLES];
-        [defaults setBool:YES forKey:VIBRATE_WHEN_PIECE_IN_PLACE];
+    if (![defaults objectForKey:VIBRATE]) {
+        [defaults setBool:YES forKey:VIBRATE];
         [defaults setBool:YES forKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         [defaults setBool:YES forKey:DISPLAY_INNER_BORDERS];
         [defaults setBool:YES forKey:DISPLAY_WORDS];
         [defaults synchronize];
-        _vibrateWhenDragPuzzles=YES;
-        _vibrateWhenPieceInPlace=YES;
+        _vibrate=YES;
         _playSoundWhenImageAppear=YES;
-        _displayWords=YES;
         _displayInnerBorders=YES;
     }
     else{
-        _vibrateWhenDragPuzzles=[defaults boolForKey:VIBRATE_WHEN_DRAG_PUZZLES];
-        _vibrateWhenPieceInPlace=[defaults boolForKey:VIBRATE_WHEN_PIECE_IN_PLACE];
+        _vibrate=[defaults boolForKey:VIBRATE];
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
-        _displayWords=[defaults boolForKey:DISPLAY_WORDS];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
     }
 }
@@ -55,6 +52,29 @@ static FPGameManager *_instance=nil;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setBool:value forKey:key];
     [defaults synchronize];
+}
+
+- (void) showFullScreenAdvertisment:(UIViewController*)viewController{
+    [interstitial_ presentFromRootViewController:viewController];
+}
+
+- (void) loadNewAdv{
+    _instance->interstitial_.delegate=nil;
+    _instance->interstitial_=nil;
+    _instance->interstitial_ = [[GADInterstitial alloc] init];    
+    _instance->interstitial_.delegate=_instance;
+    _instance->interstitial_.adUnitID = GOOGLE_ADMOBS_ID;
+    [_instance->interstitial_ loadRequest:[GADRequest request]];
+}
+
+#pragma mark - GADInterstitialDelegate
+
+- (void) interstitialDidReceiveAd:(GADInterstitial *)ad{
+    
+}
+
+- (void) interstitialDidDismissScreen:(GADInterstitial *)ad{
+    [_instance loadNewAdv];
 }
 
 @end
