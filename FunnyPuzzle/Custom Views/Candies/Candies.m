@@ -45,22 +45,35 @@
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
     if (self.BonusLevelKind==0) {
-        if (self.Animation==true) {
+        if (self.Animation) {
             CGRect candieFrame = self.frame;
             candieFrame.origin.x=self.frame.origin.x;
             candieFrame.origin.y=self.frame.origin.y;
             
             CGRect displacedFrame = candieFrame;
-            displacedFrame.origin.x = self.centrBascket.origin.x-self.frame.size.width/4;
+            displacedFrame.origin.x = self.centrBascket.origin.x+self.frame.size.width;
             displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height;
-            
+            self.layer.zPosition=2;
             
             [UIView animateWithDuration:1.8 animations:^{
                 self.frame = displacedFrame;
             } completion:^(BOOL finished){
-                self.backgroundColor=[UIColor clearColor];
+                CGRect displacedFrame1 = candieFrame;
+                displacedFrame1.origin.x = self.centrBascket.origin.x+self.frame.size.width;
+                displacedFrame1.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height+self.centrBascket.size.height+20;
+                self.layer.zPosition=0;
+                [UIView animateWithDuration:1.8 animations:^{
+                self.frame=displacedFrame1;
+                }];
+              //  self.backgroundColor=[UIColor clearColor];
             }
              ];
+        }
+    }
+    
+    if (self.BonusLevelKind==1) {
+        if (self.Animation) {
+            self.backgroundColor=[UIColor clearColor];
         }
     }
     
