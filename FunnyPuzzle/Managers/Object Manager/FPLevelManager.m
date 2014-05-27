@@ -41,9 +41,9 @@
                     [level valueForKey:@"folder"],
                     nil];
     _pathToColor = [NSString stringWithFormat:@"%@/%@", _pathToLevel, [level valueForKey:@"color"]];
-    PDFImage *color = [PDFImage imageNamed:_pathToColor];
+    PDFImage *color = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_result", _pathToColor]];
     PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
-    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray_lines", _pathToColor]];
+    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_bordered", _pathToColor]];
     [self calcMultiplayerFromSize:color.size];
     _fieldFrame = [self getAdaptedRectFromSize:color.size];
     _colorField = [[PDFImageView alloc] initWithFrame:_fieldFrame];
@@ -62,10 +62,14 @@
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     for (NSDictionary *element in elements) {
+        
+    }
+    for (int i = 0; i<elements.count; i++) {
+        NSDictionary *element = [NSDictionary dictionaryWithDictionary:[elements objectAtIndex:i]];
         CGPoint nativePoint = CGPointMake([[[element valueForKey:@"point"] valueForKey:@"x"] floatValue], [[[element valueForKey:@"point"] valueForKey:@"y"] floatValue]);
         NSString *path = [NSString stringWithFormat:@"%@%i",
                           _pathToColor,
-                          [elements indexOfObject:element], nil];
+                          i, nil];
         
         PDFImage *image = [PDFImage imageNamed:path];
         CGRect adaptedFrame = CGRectMake(((nativePoint.x)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
@@ -75,7 +79,6 @@
         //segment.backgroundColor = [UIColor redColor];
         [result addObject:segment];
     }
-    
     return [NSArray arrayWithArray:result];
 }
 - (CGRect)getAdaptedRectFromSize:(CGSize)size
@@ -100,15 +103,15 @@
 
 - (void)calcMultiplayerFromSize:(CGSize)size
 {
-    if (size.width>=280)
+    if (size.width>=size.height)
     {
         multiplayer = 280/size.width;
     }
-    else if (size.height>=280)
+    /*else if (size.height>=size.width)
     {
         multiplayer = 280/size.height;
-    } else {
-        multiplayer = 1.0f;
+    }*/ else {
+        multiplayer = 280/size.height;
     }
 }
 - (NSURL *)getSoundURL
@@ -126,11 +129,11 @@
 }
 - (void)calcMultiplayer:(CGRect)rect
 {
-    if (rect.size.width>=280)
+    if (rect.size.width>=rect.size.height)
     {
         multiplayer = 280/rect.size.width;
     }
-    else if (rect.size.height>=280)
+    else if (rect.size.height>=rect.size.width)
     {
         multiplayer = 280/rect.size.height;
     } else {
@@ -140,14 +143,6 @@
 - (CGRect)getAdaptedRectFromRect:(CGRect)rect
 {
     CGRect result;
-    if (rect.size.width>=280)
-    {
-        multiplayer = 280/rect.size.width;
-    }
-    else if (rect.size.height>=280)
-    {
-        multiplayer = 280/rect.size.height;
-    }
     result.size.height = rect.size.height*multiplayer;
     result.size.width = rect.size.width*multiplayer;
     return result;

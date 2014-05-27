@@ -27,6 +27,7 @@
 
 @property (nonatomic) FPLevelManager *level;
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
+@property (nonatomic) CMMotionManager *manager;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -50,7 +51,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+    [self stopWinAnimations:nil];
     [_centerView addSubview:[GameModel sharedInstance].currentField];
     _field = [GameModel sharedInstance].currentField;
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
@@ -78,6 +79,7 @@
         }*/
         s.transform = CGAffineTransformMakeScale(0, 0);
         s.alpha = 0;
+        
         [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             s.transform = CGAffineTransformMakeScale(1.2, 1.2);
             s.alpha = 1;
@@ -87,7 +89,9 @@
             }];
         }];
     }
-    
+    if ([GameModel sharedInstance].levelWin) {
+        [self startWinAnimations:nil];
+    } else {
     [GameModel sharedInstance].fieldOrigin = origin;
     _field.transform = CGAffineTransformMakeScale(0, 0);
     _field.alpha = 0;
@@ -99,12 +103,20 @@
             _field.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
-    NSOperationQueue *theQueue = [[NSOperationQueue alloc] init];
+    }
     
+   
 }
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self stopWinAnimations:self.view];
 }
 - (void)viewDidLoad
 {
@@ -118,7 +130,7 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
     
     [self.view addGestureRecognizer:pan];
-    
+    [GameModel sharedInstance].gamePlayViewController = self;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -150,6 +162,67 @@
             [v removeFromSuperview];
         }];
     }
+}
+- (void)startWinAnimations:(UIView *)view
+{
+    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, star.size.width, star.size.height)];
+    imageView.image = star;
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = 4;
+    animationGroup.repeatCount = INFINITY;
+    CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    rotate.fromValue = @0;
+    rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
+    rotate.duration = 10;
+    animationGroup.animations = @[rotate];
+    
+    [imageView.layer addAnimation:animationGroup forKey:@"pulse"];
+    imageView.layer.position = _centerView.layer.position;// _field.layer.position;
+    imageView.transform = CGAffineTransformMakeScale(0, 0);
+    imageView.tag = 42;
+    
+    PDFImageView *res = [GameModel sharedInstance].level.colorField;
+    res.frame = _field.frame;
+    res.transform = CGAffineTransformMakeScale(2, 2);
+    res.alpha = 0;
+    res.layer.zPosition = 255;
+    res.tag = 43;
+    [_centerView insertSubview:res atIndex:0];
+    [self.view insertSubview:imageView atIndex:0];
+    [self removeObjects];
+    [UIView animateWithDuration:0.2 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(1, 1);
+        _field.layer.shadowColor = [[UIColor whiteColor] CGColor];
+        _field.layer.shadowRadius = 20;
+        _field.layer.shadowOffset = CGSizeMake(0, 0);
+        _field.layer.shadowOpacity = 1;
+        res.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        res.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            res.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
+}
+- (void)stopWinAnimations:(UIView *)view
+{
+    PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
+    PDFImageView *res = (PDFImageView *)[self.view viewWithTag:43];
+    [UIView animateWithDuration:0.1 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        res.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            imageView.transform = CGAffineTransformMakeScale(0, 0);
+            res.transform = CGAffineTransformMakeScale(1.5, 1.5);
+            res.alpha = 0;
+        } completion:^(BOOL finished) {
+            [imageView removeFromSuperview];
+            [res removeFromSuperview];
+           
+        }];
+    }];
 }
 #pragma mark - IBAction
 - (IBAction)next:(id)sender
@@ -184,6 +257,10 @@
         [[GameModel sharedInstance] checkForRightPlace:_dragingSegment];
         
     }
+}
+- (void)levelFinish
+{
+    [self startWinAnimations:nil];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

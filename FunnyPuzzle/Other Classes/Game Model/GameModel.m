@@ -22,12 +22,7 @@ static GameModel *_instance = nil;
     _level = [FPLevelManager gameObjectsWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.segmentsCount;
     _levelWin = [defaults boolForKey:_level.levelName];
-    if ([defaults boolForKey:_level.levelName]) {
-        _currentField = _level.colorField;
-        //_level.segments = nil;
-        return _level;
-    }
-    
+        
     if (_gameMode == FPGameModeEase) {
         _currentField = _level.grayLinedFiewld;
     } else {
@@ -62,6 +57,8 @@ static GameModel *_instance = nil;
             [segment setInPlase:YES];
             if (_objectsLeft<=1) {
                 [defaults setBool:YES forKey:_level.levelName];
+                if ([_gamePlayViewController respondsToSelector:@selector(levelFinish)])
+                    [_gamePlayViewController levelFinish];
             } else {
                 _objectsLeft--;
             }
