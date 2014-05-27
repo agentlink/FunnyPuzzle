@@ -15,9 +15,7 @@
   NSArray *images;
 }
 @property (nonatomic, weak) IBOutlet UIView *leftView;
-@property (nonatomic, weak) IBOutlet UIView *rightView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leftConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
@@ -25,9 +23,13 @@
 @property (nonatomic) Segment *dragingSegment;
 @property (nonatomic) CGPoint touchPoint;
 
+@property (nonatomic) UIDynamicAnimator *dAnimator;
+@property (nonatomic) UISnapBehavior *snap;
+@property (nonatomic) UICollisionBehavior *collisions;
+@property (nonatomic) UILabel *label;
+
 @property (nonatomic) FPLevelManager *level;
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
-@property (nonatomic) CMMotionManager *manager;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -52,6 +54,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self stopWinAnimations:nil];
+    //if (_level)
+    //[self updateLevel];
     [_centerView addSubview:[GameModel sharedInstance].currentField];
     _field = [GameModel sharedInstance].currentField;
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
@@ -104,10 +108,7 @@
         }];
     }];
     }
-    
-   
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -117,6 +118,7 @@
 {
     [super viewDidDisappear:animated];
     [self stopWinAnimations:self.view];
+    [GameModel sharedInstance].level = nil;
 }
 - (void)viewDidLoad
 {
@@ -131,6 +133,12 @@
     
     [self.view addGestureRecognizer:pan];
     [GameModel sharedInstance].gamePlayViewController = self;
+    _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    _collisions = [[UICollisionBehavior alloc] init];
+    _collisions.translatesReferenceBoundsIntoBoundary = YES;
+    [_dAnimator addBehavior:_collisions];
+    
+
 }
 - (void)didReceiveMemoryWarning
 {
@@ -188,6 +196,19 @@
     res.alpha = 0;
     res.layer.zPosition = 255;
     res.tag = 43;
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = _level.levelName;
+    label.font = [UIFont fontWithName:@"KBCuriousSoul" size:30];
+    label.tag = 44;
+    [label sizeToFit];
+    label.layer.position = CGPointMake(CGRectGetMinX(_leftView.frame), CGRectGetMinY(_leftView.frame));
+    [self.view addSubview:label];
+    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame))];
+    _snap.damping = 0.2;
+    [_dAnimator addBehavior:_snap];
+    [_collisions addItem:label];
+
     [_centerView insertSubview:res atIndex:0];
     [self.view insertSubview:imageView atIndex:0];
     [self removeObjects];
@@ -209,19 +230,28 @@
 {
     PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
     PDFImageView *res = (PDFImageView *)[self.view viewWithTag:43];
-    [UIView animateWithDuration:0.1 animations:^{
-        imageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
-        res.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    res.layer.zPosition = -1;
+    UILabel *label = (UILabel *)[self.view viewWithTag:44];
+    [_dAnimator removeBehavior:_snap];
+    [_collisions removeItem:label];
+    [UIView animateWithDuration:0.2 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(0, 0);
+        res.transform = CGAffineTransformMakeScale(0, 0);
+        res.alpha = 0;
+        //label.transform = CGAffineTransformMakeScale(0, 0);
+        label.alpha = 0;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2 animations:^{
-            imageView.transform = CGAffineTransformMakeScale(0, 0);
-            res.transform = CGAffineTransformMakeScale(1.5, 1.5);
-            res.alpha = 0;
-        } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.3 animations:^{
+//            imageView.transform = CGAffineTransformMakeScale(0, 0);
+//            res.transform = CGAffineTransformMakeScale(0, 0);
+//            res.alpha = 0;
+//        } completion:^(BOOL finished) {
+        
+            [label removeFromSuperview];
             [imageView removeFromSuperview];
             [res removeFromSuperview];
            
-        }];
+//        }];
     }];
 }
 #pragma mark - IBAction
@@ -313,26 +343,4 @@
         }
     }
 }
-
-//if (!CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0 && !_dragingSegment) {
-//    if (s.layer.zPosition == 1) {
-//        _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
-//        _dragingSegment = s;
-//        s.layer.zPosition = 1;
-//    }
-//} else {
-//    s.layer.zPosition = 0;
-//}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

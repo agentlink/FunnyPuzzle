@@ -47,6 +47,7 @@
 		7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */; };
 		7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */; };
 		7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */; };
+		7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE17A8119353913008BBC3F /* AccelerometerManager.m */; };
 		8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */; };
 		8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */; };
 		8443DDE1192F4796009F1EF8 /* apple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB8192F4796009F1EF8 /* apple.mp3 */; };
@@ -161,6 +162,8 @@
 		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
 		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
 		7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7FE17A8019353913008BBC3F /* AccelerometerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerManager.h; sourceTree = "<group>"; };
+		7FE17A8119353913008BBC3F /* AccelerometerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerManager.m; sourceTree = "<group>"; };
 		8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB8192F4796009F1EF8 /* apple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apple.mp3; sourceTree = "<group>"; };
@@ -332,6 +335,7 @@
 		7F316169192C9FFC00C49EAE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				7FE17A7F19353913008BBC3F /* Accelerometer Manager */,
 				84E962D3192F512700DC785C /* Object Manager */,
 				84F85BF6192F370500BDECB5 /* Game Manager */,
 				84F85BBE192E97BB00BDECB5 /* Sound Manager */,
@@ -511,6 +515,16 @@
 			);
 			name = Fonts;
 			path = Resources/Fonts;
+			sourceTree = "<group>";
+		};
+		7FE17A7F19353913008BBC3F /* Accelerometer Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FE17A8019353913008BBC3F /* AccelerometerManager.h */,
+				7FE17A8119353913008BBC3F /* AccelerometerManager.m */,
+			);
+			name = "Accelerometer Manager";
+			path = "Managers/Accelerometer Manager";
 			sourceTree = "<group>";
 		};
 		8443DDB4192F4796009F1EF8 /* Background music */ = {
@@ -807,6 +821,7 @@
 				84E962D6192F512700DC785C /* FPLevelManager.m in Sources */,
 				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
+				7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
 				7F316182192D092300C49EAE /* FPPreferences.m in Sources */,

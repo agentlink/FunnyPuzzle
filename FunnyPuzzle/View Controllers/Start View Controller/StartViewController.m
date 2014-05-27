@@ -86,7 +86,6 @@
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
     horisontal2.minimumRelativeValue = @(-15);
     horisontal2.maximumRelativeValue = @(15);
-    
     UIInterpolatingMotionEffect *horisontal3 =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"

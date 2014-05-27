@@ -21,10 +21,10 @@
 @property (nonatomic) CGRect fieldFrame;
 @property (nonatomic) CGPoint fieldOrigin;
 @property (nonatomic) PDFImageView *currentField;
-@property (nonatomic, weak) GamePlayViewController *gamePlay;
+@property (nonatomic, weak) GamePlayViewController *gamePlayViewController;
 @property (nonatomic) NSInteger objectsLeft;
 @property (nonatomic) BOOL levelCompleet;
-@property (nonatomic) GamePlayViewController *gamePlayViewController;
+
 - (void)checkForRightPlace:(Segment *)segment;
 - (FPLevelManager *)nextLevel;
 - (FPLevelManager *)prewLevel;

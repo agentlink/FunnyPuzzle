@@ -60,10 +60,6 @@
 - (NSArray *)getSegmentsFromElements:(NSArray *)elements
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *element in elements) {
-        
-    }
     for (int i = 0; i<elements.count; i++) {
         NSDictionary *element = [NSDictionary dictionaryWithDictionary:[elements objectAtIndex:i]];
         CGPoint nativePoint = CGPointMake([[[element valueForKey:@"point"] valueForKey:@"x"] floatValue], [[[element valueForKey:@"point"] valueForKey:@"y"] floatValue]);
