@@ -15,8 +15,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIImage *im=[UIImage imageNamed:@"flower_img"];
-        self.backgroundColor=[UIColor colorWithPatternImage:im];
     }
     return self;
 }

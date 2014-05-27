@@ -7,6 +7,7 @@
 //
 
 #import "Candies.h"
+#import "FPBonusViewController.h"
 
 @implementation Candies
 
@@ -16,6 +17,7 @@
     if (self) {
         // Initialization code
         self.Animation=false;
+        self.click=false;
         [self config];
     }
     return self;
@@ -29,7 +31,7 @@
         CGRect r=CGRectMake(67 , 113, 104, 81);
         self.centrBascket = r;
           self.Animation=false;
-        
+        self.click=false;
         [self config];
     }
     return self;
@@ -55,16 +57,17 @@
             displacedFrame.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height;
             self.layer.zPosition=2;
             
-            [UIView animateWithDuration:1.8 animations:^{
+            [UIView animateWithDuration:0.8 animations:^{
                 self.frame = displacedFrame;
             } completion:^(BOOL finished){
                 CGRect displacedFrame1 = candieFrame;
                 displacedFrame1.origin.x = self.centrBascket.origin.x+self.frame.size.width;
                 displacedFrame1.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height+self.centrBascket.size.height+20;
                 self.layer.zPosition=0;
-                [UIView animateWithDuration:1.8 animations:^{
+                [UIView animateWithDuration:0.8 animations:^{
                 self.frame=displacedFrame1;
                 }];
+                self.click=true;
               //  self.backgroundColor=[UIColor clearColor];
             }
              ];
@@ -74,6 +77,14 @@
     if (self.BonusLevelKind==1) {
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
+            self.click=true;
+        }
+    }
+    
+    if (self.BonusLevelKind==2) {
+        if (self.Animation) {
+            self.backgroundColor=[UIColor clearColor];
+            self.click=true;
         }
     }
     
