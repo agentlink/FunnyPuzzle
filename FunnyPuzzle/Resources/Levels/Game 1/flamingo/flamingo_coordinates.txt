@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Flamingo");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Фламинго");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "flamingo");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "152 16 136 128");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "11 142 126 222");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "85 40 228 245");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "280 95 85 230");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "515");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "35");

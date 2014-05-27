@@ -1,0 +1,13 @@
+"toad_gray_lines.svg" & "toad_gray.svg" & "toad.svg":
+X - 400 px
+Y - 239 px
+width - 355 px
+height - 355 px
+
+toad1.svg:
+X - 2 px
+Y - 176 px
+
+toad2.svg:
+X - 152 px
+Y - 17 px

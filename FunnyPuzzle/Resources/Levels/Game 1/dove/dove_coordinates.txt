@@ -1,0 +1,17 @@
+"dove_gray_lines.svg" & "dove_gray.svg" & "dove.svg":
+X - 420 px
+Y - 140 px
+width - 300 px
+height - 300 px
+
+dove1.svg:
+X - 22 px
+Y - 132 px
+
+dove2.svg:
+X - 94 px
+Y - 78 px
+
+dove3.svg
+X - 116 px
+Y - 9 px

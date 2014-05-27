@@ -1,0 +1,17 @@
+"chicken_gray_lines.svg" & "chicken_gray.svg" & "chicken.svg":
+X - 350 px
+Y - 140 px
+width - 350 px
+height - 350 px
+
+chicken1.svg:
+X - 6 px
+Y - 46 px
+
+chicken2.svg:
+X - 142 px
+Y - 122 px
+
+chicken3.svg:
+X - 227 px
+Y - 15 px

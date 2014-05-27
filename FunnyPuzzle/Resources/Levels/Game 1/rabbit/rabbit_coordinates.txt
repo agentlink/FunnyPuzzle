@@ -1,0 +1,17 @@
+"rabbit_gray_lines.svg" & "rabbit_gray.svg" & "rabbit.svg":
+X - 375 px
+Y - 85 px
+width - 370 px
+height - 330 px
+
+rabbit1.svg:
+X - 4 px
+Y - 167 px
+
+rabbit2.svg:
+X - 46 px
+Y - 94 px
+
+rabbit3.svg:
+X - 197 px
+Y - 4 px

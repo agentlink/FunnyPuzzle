@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Goat");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Козлик");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "goat");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "9 103 250 145");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "81 15 39 165");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "210 30 258 30");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "115 248 278 50");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "390");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "100");

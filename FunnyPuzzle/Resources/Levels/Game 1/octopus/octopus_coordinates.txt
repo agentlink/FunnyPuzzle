@@ -1,0 +1,17 @@
+"octopus_gray_lines.svg" & "octopus_gray.svg" & "octopus.svg":
+X - 420 px
+Y - 140 px
+width - 350 px
+height - 350 px
+
+octopus1.svg:
+X - 2 px
+Y - 133 px
+
+octopus2.svg:
+X - 89 px
+Y - 18 px
+
+octopus3.svg:
+X - 199 px
+Y - 138 px

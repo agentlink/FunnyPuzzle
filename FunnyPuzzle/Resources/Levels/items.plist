@@ -4,12 +4,10 @@
 <array>
 	<array>
 		<dict>
-			<key>finished</key>
-			<false/>
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>ice_cream</string>
+			<string>ice_cream_result</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -32,28 +30,15 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>2_ice_cream</string>
-			<key>gray</key>
-			<string>ice_cream_gray</string>
-			<key>gray_lined</key>
-			<string>ice_cream_gray_lines</string>
+			<string>Game 1/ice_cream</string>
 			<key>name</key>
 			<string>Ice Cream</string>
-			<key>size</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-			</dict>
 		</dict>
 		<dict>
-			<key>finished</key>
-			<false/>
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>pencil</string>
+			<string>pencil_result</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -76,21 +61,15 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>2_pencil</string>
-			<key>gray</key>
-			<string>pencil_gray</string>
-			<key>gray_lined</key>
-			<string>pencil_gray_lines</string>
+			<string>Game 1/pencil</string>
 			<key>name</key>
 			<string>Pencil</string>
 		</dict>
 		<dict>
-			<key>finished</key>
-			<false/>
 			<key>bgColor</key>
-			<string></string>
+			<string>d2e9f9</string>
 			<key>color</key>
-			<string>toad</string>
+			<string>toad_result</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -113,9 +92,507 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>2_toad</string>
+			<string>Game 1/toad</string>
 			<key>name</key>
-			<string>Toad</string>
+			<string>Frogling</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>dove_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>22</integer>
+						<key>y</key>
+						<integer>132</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>94</integer>
+						<key>y</key>
+						<integer>78</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>116</integer>
+						<key>y</key>
+						<integer>9</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/dove</string>
+			<key>name</key>
+			<string>Pigeon</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>pig_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>2</integer>
+						<key>y</key>
+						<integer>49</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>71</integer>
+						<key>y</key>
+						<integer>2</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>231</integer>
+						<key>y</key>
+						<integer>19</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/pig</string>
+			<key>name</key>
+			<string>Piggy</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>rabbit_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>4</integer>
+						<key>y</key>
+						<integer>167</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>46</integer>
+						<key>y</key>
+						<integer>94</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>197</integer>
+						<key>y</key>
+						<integer>4</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/rabbit</string>
+			<key>name</key>
+			<string>Rabbit</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>octopus_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>2</integer>
+						<key>y</key>
+						<integer>133</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>89</integer>
+						<key>y</key>
+						<integer>18</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>199</integer>
+						<key>y</key>
+						<integer>138</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/octopus</string>
+			<key>name</key>
+			<string>Octopus</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>chicken_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>6</integer>
+						<key>y</key>
+						<integer>46</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>142</integer>
+						<key>y</key>
+						<integer>122</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>227</integer>
+						<key>y</key>
+						<integer>15</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/chicken</string>
+			<key>name</key>
+			<string>Hen</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>bear_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>14</integer>
+						<key>y</key>
+						<integer>9</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>17</integer>
+						<key>y</key>
+						<integer>115</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>15</integer>
+						<key>y</key>
+						<integer>232</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/bear</string>
+			<key>name</key>
+			<string>Teddy-bear</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>penguin_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>72</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>137</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>25</integer>
+						<key>y</key>
+						<integer>240</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/penguin</string>
+			<key>name</key>
+			<string>Penguin</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>snake_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>80</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>174</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>151</integer>
+						<key>y</key>
+						<integer>148</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/snake</string>
+			<key>name</key>
+			<string>Snake</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>giraffe_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>28</integer>
+						<key>y</key>
+						<integer>279</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>106</integer>
+						<key>y</key>
+						<integer>227</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>110</integer>
+						<key>y</key>
+						<integer>21</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/giraffe</string>
+			<key>name</key>
+			<string>Giraffe</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>zebra_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>34</integer>
+						<key>y</key>
+						<integer>172</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>12</integer>
+						<key>y</key>
+						<integer>76</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>141</integer>
+						<key>y</key>
+						<integer>11</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/zebra</string>
+			<key>name</key>
+			<string>Zebra</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>goat_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>9</integer>
+						<key>y</key>
+						<integer>87</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>103</integer>
+						<key>y</key>
+						<integer>15</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>250</integer>
+						<key>y</key>
+						<integer>39</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<string>145</string>
+						<key>y</key>
+						<string>165</string>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/goat</string>
+			<key>name</key>
+			<string>Goat</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>flamingo_result</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>152</integer>
+						<key>y</key>
+						<integer>11</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>16</integer>
+						<key>y</key>
+						<integer>142</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>136</integer>
+						<key>y</key>
+						<integer>126</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<string>128</string>
+						<key>y</key>
+						<string>222</string>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/flamingo</string>
+			<key>name</key>
+			<string>Flamingo</string>
 		</dict>
 	</array>
 </array>
