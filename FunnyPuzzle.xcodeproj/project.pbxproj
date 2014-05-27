@@ -46,6 +46,7 @@
 		7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA57045192F42C000CE84F8 /* GameField.storyboard */; };
 		7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */; };
 		7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */; };
+		7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */; };
 		8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */; };
 		8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */; };
 		8443DDE1192F4796009F1EF8 /* apple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB8192F4796009F1EF8 /* apple.mp3 */; };
@@ -159,6 +160,7 @@
 		7FA57045192F42C000CE84F8 /* GameField.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameField.storyboard; path = "View Controllers/GamePlay/GameField.storyboard"; sourceTree = "<group>"; };
 		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
 		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
+		7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB8192F4796009F1EF8 /* apple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apple.mp3; sourceTree = "<group>"; };
@@ -198,8 +200,6 @@
 		84AEB9BD1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84AEB9BE1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84AEB9BF1933328B00DF942A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		84E962D4192F512700DC785C /* FPObjectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPObjectsManager.h; sourceTree = "<group>"; };
-		84E962D5192F512700DC785C /* FPObjectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPObjectsManager.m; sourceTree = "<group>"; };
 		84E962D4192F512700DC785C /* FPLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLevelManager.h; sourceTree = "<group>"; };
 		84E962D5192F512700DC785C /* FPLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLevelManager.m; sourceTree = "<group>"; };
 		84E962D9192F737000DC785C /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */,
 				84E962F3192F80B200DC785C /* SystemConfiguration.framework in Frameworks */,
 				84E962F1192F80A300DC785C /* StoreKit.framework in Frameworks */,
 				84E962EF192F809C00DC785C /* MessageUI.framework in Frameworks */,
@@ -438,6 +439,7 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */,
 				84E962F2192F80B200DC785C /* SystemConfiguration.framework */,
 				84E962F0192F80A300DC785C /* StoreKit.framework */,
 				84E962EE192F809C00DC785C /* MessageUI.framework */,

@@ -22,15 +22,19 @@ static GameModel *_instance = nil;
     _level = [FPLevelManager gameObjectsWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.segmentsCount;
     _levelWin = [defaults boolForKey:_level.levelName];
+    if ([defaults boolForKey:_level.levelName]) {
+        _currentField = _level.colorField;
+        //_level.segments = nil;
+        return _level;
+    }
+    
     if (_gameMode == FPGameModeEase) {
         _currentField = _level.grayLinedFiewld;
     } else {
         _currentField = _level.grayField;
     }
-    /*if ([defaults boolForKey:_level.levelName]) {
-        _currentField = _level.colorField;
-        _level.segments = nil;
-    }*/
+    
+    
     return _level;
 }
 - (void) loadPrefs
@@ -42,7 +46,8 @@ static GameModel *_instance = nil;
 - (void)checkForRightPlace:(Segment *)segment
 {
     CGPoint currentPoint = segment.frame.origin;
-    CGPoint win = CGPointMake(CGRectGetMinX(_currentField.frame)+CGRectGetMinX(_currentField.superview.frame)+segment.rect.origin.x, CGRectGetMinY(_currentField.frame)+CGRectGetMinY(_currentField.superview.frame)+segment.rect.origin.y);
+    CGPoint win = segment.rect.origin;//CGPointMake(CGRectGetMinX(_currentField.frame)+CGRectGetMinX(_currentField.superview.frame)+segment.rect.origin.x, CGRectGetMinY(_currentField.frame)+CGRectGetMinY(_currentField.superview.frame)+segment.rect.origin.y);
+
     BOOL xPos = 10>=abs(win.x-currentPoint.x);
     BOOL yPos = 10>=abs(win.y-currentPoint.y);
     if (xPos&&yPos)
@@ -88,6 +93,11 @@ static GameModel *_instance = nil;
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
     _objectsLeft = _level.levelsCount;
     return _level;
+}
+- (CGRect)calcRect:(Segment *)segment
+{
+    CGPoint win = CGPointMake(CGRectGetMinX(_currentField.frame)+CGRectGetMinX(_currentField.superview.frame)+segment.rect.origin.x, CGRectGetMinY(_currentField.frame)+CGRectGetMinY(_currentField.superview.frame)+segment.rect.origin.y);
+    return CGRectMake(win.x, win.y, CGRectGetWidth(segment.frame), CGRectGetHeight(segment.frame));
 }
 #pragma mark - Class Medoths
 + (GameModel *)sharedInstance

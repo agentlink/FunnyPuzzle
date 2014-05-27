@@ -25,9 +25,7 @@
 @property (nonatomic, weak) IBOutlet PDFImageView *ground3;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground4;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground5;
-
 @property (nonatomic) UIDynamicAnimator *animator;
-- (IBAction)play:(id)sender;
 - (IBAction)goToSettings:(id)sender;
 @end
 
@@ -40,10 +38,10 @@
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1.pdf"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2.pdf"];
     _gamemodeFirst.tap = ^{
-        [self play:self];
+        [self play:self type:FPGameTypeFirs];
     };
     _gamemodeSecond.tap =  ^{
-        [self play:self];
+        [self play:self type:FPGameTypeSecond];
     };
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     CGMutablePathRef aPath = CGPathCreateMutable();
@@ -111,13 +109,13 @@
 {
     
 }
-- (IBAction)play:(id)sender
+- (IBAction)play:(id)sender type:(FPGameType)type
 {
     GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
-    [GameModel sharedInstance].gameType = FPGameTypeFirs;
+        [GameModel sharedInstance].gameType = type;
     [self.navigationController pushViewController:cont animated:YES];
 }
-
+//- (IBAction)playFirst:(id)sender
 - (IBAction)goToSettings:(id)sender {
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     [self.navigationController pushViewController:preferences animated:YES];

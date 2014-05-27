@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic, readonly) PDFImageView *imageView;
 @property (nonatomic) BOOL inPlase;
+
+- (UIColor *)colorOfPoint:(CGPoint)point;
 @end

@@ -8,6 +8,7 @@
 
 #import "GamePlayViewController.h"
 #import "GameModel.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface GamePlayViewController ()
 {
@@ -21,6 +22,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic, weak) IBOutlet UIButton *back;
+@property (nonatomic) Segment *dragingSegment;
+@property (nonatomic) CGPoint touchPoint;
 
 @property (nonatomic) FPLevelManager *level;
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
@@ -35,6 +38,7 @@
 
 @implementation GamePlayViewController
 
+#pragma mark - Lifecicle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,12 +50,32 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
+    [_centerView addSubview:[GameModel sharedInstance].currentField];
+    _field = [GameModel sharedInstance].currentField;
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
+    CGPoint origin;
+    centerPoint.x = centerPoint.x-(CGRectGetWidth(_field.bounds)*.5f);
+    centerPoint.y = centerPoint.y-(CGRectGetHeight(_field.bounds)*.5f);
+    [GameModel sharedInstance].level.grayLinedFiewld = _level.grayLinedFiewld;
+    origin.x = centerPoint.x+CGRectGetMinX(_field.superview.frame);
+    origin.y = centerPoint.y+CGRectGetMinY(_field.superview.frame);
+    _field.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_field.frame), CGRectGetHeight(_field.frame));
+    [GameModel sharedInstance].fieldFrame = _field.frame;
     for (Segment *s in _level.segments) {
         [self.view addSubview:s];
         CGRect rect = s.frame;
         rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
         rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
         s.frame = rect;
+        s.rect = [[GameModel sharedInstance] calcRect:s];
+        if ([GameModel sharedInstance].levelWin) {
+            s.frame = s.rect;
+            s.hidden = YES;
+        } /*else {
+            rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
+            rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
+        }*/
         s.transform = CGAffineTransformMakeScale(0, 0);
         s.alpha = 0;
         [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -63,17 +87,7 @@
             }];
         }];
     }
-    [_centerView addSubview:[GameModel sharedInstance].currentField];
-    _field = [GameModel sharedInstance].currentField;
-    CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
-    CGPoint origin;
-    centerPoint.x = centerPoint.x-(CGRectGetWidth(_level.grayLinedFiewld.bounds)*.5f);
-    centerPoint.y = centerPoint.y-(CGRectGetHeight(_level.grayLinedFiewld.bounds)*.5f);
-    [GameModel sharedInstance].level.grayLinedFiewld = _level.grayLinedFiewld;
-    origin.x = centerPoint.x+CGRectGetMinX(_level.grayLinedFiewld.superview.frame);
-    origin.y = centerPoint.y+CGRectGetMinY(_level.grayLinedFiewld.superview.frame);
-    _level.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_level.grayLinedFiewld.frame), CGRectGetHeight(_level.grayLinedFiewld.frame));
-    [GameModel sharedInstance].fieldFrame = _level.grayLinedFiewld.frame;
+    
     [GameModel sharedInstance].fieldOrigin = origin;
     _field.transform = CGAffineTransformMakeScale(0, 0);
     _field.alpha = 0;
@@ -85,6 +99,8 @@
             _field.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
+    NSOperationQueue *theQueue = [[NSOperationQueue alloc] init];
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -99,8 +115,24 @@
     _prew.titleLabel.font = font;
     _next.layer.zPosition = MAXFLOAT;
     _prew.layer.zPosition = MAXFLOAT;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
+    
+    [self.view addGestureRecognizer:pan];
     
 }
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+-(void) dealloc
+{
+    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+}
+
+
+
+#pragma mark - Private
 - (void) updateLevel
 {
     _level = [GameModel sharedInstance].level;
@@ -119,11 +151,7 @@
         }];
     }
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - IBAction
 - (IBAction)next:(id)sender
 {
     [self removeObjects];
@@ -140,11 +168,84 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark - GestureRecognizers
 
--(void) dealloc
+- (void)panGestureRecognizer:(UIGestureRecognizer *)recognizer
 {
-  
+    
+   // if (recognizer.state == UIGestureRecognizerStateBegan)
+    //{
+    _dragingSegment.layer.anchorPoint = _touchPoint;
+        _dragingSegment.layer.position = [recognizer locationInView:self.view];
+        //NSLog(@"touchBegan");
+    //}
+    if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        [[GameModel sharedInstance] checkForRightPlace:_dragingSegment];
+        
+    }
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch1 = [touches anyObject];
+    CGPoint touchLocation = [touch1 locationInView:self.view];
+    _dragingSegment = nil;
+    NSMutableArray *tapSegments = [[NSMutableArray alloc] init];
+    for (Segment *s in _level.segments) {
+        if (CGRectContainsPoint(s.frame, touchLocation)) {
+            if (s.inPlase) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    s.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                    
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        s.transform = CGAffineTransformMakeScale(1, 1);
+                    }];
+                }];
+            } else {
+                [tapSegments addObject:s];
+            }
+            
+        }
+        
+    }
+    if (tapSegments.count>1) {
+        for (Segment *s in tapSegments) {
+            if (s.layer.zPosition == 1 && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0)
+            {
+                s.layer.zPosition = 1;
+                _dragingSegment = s;
+                _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+            } else if (!_dragingSegment && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
+                s.layer.zPosition = 1;
+                _dragingSegment = s;
+                _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+            } else {
+                s.layer.zPosition = 0;
+            }
+        }
+    } else {
+        Segment *s = [tapSegments firstObject];
+        if (!CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
+            for (Segment *ss in _level.segments) {
+                ss.layer.zPosition = 0;
+            }
+            s.layer.zPosition = 1;
+            _dragingSegment = s;
+            _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+        }
+    }
+}
+
+//if (!CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0 && !_dragingSegment) {
+//    if (s.layer.zPosition == 1) {
+//        _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+//        _dragingSegment = s;
+//        s.layer.zPosition = 1;
+//    }
+//} else {
+//    s.layer.zPosition = 0;
+//}
 
 /*
 #pragma mark - Navigation

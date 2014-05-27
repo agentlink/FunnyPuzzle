@@ -49,19 +49,11 @@ int i=1;
 
 - (void)config
 {
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [_imageView addGestureRecognizer:pan];
+    //UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+   // [_imageView addGestureRecognizer:pan];
     
 }
-- (void)checkForRightPlace:(Segment *)segment
-{
-    //[GameModel sharedInstance].manager.grayLinedFiewld.superview.backgroundColor = [UIColor redColor];
-    CGPoint currentPoint = self.frame.origin;
-    CGPoint currentPointInWindow = [segment convertPoint:self.frame.origin fromView:nil];
-    CGPoint oser =  [GameModel sharedInstance].fieldOrigin;
-    CGPoint pointInPlace = CGPointMake(currentPoint.x+oser.x, currentPoint.y+oser.y);
-    //if (CGPointEqualToPoint ())
-}
+
 - (void)setImage:(PDFImage *)image
 {
     _image = image;
@@ -85,35 +77,35 @@ int i=1;
         [_imageView removeFromSuperview];
     }
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-
-    UITouch *touch1 = [touches anyObject];
-    CGPoint touchLocation = [touch1 locationInView:self];
-    CGRect startRect = [self frame];
-    NSLog(@"%i", CGRectContainsPoint(startRect, touchLocation));
-    NSLog(@"%@", [self colorOfPoint:touchLocation]);
-    NSLog(@"alpha: %f", CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor]));
-    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0 && !_inPlase) {
-        self.layer.zPosition = 1;
-        pp = CGPointMake([touch1 locationInView:self.superview].x, [touch1 locationInView:self.superview].y);
-        p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
-        _dragEnabled = YES;
-    } else if (CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
-        
-    } else if (_inPlase)
-    {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
-            
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1 animations:^{
-                self.transform = CGAffineTransformMakeScale(1, 1);
-            }];
-        }];
-    }
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    
+//
+//    UITouch *touch1 = [touches anyObject];
+//    CGPoint touchLocation = [touch1 locationInView:self];
+//    CGRect startRect = [self frame];
+//    NSLog(@"%i", CGRectContainsPoint(startRect, touchLocation));
+//    NSLog(@"%@", [self colorOfPoint:touchLocation]);
+//    NSLog(@"alpha: %f", CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor]));
+//    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0 && !_inPlase) {
+//        self.layer.zPosition = 1;
+//        pp = CGPointMake([touch1 locationInView:self.superview].x, [touch1 locationInView:self.superview].y);
+//        p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
+//        _dragEnabled = YES;
+//    } else if (CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
+//        
+//    } else if (_inPlase)
+//    {
+//        [UIView animateWithDuration:0.1 animations:^{
+//            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
+//            
+//        } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.1 animations:^{
+//                self.transform = CGAffineTransformMakeScale(1, 1);
+//            }];
+//        }];
+//    }
+//}
 - (void)pan:(UIPanGestureRecognizer *)recognizer
 {
     if ((recognizer.state == UIGestureRecognizerStateChanged) && _dragEnabled && !_inPlase)

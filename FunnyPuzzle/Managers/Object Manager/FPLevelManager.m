@@ -65,7 +65,7 @@
         CGPoint nativePoint = CGPointMake([[[element valueForKey:@"point"] valueForKey:@"x"] floatValue], [[[element valueForKey:@"point"] valueForKey:@"y"] floatValue]);
         NSString *path = [NSString stringWithFormat:@"%@%i",
                           _pathToColor,
-                          [elements indexOfObject:element]+1, nil];
+                          [elements indexOfObject:element], nil];
         
         PDFImage *image = [PDFImage imageNamed:path];
         CGRect adaptedFrame = CGRectMake(((nativePoint.x)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
