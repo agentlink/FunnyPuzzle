@@ -10,4 +10,6 @@
 
 @interface FPBonusViewController : UIViewController
 
+@property(nonatomic) int candiesCount;
+
 @end

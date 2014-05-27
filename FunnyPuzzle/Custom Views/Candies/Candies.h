@@ -13,5 +13,6 @@
 @property (nonatomic) CGRect centrBascket;
 @property (nonatomic) bool Animation;
 @property (nonatomic) int BonusLevelKind;
+@property (nonatomic) bool click;
 
 @end

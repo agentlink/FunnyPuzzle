@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "candy_icon.png"
+      "filename" : "candy_green.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "candy_icon@2x.png"
+      "filename" : "candy_green@2x.png"
     }
   ],
   "info" : {
