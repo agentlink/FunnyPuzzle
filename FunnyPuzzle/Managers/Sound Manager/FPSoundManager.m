@@ -94,15 +94,27 @@ NSTimer *timer;
 }
 
 - (void) vibrate{
-//    if ([FPGameManager sharedInstance].vibrate==YES){
-//        _vibration = AudioServicesCreateSystemSoundID(<#CFURLRef inFileURL#>, <#SystemSoundID *outSystemSoundID#>)
-//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-//        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopTimer) userInfo:nil repeats:NO];
-//    }
+    if ([FPGameManager sharedInstance].vibrate==YES){
+        _vibration = kSystemSoundID_Vibrate;
+        AudioServicesCreateSystemSoundID(nil, &_vibration);
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(stopTimer) userInfo:nil repeats:YES];
+        timerTick=0;
+    }
 }
+int timerTick=0;
 
 - (void) stopTimer{
-       // AudioServicesStopSystemSound(SystemSoundID inSystemSoundID);
+    timerTick++;
+    switch (timerTick) {
+        case 1:
+             AudioServicesPlaySystemSound(_vibration);
+        break;
+        default:{
+            AudioServicesDisposeSystemSoundID(_vibration);
+            [timer invalidate];
+        }
+    }
+    
 }
 
 + (void) loadData{

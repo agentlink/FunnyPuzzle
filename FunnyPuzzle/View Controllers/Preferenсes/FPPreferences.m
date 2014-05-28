@@ -60,7 +60,7 @@
 
 - (IBAction)back:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)playMusic:(id)sender{

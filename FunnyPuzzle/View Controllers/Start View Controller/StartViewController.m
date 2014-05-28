@@ -27,12 +27,15 @@
 @property (nonatomic, weak) IBOutlet PDFImageView *ground5;
 @property (weak, nonatomic) IBOutlet UIView *leftView;
 
-//settingsButtonFall
+//ButtonsFall
 @property (weak, nonatomic) IBOutlet UIView *groundForSettingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (nonatomic, strong) UIDynamicItemBehavior *settingsButtonPropertiesBehavior;
 @property (weak, nonatomic) IBOutlet PDFImageView *candiesView;
 @property (weak, nonatomic) IBOutlet UIView *rightView;
+@property (nonatomic, strong) UISnapBehavior *snapSettingsBehavior;
+@property (nonatomic, strong) UISnapBehavior *snapCandyBehavior;
+
 
 @property (nonatomic) UIDynamicAnimator *animator;
 
@@ -89,6 +92,8 @@
      [self dropSettings];
     [[FPSoundManager sharedInstance] stopGameMusic];
     [[FPSoundManager sharedInstance] playBackgroundMusic];
+    [self.animator removeBehavior:_snapCandyBehavior];
+    [self.animator removeBehavior:_snapSettingsBehavior];
 }
 
 - (void)cofigGround
@@ -140,7 +145,21 @@
 //- (IBAction)playFirst:(id)sender
 - (IBAction)goToSettings:(id)sender {
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
-    [self.navigationController pushViewController:preferences animated:YES];
+    CGPoint pointSettings = CGPointMake(_settingsButton.center.x,_settingsButton.frame.size.height/4);
+    CGPoint pointCandy = CGPointMake(_candiesView.center.x,_candiesView.frame.size.height/4);
+    // Remove the previous behavior.
+    
+    UISnapBehavior *snapSettingsBehavior = [[UISnapBehavior alloc] initWithItem:_settingsButton snapToPoint:pointSettings];
+    snapSettingsBehavior.damping=1.0f;
+    _snapSettingsBehavior = snapSettingsBehavior;
+    UISnapBehavior *snapCandyBehavior = [[UISnapBehavior alloc] initWithItem:_candiesView snapToPoint:pointCandy];
+    snapCandyBehavior.damping=1.0f;
+    _snapCandyBehavior = snapCandyBehavior;
+    [self.animator addBehavior:_snapCandyBehavior];
+    [self.animator addBehavior:_snapSettingsBehavior];
+    [_animator updateItemUsingCurrentState:_candiesView];
+    [_animator updateItemUsingCurrentState:_settingsButton];
+    [self presentViewController:preferences animated:YES completion:nil];
 }
 
 #pragma mark - Other Methods
