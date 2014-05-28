@@ -54,8 +54,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self stopWinAnimations:nil];
-    //if (_level)
-    //[self updateLevel];
+    
     [_centerView addSubview:[GameModel sharedInstance].currentField];
     _field = [GameModel sharedInstance].currentField;
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
@@ -67,47 +66,41 @@
     origin.y = centerPoint.y+CGRectGetMinY(_field.superview.frame);
     _field.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_field.frame), CGRectGetHeight(_field.frame));
     [GameModel sharedInstance].fieldFrame = _field.frame;
-    for (Segment *s in _level.segments) {
-        [self.view addSubview:s];
-        CGRect rect = s.frame;
-        rect.origin.x = arc4random()%(int)fabs((CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40));
-        rect.origin.y = arc4random()%(int)fabs((CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40));
-        s.frame = rect;
-        s.rect = [[GameModel sharedInstance] calcRect:s];
-        if ([GameModel sharedInstance].levelWin) {
-            s.frame = s.rect;
-            s.hidden = YES;
-            }
-        s.transform = CGAffineTransformMakeScale(0, 0);
-        s.alpha = 0;
-        if ([s isEqual:[[_level segments] lastObject]])
-            s.layer.zPosition =1;
-        [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            s.transform = CGAffineTransformMakeScale(1.2, 1.2);
-            s.alpha = 1;
+    if (![GameModel sharedInstance].levelWin) {
+        for (Segment *s in _level.segments) {
+            [self.view addSubview:s];
+            
+            s.frame = [self createRandomPosition:s.frame];
+            s.rect = [[GameModel sharedInstance] calcRect:s];
+            s.transform = CGAffineTransformMakeScale(0, 0);
+            s.alpha = 0;
+            if ([s isEqual:[[_level segments] lastObject]])
+                s.layer.zPosition =1;
+            [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                s.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                s.alpha = 1;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1f animations:^{
+                    s.transform = CGAffineTransformMakeScale(1, 1);
+                }];
+            }];
+        }
+        
+        [GameModel sharedInstance].fieldOrigin = origin;
+        _field.transform = CGAffineTransformMakeScale(0, 0);
+        _field.alpha = 0;
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            _field.transform = CGAffineTransformMakeScale(1.2, 1.2);
+            _field.alpha = 1;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.1f animations:^{
-                s.transform = CGAffineTransformMakeScale(1, 1);
+                _field.transform = CGAffineTransformMakeScale(1, 1);
             }];
         }];
-    }
-    if ([GameModel sharedInstance].levelWin) {
-        [self startWinAnimations:nil];
     } else {
-    [GameModel sharedInstance].fieldOrigin = origin;
-    _field.transform = CGAffineTransformMakeScale(0, 0);
-    _field.alpha = 0;
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _field.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        _field.alpha = 1;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1f animations:^{
-            _field.transform = CGAffineTransformMakeScale(1, 1);
-        }];
-    }];
+        [self startWinAnimations:nil];
     }
 }
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -124,31 +117,11 @@
 - (void)shakedVector:(CGVector)vector
 {
     [_push setPushDirection:vector];
-    _push.active = YES;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _level = [GameModel sharedInstance].level;
-    UIFont *font = [UIFont fontWithName:@"KBCuriousSoul" size:60];
-    _next.titleLabel.font = font;
-    _prew.titleLabel.font = font;
-    _next.layer.zPosition = MAXFLOAT;
-    _prew.layer.zPosition = MAXFLOAT;
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
-    
-    [self.view addGestureRecognizer:pan];
-    [GameModel sharedInstance].gamePlayViewController = self;
-    _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-    _collisions = [[UICollisionBehavior alloc] init];
-    _collisions.translatesReferenceBoundsIntoBoundary = YES;
-    _push = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeInstantaneous];
-    _push.magnitude = 5;
-    [_dAnimator addBehavior:_collisions];
-    [_dAnimator addBehavior:_push];
-    [[AccelerometerManager sharedInstance] setShakeRangeWithMinValue:0.3 MaxValue:1];
-    
-    [AccelerometerManager sharedInstance].delegate = self;
+    [self startConfiguration];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -163,6 +136,40 @@
 
 
 #pragma mark - Private
+- (CGRect)createRandomPosition:(CGRect)rect
+{
+    rect.origin.x = arc4random()%(int)fabs((CGRectGetHeight(_leftView.frame)-CGRectGetHeight(rect)-40));
+    rect.origin.y = arc4random()%(int)fabs((CGRectGetWidth(_leftView.frame)-CGRectGetWidth(rect)-40));
+    return rect;
+}
+- (void) startConfiguration
+{
+    _level = [GameModel sharedInstance].level;
+    
+    UIFont *font = [UIFont fontWithName:@"KBCuriousSoul" size:60];
+    _next.titleLabel.font = font;
+    _prew.titleLabel.font = font;
+    _next.layer.zPosition = MAXFLOAT;
+    _prew.layer.zPosition = MAXFLOAT;
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
+    
+    [self.view addGestureRecognizer:pan];
+    
+    _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    _collisions = [[UICollisionBehavior alloc] init];
+    _collisions.translatesReferenceBoundsIntoBoundary = YES;
+    _push = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeInstantaneous];
+    _push.magnitude = 5;
+    [_dAnimator addBehavior:_collisions];
+    [_dAnimator addBehavior:_push];
+    
+    [[AccelerometerManager sharedInstance] setShakeRangeWithMinValue:0.3 MaxValue:1];
+    
+    [GameModel sharedInstance].gamePlayViewController = self;
+    [AccelerometerManager sharedInstance].delegate = self;
+}
+
 - (void) updateLevel
 {
     _level = [GameModel sharedInstance].level;
@@ -237,6 +244,7 @@
         }];
     }];
     [[AccelerometerManager sharedInstance] startShakeDetect];
+    _push.active = YES;
 }
 - (void)stopWinAnimations:(UIView *)view
 {
@@ -253,19 +261,12 @@
         //label.transform = CGAffineTransformMakeScale(0, 0);
         label.alpha = 0;
     } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:0.3 animations:^{
-//            imageView.transform = CGAffineTransformMakeScale(0, 0);
-//            res.transform = CGAffineTransformMakeScale(0, 0);
-//            res.alpha = 0;
-//        } completion:^(BOOL finished) {
-        
-            [label removeFromSuperview];
-            [imageView removeFromSuperview];
-            [res removeFromSuperview];
-           
-//        }];
+        [label removeFromSuperview];
+        [imageView removeFromSuperview];
+        [res removeFromSuperview];
     }];
      [[AccelerometerManager sharedInstance] stopShakeDetect];
+    _push.active = NO;
 }
 #pragma mark - IBAction
 - (IBAction)next:(id)sender
