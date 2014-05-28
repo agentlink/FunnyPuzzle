@@ -35,7 +35,7 @@ static AccelerometerManager *_instance=nil;
      {
          dispatch_async(dispatch_get_main_queue(),
                         ^{
-                            if (((data.acceleration.x>_instance.minAxesValue)&&(data.acceleration.x<_instance.maxAxesValue))||((data.acceleration.y>_instance.minAxesValue)&&(data.acceleration.y<_instance.maxAxesValue))||((data.acceleration.z>_instance.minAxesValue)&&(data.acceleration.z<_instance.maxAxesValue))) {
+                            if (((data.acceleration.x>_instance.minAxesValue)&&(data.acceleration.x<_instance.maxAxesValue))||((data.acceleration.y>_instance.minAxesValue)&&(data.acceleration.y<_instance.maxAxesValue))) {
                                 if ((_delegate) &&([_delegate respondsToSelector:@selector(iPhoneDidShaked)])) {
                                     [_delegate iPhoneDidShaked];
                                 }
