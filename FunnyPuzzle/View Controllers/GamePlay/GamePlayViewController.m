@@ -15,7 +15,6 @@
 
 @property (nonatomic, weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic, weak) IBOutlet UIButton *back;
@@ -67,7 +66,7 @@
     origin.y = centerPoint.y+CGRectGetMinY(_field.superview.frame);
     _field.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_field.frame), CGRectGetHeight(_field.frame));
     [GameModel sharedInstance].fieldFrame = _field.frame;
-    if (![GameModel sharedInstance].levelWin) {
+    if (![GameModel sharedInstance].levelCompleet) {
         for (Segment *s in _level.segments) {
             [self.view addSubview:s];
             

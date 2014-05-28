@@ -21,7 +21,7 @@ static GameModel *_instance = nil;
     if (!_level)
     _level = [FPLevelManager gameObjectsWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.segmentsCount;
-    _levelWin = [defaults boolForKey:_level.levelName];
+    _levelCompleet = [defaults boolForKey:_level.levelName];
         
     if (_gameMode == FPGameModeEase) {
         _currentField = _level.grayLinedFiewld;
