@@ -34,7 +34,7 @@
 
 @property (nonatomic) UIDynamicAnimator *animator;
 
-- (IBAction)play:(id)sender;
+- (void)play:(id)sender type:(FPGameType)type;
 - (IBAction)goToSettings:(id)sender;
 @end
 
@@ -128,7 +128,7 @@
 
 #pragma mark - UIActions
 
-- (IBAction)play:(id)sender
+- (void)play:(id)sender type:(FPGameType)type
 {
     GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
         [GameModel sharedInstance].gameType = type;
