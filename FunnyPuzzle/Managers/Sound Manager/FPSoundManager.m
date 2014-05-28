@@ -14,15 +14,20 @@
 @property (nonatomic, strong) AVAudioPlayer *backGroundMusicPlayer;
 @property (nonatomic, strong) AVAudioPlayer *backGroundGamePlayer;
 @property (nonatomic, strong) AVAudioPlayer *soundPlayer;
+@property (nonatomic, strong) NSURL *backGroundMusic;
+@property (nonatomic, strong) NSURL *gameMusic;
 @property (nonatomic, strong) NSURL *soundToPlay;
 @property (nonatomic, strong) NSURL *excellent;
 @property (nonatomic, strong) NSURL *well_done;
+@property (nonatomic) SystemSoundID vibration;
 
 @end
 
 @implementation FPSoundManager
 
 static FPSoundManager *_instance=nil;
+
+NSTimer *timer;
 
 + (FPSoundManager*)sharedInstance{
     @synchronized(self){
@@ -36,6 +41,10 @@ static FPSoundManager *_instance=nil;
 
 - (void) playBackgroundMusic{
     if ([FPGameManager sharedInstance].music==YES) {
+        NSError *error;
+        _backGroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.backGroundMusic error:&error];
+        _backGroundMusicPlayer.numberOfLoops=-1;
+        [_backGroundMusicPlayer prepareToPlay];
         [_backGroundMusicPlayer play];
     }
 }
@@ -43,18 +52,24 @@ static FPSoundManager *_instance=nil;
 - (void) stopBackgroundMusic{
     if ([_backGroundMusicPlayer isPlaying]==YES){
         [_backGroundMusicPlayer stop];
+        _backGroundMusicPlayer=nil;
     }
 }
 
 - (void) playGameMusic{
     if ([FPGameManager sharedInstance].music==YES) {
-        [_backGroundMusicPlayer play];
+        NSError *error;
+        _backGroundGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.gameMusic error:&error];
+        _backGroundGamePlayer.numberOfLoops=-1;
+        [_backGroundGamePlayer prepareToPlay];
+        [_backGroundGamePlayer play];
     }
 }
 
 - (void) stopGameMusic{
     if ([_backGroundGamePlayer isPlaying]==YES){
-    [_backGroundGamePlayer stop];
+        [_backGroundGamePlayer stop];
+        _backGroundGamePlayer=nil;
     }
 }
 
@@ -79,9 +94,15 @@ static FPSoundManager *_instance=nil;
 }
 
 - (void) vibrate{
-    if ([FPGameManager sharedInstance].vibrate==YES){
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    }
+//    if ([FPGameManager sharedInstance].vibrate==YES){
+//        _vibration = AudioServicesCreateSystemSoundID(<#CFURLRef inFileURL#>, <#SystemSoundID *outSystemSoundID#>)
+//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopTimer) userInfo:nil repeats:NO];
+//    }
+}
+
+- (void) stopTimer{
+       // AudioServicesStopSystemSound(SystemSoundID inSystemSoundID);
 }
 
 + (void) loadData{
@@ -89,12 +110,14 @@ static FPSoundManager *_instance=nil;
     //initialize Menu background player
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"menu_background_music" ofType:@"mp3"];
     NSURL *fileURL = [NSURL URLWithString:soundPath];
+    _instance.backGroundMusic=fileURL;
     _instance.backGroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     [_instance.backGroundMusicPlayer prepareToPlay];
     _instance.backGroundMusicPlayer.numberOfLoops=-1;
     //initialize Game background player
     soundPath = [[NSBundle mainBundle] pathForResource:@"game_background_music" ofType:@"mp3"];
     fileURL = [NSURL URLWithString:soundPath];
+    _instance.gameMusic=fileURL;
     _instance.backGroundGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.backGroundGamePlayer.numberOfLoops=-1;
     [_instance.backGroundGamePlayer prepareToPlay];

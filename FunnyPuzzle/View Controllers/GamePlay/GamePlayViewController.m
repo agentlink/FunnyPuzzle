@@ -10,6 +10,7 @@
 #import "GameModel.h"
 #import <CoreMotion/CoreMotion.h>
 #import "AccelerometerManager.h"
+#import "FPSoundManager.h"
 
 @interface GamePlayViewController () <ShakeHappendDelegate>
 
@@ -104,6 +105,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[FPSoundManager sharedInstance] stopBackgroundMusic];
+    [[FPSoundManager sharedInstance] playGameMusic];
 }
 - (void)viewDidDisappear:(BOOL)animated
 {
@@ -111,9 +114,7 @@
     [self stopWinAnimations:self.view];
     [GameModel sharedInstance].level = nil;
 }
-- (void)iPhoneDidShaked
-{
-}
+
 - (void)shakedVector:(CGVector)vector
 {
     [_push setPushDirection:vector];
@@ -249,6 +250,7 @@
     [_accelerometerManager startShakeDetect];
     _push.active = YES;
 }
+
 - (void)stopWinAnimations:(UIView *)view
 {
     PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
@@ -271,7 +273,9 @@
      [_accelerometerManager stopShakeDetect];
     _push.active = NO;
 }
+
 #pragma mark - IBAction
+
 - (IBAction)next:(id)sender
 {
     [self removeObjects];
@@ -341,10 +345,12 @@
                 s.layer.zPosition = 1;
                 _dragingSegment = s;
                 _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+                [[FPSoundManager sharedInstance] vibrate];
             } else if (!_dragingSegment && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
                 s.layer.zPosition = 1;
                 _dragingSegment = s;
                 _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+                [[FPSoundManager sharedInstance] vibrate];
             } else {
                 s.layer.zPosition = 0;
             }
@@ -358,6 +364,7 @@
             s.layer.zPosition = 1;
             _dragingSegment = s;
             _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+            [[FPSoundManager sharedInstance] vibrate];
         }
     }
 }

@@ -7,12 +7,14 @@
 //
 
 #import "FPAppDelegate.h"
+#import "FPGameManager.h"
 
 @implementation FPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     return YES;
+    [[FPGameManager sharedInstance] setSettings];
 }
 							
 

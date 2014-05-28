@@ -7,6 +7,8 @@
 //
 
 #import "GameModel.h"
+#import "FPSoundManager.h"
+
 @interface GameModel ()
 @property (nonatomic) NSUserDefaults *defaults;
 
@@ -35,8 +37,8 @@ static GameModel *_instance = nil;
 - (void) loadPrefs
 {
     defaults = [NSUserDefaults standardUserDefaults];
-    _gameMode = [defaults integerForKey:@"GameMode"];
-    _lastLevel = [defaults integerForKey:@"LastLevel"];
+    _gameMode = (int)[defaults integerForKey:@"GameMode"];
+    _lastLevel = (int)[defaults integerForKey:@"LastLevel"];
 }
 - (void)checkForRightPlace:(Segment *)segment
 {
@@ -47,6 +49,7 @@ static GameModel *_instance = nil;
     BOOL yPos = 10>=abs(win.y-currentPoint.y);
     if (xPos&&yPos&&segment)
     {
+        [[FPSoundManager sharedInstance] vibrate];
         [UIView animateWithDuration:0.2 animations:^{
             segment.frame = CGRectMake(win.x, win.y, segment.frame.size.width, segment.frame.size.height);
             segment.transform = CGAffineTransformMakeScale(1.2, 1.2);

@@ -220,7 +220,7 @@
         self.pickerHeight.constant=0;
     }
     [self.viewForPicker setNeedsUpdateConstraints];
-    [UIView animateWithDuration:0.5f animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         [self.view layoutIfNeeded];
     }];
 }

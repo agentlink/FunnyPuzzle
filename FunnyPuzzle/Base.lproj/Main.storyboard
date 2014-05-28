@@ -38,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKs-oO-8Lc">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKs-oO-8Lc" userLabel="leftView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -71,7 +71,7 @@
                                     <constraint firstAttribute="centerX" secondItem="Liq-yH-qoU" secondAttribute="centerX" id="jut-qd-ur3"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-Nq-Tf2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-Nq-Tf2" userLabel="rightView">
                                 <rect key="frame" x="240" y="0.0" width="240" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -175,13 +175,18 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC7-ic-Qq4" userLabel="groundForSettingsIcon">
-                                <rect key="frame" x="0.0" y="270" width="200" height="50"/>
+                                <rect key="frame" x="0.0" y="270" width="480" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="j2v-ik-0wb"/>
-                                    <constraint firstAttribute="height" constant="50" id="s8G-vT-KEr"/>
+                                    <constraint firstAttribute="height" constant="50" id="Mv8-6I-aCW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="480" id="eao-6W-A5l"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTa-dc-Zas" userLabel="candiesView" customClass="PDFImageView">
+                                <rect key="frame" x="301" y="192" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.82352941176470584" green="0.9137254901960784" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,9 +200,11 @@
                             <constraint firstItem="oKs-oO-8Lc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="QfY-td-SjV"/>
                             <constraint firstItem="zrp-Nq-Tf2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="SIC-xg-QgY"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="TdN-kt-vmU" secondAttribute="bottom" id="YtU-7l-uZQ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="MC7-ic-Qq4" secondAttribute="bottom" id="cZ2-z9-qsH"/>
                             <constraint firstItem="oKs-oO-8Lc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="d57-qx-cIL"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="MC7-ic-Qq4" secondAttribute="bottom" id="dbf-2V-BTa"/>
+                            <constraint firstAttribute="trailing" secondItem="MC7-ic-Qq4" secondAttribute="trailing" id="dsO-dD-XVE"/>
                             <constraint firstAttribute="bottom" secondItem="mcT-vl-ocQ" secondAttribute="bottom" id="een-hu-7vq"/>
+                            <constraint firstItem="MC7-ic-Qq4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="gC2-Sy-2km"/>
                             <constraint firstAttribute="bottom" secondItem="UwL-Nr-bWF" secondAttribute="bottom" id="hY6-4w-wm4"/>
                             <constraint firstAttribute="trailing" secondItem="57H-rU-wtA" secondAttribute="trailing" constant="16" id="hnc-WH-Vj3"/>
                             <constraint firstItem="57H-rU-wtA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="70" id="lkI-xh-IXL"/>
@@ -207,13 +214,14 @@
                             <constraint firstAttribute="trailing" secondItem="3sU-WA-2Ip" secondAttribute="trailing" constant="-20" id="s3R-Lz-KkO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oKs-oO-8Lc" secondAttribute="bottom" id="sDe-Fb-5xZ"/>
                             <constraint firstAttribute="centerX" secondItem="TdN-kt-vmU" secondAttribute="centerX" id="sE0-1G-AfT"/>
-                            <constraint firstItem="MC7-ic-Qq4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="wEp-lq-OrT"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="IV9-LO-i7X"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="candiesView" destination="lTa-dc-Zas" id="UpR-bA-UvP"/>
                         <outlet property="gamemodeFirst" destination="iwU-QI-lhl" id="BtB-0Y-7HU"/>
                         <outlet property="gamemodeSecond" destination="zjW-G4-y97" id="Itu-ll-bt0"/>
                         <outlet property="ground1" destination="Mw5-kn-2QC" id="SUg-Fo-TTQ"/>
@@ -222,6 +230,8 @@
                         <outlet property="ground4" destination="UwL-Nr-bWF" id="GuE-Lb-EPU"/>
                         <outlet property="ground5" destination="mcT-vl-ocQ" id="nZL-d7-v0u"/>
                         <outlet property="groundForSettingsButton" destination="MC7-ic-Qq4" id="XJ0-gc-pH8"/>
+                        <outlet property="leftView" destination="oKs-oO-8Lc" id="iCX-BZ-gX7"/>
+                        <outlet property="rightView" destination="zrp-Nq-Tf2" id="QhO-cX-Nyq"/>
                         <outlet property="settingsButton" destination="Hpv-Vp-tkv" id="qTB-ds-PE7"/>
                     </connections>
                 </viewController>

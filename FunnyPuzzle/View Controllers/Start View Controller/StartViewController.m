@@ -25,12 +25,14 @@
 @property (nonatomic, weak) IBOutlet PDFImageView *ground3;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground4;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground5;
+@property (weak, nonatomic) IBOutlet UIView *leftView;
 
 //settingsButtonFall
 @property (weak, nonatomic) IBOutlet UIView *groundForSettingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (nonatomic, strong) UIDynamicItemBehavior *settingsButtonPropertiesBehavior;
-@property (nonatomic) int settingsButtonOriginX;
+@property (weak, nonatomic) IBOutlet PDFImageView *candiesView;
+@property (weak, nonatomic) IBOutlet UIView *rightView;
 
 @property (nonatomic) UIDynamicAnimator *animator;
 
@@ -71,8 +73,7 @@
                                 functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     CAKeyframeAnimation *animS = animation;
     animS.duration = 1;
-    [self cofigGround];
-    [[FPGameManager sharedInstance] setSettings];
+    [self cofigGround];    
     //[_gamemodeFirst.layer addAnimation:animation forKey:@"position"];
     //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
     
@@ -86,6 +87,8 @@
 
 - (void) viewWillAppear:(BOOL)animated{
      [self dropSettings];
+    [[FPSoundManager sharedInstance] stopGameMusic];
+    [[FPSoundManager sharedInstance] playBackgroundMusic];
 }
 
 - (void)cofigGround
@@ -143,14 +146,18 @@
 #pragma mark - Other Methods
 
 - (void) setSettingsControl{
+    _settingsButton.frame = CGRectMake(CGRectGetHeight(self.view.frame)/4, 0, CGRectGetWidth(_settingsButton.frame), CGRectGetHeight(_settingsButton.frame));
+    _candiesView.frame = CGRectMake((CGRectGetHeight(self.view.frame)/4)*3, 0, CGRectGetWidth(_candiesView.frame), CGRectGetHeight(_candiesView.frame));
     PDFImageView *settingsImage=[[PDFImageView alloc] initWithFrame:_settingsButton.frame];
     settingsImage.image=[PDFImage imageNamed:@"prefs"];
+    PDFImageView *candyImage=[[PDFImageView alloc] initWithFrame:_candiesView.frame];
+    candyImage.image=[PDFImage imageNamed:@"candy"];
+    _candiesView.image=candyImage.image;
     [_settingsButton setImage:[settingsImage currentUIImage]  forState:UIControlStateNormal];
-    _settingsButtonOriginX=_settingsButton.frame.origin.x;
-    UIGravityBehavior *gravityBeahvior = [[UIGravityBehavior alloc] initWithItems:@[_settingsButton]];
-    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[_settingsButton, _groundForSettingsButton]];
+    UIGravityBehavior *gravityBeahvior = [[UIGravityBehavior alloc] initWithItems:@[_settingsButton, _candiesView]];
+    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[_settingsButton, _groundForSettingsButton, _candiesView]];
     collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-    self.settingsButtonPropertiesBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[_settingsButton]];
+    self.settingsButtonPropertiesBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[_settingsButton, _candiesView]];
     self.settingsButtonPropertiesBehavior.elasticity = 0.4;
     [_animator addBehavior:self.settingsButtonPropertiesBehavior];
     [_animator addBehavior:gravityBeahvior];
@@ -158,8 +165,11 @@
 }
 
 - (void) dropSettings{
+    _settingsButton.center = CGPointMake(_settingsButton.center.x,0);
+    _candiesView.center = CGPointMake(_candiesView.center.x,0);
     [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_settingsButton].y) forItem:_settingsButton];
-    _settingsButton.center = CGPointMake(_settingsButtonOriginX, 10);
+    [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_candiesView].y) forItem:_candiesView];
+    [_animator updateItemUsingCurrentState:_candiesView];
     [_animator updateItemUsingCurrentState:_settingsButton];
 }
 
