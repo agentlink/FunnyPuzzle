@@ -94,6 +94,7 @@
 		84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C4192E389A006A9D6B /* ball2.pdf */; };
 		84F85BA7192E73CC00BDECB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F85BA6192E73CC00BDECB5 /* AVFoundation.framework */; };
 		84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BF8192F371D00BDECB5 /* FPGameManager.m */; };
+		84FDADF91935D49F00366C6E /* prefs.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 84FDADF81935D49F00366C6E /* prefs.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,7 @@
 		84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSoundManager.m; sourceTree = "<group>"; };
 		84F85BF7192F371D00BDECB5 /* FPGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPGameManager.h; sourceTree = "<group>"; };
 		84F85BF8192F371D00BDECB5 /* FPGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPGameManager.m; sourceTree = "<group>"; };
+		84FDADF81935D49F00366C6E /* prefs.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = prefs.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +370,7 @@
 		7F316171192CA04200C49EAE /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				84FDADF81935D49F00366C6E /* prefs.pdf */,
 				7FA5703A192F399A00CE84F8 /* ground1.pdf */,
 				7FA5703B192F399A00CE84F8 /* ground2.pdf */,
 				7FA5703C192F399A00CE84F8 /* ground3.pdf */,
@@ -766,6 +769,7 @@
 				8443DDE6192F4796009F1EF8 /* elephant.mp3 in Resources */,
 				8443DDF8192F4796009F1EF8 /* dove_ru.mp3 in Resources */,
 				8443DDF4192F4796009F1EF8 /* apple_ru.mp3 in Resources */,
+				84FDADF91935D49F00366C6E /* prefs.pdf in Resources */,
 				8443DDEE192F4796009F1EF8 /* pig.mp3 in Resources */,
 				8443DDF1192F4796009F1EF8 /* squirrel.mp3 in Resources */,
 				7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */,
