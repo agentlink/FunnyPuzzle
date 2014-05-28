@@ -26,7 +26,14 @@
 @property (nonatomic, weak) IBOutlet PDFImageView *ground4;
 @property (nonatomic, weak) IBOutlet PDFImageView *ground5;
 
+//settingsButtonFall
+@property (weak, nonatomic) IBOutlet UIView *groundForSettingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (nonatomic, strong) UIDynamicItemBehavior *settingsButtonPropertiesBehavior;
+@property (nonatomic) int settingsButtonOriginX;
+
 @property (nonatomic) UIDynamicAnimator *animator;
+
 - (IBAction)play:(id)sender;
 - (IBAction)goToSettings:(id)sender;
 @end
@@ -36,9 +43,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
-    _gamemodeFirst.image = [PDFImage imageNamed:@"ball1.pdf"];
-    _gamemodeSecond.image = [PDFImage imageNamed:@"ball2.pdf"];
+    
+    _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
+    _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
     _gamemodeFirst.tap = ^{
         [self play:self];
     };
@@ -70,7 +77,15 @@
     //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     [[FPGameManager sharedInstance] setSettings];
+    [self setSettingsControl];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+     [self dropSettings];
 }
 
 - (void)cofigGround
@@ -111,6 +126,9 @@
 {
     
 }
+
+#pragma mark - UIActions
+
 - (IBAction)play:(id)sender
 {
     GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
@@ -121,6 +139,29 @@
 - (IBAction)goToSettings:(id)sender {
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     [self.navigationController pushViewController:preferences animated:YES];
+}
+
+#pragma mark - Other Methods
+
+- (void) setSettingsControl{
+    PDFImageView *settingsImage=[[PDFImageView alloc] initWithFrame:_settingsButton.frame];
+    settingsImage.image=[PDFImage imageNamed:@"prefs"];
+    [_settingsButton setImage:[settingsImage currentUIImage]  forState:UIControlStateNormal];
+    _settingsButtonOriginX=_settingsButton.frame.origin.x;
+    UIGravityBehavior *gravityBeahvior = [[UIGravityBehavior alloc] initWithItems:@[_settingsButton]];
+    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[_settingsButton, _groundForSettingsButton]];
+    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    self.settingsButtonPropertiesBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[_settingsButton]];
+    self.settingsButtonPropertiesBehavior.elasticity = 0.4;
+    [_animator addBehavior:self.settingsButtonPropertiesBehavior];
+    [_animator addBehavior:gravityBeahvior];
+    [_animator addBehavior:collisionBehavior];
+}
+
+- (void) dropSettings{
+    [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_settingsButton].y) forItem:_settingsButton];
+    _settingsButton.center = CGPointMake(_settingsButtonOriginX, 10);
+    [_animator updateItemUsingCurrentState:_settingsButton];
 }
 
 @end
