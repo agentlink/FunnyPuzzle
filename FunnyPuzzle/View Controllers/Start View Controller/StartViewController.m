@@ -47,10 +47,10 @@
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
     _gamemodeFirst.tap = ^{
-        [self play:self];
+        [self play:self type:FPGameTypeFirs];
     };
     _gamemodeSecond.tap =  ^{
-        [self play:self];
+        [self play:self type:FPGameTypeSecond];
     };
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     CGMutablePathRef aPath = CGPathCreateMutable();
@@ -103,7 +103,6 @@
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
     horisontal2.minimumRelativeValue = @(-15);
     horisontal2.maximumRelativeValue = @(15);
-    
     UIInterpolatingMotionEffect *horisontal3 =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"
@@ -132,10 +131,10 @@
 - (IBAction)play:(id)sender
 {
     GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
-    [GameModel sharedInstance].gameType = FPGameTypeFirs;
+        [GameModel sharedInstance].gameType = type;
     [self.navigationController pushViewController:cont animated:YES];
 }
-
+//- (IBAction)playFirst:(id)sender
 - (IBAction)goToSettings:(id)sender {
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     [self.navigationController pushViewController:preferences animated:YES];

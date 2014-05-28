@@ -19,19 +19,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiM-oW-fls">
-                                <rect key="frame" x="284" y="0.0" width="284" height="320"/>
+                                <rect key="frame" x="227" y="0.0" width="341" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NkY-E3-MHt" customClass="PDFImageView">
-                                        <rect key="frame" x="2" y="20" width="280" height="280"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkY-E3-MHt" customClass="PDFImageView">
+                                        <rect key="frame" x="2" y="20" width="337" height="280"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NkY-E3-MHt" secondAttribute="bottom" constant="20" id="K2C-eE-gE7"/>
+                                    <constraint firstItem="NkY-E3-MHt" firstAttribute="leading" secondItem="EiM-oW-fls" secondAttribute="leading" constant="2" id="UJX-Ip-p5Q"/>
+                                    <constraint firstItem="NkY-E3-MHt" firstAttribute="top" secondItem="EiM-oW-fls" secondAttribute="top" constant="20" id="mBF-nl-lwi"/>
+                                    <constraint firstAttribute="trailing" secondItem="NkY-E3-MHt" secondAttribute="trailing" constant="2" id="xcK-3G-rLl"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwG-m8-XUv">
-                                <rect key="frame" x="0.0" y="0.0" width="284" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="227" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -93,7 +99,7 @@
                             <constraint firstItem="DwG-m8-XUv" firstAttribute="leading" secondItem="So1-kI-0Mk" secondAttribute="leading" id="igk-Ae-ryc"/>
                             <constraint firstAttribute="trailing" secondItem="EiM-oW-fls" secondAttribute="trailing" id="m5t-QC-pvF"/>
                             <constraint firstAttribute="bottom" secondItem="EiM-oW-fls" secondAttribute="bottom" id="mb8-Rg-TD1"/>
-                            <constraint firstItem="EiM-oW-fls" firstAttribute="width" secondItem="So1-kI-0Mk" secondAttribute="width" multiplier="0.5" id="t9c-PS-jhu"/>
+                            <constraint firstItem="EiM-oW-fls" firstAttribute="width" secondItem="So1-kI-0Mk" secondAttribute="width" multiplier="0.6" id="t9c-PS-jhu"/>
                             <constraint firstItem="g05-wy-6lL" firstAttribute="top" secondItem="i6k-vb-8ZQ" secondAttribute="bottom" constant="15" id="vq0-qU-3tb"/>
                             <constraint firstAttribute="bottom" secondItem="DwG-m8-XUv" secondAttribute="bottom" id="zTg-SR-EO3"/>
                         </constraints>

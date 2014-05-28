@@ -7,7 +7,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>ice_cream_result</string>
+			<string>ice_cream</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -38,7 +38,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>pencil_result</string>
+			<string>pencil</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -69,7 +69,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>toad_result</string>
+			<string>toad</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -100,7 +100,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>dove_result</string>
+			<string>dove</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -140,7 +140,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>pig_result</string>
+			<string>pig</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -180,7 +180,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>rabbit_result</string>
+			<string>rabbit</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -220,7 +220,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>octopus_result</string>
+			<string>octopus</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -260,7 +260,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>chicken_result</string>
+			<string>chicken</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -300,7 +300,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>bear_result</string>
+			<string>bear</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -340,7 +340,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>penguin_result</string>
+			<string>penguin</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -380,7 +380,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>snake_result</string>
+			<string>snake</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -420,7 +420,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>giraffe_result</string>
+			<string>giraffe</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -460,7 +460,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>zebra_result</string>
+			<string>zebra</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -500,7 +500,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>goat_result</string>
+			<string>goat</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -549,7 +549,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>flamingo_result</string>
+			<string>flamingo</string>
 			<key>elements</key>
 			<array>
 				<dict>

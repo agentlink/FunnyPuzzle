@@ -17,10 +17,7 @@
 
 @implementation Segment
 
-CGPoint pp,p;
-bool t=true;
-int i=1;
-
+#pragma mark - Lifecicle
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -30,8 +27,7 @@ int i=1;
             _imageView = [[PDFImageView alloc] initWithFrame:frame];
             [self addSubview:_imageView];
         }
-        //[self config];
-        }
+    }
     return self;
 }
 - (id) initWithCoder:(NSCoder *)aDecoder
@@ -42,26 +38,10 @@ int i=1;
             _imageView = [[PDFImageView alloc] initWithFrame:self.frame];
             [self addSubview:_imageView];
         }
-        //[self config];
-        }
+    }
     return self;
 }
-
-- (void)config
-{
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [_imageView addGestureRecognizer:pan];
-    
-}
-- (void)checkForRightPlace:(Segment *)segment
-{
-    //[GameModel sharedInstance].manager.grayLinedFiewld.superview.backgroundColor = [UIColor redColor];
-    CGPoint currentPoint = self.frame.origin;
-    CGPoint currentPointInWindow = [segment convertPoint:self.frame.origin fromView:nil];
-    CGPoint oser =  [GameModel sharedInstance].fieldOrigin;
-    CGPoint pointInPlace = CGPointMake(currentPoint.x+oser.x, currentPoint.y+oser.y);
-    //if (CGPointEqualToPoint ())
-}
+#pragma mark - Custom Accessors
 - (void)setImage:(PDFImage *)image
 {
     _image = image;
@@ -72,7 +52,6 @@ int i=1;
     //_imageView.backgroundColor = [UIColor grayColor];
     _imageView.clipsToBounds = YES;
     _imageView.image = image;
-    [self config];
 }
 - (void)setImagePath:(NSString *)imagePath
 {
@@ -85,50 +64,7 @@ int i=1;
         [_imageView removeFromSuperview];
     }
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-
-    UITouch *touch1 = [touches anyObject];
-    CGPoint touchLocation = [touch1 locationInView:self];
-    CGRect startRect = [self frame];
-    NSLog(@"%i", CGRectContainsPoint(startRect, touchLocation));
-    NSLog(@"%@", [self colorOfPoint:touchLocation]);
-    NSLog(@"alpha: %f", CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor]));
-    if (!CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0 && !_inPlase) {
-        self.layer.zPosition = 1;
-        pp = CGPointMake([touch1 locationInView:self.superview].x, [touch1 locationInView:self.superview].y);
-        p = CGPointMake(pp.x-self.layer.position.x, pp.y-self.layer.position.y);
-        _dragEnabled = YES;
-    } else if (CGColorGetAlpha([[self colorOfPoint:touchLocation] CGColor])==0) {
-        
-    } else if (_inPlase)
-    {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
-            
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1 animations:^{
-                self.transform = CGAffineTransformMakeScale(1, 1);
-            }];
-        }];
-    }
-}
-- (void)pan:(UIPanGestureRecognizer *)recognizer
-{
-    if ((recognizer.state == UIGestureRecognizerStateChanged) && _dragEnabled && !_inPlase)
-    {
-            CGPoint p2=CGPointMake([recognizer locationInView:self.superview].x, [recognizer locationInView:self.superview].y);
-            CGPoint p1 = CGPointMake(p2.x-p.x, p2.y-p.y);
-            self.layer.position=p1;
-    } else if (recognizer.state == UITouchPhaseEnded && !_inPlase)
-    {
-        [[GameModel sharedInstance] checkForRightPlace:self];
-        _dragEnabled = NO;
-        
-    }
-    
-}
+#pragma mark - Public
 - (UIColor *) colorOfPoint:(CGPoint)point
 {
     unsigned char pixel[4] = {0};
@@ -148,12 +84,7 @@ int i=1;
     NSLog(@"%@", color);
     return color;
 }
-- (void)dealloc
-{
-    for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
-        [self removeGestureRecognizer:recognizer];
-    }
-}
+
 
 
 /*

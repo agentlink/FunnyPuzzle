@@ -13,7 +13,6 @@
 @interface FPLevelManager : NSObject
 
 @property (nonatomic, strong) NSArray *segments;
-@property (nonatomic) NSArray *segmentsStrings;
 @property (nonatomic, strong) PDFImageView *colorField;
 @property (nonatomic, strong) PDFImageView *grayField;
 @property (nonatomic, strong) PDFImageView *grayLinedFiewld;

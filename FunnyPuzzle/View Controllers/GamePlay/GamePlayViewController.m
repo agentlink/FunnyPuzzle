@@ -8,19 +8,25 @@
 
 #import "GamePlayViewController.h"
 #import "GameModel.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface GamePlayViewController ()
 {
   NSArray *images;
 }
 @property (nonatomic, weak) IBOutlet UIView *leftView;
-@property (nonatomic, weak) IBOutlet UIView *rightView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leftConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic, weak) IBOutlet UIButton *back;
+@property (nonatomic) Segment *dragingSegment;
+@property (nonatomic) CGPoint touchPoint;
+
+@property (nonatomic) UIDynamicAnimator *dAnimator;
+@property (nonatomic) UISnapBehavior *snap;
+@property (nonatomic) UICollisionBehavior *collisions;
+@property (nonatomic) UILabel *label;
 
 @property (nonatomic) FPLevelManager *level;
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
@@ -35,6 +41,7 @@
 
 @implementation GamePlayViewController
 
+#pragma mark - Lifecicle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,14 +53,37 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self stopWinAnimations:nil];
+    //if (_level)
+    //[self updateLevel];
+    [_centerView addSubview:[GameModel sharedInstance].currentField];
+    _field = [GameModel sharedInstance].currentField;
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
+    CGPoint origin;
+    centerPoint.x = centerPoint.x-(CGRectGetWidth(_field.bounds)*.5f);
+    centerPoint.y = centerPoint.y-(CGRectGetHeight(_field.bounds)*.5f);
+    [GameModel sharedInstance].level.grayLinedFiewld = _level.grayLinedFiewld;
+    origin.x = centerPoint.x+CGRectGetMinX(_field.superview.frame);
+    origin.y = centerPoint.y+CGRectGetMinY(_field.superview.frame);
+    _field.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_field.frame), CGRectGetHeight(_field.frame));
+    [GameModel sharedInstance].fieldFrame = _field.frame;
     for (Segment *s in _level.segments) {
         [self.view addSubview:s];
         CGRect rect = s.frame;
         rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
         rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
         s.frame = rect;
+        s.rect = [[GameModel sharedInstance] calcRect:s];
+        if ([GameModel sharedInstance].levelWin) {
+            s.frame = s.rect;
+            s.hidden = YES;
+        } /*else {
+            rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
+            rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
+        }*/
         s.transform = CGAffineTransformMakeScale(0, 0);
         s.alpha = 0;
+        
         [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             s.transform = CGAffineTransformMakeScale(1.2, 1.2);
             s.alpha = 1;
@@ -63,17 +93,9 @@
             }];
         }];
     }
-    [_centerView addSubview:[GameModel sharedInstance].currentField];
-    _field = [GameModel sharedInstance].currentField;
-    CGPoint centerPoint = CGPointMake(CGRectGetMidX(_centerView.bounds), CGRectGetMidY(_centerView.bounds));
-    CGPoint origin;
-    centerPoint.x = centerPoint.x-(CGRectGetWidth(_level.grayLinedFiewld.bounds)*.5f);
-    centerPoint.y = centerPoint.y-(CGRectGetHeight(_level.grayLinedFiewld.bounds)*.5f);
-    [GameModel sharedInstance].level.grayLinedFiewld = _level.grayLinedFiewld;
-    origin.x = centerPoint.x+CGRectGetMinX(_level.grayLinedFiewld.superview.frame);
-    origin.y = centerPoint.y+CGRectGetMinY(_level.grayLinedFiewld.superview.frame);
-    _level.grayLinedFiewld.frame = CGRectMake(centerPoint.x, centerPoint.y, CGRectGetWidth(_level.grayLinedFiewld.frame), CGRectGetHeight(_level.grayLinedFiewld.frame));
-    [GameModel sharedInstance].fieldFrame = _level.grayLinedFiewld.frame;
+    if ([GameModel sharedInstance].levelWin) {
+        [self startWinAnimations:nil];
+    } else {
     [GameModel sharedInstance].fieldOrigin = origin;
     _field.transform = CGAffineTransformMakeScale(0, 0);
     _field.alpha = 0;
@@ -85,10 +107,18 @@
             _field.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
+    }
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self stopWinAnimations:self.view];
+    [GameModel sharedInstance].level = nil;
 }
 - (void)viewDidLoad
 {
@@ -99,8 +129,30 @@
     _prew.titleLabel.font = font;
     _next.layer.zPosition = MAXFLOAT;
     _prew.layer.zPosition = MAXFLOAT;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
     
+    [self.view addGestureRecognizer:pan];
+    [GameModel sharedInstance].gamePlayViewController = self;
+    _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    _collisions = [[UICollisionBehavior alloc] init];
+    _collisions.translatesReferenceBoundsIntoBoundary = YES;
+    [_dAnimator addBehavior:_collisions];
+    
+
 }
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+-(void) dealloc
+{
+    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+}
+
+
+
+#pragma mark - Private
 - (void) updateLevel
 {
     _level = [GameModel sharedInstance].level;
@@ -119,11 +171,90 @@
         }];
     }
 }
-- (void)didReceiveMemoryWarning
+- (void)startWinAnimations:(UIView *)view
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, star.size.width, star.size.height)];
+    imageView.image = star;
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = 4;
+    animationGroup.repeatCount = INFINITY;
+    CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    rotate.fromValue = @0;
+    rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
+    rotate.duration = 10;
+    animationGroup.animations = @[rotate];
+    
+    [imageView.layer addAnimation:animationGroup forKey:@"pulse"];
+    imageView.layer.position = _centerView.layer.position;// _field.layer.position;
+    imageView.transform = CGAffineTransformMakeScale(0, 0);
+    imageView.tag = 42;
+    
+    PDFImageView *res = [GameModel sharedInstance].level.colorField;
+    res.frame = _field.frame;
+    res.transform = CGAffineTransformMakeScale(2, 2);
+    res.alpha = 0;
+    res.layer.zPosition = 255;
+    res.tag = 43;
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = _level.levelName;
+    label.font = [UIFont fontWithName:@"KBCuriousSoul" size:30];
+    label.tag = 44;
+    [label sizeToFit];
+    label.layer.position = CGPointMake(CGRectGetMinX(_leftView.frame), CGRectGetMinY(_leftView.frame));
+    [self.view addSubview:label];
+    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame))];
+    _snap.damping = 0.2;
+    [_dAnimator addBehavior:_snap];
+    [_collisions addItem:label];
+
+    [_centerView insertSubview:res atIndex:0];
+    [self.view insertSubview:imageView atIndex:0];
+    [self removeObjects];
+    [UIView animateWithDuration:0.2 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(1, 1);
+        _field.layer.shadowColor = [[UIColor whiteColor] CGColor];
+        _field.layer.shadowRadius = 20;
+        _field.layer.shadowOffset = CGSizeMake(0, 0);
+        _field.layer.shadowOpacity = 1;
+        res.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        res.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            res.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
 }
+- (void)stopWinAnimations:(UIView *)view
+{
+    PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
+    PDFImageView *res = (PDFImageView *)[self.view viewWithTag:43];
+    res.layer.zPosition = -1;
+    UILabel *label = (UILabel *)[self.view viewWithTag:44];
+    [_dAnimator removeBehavior:_snap];
+    [_collisions removeItem:label];
+    [UIView animateWithDuration:0.3 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(0, 0);
+        res.transform = CGAffineTransformMakeScale(0, 0);
+        res.alpha = 0;
+        //label.transform = CGAffineTransformMakeScale(0, 0);
+        label.alpha = 0;
+    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.3 animations:^{
+//            imageView.transform = CGAffineTransformMakeScale(0, 0);
+//            res.transform = CGAffineTransformMakeScale(0, 0);
+//            res.alpha = 0;
+//        } completion:^(BOOL finished) {
+        
+            [label removeFromSuperview];
+            [imageView removeFromSuperview];
+            [res removeFromSuperview];
+           
+//        }];
+    }];
+}
+#pragma mark - IBAction
 - (IBAction)next:(id)sender
 {
     [self removeObjects];
@@ -140,21 +271,76 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark - GestureRecognizers
 
--(void) dealloc
+- (void)panGestureRecognizer:(UIGestureRecognizer *)recognizer
 {
-  
+    
+   // if (recognizer.state == UIGestureRecognizerStateBegan)
+    //{
+    _dragingSegment.layer.anchorPoint = _touchPoint;
+        _dragingSegment.layer.position = [recognizer locationInView:self.view];
+        //NSLog(@"touchBegan");
+    //}
+    if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        [[GameModel sharedInstance] checkForRightPlace:_dragingSegment];
+        
+    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)levelFinish
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self startWinAnimations:nil];
 }
-*/
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch1 = [touches anyObject];
+    CGPoint touchLocation = [touch1 locationInView:self.view];
+    _dragingSegment = nil;
+    NSMutableArray *tapSegments = [[NSMutableArray alloc] init];
+    for (Segment *s in _level.segments) {
+        if (CGRectContainsPoint(s.frame, touchLocation)) {
+            if (s.inPlase) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    s.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                    
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        s.transform = CGAffineTransformMakeScale(1, 1);
+                    }];
+                }];
+            } else {
+                [tapSegments addObject:s];
+            }
+            
+        }
+        
+    }
+    if (tapSegments.count>1) {
+        for (Segment *s in tapSegments) {
+            if (s.layer.zPosition == 1 && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0)
+            {
+                s.layer.zPosition = 1;
+                _dragingSegment = s;
+                _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+            } else if (!_dragingSegment && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
+                s.layer.zPosition = 1;
+                _dragingSegment = s;
+                _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+            } else {
+                s.layer.zPosition = 0;
+            }
+        }
+    } else {
+        Segment *s = [tapSegments firstObject];
+        if (!CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
+            for (Segment *ss in _level.segments) {
+                ss.layer.zPosition = 0;
+            }
+            s.layer.zPosition = 1;
+            _dragingSegment = s;
+            _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
+        }
+    }
+}
 @end
