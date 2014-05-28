@@ -136,14 +136,6 @@
         multiplayer = 1.0f;
     }
 }
-- (CGRect)getAdaptedRectFromRect:(CGRect)rect
-{
-    CGRect result;
-    result.size.height = rect.size.height*multiplayer;
-    result.size.width = rect.size.width*multiplayer;
-    return result;
-}
-
 #pragma mark - Custom Accssesors
 - (NSInteger)segmentsCount
 {
@@ -153,7 +145,7 @@
 {
     return _levels.count;
 }
-#pragma mark - Publick Medoths
+#pragma mark - Class Methods
 
 +(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
 {

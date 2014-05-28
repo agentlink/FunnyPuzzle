@@ -8,8 +8,11 @@
 
 #import "CloudView.h"
 #import <PDFImage/PDFImage.h>
+@interface CloudView ()
+@end
 @implementation CloudView
 
+#pragma mark - Lifecicle
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -25,42 +28,72 @@
     if (self) {
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
         CGMutablePathRef aPath = CGPathCreateMutable();
-        float x = CGRectGetMidX(self.frame);
-        float y = CGRectGetMidY(self.frame);
+        float y = self.frame.origin.y;
         float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-        self.layer.anchorPoint = CGPointMake(0.5, 0.8);
-        CGPathMoveToPoint(aPath,nil,0-CGRectGetWidth(self.frame),y);        //Origin Point
-        CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-                              wx+(CGRectGetWidth(self.frame)/2),y+5,  //Control Point 2
-                              wx+CGRectGetWidth(self.frame),y); // End Point
-        animation.rotationMode = @"auto";
+        
+        CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(self.frame),y);
+        CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(self.frame),y);
+       
+        
         animation.path = aPath;
         animation.duration = 30+arc4random()%60;
         animation.autoreverses = NO;
         animation.removedOnCompletion = NO;
-        animation.repeatCount = 100.0f;
+        animation.repeatCount = INFINITY;
+        animation.beginTime = 30+arc4random()%60;
         animation.timingFunction = [CAMediaTimingFunction
                                     functionWithName:kCAMediaTimingFunctionLinear];
-        [self.layer addAnimation:animation forKey:@"position"];
         
+        [self.layer addAnimation:animation forKey:@"position"];
         [animation setDelegate:self];
         NSArray *clouds = @[@"cloud1", @"cloud2", @"cloud3"];
-        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count-1)]];
-        PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:self.bounds];
+        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count)]];
+        PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:[self calcRect:self.frame size:cloud.size]];
         cloudView.image = cloud;
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:cloudView];
+        [self setupMotionEffect];
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark - Private
+- (CGRect)calcRect:(CGRect)rect size:(CGSize)size
 {
-    // Drawing code
+    float mult = 1;
+    if (size.width>self.frame.size.width)
+    {
+        mult = self.frame.size.width/size.width;
+    }
+    CGRect result;
+    result.size = CGSizeMake(size.width*mult, size.height*mult);
+    //result.origin = rect.origin;
+    return result;
 }
-*/
+- (void)setupMotionEffect
+{
+    int dim = (10+arc4random()%50);
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-dim);
+    verticalMotionEffect.maximumRelativeValue = @(dim);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-dim);
+    horizontalMotionEffect.maximumRelativeValue = @(dim);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self addMotionEffect:group];
+}
 
 @end

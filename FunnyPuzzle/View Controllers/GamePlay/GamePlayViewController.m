@@ -234,7 +234,7 @@
     UILabel *label = (UILabel *)[self.view viewWithTag:44];
     [_dAnimator removeBehavior:_snap];
     [_collisions removeItem:label];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         imageView.transform = CGAffineTransformMakeScale(0, 0);
         res.transform = CGAffineTransformMakeScale(0, 0);
         res.alpha = 0;

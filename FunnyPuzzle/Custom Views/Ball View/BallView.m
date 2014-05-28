@@ -20,7 +20,6 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        //[self setupBehaviors];
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
         CGMutablePathRef aPath = CGPathCreateMutable();
         float x = CGRectGetMidX(self.frame);
@@ -45,22 +44,6 @@
         [self setupMotionEffect];
     }
     return self;
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [touches anyObject];
-    
-    if (touch.phase == UITouchPhaseBegan) {
-        [UIView animateWithDuration:0.3f animations:^{
-            //self.transform = CGAffineTransformMakeScale(0.8, 0.8);// =  CATransform3DMakeScale(1, 1, 0.5);
-        }];
-    } else if (touch.phase == UITouchPhaseEnded)
-    {
-        [UIView animateWithDuration:0.3f animations:^{
-            self.transform = CGAffineTransformMakeScale(1, 1);// =  CATransform3DMakeScale(1, 1, 0.5);
-        }];
-    }
-    
 }
 - (void)setupMotionEffect
 {
@@ -93,10 +76,6 @@
     if (_tap) {
         _tap();
     }
-}
-- (void)setupBehaviors
-{
-    
 }
 - (void)setImage:(PDFImage *)image
 {
