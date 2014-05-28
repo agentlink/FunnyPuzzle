@@ -15,4 +15,7 @@
 @property (nonatomic) int BonusLevelKind;
 @property (nonatomic) bool click;
 
+@property (nonatomic, strong) UIDynamicItemBehavior *CandiesPropertiesBehavior;
+@property (nonatomic, strong) UIDynamicAnimator *animator;
+
 @end
