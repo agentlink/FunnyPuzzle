@@ -9,11 +9,10 @@
 #import "GamePlayViewController.h"
 #import "GameModel.h"
 #import <CoreMotion/CoreMotion.h>
+#import "AccelerometerManager.h"
 
-@interface GamePlayViewController ()
-{
-  NSArray *images;
-}
+@interface GamePlayViewController () <ShakeHappendDelegate>
+
 @property (nonatomic, weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightConstraint;
@@ -26,6 +25,7 @@
 @property (nonatomic) UIDynamicAnimator *dAnimator;
 @property (nonatomic) UISnapBehavior *snap;
 @property (nonatomic) UICollisionBehavior *collisions;
+@property (nonatomic) UIPushBehavior *push;
 @property (nonatomic) UILabel *label;
 
 @property (nonatomic) FPLevelManager *level;
@@ -70,20 +70,18 @@
     for (Segment *s in _level.segments) {
         [self.view addSubview:s];
         CGRect rect = s.frame;
-        rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
-        rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
+        rect.origin.x = arc4random()%(int)fabs((CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40));
+        rect.origin.y = arc4random()%(int)fabs((CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40));
         s.frame = rect;
         s.rect = [[GameModel sharedInstance] calcRect:s];
         if ([GameModel sharedInstance].levelWin) {
             s.frame = s.rect;
             s.hidden = YES;
-        } /*else {
-            rect.origin.x = arc4random()%(int)(CGRectGetHeight(_leftView.frame)-CGRectGetHeight(s.frame)-40);
-            rect.origin.y = arc4random()%(int)(CGRectGetWidth(_leftView.frame)-CGRectGetWidth(s.frame)-40);
-        }*/
+            }
         s.transform = CGAffineTransformMakeScale(0, 0);
         s.alpha = 0;
-        
+        if ([s isEqual:[[_level segments] lastObject]])
+            s.layer.zPosition =1;
         [UIView animateWithDuration:0.2 delay:[_level.segments indexOfObject:s]*0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             s.transform = CGAffineTransformMakeScale(1.2, 1.2);
             s.alpha = 1;
@@ -120,6 +118,14 @@
     [self stopWinAnimations:self.view];
     [GameModel sharedInstance].level = nil;
 }
+- (void)iPhoneDidShaked
+{
+}
+- (void)shakedVector:(CGVector)vector
+{
+    [_push setPushDirection:vector];
+    _push.active = YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -136,9 +142,13 @@
     _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     _collisions = [[UICollisionBehavior alloc] init];
     _collisions.translatesReferenceBoundsIntoBoundary = YES;
+    _push = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeInstantaneous];
+    _push.magnitude = 5;
     [_dAnimator addBehavior:_collisions];
+    [_dAnimator addBehavior:_push];
+    [[AccelerometerManager sharedInstance] setShakeRangeWithMinValue:0.3 MaxValue:1];
     
-
+    [AccelerometerManager sharedInstance].delegate = self;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -206,6 +216,7 @@
     [self.view addSubview:label];
     _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame))];
     _snap.damping = 0.2;
+    [_push addItem:label];
     [_dAnimator addBehavior:_snap];
     [_collisions addItem:label];
 
@@ -225,6 +236,7 @@
             res.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
+    [[AccelerometerManager sharedInstance] startShakeDetect];
 }
 - (void)stopWinAnimations:(UIView *)view
 {
@@ -253,6 +265,7 @@
            
 //        }];
     }];
+     [[AccelerometerManager sharedInstance] stopShakeDetect];
 }
 #pragma mark - IBAction
 - (IBAction)next:(id)sender

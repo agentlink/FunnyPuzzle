@@ -39,6 +39,9 @@ static AccelerometerManager *_instance=nil;
                                 if ((_delegate) &&([_delegate respondsToSelector:@selector(iPhoneDidShaked)])) {
                                     [_delegate iPhoneDidShaked];
                                 }
+                                if ([_delegate respondsToSelector:@selector(shakedVector:)]) {
+                                    [_delegate shakedVector:CGVectorMake(data.acceleration.y, data.acceleration.x)];
+                                }
                             }
                         });
     }];
