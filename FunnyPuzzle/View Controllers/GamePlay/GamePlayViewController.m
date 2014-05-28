@@ -296,7 +296,8 @@
    // if (recognizer.state == UIGestureRecognizerStateBegan)
     //{
     _dragingSegment.layer.anchorPoint = _touchPoint;
-        _dragingSegment.layer.position = [recognizer locationInView:self.view];
+    _dragingSegment.layer.position = [recognizer locationInView:self.view];
+    //_dragingSegment.attachPoint.anchorPoint = [recognizer locationInView:self.view];
         //NSLog(@"touchBegan");
     //}
     if (recognizer.state == UIGestureRecognizerStateEnded)

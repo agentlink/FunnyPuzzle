@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Baseball Cap");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "БейсболкаМ");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "baseball_cap");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "92 132 209 77 130 242 8");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "17 8 16 68 88 88 136");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "145 90 295 30 250 225 80");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "205 313 195 200 360 252 85");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "455");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "135");

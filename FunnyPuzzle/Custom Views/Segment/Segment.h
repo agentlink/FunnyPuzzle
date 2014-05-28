@@ -14,6 +14,6 @@
 @property (nonatomic, strong) PDFImage *image;
 @property (nonatomic, readonly) PDFImageView *imageView;
 @property (nonatomic) BOOL inPlase;
-
+@property (nonatomic) UIAttachmentBehavior *attachPoint;
 - (UIColor *)colorOfPoint:(CGPoint)point;
 @end
