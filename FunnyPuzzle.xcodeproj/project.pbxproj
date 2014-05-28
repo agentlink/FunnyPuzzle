@@ -478,13 +478,13 @@
 		7FA4BA47192C9AFD00A772BA /* FunnyPuzzle */ = {
 			isa = PBXGroup;
 			children = (
-				7F316170192CA03200C49EAE /* Resources */,
-				7F316178192CA06100C49EAE /* ViewControllers */,
 				7FA4BA50192C9AFD00A772BA /* FPAppDelegate.h */,
 				7FA4BA51192C9AFD00A772BA /* FPAppDelegate.m */,
 				7FA4BA53192C9AFD00A772BA /* Main.storyboard */,
-				7F316169192C9FFC00C49EAE /* Managers */,
+				7F316170192CA03200C49EAE /* Resources */,
+				7F316178192CA06100C49EAE /* ViewControllers */,
 				7F31615C192C9FA400C49EAE /* Views */,
+				7F316169192C9FFC00C49EAE /* Managers */,
 				7F31616B192CA01500C49EAE /* Other Classes */,
 				7FA4BA48192C9AFD00A772BA /* Supporting Files */,
 			);
