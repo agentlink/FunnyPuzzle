@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0439944F19360CD30006E3DB /* Comp4_1.mp4 */; };
+		045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045E3EEA19360B3000258680 /* MediaPlayer.framework */; };
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
 		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
 		047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlovers.m */; };
@@ -109,6 +111,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0439944F19360CD30006E3DB /* Comp4_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Comp4_1.mp4; path = Resources/Comp4_1.mp4; sourceTree = "<group>"; };
+		045E3EEA19360B3000258680 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBonusViewController.h; path = "View Controllers/Bonus View Controller/FPBonusViewController.h"; sourceTree = "<group>"; };
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBonusViewController.m; path = "View Controllers/Bonus View Controller/FPBonusViewController.m"; sourceTree = "<group>"; };
 		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candies.h; path = "Custom Views/Candies/Candies.h"; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */,
 				7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */,
 				84E962F3192F80B200DC785C /* SystemConfiguration.framework in Frameworks */,
 				84E962F1192F80A300DC785C /* StoreKit.framework in Frameworks */,
@@ -359,6 +364,7 @@
 		7F316170192CA03200C49EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0439944F19360CD30006E3DB /* Comp4_1.mp4 */,
 				7FC9D1F719337F9F002878BD /* Fonts */,
 				84F85B9C192E489400BDECB5 /* Music */,
 				7F31617E192CCBE200C49EAE /* Levels */,
@@ -449,6 +455,7 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				045E3EEA19360B3000258680 /* MediaPlayer.framework */,
 				7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */,
 				84E962F2192F80B200DC785C /* SystemConfiguration.framework */,
 				84E962F0192F80A300DC785C /* StoreKit.framework */,
@@ -791,6 +798,7 @@
 				7FA57037192F1B3000CE84F8 /* cloud1.pdf in Resources */,
 				7FA57043192F399A00CE84F8 /* ground5.pdf in Resources */,
 				7FA5703F192F399A00CE84F8 /* ground1.pdf in Resources */,
+				0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */,
 				7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */,
 				8443DDE2192F4796009F1EF8 /* carrot.mp3 in Resources */,
 				8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */,

@@ -55,13 +55,13 @@
                                 [self tryToMakeShakeOnVectorXAxe:data.acceleration.x YAxe:data.acceleration.y];
                                 _zShaked=YES;
                             }
-                            if ((data.acceleration.x>-0.10)&&(data.acceleration.x<0.10)){
+                            if ((data.acceleration.x>-0.20)&&(data.acceleration.x<0.20)){
                                 _xShaked=NO;
                             }
-                            if ((data.acceleration.y>-0.10)&&(data.acceleration.y<0.10)){
+                            if ((data.acceleration.y>-0.20)&&(data.acceleration.y<0.20)){
                                 _yShaked=NO;
                             }
-                            if ((data.acceleration.z>-0.10)&&(data.acceleration.z<0.10)){
+                            if ((data.acceleration.z>-0.20)&&(data.acceleration.z<0.20)){
                                 _zShaked=NO;
                             }
                             [self setShaked];
