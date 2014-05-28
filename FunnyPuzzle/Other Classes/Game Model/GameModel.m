@@ -45,7 +45,7 @@ static GameModel *_instance = nil;
 
     BOOL xPos = 10>=abs(win.x-currentPoint.x);
     BOOL yPos = 10>=abs(win.y-currentPoint.y);
-    if (xPos&&yPos)
+    if (xPos&&yPos&&segment)
     {
         [UIView animateWithDuration:0.2 animations:^{
             segment.frame = CGRectMake(win.x, win.y, segment.frame.size.width, segment.frame.size.height);
