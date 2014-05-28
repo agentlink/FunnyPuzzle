@@ -12,6 +12,8 @@
 @protocol ShakeHappendDelegate <NSObject>
 
 - (void) iPhoneDidShaked;
+@optional
+- (void)shakedVector:(CGVector)vector;
 
 @end
 

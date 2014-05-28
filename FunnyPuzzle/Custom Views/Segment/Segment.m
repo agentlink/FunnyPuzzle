@@ -53,17 +53,7 @@
     _imageView.clipsToBounds = YES;
     _imageView.image = image;
 }
-- (void)setImagePath:(NSString *)imagePath
-{
-    _imagePath = imagePath;
-    if (imagePath)
-    {
-        _image = [PDFImage imageNamed:imagePath];
-        self.frame = CGRectMake(0, 0, _image.size.width, _image.size.height);
-    } else {
-        [_imageView removeFromSuperview];
-    }
-}
+
 #pragma mark - Public
 - (UIColor *) colorOfPoint:(CGPoint)point
 {
