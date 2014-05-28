@@ -107,5 +107,20 @@ static GameModel *_instance = nil;
     }
     return _instance;
 }
-
+- (void)itemSelected
+{
+    
+}
+- (void)itemDrop
+{
+    
+}
+- (void)itemDropInPlace
+{
+    
+}
+- (void)itemWillSelectFromPlace
+{
+    
+}
 @end
