@@ -8,40 +8,47 @@
 
 #import "AccelerometerManager.h"
 
+@interface AccelerometerManager()
+
+@property (nonatomic) BOOL shaked;
+
+@end
+
 @implementation AccelerometerManager
 
-static AccelerometerManager *_instance=nil;
-
-+ (AccelerometerManager*) sharedInstance{
-    @synchronized(self){
-        if (_instance==nil) {
-            _instance=[[self alloc] init];
-            _instance->motionManager=[[CMMotionManager alloc] init];
-            _instance->_minAxesValue=0.70f;
-            _instance->_maxAxesValue=0.75f;
-        }
-    }
-    return _instance;    
+- (id) init{
+    motionManager=[[CMMotionManager alloc] init];
+    _minAxesValue=0.70f;
+    _maxAxesValue=0.75f;
+    return self;
 }
 
+
+
 - (void) setShakeRangeWithMinValue:(float)minValue MaxValue:(float)maxValue{
-    _instance->_minAxesValue=minValue;
-    _instance->_maxAxesValue=maxValue;
+    _minAxesValue=minValue;
+    _maxAxesValue=maxValue;
 }
 
 - (void) startShakeDetect{
+    _shaked=NO;
     [self->motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init]
                                               withHandler:^(CMAccelerometerData *data, NSError *error)
      {
          dispatch_async(dispatch_get_main_queue(),
                         ^{
-                            if (((data.acceleration.x>_instance.minAxesValue)&&(data.acceleration.x<_instance.maxAxesValue))||((data.acceleration.y>_instance.minAxesValue)&&(data.acceleration.y<_instance.maxAxesValue))||((data.acceleration.z>_instance.minAxesValue)&&(data.acceleration.z<_instance.maxAxesValue))) {
-                                if ((_delegate) &&([_delegate respondsToSelector:@selector(iPhoneDidShaked)])) {
-                                    [_delegate iPhoneDidShaked];
+                            if (((data.acceleration.x>_minAxesValue)&&(data.acceleration.x<_maxAxesValue))||((data.acceleration.y>_minAxesValue)&&(data.acceleration.y<_maxAxesValue))||((data.acceleration.z>_minAxesValue)&&(data.acceleration.z<_maxAxesValue))) {
+                                if (!_shaked){
+                                    if ((_delegate) &&([_delegate respondsToSelector:@selector(iPhoneDidShaked)])){
+                                        [_delegate iPhoneDidShaked];
+                                    }
+                                    if ([_delegate respondsToSelector:@selector(shakedVector:)]) {
+                                        [_delegate shakedVector:CGVectorMake(data.acceleration.y, data.acceleration.x)];}
+                                    _shaked=YES;
                                 }
-                                if ([_delegate respondsToSelector:@selector(shakedVector:)]) {
-                                    [_delegate shakedVector:CGVectorMake(data.acceleration.y, data.acceleration.x)];
-                                }
+                            }
+                            else{
+                                _shaked=NO;
                             }
                         });
     }];

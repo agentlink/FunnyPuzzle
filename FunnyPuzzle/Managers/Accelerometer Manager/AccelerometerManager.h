@@ -11,9 +11,9 @@
 
 @protocol ShakeHappendDelegate <NSObject>
 
-- (void) iPhoneDidShaked;
 @optional
-- (void)shakedVector:(CGVector)vector;
+- (void) iPhoneDidShaked;
+- (void) shakedVector:(CGVector)vector;
 
 @end
 
@@ -22,8 +22,6 @@
 }
 
 @property (nonatomic) id<ShakeHappendDelegate> delegate;
-
-+ (AccelerometerManager*) sharedInstance;
 
 - (void) startShakeDetect;
 - (void) stopShakeDetect;
