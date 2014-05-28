@@ -49,7 +49,7 @@ static GameModel *_instance = nil;
     BOOL yPos = 10>=abs(win.y-currentPoint.y);
     if (xPos&&yPos&&segment)
     {
-        [[FPSoundManager sharedInstance] vibrate];
+        [self itemDropInPlace];
         [UIView animateWithDuration:0.2 animations:^{
             segment.frame = CGRectMake(win.x, win.y, segment.frame.size.width, segment.frame.size.height);
             segment.transform = CGAffineTransformMakeScale(1.2, 1.2);
@@ -110,9 +110,10 @@ static GameModel *_instance = nil;
     }
     return _instance;
 }
+#pragma mark - Public
 - (void)itemSelected
 {
-    
+    [[FPSoundManager sharedInstance] vibrate];
 }
 - (void)itemDrop
 {
@@ -120,9 +121,13 @@ static GameModel *_instance = nil;
 }
 - (void)itemDropInPlace
 {
-    
+    [[FPSoundManager sharedInstance] vibrate];
 }
 - (void)itemWillSelectFromPlace
+{
+    
+}
+- (void)levelComplet
 {
     
 }

@@ -28,6 +28,14 @@
 - (FPLevelManager *)prewLevel;
 - (CGRect)calcRect:(Segment *)segment;
 
+
+- (void)itemSelected;
+- (void)itemDrop;
+- (void)itemDropInPlace;
+- (void)itemWillSelectFromPlace;
+- (void)levelComplet;
+
+
 + (GameModel *)sharedInstance;
 
 @end

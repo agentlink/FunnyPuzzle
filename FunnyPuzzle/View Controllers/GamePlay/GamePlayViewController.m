@@ -306,12 +306,13 @@
     //}
     if (recognizer.state == UIGestureRecognizerStateEnded)
     {
+        [[GameModel sharedInstance] itemDrop];
         [[GameModel sharedInstance] checkForRightPlace:_dragingSegment];
-        
     }
 }
 - (void)levelFinish
 {
+    [[GameModel sharedInstance] levelComplet];
     [self startWinAnimations:nil];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -323,6 +324,7 @@
     for (Segment *s in _level.segments) {
         if (CGRectContainsPoint(s.frame, touchLocation)) {
             if (s.inPlase) {
+                [[GameModel sharedInstance] itemWillSelectFromPlace];
                 [UIView animateWithDuration:0.1 animations:^{
                     s.transform = CGAffineTransformMakeScale(1.2, 1.2);
                     
@@ -345,12 +347,12 @@
                 s.layer.zPosition = 1;
                 _dragingSegment = s;
                 _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
-                [[FPSoundManager sharedInstance] vibrate];
+                [[GameModel sharedInstance] itemSelected];
             } else if (!_dragingSegment && !CGColorGetAlpha([[s colorOfPoint:[touch1 locationInView:s]] CGColor])==0) {
                 s.layer.zPosition = 1;
                 _dragingSegment = s;
                 _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
-                [[FPSoundManager sharedInstance] vibrate];
+                [[GameModel sharedInstance] itemSelected];
             } else {
                 s.layer.zPosition = 0;
             }
@@ -364,7 +366,7 @@
             s.layer.zPosition = 1;
             _dragingSegment = s;
             _touchPoint = CGPointMake([touch1 locationInView:s].x/s.frame.size.width, [touch1 locationInView:s].y/s.frame.size.height);
-            [[FPSoundManager sharedInstance] vibrate];
+            [[GameModel sharedInstance] itemSelected];
         }
     }
 }
