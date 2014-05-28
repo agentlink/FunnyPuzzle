@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *back;
 @property (nonatomic) Segment *dragingSegment;
 @property (nonatomic) CGPoint touchPoint;
+@property (nonatomic) AccelerometerManager *accelerometerManager;
 
 @property (nonatomic) UIDynamicAnimator *dAnimator;
 @property (nonatomic) UISnapBehavior *snap;
@@ -117,6 +118,8 @@
 - (void)shakedVector:(CGVector)vector
 {
     [_push setPushDirection:vector];
+    NSLog(@"vector: dx,dy: %f,%f", vector.dx, vector.dy);
+    _push.active = YES;
 }
 - (void)viewDidLoad
 {
@@ -164,10 +167,11 @@
     [_dAnimator addBehavior:_collisions];
     [_dAnimator addBehavior:_push];
     
-    [[AccelerometerManager sharedInstance] setShakeRangeWithMinValue:0.3 MaxValue:1];
+    _accelerometerManager = [AccelerometerManager new];
+    [_accelerometerManager setShakeRangeWithMinValue:0.3 MaxValue:1];
     
     [GameModel sharedInstance].gamePlayViewController = self;
-    [AccelerometerManager sharedInstance].delegate = self;
+    _accelerometerManager.delegate = self;
 }
 
 - (void) updateLevel
@@ -243,7 +247,7 @@
             res.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
-    [[AccelerometerManager sharedInstance] startShakeDetect];
+    [_accelerometerManager startShakeDetect];
     _push.active = YES;
 }
 - (void)stopWinAnimations:(UIView *)view
@@ -265,7 +269,7 @@
         [imageView removeFromSuperview];
         [res removeFromSuperview];
     }];
-     [[AccelerometerManager sharedInstance] stopShakeDetect];
+     [_accelerometerManager stopShakeDetect];
     _push.active = NO;
 }
 #pragma mark - IBAction
