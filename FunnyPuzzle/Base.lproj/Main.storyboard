@@ -603,6 +603,9 @@
                                 <state key="normal" title="bt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="DeleteViewController:" destination="fZu-IS-JoB" eventType="touchUpInside" id="Ojx-4L-0Jh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215688593685627" green="0.89411771297454834" blue="1" alpha="1" colorSpace="deviceRGB"/>

@@ -43,21 +43,25 @@
      {
          dispatch_async(dispatch_get_main_queue(),
                         ^{
-                            if (((data.acceleration.x>_instance.minAxesValue)&&(data.acceleration.x<_instance.maxAxesValue))||((data.acceleration.y>_instance.minAxesValue)&&(data.acceleration.y<_instance.maxAxesValue))) {
-                                if ((_delegate) &&([_delegate respondsToSelector:@selector(iPhoneDidShaked)])) {
-                                    [_delegate iPhoneDidShaked];
-                                }
-                                if ([_delegate respondsToSelector:@selector(shakedVector:)]) {
-                                    [_delegate shakedVector:CGVectorMake(data.acceleration.y, data.acceleration.x)];
-                                }
+                            if ((data.acceleration.x>_minAxesValue)&&(data.acceleration.x<_maxAxesValue)){
+                                [self tryToMakeShakeOnVectorXAxe:data.acceleration.x YAxe:data.acceleration.y];
+                                _xShaked=YES;
                             }
-                            if ((data.acceleration.x>-0.10)&&(data.acceleration.x<0.10)){
+                            else if ((data.acceleration.y>_minAxesValue)&&(data.acceleration.y<_maxAxesValue)){
+                                [self tryToMakeShakeOnVectorXAxe:data.acceleration.x YAxe:data.acceleration.y];
+                                _yShaked=YES;
+                            }
+                            else if ((data.acceleration.z>_minAxesValue)&&(data.acceleration.z<_maxAxesValue)){
+                                [self tryToMakeShakeOnVectorXAxe:data.acceleration.x YAxe:data.acceleration.y];
+                                _zShaked=YES;
+                            }
+                            if ((data.acceleration.x>-0.20)&&(data.acceleration.x<0.20)){
                                 _xShaked=NO;
                             }
-                            if ((data.acceleration.y>-0.10)&&(data.acceleration.y<0.10)){
+                            if ((data.acceleration.y>-0.20)&&(data.acceleration.y<0.20)){
                                 _yShaked=NO;
                             }
-                            if ((data.acceleration.z>-0.10)&&(data.acceleration.z<0.10)){
+                            if ((data.acceleration.z>-0.20)&&(data.acceleration.z<0.20)){
                                 _zShaked=NO;
                             }
                             [self setShaked];

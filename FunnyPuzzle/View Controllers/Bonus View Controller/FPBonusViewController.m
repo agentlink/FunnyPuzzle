@@ -10,6 +10,7 @@
 #import "Candies.h"
 #import "FPFlovers.h"
 #import "AccelerometerManager.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface FPBonusViewController ()<ShakeHappendDelegate>
 
@@ -19,14 +20,20 @@
     NSArray *imagesCandy;
     int Numb;
     int xx;
+    MPMoviePlayerController *moviePlayerController;
+      NSTimer *timer;
+    CAKeyframeAnimation *animation;
+    CGMutablePathRef aPath;
 }
 
 
 @property (weak, nonatomic) IBOutlet UIButton *Bt;
 
+- (IBAction)DeleteViewController:(id)sender;
 
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, strong) AccelerometerManager *accelerometer;
 
 @end
 
@@ -47,15 +54,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [AccelerometerManager sharedInstance].delegate=self;
-    [[AccelerometerManager sharedInstance] setShakeRangeWithMinValue:0.90 MaxValue:0.92];
-    [[AccelerometerManager sharedInstance] startShakeDetect];
+   
     // Do any additional setup after loading the view.
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     xx=20;
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-    Numb=0;
+    Numb=1;
     switch (Numb) {
         case 0:
         {
@@ -66,6 +71,7 @@
             CGRect rec=CGRectMake(h/2-im.size.height/2, w/2-im.size.width/2, im.size.width, im.size.height);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im;
+            imView.layer.zPosition=1;
             [self.view addSubview:imView];
             int x=20;
             int y=20;
@@ -76,7 +82,7 @@
             {
                 Candies *c=[Candies new];
                 c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, 55, 55);
-                c.layer.zPosition=0;
+                c.layer.zPosition=2;
                 int l=arc4random()%4;
                 UIImage *im=[UIImage imageNamed:imagesCandy[l]];
                 c.backgroundColor=[UIColor colorWithPatternImage:im];
@@ -87,21 +93,22 @@
                 [objectsc insertObject:c atIndex:i-1];
                 [objectsCD insertObject:c atIndex:i-1];
                 x+=50;
-//                CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-//                CGMutablePathRef aPath = CGPathCreateMutable();
-//                float x = CGRectGetMidX(c.frame);
-//                float y = CGRectGetMidY(c.frame);
-//                CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
-//                CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-//                                      x+0.2,y,  //Control Point 2
-//                                      x+0.1,y-0.1); // End Point
-//                animation.rotationMode = @"auto";
-//                animation.path = aPath;
-//                animation.duration = 0.8+arc4random()%4;
-//                animation.autoreverses = YES;
-//                animation.removedOnCompletion = YES;
-//                animation.repeatCount = 100.0f;
-//                [c.layer addAnimation:animation forKey:@"position" ];
+                animation = [CAKeyframeAnimation animation];
+                aPath = CGPathCreateMutable();
+                float x = CGRectGetMidX(c.frame);
+                float y = CGRectGetMidY(c.frame);
+                CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+                CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                                      x+0.2,y,  //Control Point 2
+                                      x+0.1,y-0.1); // End Point
+                animation.rotationMode = @"auto";
+                animation.path = aPath;
+                animation.duration = 0.8+arc4random()%4;
+                animation.autoreverses = YES;
+                animation.removedOnCompletion = YES;
+                animation.repeatCount = 100.0f;
+                [c.layer addAnimation:animation forKey:@"position" ];
+                
             
             }
             break;
@@ -116,8 +123,8 @@
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im2;
             [self.view addSubview:imView];
-            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-            CGMutablePathRef aPath = CGPathCreateMutable();
+            animation = [CAKeyframeAnimation animation];
+            aPath = CGPathCreateMutable();
             float x = CGRectGetMidX(imView.frame);
             float y = CGRectGetMidY(imView.frame);
             CGPathAddArc(aPath, NULL, x, y, 0.1f, 0.f, (360* M_PI)/180, NO);
@@ -207,26 +214,79 @@
                 [objectsc insertObject:c atIndex:i];
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
-                CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-                CGMutablePathRef aPath = CGPathCreateMutable();
-                CGPathMoveToPoint(aPath,nil,mx,my);        //Origin Point
-                CGPathAddCurveToPoint(aPath,nil, mx,my,   //Control Point 1
-                                      mx,my+1,  //Control Point 2
-                                      mx+1,my-1); // End Point
-                animation.rotationMode = @"auto";
-                animation.path = aPath;
-                animation.duration = 0.8+arc4random()%4;
-                animation.autoreverses = YES;
-                animation.removedOnCompletion = YES;
-                animation.repeatCount = 100.0f;
-                [c.layer addAnimation:animation forKey:@"position" ];
+//                CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+//                CGMutablePathRef aPath = CGPathCreateMutable();
+//                CGPathMoveToPoint(aPath,nil,mx,my);        //Origin Point
+//                CGPathAddCurveToPoint(aPath,nil, mx,my,   //Control Point 1
+//                                      mx,my+1,  //Control Point 2
+//                                      mx+1,my-1); // End Point
+//                animation.rotationMode = @"auto";
+//                animation.path = aPath;
+//                animation.duration = 0.8+arc4random()%4;
+//                animation.autoreverses = YES;
+//                animation.removedOnCompletion = YES;
+//                animation.repeatCount = 100.0f;
+//                [c.layer addAnimation:animation forKey:@"position" ];
             }
             break;
         }
         default:
             break;
     }
+    CGRect rec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+    NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
+    NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
+    moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
+    [moviePlayerController.view setFrame:rec];
+    moviePlayerController.controlStyle=MPMovieControlStyleNone;
+    moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
+    [moviePlayerController prepareToPlay];
+    moviePlayerController.view.backgroundColor=[UIColor clearColor];
+    moviePlayerController.view.layer.zPosition=5;
+    [self.view addSubview:moviePlayerController.view];
+    [moviePlayerController play];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playMediaFinished:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:moviePlayerController];
+    
+  
+    tick=0;
+    timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
+                                             target: self
+                                           selector: @selector(handleTimer)
+                                           userInfo: nil
+                                            repeats: YES];
+    
+    
 }
+
+int tick=0;
+-(void)handleTimer
+{
+    tick++;
+    if (tick==1) {
+        _accelerometer = [AccelerometerManager new];
+        _accelerometer.delegate=self;
+        [_accelerometer setShakeRangeWithMinValue:0.70 MaxValue:0.80];
+        [_accelerometer startShakeDetect];
+    }
+    if(tick==3)
+    {
+      [timer invalidate];
+    }
+}
+
+-(void)playMediaFinished:(NSNotification*)theNotification
+{
+    moviePlayerController=[theNotification object];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:moviePlayerController];
+    [moviePlayerController.view removeFromSuperview];
+}
+
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
@@ -258,7 +318,7 @@
         {
             if (kilk==0) {
                 m=-1;
-                 [[AccelerometerManager sharedInstance] stopShakeDetect];
+                 [_accelerometer stopShakeDetect];
             }
         }
         if (m!=-1) {
@@ -266,11 +326,8 @@
             {
                 Candies *c=[Candies new];
                 c=objectsCD[m];
-                
-               // CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-               // CGMutablePathRef aPath = CGPathCreateMutable();
-               // float x = CGRectGetMidX(c.frame);
-               // float y = CGRectGetMidY(c.frame);
+                [c.layer removeAnimationForKey:@"position"];
+               
                 
                 UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
                 UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
@@ -284,35 +341,14 @@
                 c.animator = animator;
                 
                 
-//                CGPathMoveToPoint(aPath, nil, c.layer.position.x, c.layer.position.y);
-//                CGPathAddCurveToPoint(aPath, nil, x, y, c.layer.position.x, self.view.frame.size.height-c.frame.size.height/2, c.layer.position.x, self.view.frame.size.height-c.frame.size.height/2);
-//                animation.rotationMode = @"auto";
-//                animation.path = aPath;
-//                animation.duration = 1.8;
-//                animation.autoreverses = NO;
-//                animation.removedOnCompletion = YES;
-//                [c.layer addAnimation:animation forKey:@"position" ];
-//                CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.height-c.frame.size.height , 55, 55);
-//                c.frame=rec;
+                
                 c.Animation=true;
                 [objectsCD removeObjectAtIndex:m];
                 kilk--;
                 NSLog(@"Shake");
-//                CAKeyframeAnimation *animation1 = [CAKeyframeAnimation animation];
-//                CGMutablePathRef aPath1 = CGPathCreateMutable();
-//                x = CGRectGetMidX(c.frame);
-//                y = CGRectGetMidY(c.frame);
-//                CGPathMoveToPoint(aPath1,nil,x,y);        //Origin Point
-//                CGPathAddCurveToPoint(aPath1,nil, x,y,   //Control Point 1
-//                                      x,y+1,  //Control Point 2
-//                                      x+1,y-1); // End Point
-//                animation1.rotationMode = @"auto";
-//                animation1.path = aPath1;
-//                animation1.duration = 1.8+arc4random()%4;
-//                animation1.autoreverses = YES;
-//                animation1.removedOnCompletion = YES;
-//                animation1.repeatCount = 100.0f;
-//                [c.layer addAnimation:animation1 forKey:@"position" ];
+                CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
+                c.frame=rec;
+                
             }
         }
     }
@@ -342,30 +378,33 @@
                 int l=arc4random()%4;
                 UIImage *im=[UIImage imageNamed:imagesCandy[l]];
                 c.backgroundColor=[UIColor colorWithPatternImage:im];
+                
+                
+                
                 [UIView animateWithDuration:2.0 animations:^
                  {
                      f.frame=rec1;
                      CGRect rec=CGRectMake(f.frame.origin.x+20, f.frame.origin.y+17, im.size.height, im.size.width);
                      c.frame=rec;
-                     
-                 } completion:^(BOOL finished)
-                 {
-                     CAKeyframeAnimation *animation1 = [CAKeyframeAnimation animation];
-                     CGMutablePathRef aPath1 = CGPathCreateMutable();
-                     int x = CGRectGetMidX(c.frame);
-                     int y = CGRectGetMidY(c.frame);
-                     CGPathMoveToPoint(aPath1,nil,x,y);        //Origin Point
-                     CGPathAddCurveToPoint(aPath1,nil, x,y,   //Control Point 1
-                                           x,y+1,  //Control Point 2
-                                           x+1,y-1); // End Point
-                     animation1.rotationMode = @"auto";
-                     animation1.path = aPath1;
-                     animation1.duration = 0.8+arc4random()%4;
-                     animation1.autoreverses = YES;
-                     animation1.removedOnCompletion = YES;
-                     animation1.repeatCount = 100.0f;
-                     [c.layer addAnimation:animation1 forKey:@"position" ];
-                     
+                 
+//                 } completion:^(BOOL finished)
+//                 {
+//                     CAKeyframeAnimation *animation1 = [CAKeyframeAnimation animation];
+//                     CGMutablePathRef aPath1 = CGPathCreateMutable();
+//                     int x = CGRectGetMidX(c.frame);
+//                     int y = CGRectGetMidY(c.frame);
+//                     CGPathMoveToPoint(aPath1,nil,x,y);        //Origin Point
+//                     CGPathAddCurveToPoint(aPath1,nil, x,y,   //Control Point 1
+//                                           x,y+1,  //Control Point 2
+//                                           x+1,y-1); // End Point
+//                     animation1.rotationMode = @"auto";
+//                     animation1.path = aPath1;
+//                     animation1.duration = 0.8+arc4random()%4;
+//                     animation1.autoreverses = YES;
+//                     animation1.removedOnCompletion = YES;
+//                     animation1.repeatCount = 100.0f;
+//                     [c.layer addAnimation:animation1 forKey:@"position" ];
+//                     
                  } ];
             }
         }
@@ -396,26 +435,26 @@
                     c.frame=rec;
                 }completion:^(BOOL finished)
                  {
-                     int l=arc4random()%4;
-                     UIImage *im=[UIImage imageNamed:imagesCandy[l]];
-                     c.backgroundColor=[UIColor colorWithPatternImage:im];
-                     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-                     CGMutablePathRef aPath = CGPathCreateMutable();
-                     float x1 = CGRectGetMidX(c.frame);
-                     float y1 = CGRectGetMidY(c.frame);
-                     CGPathMoveToPoint(aPath,nil,x1,y1);        //Origin Point
-                     CGPathAddCurveToPoint(aPath,nil, x1,y1,   //Control Point 1
-                                           x1,y1+1,  //Control Point 2
-                                           x1+1,y1-1); // End Point
-                     animation.rotationMode = @"auto";
-                     animation.path = aPath;
-                     animation.duration = 0.8+arc4random()%4;
-                     animation.autoreverses = YES;
-                     animation.removedOnCompletion = YES;
-                     animation.repeatCount = 100.0f;
-                     CGRect rec1=CGRectMake(x1, y1, im.size.height, im.size.width);
-                     c.frame=rec1;
-                     [c.layer addAnimation:animation forKey:@"position" ];
+//                     int l=arc4random()%4;
+//                     UIImage *im=[UIImage imageNamed:imagesCandy[l]];
+//                     c.backgroundColor=[UIColor colorWithPatternImage:im];
+//                     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+//                     CGMutablePathRef aPath = CGPathCreateMutable();
+//                     float x1 = CGRectGetMidX(c.frame);
+//                     float y1 = CGRectGetMidY(c.frame);
+//                     CGPathMoveToPoint(aPath,nil,x1,y1);        //Origin Point
+//                     CGPathAddCurveToPoint(aPath,nil, x1,y1,   //Control Point 1
+//                                           x1,y1+1,  //Control Point 2
+//                                           x1+1,y1-1); // End Point
+//                     animation.rotationMode = @"auto";
+//                     animation.path = aPath;
+//                     animation.duration = 0.8+arc4random()%4;
+//                     animation.autoreverses = YES;
+//                     animation.removedOnCompletion = YES;
+//                     animation.repeatCount = 100.0f;
+//                     CGRect rec1=CGRectMake(x1, y1, im.size.height, im.size.width);
+//                     c.frame=rec1;
+//                     [c.layer addAnimation:animation forKey:@"position" ];
                      
                  }];
                 xx+=80;
@@ -430,9 +469,7 @@
 }
 
 
-
-
-
-
-
+- (IBAction)DeleteViewController:(id)sender {
+     [self.navigationController popViewControllerAnimated:YES];
+}
 @end
