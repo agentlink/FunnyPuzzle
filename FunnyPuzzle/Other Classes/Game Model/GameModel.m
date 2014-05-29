@@ -8,6 +8,7 @@
 
 #import "GameModel.h"
 #import "FPSoundManager.h"
+#import "FPGameManager.h"
 
 @interface GameModel ()
 @property (nonatomic) NSUserDefaults *defaults;
@@ -25,7 +26,7 @@ static GameModel *_instance = nil;
     _objectsLeft = _level.segmentsCount;
     _levelCompleet = [defaults boolForKey:_level.levelName];
         
-    if (_gameMode == FPGameModeEase) {
+    if ([FPGameManager sharedInstance].displayInnerBorders) {
         _currentField = _level.grayLinedFiewld;
     } else {
         _currentField = _level.grayField;
@@ -130,8 +131,10 @@ static GameModel *_instance = nil;
 {
     [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeInPlace];   
 }
+
 - (void)levelComplet
 {
     
 }
+
 @end

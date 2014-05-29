@@ -534,9 +534,9 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>145</string>
+						<integer>145</integer>
 						<key>y</key>
-						<string>165</string>
+						<integer>165</integer>
 					</dict>
 				</dict>
 			</array>
@@ -583,9 +583,9 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>128</string>
+						<integer>128</integer>
 						<key>y</key>
-						<string>222</string>
+						<integer>222</integer>
 					</dict>
 				</dict>
 			</array>
@@ -632,9 +632,9 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>117</string>
+						<integer>117</integer>
 						<key>y</key>
-						<string>101</string>
+						<integer>101</integer>
 					</dict>
 				</dict>
 			</array>
@@ -681,18 +681,18 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>161</string>
+						<integer>161</integer>
 						<key>y</key>
-						<string>190</string>
+						<integer>190</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>130</string>
+						<integer>130</integer>
 						<key>y</key>
-						<string>230</string>
+						<integer>230</integer>
 					</dict>
 				</dict>
 			</array>
@@ -739,36 +739,36 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>77</string>
+						<integer>77</integer>
 						<key>y</key>
-						<string>68</string>
+						<integer>68</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>130</string>
+						<integer>130</integer>
 						<key>y</key>
-						<string>88</string>
+						<integer>88</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>242</string>
+						<integer>242</integer>
 						<key>y</key>
-						<string>88</string>
+						<integer>88</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<string>8</string>
+						<integer>8</integer>
 						<key>y</key>
-						<string>136</string>
+						<integer>136</integer>
 					</dict>
 				</dict>
 			</array>
@@ -777,7 +777,206 @@
 			<key>name</key>
 			<string>Baseball Cap</string>
 		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>kettle</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>132</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>73</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>85</integer>
+						<key>y</key>
+						<integer>67</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>142</integer>
+						<key>y</key>
+						<integer>93</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>268</integer>
+						<key>y</key>
+						<integer>70</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>124</integer>
+						<key>y</key>
+						<integer>218</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/kettle</string>
+			<key>name</key>
+			<string>Kettle</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>car</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>77</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>100</integer>
+						<key>y</key>
+						<integer>20</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>206</integer>
+						<key>y</key>
+						<integer>18</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>272</integer>
+						<key>y</key>
+						<integer>24</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>11</integer>
+						<key>y</key>
+						<integer>72</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>121</integer>
+						<key>y</key>
+						<integer>72</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>201</integer>
+						<key>y</key>
+						<integer>70</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>201</integer>
+						<key>y</key>
+						<integer>72</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>349</integer>
+						<key>y</key>
+						<integer>90</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>125</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>43</integer>
+						<key>y</key>
+						<integer>135</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>263</integer>
+						<key>y</key>
+						<integer>125</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>273</integer>
+						<key>y</key>
+						<integer>135</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/car</string>
+			<key>name</key>
+			<string>Car</string>
+		</dict>
 	</array>
-	<array/>
+	<array>
+		<string></string>
+	</array>
 </array>
 </plist>

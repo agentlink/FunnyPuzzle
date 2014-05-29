@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Kettle");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Чайник");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "kettle");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "132 8 85 142 268 124");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 73 67 93 70 218");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "270 28 40 150 260 270");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "367 100 300 95 100 367");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "420");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "120");
