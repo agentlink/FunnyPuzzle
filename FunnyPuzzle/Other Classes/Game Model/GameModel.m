@@ -121,10 +121,49 @@ static GameModel *_instance = nil;
 }
 - (void)itemDropInPlace
 {
-    [[FPSoundManager sharedInstance] vibrate];
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    NSMutableArray* arr = [NSMutableArray array ];
+    
+    [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
+    [arr addObject:[NSNumber numberWithInt:50]];
+    
+        [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
+        [arr addObject:[NSNumber numberWithInt:150]];
+    //
+        [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
+        [arr addObject:[NSNumber numberWithInt:100]];
+    //
+    //    [arr addObject:[NSNumber numberWithBool:NO]];    //stop for 500ms
+    //    [arr addObject:[NSNumber numberWithInt:500]];
+    
+    [dict setObject:arr forKey:@"VibePattern"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
+    
+    
+    AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
 }
 - (void)itemWillSelectFromPlace
 {
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    NSMutableArray* arr = [NSMutableArray array ];
+    
+    [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
+    [arr addObject:[NSNumber numberWithInt:20]];
+    
+//    [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
+//    [arr addObject:[NSNumber numberWithInt:1000]];
+//    
+//    [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
+//    [arr addObject:[NSNumber numberWithInt:1000]];
+//    
+//    [arr addObject:[NSNumber numberWithBool:NO]];    //stop for 500ms
+//    [arr addObject:[NSNumber numberWithInt:500]];
+    
+    [dict setObject:arr forKey:@"VibePattern"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
+    
+    
+    AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
     
 }
 - (void)levelComplet
