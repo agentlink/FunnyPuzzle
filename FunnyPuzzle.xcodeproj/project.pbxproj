@@ -1000,7 +1000,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1025,7 +1025,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "82B0C230-C08B-4A2F-BC17-0F8342AE3CA2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

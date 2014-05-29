@@ -24,6 +24,7 @@
       NSTimer *timer;
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
+    int ii;
 }
 
 
@@ -56,14 +57,16 @@
     [super viewDidLoad];
    
     // Do any additional setup after loading the view.
+    CGRect  MainRec=CGRectMake( 0, 0,  80, 68);
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     xx=20;
-    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-    Numb=1;
+    
+    Numb=2;
     switch (Numb) {
         case 0:
         {
+            self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
+            MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
             kilk=9;
             UIImage *im=[UIImage imageNamed:@"basket_icon"];
             int h=self.view.frame.size.height;
@@ -115,11 +118,14 @@
         }
             case 1:
         {
+            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             kilk=4;
             UIImage *im2=[UIImage imageNamed:@"sun_img"];
             int h=self.view.frame.size.height;
             int w=self.view.frame.size.width;
             CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
+            MainRec=CGRectMake( h/2-40, w/2,  80, 68);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im2;
             [self.view addSubview:imView];
@@ -166,37 +172,44 @@
         }
             case 2:
         {
+            ii=0;
+            objectsc=[[NSMutableArray alloc]init];
+            objectsf=[[NSMutableArray alloc]init];
+            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             kilk=6;
             UIImage *im=[UIImage imageNamed:@"tree_img"];
             int h=self.view.frame.size.height;
             int w=self.view.frame.size.width;
             CGRect rec=CGRectMake(h/2-im.size.height/4, w/2-im.size.width/2-50, im.size.width, im.size.height);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
+            MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
             imView.image=im;
             int x=imView.frame.origin.x;
             int y=imView.frame.origin.y;
             int pointsX[6];
             int pointsY[6];
-            rec=CGRectMake(x+35, y+50, 45, 45);
+            rec=CGRectMake(x+31, y+50, 45, 45);
             pointsX[0]=rec.origin.x;
             pointsY[0]=rec.origin.y;
-            rec=CGRectMake(x+80, y+25, 45, 45);
+            rec=CGRectMake(x+76, y+25, 45, 45);
             pointsX[1]=rec.origin.x;
             pointsY[1]=rec.origin.y;
-            rec=CGRectMake(x+125, y+50, 45, 45);
+            rec=CGRectMake(x+127, y+50, 45, 45);
+            
             pointsX[2]=rec.origin.x;
             pointsY[2]=rec.origin.y;
-            rec=CGRectMake(x+35, y+100, 45, 45);
+            rec=CGRectMake(x+38, y+100, 45, 45);
             pointsX[3]=rec.origin.x;
             pointsY[3]=rec.origin.y;
-            rec=CGRectMake(x+80, y+77, 45, 45);
+            rec=CGRectMake(x+82, y+77, 45, 45);
             pointsX[4]=rec.origin.x;
             pointsY[4]=rec.origin.y;
-            rec=CGRectMake(x+130, y+100, 45, 45);
+            rec=CGRectMake(x+122, y+100, 45, 45);
             pointsX[5]=rec.origin.x;
             pointsY[5]=rec.origin.y;
             [self.view addSubview:imView];
-            objectsc=[[NSMutableArray alloc]init];
+            
             objectsCD=[[NSMutableArray alloc] init];
             for (int i=0; i<6; i++) {
                 Candies *c=[Candies new];
@@ -211,33 +224,33 @@
                 UIImage *im2=[self imageWithImage:im scaledToSize:size];
                 c.backgroundColor=[UIColor colorWithPatternImage:im2];
                 c.BonusLevelKind=2;
-                [objectsc insertObject:c atIndex:i];
+                
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
-//                CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-//                CGMutablePathRef aPath = CGPathCreateMutable();
-//                CGPathMoveToPoint(aPath,nil,mx,my);        //Origin Point
-//                CGPathAddCurveToPoint(aPath,nil, mx,my,   //Control Point 1
-//                                      mx,my+1,  //Control Point 2
-//                                      mx+1,my-1); // End Point
-//                animation.rotationMode = @"auto";
-//                animation.path = aPath;
-//                animation.duration = 0.8+arc4random()%4;
-//                animation.autoreverses = YES;
-//                animation.removedOnCompletion = YES;
-//                animation.repeatCount = 100.0f;
-//                [c.layer addAnimation:animation forKey:@"position" ];
+                animation = [CAKeyframeAnimation animation];
+                aPath = CGPathCreateMutable();
+                CGPathMoveToPoint(aPath,nil,mx,my);        //Origin Point
+                CGPathAddCurveToPoint(aPath,nil, mx,my,   //Control Point 1
+                                      mx,my+1,  //Control Point 2
+                                      mx+1,my-1); // End Point
+                animation.rotationMode = @"auto";
+                animation.path = aPath;
+                animation.duration = 0.8+arc4random()%4;
+                animation.autoreverses = YES;
+                animation.removedOnCompletion = YES;
+                animation.repeatCount = 100.0f;
+                [c.layer addAnimation:animation forKey:@"position" ];
             }
             break;
         }
         default:
             break;
     }
-    CGRect rec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+    
     NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
     NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
     moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-    [moviePlayerController.view setFrame:rec];
+    [moviePlayerController.view setFrame:MainRec];
     moviePlayerController.controlStyle=MPMovieControlStyleNone;
     moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
     [moviePlayerController prepareToPlay];
@@ -334,7 +347,10 @@ int tick=0;
                 UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:@[c]];
                 collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
                 c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:@[c]];
-                c.CandiesPropertiesBehavior.elasticity = 0.5;
+                c.CandiesPropertiesBehavior.elasticity = 1.0;
+                c.CandiesPropertiesBehavior.friction=0;
+                c.CandiesPropertiesBehavior.resistance=0.0;
+                c.CandiesPropertiesBehavior.allowsRotation=FALSE;
                 [animator addBehavior:c.CandiesPropertiesBehavior];
                 [animator addBehavior:gravityBeahvior];
                 [animator addBehavior:collisionBehavior];
@@ -412,6 +428,7 @@ int tick=0;
     
     if (Numb==2) {
         int m;
+        
         if (kilk!=0) {
             m=arc4random()%kilk;
         }
@@ -426,15 +443,36 @@ int tick=0;
             if (objectsCD[m]!=nil)
             {
                 
+                
                 Candies *c=[Candies new];
                 c=objectsCD[m];
                 [objectsCD removeObjectAtIndex:m];
+                [objectsc insertObject:c atIndex:ii];
+                ii++;
                 kilk--;
-                CGRect rec=CGRectMake(xx, self.view.frame.size.height-c.frame.size.height-10, 45, 45);
-                [UIView animateWithDuration:2.0 animations:^{
-                    c.frame=rec;
-                }completion:^(BOOL finished)
-                 {
+                [c.layer removeAnimationForKey:@"position"];
+
+                UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+                UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsc];
+                UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsc];
+                collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+                c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsc];
+                c.CandiesPropertiesBehavior.elasticity = 0.5;
+               
+                [animator addBehavior:c.CandiesPropertiesBehavior];
+                [animator addBehavior:gravityBeahvior];
+                [animator addBehavior:collisionBehavior];
+                c.animator = animator;
+                    
+                c.Animation=true;
+                
+                
+                
+//                CGRect rec=CGRectMake(xx, self.view.frame.size.height-c.frame.size.height-10, 45, 45);
+//                [UIView animateWithDuration:2.0 animations:^{
+//                    c.frame=rec;
+//                }completion:^(BOOL finished)
+//                 {
 //                     int l=arc4random()%4;
 //                     UIImage *im=[UIImage imageNamed:imagesCandy[l]];
 //                     c.backgroundColor=[UIColor colorWithPatternImage:im];
@@ -455,10 +493,10 @@ int tick=0;
 //                     CGRect rec1=CGRectMake(x1, y1, im.size.height, im.size.width);
 //                     c.frame=rec1;
 //                     [c.layer addAnimation:animation forKey:@"position" ];
-                     
-                 }];
-                xx+=80;
-                
+//                     
+//                 }];
+//                xx+=80;
+//
             }
         }
         
@@ -472,4 +510,10 @@ int tick=0;
 - (IBAction)DeleteViewController:(id)sender {
      [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)dealloc
+{
+    
+}
+
 @end
