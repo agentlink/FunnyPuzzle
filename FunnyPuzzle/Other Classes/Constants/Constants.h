@@ -35,3 +35,8 @@ typedef enum {
     FPGameTypeBonus
 }FPGameType;
 
+typedef enum {
+    VibrateModeDragOrDrop,
+    VibrateModeInPlace
+}FPVibrateMode;
+

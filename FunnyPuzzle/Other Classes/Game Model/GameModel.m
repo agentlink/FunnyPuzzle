@@ -110,61 +110,25 @@ static GameModel *_instance = nil;
     }
     return _instance;
 }
-#pragma mark - Public
+
+#pragma mark - Multimedia methods
+
 - (void)itemSelected
 {
-    [[FPSoundManager sharedInstance] vibrate];
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
 }
 - (void)itemDrop
 {
-    
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
 }
+
 - (void)itemDropInPlace
 {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-    NSMutableArray* arr = [NSMutableArray array ];
-    
-    [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
-    [arr addObject:[NSNumber numberWithInt:50]];
-    
-        [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
-        [arr addObject:[NSNumber numberWithInt:150]];
-    //
-        [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
-        [arr addObject:[NSNumber numberWithInt:100]];
-    //
-    //    [arr addObject:[NSNumber numberWithBool:NO]];    //stop for 500ms
-    //    [arr addObject:[NSNumber numberWithInt:500]];
-    
-    [dict setObject:arr forKey:@"VibePattern"];
-    [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
-    
-    
-    AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeInPlace];
 }
 - (void)itemWillSelectFromPlace
 {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-    NSMutableArray* arr = [NSMutableArray array ];
-    
-    [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
-    [arr addObject:[NSNumber numberWithInt:20]];
-    
-//    [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
-//    [arr addObject:[NSNumber numberWithInt:1000]];
-//    
-//    [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
-//    [arr addObject:[NSNumber numberWithInt:1000]];
-//    
-//    [arr addObject:[NSNumber numberWithBool:NO]];    //stop for 500ms
-//    [arr addObject:[NSNumber numberWithInt:500]];
-    
-    [dict setObject:arr forKey:@"VibePattern"];
-    [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
-    
-    
-    AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
-    
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeInPlace];   
 }
 - (void)levelComplet
 {

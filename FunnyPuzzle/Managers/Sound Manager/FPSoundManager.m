@@ -19,15 +19,16 @@
 @property (nonatomic, strong) NSURL *soundToPlay;
 @property (nonatomic, strong) NSURL *excellent;
 @property (nonatomic, strong) NSURL *well_done;
-@property (nonatomic) SystemSoundID vibration;
+@property (nonatomic, weak) NSTimer *backgoroundMusicTimer;
+@property (nonatomic, weak) NSTimer *gameMusicMusicTimer;
+@property (nonatomic) BOOL gameVolumeUp;
+@property (nonatomic) BOOL backgroundVolumeUp;
 
 @end
 
 @implementation FPSoundManager
 
 static FPSoundManager *_instance=nil;
-
-NSTimer *timer;
 
 + (FPSoundManager*)sharedInstance{
     @synchronized(self){
@@ -45,14 +46,18 @@ NSTimer *timer;
         _backGroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.backGroundMusic error:&error];
         _backGroundMusicPlayer.numberOfLoops=-1;
         [_backGroundMusicPlayer prepareToPlay];
+        _backgoroundMusicTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(changeBackgroundVolume) userInfo:nil repeats:YES];
+        _backgroundVolumeUp=YES;
+        _backGroundMusicPlayer.volume=0;
         [_backGroundMusicPlayer play];
     }
 }
 
 - (void) stopBackgroundMusic{
     if ([_backGroundMusicPlayer isPlaying]==YES){
-        [_backGroundMusicPlayer stop];
-        _backGroundMusicPlayer=nil;
+        _backgoroundMusicTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeBackgroundVolume) userInfo:nil repeats:YES];
+        _backgroundVolumeUp=NO;
+        _backGroundMusicPlayer.volume = 0.6;
     }
 }
 
@@ -62,14 +67,18 @@ NSTimer *timer;
         _backGroundGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_instance.gameMusic error:&error];
         _backGroundGamePlayer.numberOfLoops=-1;
         [_backGroundGamePlayer prepareToPlay];
-        [_backGroundGamePlayer play];
+        _gameMusicMusicTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(changeGameVolume) userInfo:nil repeats:YES];
+        _gameVolumeUp=YES;
+        _backGroundGamePlayer.volume=0;
+        [_backGroundGamePlayer play];;
     }
 }
 
 - (void) stopGameMusic{
     if ([_backGroundGamePlayer isPlaying]==YES){
-        [_backGroundGamePlayer stop];
-        _backGroundGamePlayer=nil;
+        _gameMusicMusicTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeGameVolume) userInfo:nil repeats:YES];
+        _gameVolumeUp=NO;
+        _backGroundGamePlayer.volume = 0.6;
     }
 }
 
@@ -93,28 +102,30 @@ NSTimer *timer;
     }
 }
 
-- (void) vibrate{
+- (void) vibrateWithMode:(FPVibrateMode)vibrateMode{
     if ([FPGameManager sharedInstance].vibrate==YES){
-        _vibration = kSystemSoundID_Vibrate;
-        AudioServicesCreateSystemSoundID(nil, &_vibration);
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(stopTimer) userInfo:nil repeats:YES];
-        timerTick=0;
-    }
-}
-int timerTick=0;
-
-- (void) stopTimer{
-    timerTick++;
-    switch (timerTick) {
-        case 1:
-             AudioServicesPlaySystemSound(_vibration);
-        break;
-        default:{
-            AudioServicesDisposeSystemSoundID(_vibration);
-            [timer invalidate];
+        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+        NSMutableArray* arr = [NSMutableArray array ];
+        switch (vibrateMode) {
+            case VibrateModeDragOrDrop:{
+                [arr addObject:[NSNumber numberWithBool:YES]];
+                [arr addObject:[NSNumber numberWithInt:50]];
+            }
+            break;
+            case VibrateModeInPlace:{
+                [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
+                [arr addObject:[NSNumber numberWithInt:50]];
+                [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
+                [arr addObject:[NSNumber numberWithInt:100]];
+                [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
+                [arr addObject:[NSNumber numberWithInt:50]];
+            }
+            break;
         }
+        [dict setObject:arr forKey:@"VibePattern"];
+        [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
+        AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);    
     }
-    
 }
 
 + (void) loadData{
@@ -153,6 +164,50 @@ int timerTick=0;
         _instance.well_done = [NSURL URLWithString:soundPath];
     }
 
+}
+
+int timerTick;
+
+- (void) changeBackgroundVolume{
+    if (_backgroundVolumeUp) {
+        _backGroundMusicPlayer.volume+=0.05;
+    }
+    else {
+        _backGroundMusicPlayer.volume-=0.05;
+    }
+    if (!_backgroundVolumeUp) {
+         if (_backGroundMusicPlayer.volume<=0.05){
+            [_backGroundMusicPlayer stop];
+            _backGroundMusicPlayer=nil;
+            [_backgoroundMusicTimer invalidate];
+        }
+    }
+    else {
+        if (_backGroundMusicPlayer.volume>=0.95){
+            [_backgoroundMusicTimer invalidate];
+        }
+    }
+}
+
+- (void) changeGameVolume{
+    if (_gameVolumeUp) {
+        _backGroundGamePlayer.volume+=0.05;
+    }
+    else {
+        _backGroundGamePlayer.volume-=0.05;
+    }
+    if (!_gameVolumeUp) {
+        if (_backGroundGamePlayer.volume<=0.05){
+            [_backGroundGamePlayer stop];
+            _backGroundGamePlayer=nil;
+            [_gameMusicMusicTimer invalidate];
+        }
+    }
+    else {
+        if (_backGroundGamePlayer.volume>=0.95){
+            [_gameMusicMusicTimer invalidate];
+        }
+    }
 }
 
 
