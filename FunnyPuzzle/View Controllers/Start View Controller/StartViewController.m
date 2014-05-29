@@ -96,6 +96,12 @@
     [self.animator removeBehavior:_snapSettingsBehavior];
 }
 
+- (void) dealloc{
+    _settingsButtonPropertiesBehavior=nil;
+    _snapCandyBehavior=nil;
+    _snapSettingsBehavior=nil;
+}
+
 - (void)cofigGround
 {
     UIInterpolatingMotionEffect *horisontal1 =

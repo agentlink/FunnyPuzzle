@@ -113,6 +113,15 @@
     [super viewDidDisappear:animated];
     [self stopWinAnimations:self.view];
     [GameModel sharedInstance].level = nil;
+    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+    _dragingSegment=nil;
+    _accelerometerManager=nil;
+    _dAnimator=nil;
+    _snap=nil;
+    _collisions=nil;
+    _push=nil;
+    _label=nil;
+    _level=nil;
 }
 
 - (void)shakedVector:(CGVector)vector
@@ -131,9 +140,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void) dealloc
+
+- (void) dealloc
 {
-    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+
 }
 
 
@@ -291,6 +301,7 @@
 - (IBAction)back:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [GameModel sharedInstance].gamePlayViewController=nil;
 }
 #pragma mark - GestureRecognizers
 
@@ -312,7 +323,7 @@
 }
 - (void)levelFinish
 {
-    [[GameModel sharedInstance] levelComplet];
+    [[GameModel sharedInstance] levelComplete:[GameModel sharedInstance].level.soundURL];
     [self startWinAnimations:nil];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

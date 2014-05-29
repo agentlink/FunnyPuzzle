@@ -7,6 +7,8 @@
 //
 
 #import "FPLevelManager.h"
+#import "FPGameManager.h"
+
 @interface FPLevelManager ()
 @property (nonatomic, strong) NSMutableArray *levels;
 @property (nonatomic) NSMutableArray *plist;
@@ -113,13 +115,15 @@
 - (NSURL *)getSoundURL
 {
     NSURL *result;
-    NSString *suffix = [[NSLocale preferredLanguages] objectAtIndex:0];
-    NSString *path_ = [NSString stringWithFormat:@"%@_%@", _pathToColor, suffix];
+    NSString *suffix = [FPGameManager sharedInstance].language;
+    NSString *path_ = [NSString stringWithFormat:@"%@/%@_%@.mp3",[[NSBundle mainBundle] resourcePath], _pathToColor, suffix];
+    result = [NSURL fileURLWithPath:path_];
+    return result;
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:path_ ofType:@"mp3"];
     if (fullPath) {
         result = [NSURL URLWithString:fullPath];
     } else {
-        result = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:_pathToColor ofType:@"mp3"]];
+        result = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:path_ ofType:@"mp3"]];
     }
     return result;
 }
@@ -155,4 +159,13 @@
     [manager parce];
     return manager;
 }
+
+- (void) dealloc{
+    _segments=nil;
+    _colorField=nil;
+    _grayField=nil;
+   _grayLinedFiewld=nil;
+    _levels=nil;
+}
+
 @end

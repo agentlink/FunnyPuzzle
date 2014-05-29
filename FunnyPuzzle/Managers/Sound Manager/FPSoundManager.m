@@ -124,7 +124,7 @@ static FPSoundManager *_instance=nil;
         }
         [dict setObject:arr forKey:@"VibePattern"];
         [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
-        AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);    
+       // AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
     }
 }
 
@@ -151,7 +151,7 @@ static FPSoundManager *_instance=nil;
     _instance.soundPlayer.numberOfLoops=0;
     [_instance.soundPlayer prepareToPlay];
     //set sounds path
-    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"ru"]){
+    if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]){
         soundPath = [[NSBundle mainBundle] pathForResource:@"excellent_ru" ofType:@"mp3"];
         _instance.excellent = [NSURL URLWithString:soundPath];
         soundPath = [[NSBundle mainBundle] pathForResource:@"well_done_ru" ofType:@"mp3"];

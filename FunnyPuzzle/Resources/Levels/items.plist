@@ -605,9 +605,27 @@
 					<key>point</key>
 					<dict>
 						<key>x</key>
+						<integer>84</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>90</integer>
+						<key>y</key>
+						<integer>92</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
 						<integer>11</integer>
 						<key>y</key>
-						<integer>8</integer>
+						<integer>151</integer>
 					</dict>
 				</dict>
 				<dict>
@@ -616,23 +634,14 @@
 						<key>x</key>
 						<integer>8</integer>
 						<key>y</key>
-						<integer>85</integer>
+						<integer>100</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>63</integer>
-						<key>y</key>
-						<integer>104</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>117</integer>
+						<integer>70</integer>
 						<key>y</key>
 						<integer>101</integer>
 					</dict>
@@ -705,77 +714,59 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>baseball_cap</string>
+			<string>lemon</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
 						<integer>92</integer>
 						<key>y</key>
-						<integer>17</integer>
+						<integer>131</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>132</integer>
+						<integer>173</integer>
 						<key>y</key>
-						<integer>8</integer>
+						<integer>140</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>209</integer>
+						<integer>85</integer>
 						<key>y</key>
-						<integer>16</integer>
+						<integer>198</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>77</integer>
+						<integer>105</integer>
 						<key>y</key>
-						<integer>68</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>130</integer>
-						<key>y</key>
-						<integer>88</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>242</integer>
-						<key>y</key>
-						<integer>88</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>136</integer>
+						<integer>262</integer>
 					</dict>
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/baseball_cap</string>
+			<string>Game 1/lemon</string>
 			<key>name</key>
-			<string>Baseball Cap</string>
+			<string>Lemon</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -843,6 +834,158 @@
 			<string>Game 1/kettle</string>
 			<key>name</key>
 			<string>Kettle</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>baseball_cap</string>
+			<key>folder</key>
+			<string>Game 1/baseball_cap</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>92</integer>
+						<key>y</key>
+						<integer>17</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>132</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>209</integer>
+						<key>y</key>
+						<integer>16</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>77</integer>
+						<key>y</key>
+						<integer>68</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>130</integer>
+						<key>y</key>
+						<integer>88</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>242</integer>
+						<key>y</key>
+						<integer>88</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>136</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Baseball Cap</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>crab</string>
+			<key>folder</key>
+			<string>Game 1/crab</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>106</integer>
+						<key>y</key>
+						<integer>66</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>75</integer>
+						<key>y</key>
+						<integer>109</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>180</integer>
+						<key>y</key>
+						<integer>105</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>185</integer>
+						<key>y</key>
+						<integer>10</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>81</integer>
+						<key>y</key>
+						<integer>195</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>180</integer>
+						<key>y</key>
+						<integer>195</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Crab</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>

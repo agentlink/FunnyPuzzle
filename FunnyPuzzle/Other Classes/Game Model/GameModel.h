@@ -33,7 +33,7 @@
 - (void)itemDrop;
 - (void)itemDropInPlace;
 - (void)itemWillSelectFromPlace;
-- (void)levelComplet;
+- (void)levelComplete:(NSURL*)url;
 
 
 + (GameModel *)sharedInstance;
