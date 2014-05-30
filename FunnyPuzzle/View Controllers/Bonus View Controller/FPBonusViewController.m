@@ -15,27 +15,22 @@
 @interface FPBonusViewController ()<ShakeHappendDelegate>
 
 {
-    int kilk;
-    NSMutableArray *objectsf,*objectsc,*objectsCD,*objectsCF;
+    int kilk,kilk1;
+    NSMutableArray *objectsc,*objectsCD,*objectsCF;
     NSArray *imagesCandy;
     int Numb;
     int xx;
     MPMoviePlayerController *moviePlayerController;
-      NSTimer *timer;
+    NSTimer *timer;
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
     int ii;
 }
-
-
 @property (weak, nonatomic) IBOutlet UIButton *Bt;
-
 - (IBAction)DeleteViewController:(id)sender;
-
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
-
 @end
 
 @implementation FPBonusViewController
@@ -44,33 +39,27 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         self.CandiesCount=0;
     }
-    
     return self;
 }
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    // Do any additional setup after loading the view.
     CGRect  MainRec=CGRectMake( 0, 0,  80, 68);
-    imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     xx=20;
-    
-    Numb=2;
+    imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
+    int h=self.view.frame.size.height;
+    int w=self.view.frame.size.width;
+    Numb=3;
     switch (Numb) {
         case 0:
         {
             self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
             MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
             kilk=9;
+            kilk1=9;
             UIImage *im=[UIImage imageNamed:@"basket_icon"];
-            int h=self.view.frame.size.height;
-            int w=self.view.frame.size.width;
             CGRect rec=CGRectMake(h/2-im.size.height/2, w/2-im.size.width/2, im.size.width, im.size.height);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im;
@@ -86,8 +75,7 @@
                 Candies *c=[Candies new];
                 c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, 55, 55);
                 c.layer.zPosition=2;
-                int l=arc4random()%4;
-                UIImage *im=[UIImage imageNamed:imagesCandy[l]];
+                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
                 c.backgroundColor=[UIColor colorWithPatternImage:im];
                 CGRect r=CGRectMake(x, y, 55, 55);
                 c.frame = r;
@@ -121,9 +109,8 @@
             UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
             self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             kilk=4;
+            kilk1=4;
             UIImage *im2=[UIImage imageNamed:@"sun_img"];
-            int h=self.view.frame.size.height;
-            int w=self.view.frame.size.width;
             CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
             MainRec=CGRectMake( h/2-40, w/2,  80, 68);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
@@ -140,7 +127,6 @@
             animation.removedOnCompletion = YES;
             animation.repeatCount = 100.0f;
             [imView.layer addAnimation:animation forKey:@"position" ];
-            objectsf=[[NSMutableArray alloc]init];
             objectsc=[[NSMutableArray alloc]init];
             objectsCD=[[NSMutableArray alloc] init];
             objectsCF=[[NSMutableArray alloc] init];
@@ -153,12 +139,10 @@
                 f.backgroundColor=[UIColor colorWithPatternImage:im];
                 f.frame=rec1;
                 f.layer.zPosition=0;
-                [objectsf insertObject:f atIndex:i];
                 [objectsCF insertObject:f atIndex:i];
                 [self.view addSubview:f];
                 Candies *c=[Candies new];
-                int l=arc4random()%4;
-                UIImage *im2=[UIImage imageNamed:imagesCandy[l]];
+                UIImage *im2 = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
                 CGRect rec=CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width);
                 c.frame=rec;
                 c.layer.zPosition=1;
@@ -174,10 +158,10 @@
         {
             ii=0;
             objectsc=[[NSMutableArray alloc]init];
-            objectsf=[[NSMutableArray alloc]init];
             UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
             self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             kilk=6;
+            kilk1=6;
             UIImage *im=[UIImage imageNamed:@"tree_img"];
             int h=self.view.frame.size.height;
             int w=self.view.frame.size.width;
@@ -196,7 +180,6 @@
             pointsX[1]=rec.origin.x;
             pointsY[1]=rec.origin.y;
             rec=CGRectMake(x+127, y+50, 45, 45);
-            
             pointsX[2]=rec.origin.x;
             pointsY[2]=rec.origin.y;
             rec=CGRectMake(x+38, y+100, 45, 45);
@@ -209,7 +192,6 @@
             pointsX[5]=rec.origin.x;
             pointsY[5]=rec.origin.y;
             [self.view addSubview:imView];
-            
             objectsCD=[[NSMutableArray alloc] init];
             for (int i=0; i<6; i++) {
                 Candies *c=[Candies new];
@@ -218,13 +200,11 @@
                 int my=pointsY[i];
                 c.frame=rec;
                 c.layer.zPosition=1;
-                int l=arc4random()%4;
-                UIImage *im=[UIImage imageNamed:imagesCandy[l]];
+                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
                 CGSize size=CGSizeMake(45, 45);
                 UIImage *im2=[self imageWithImage:im scaledToSize:size];
                 c.backgroundColor=[UIColor colorWithPatternImage:im2];
                 c.BonusLevelKind=2;
-                
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
                 animation = [CAKeyframeAnimation animation];
@@ -243,10 +223,50 @@
             }
             break;
         }
+            case 3:
+        {
+            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
+            MainRec=CGRectMake( -80, -70, 80, 68);
+            int x=0;
+            objectsCD=[[NSMutableArray alloc] init];
+            for (int i=0; i<20; i++) {
+                Candies *c=[Candies new];
+                c.layer.zPosition=2;
+                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+                c.backgroundColor=[UIColor colorWithPatternImage:im];
+                CGRect r=CGRectMake(0, 20+arc4random()%120, 55, 55);
+                c.frame = r;
+                c.BonusLevelKind=0;
+                [self.view addSubview:c];
+                animation = [CAKeyframeAnimation animation];
+                aPath = CGPathCreateMutable();
+                float y = c.frame.origin.y;
+                float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+                
+                CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
+                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame)+x,y);
+                
+                
+                animation.path = aPath;
+                animation.duration = 20.0;
+                animation.autoreverses = NO;
+                animation.removedOnCompletion = NO;
+              //  animation.repeatCount = INFINITY;
+                animation.timingFunction = [CAMediaTimingFunction
+                                            functionWithName:kCAMediaTimingFunctionLinear];
+                
+                [c.layer addAnimation:animation forKey:@"position"];
+                //[animation setDelegate:self];
+                x+=55;
+                
+            }
+            break;
+            
+        }
         default:
             break;
     }
-    
     NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
     NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
     moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
@@ -258,23 +278,17 @@
     moviePlayerController.view.layer.zPosition=5;
     [self.view addSubview:moviePlayerController.view];
     [moviePlayerController play];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playMediaFinished:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayerController];
-    
-  
     tick=0;
     timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
                                              target: self
                                            selector: @selector(handleTimer)
                                            userInfo: nil
                                             repeats: YES];
-    
-    
 }
-
 int tick=0;
 -(void)handleTimer
 {
@@ -290,7 +304,6 @@ int tick=0;
       [timer invalidate];
     }
 }
-
 -(void)playMediaFinished:(NSNotification*)theNotification
 {
     moviePlayerController=[theNotification object];
@@ -299,8 +312,6 @@ int tick=0;
                                                   object:moviePlayerController];
     [moviePlayerController.view removeFromSuperview];
 }
-
-
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
     UIGraphicsBeginImageContext(newSize);
@@ -309,18 +320,7 @@ int tick=0;
     UIGraphicsEndImageContext();
     return newImage;
 }
-
-
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if (motion == UIEventSubtypeMotionShake)
-    {
-        
-    }
-}
-
 #pragma  mark - ShakeHappendDelegate
-
 - (void) iPhoneDidShaked{
     if (Numb==0) {
         int m;
@@ -340,8 +340,6 @@ int tick=0;
                 Candies *c=[Candies new];
                 c=objectsCD[m];
                 [c.layer removeAnimationForKey:@"position"];
-               
-                
                 UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
                 UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
                 UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:@[c]];
@@ -355,16 +353,12 @@ int tick=0;
                 [animator addBehavior:gravityBeahvior];
                 [animator addBehavior:collisionBehavior];
                 c.animator = animator;
-                
-                
-                
                 c.Animation=true;
                 [objectsCD removeObjectAtIndex:m];
                 kilk--;
                 NSLog(@"Shake");
                 CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
                 c.frame=rec;
-                
             }
         }
     }
@@ -394,9 +388,6 @@ int tick=0;
                 int l=arc4random()%4;
                 UIImage *im=[UIImage imageNamed:imagesCandy[l]];
                 c.backgroundColor=[UIColor colorWithPatternImage:im];
-                
-                
-                
                 [UIView animateWithDuration:2.0 animations:^
                  {
                      f.frame=rec1;
@@ -442,8 +433,6 @@ int tick=0;
         {
             if (objectsCD[m]!=nil)
             {
-                
-                
                 Candies *c=[Candies new];
                 c=objectsCD[m];
                 [objectsCD removeObjectAtIndex:m];
@@ -451,52 +440,17 @@ int tick=0;
                 ii++;
                 kilk--;
                 [c.layer removeAnimationForKey:@"position"];
-
                 UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
                 UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsc];
                 UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsc];
                 collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
                 c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsc];
                 c.CandiesPropertiesBehavior.elasticity = 0.5;
-               
                 [animator addBehavior:c.CandiesPropertiesBehavior];
                 [animator addBehavior:gravityBeahvior];
                 [animator addBehavior:collisionBehavior];
                 c.animator = animator;
-                    
                 c.Animation=true;
-                
-                
-                
-//                CGRect rec=CGRectMake(xx, self.view.frame.size.height-c.frame.size.height-10, 45, 45);
-//                [UIView animateWithDuration:2.0 animations:^{
-//                    c.frame=rec;
-//                }completion:^(BOOL finished)
-//                 {
-//                     int l=arc4random()%4;
-//                     UIImage *im=[UIImage imageNamed:imagesCandy[l]];
-//                     c.backgroundColor=[UIColor colorWithPatternImage:im];
-//                     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-//                     CGMutablePathRef aPath = CGPathCreateMutable();
-//                     float x1 = CGRectGetMidX(c.frame);
-//                     float y1 = CGRectGetMidY(c.frame);
-//                     CGPathMoveToPoint(aPath,nil,x1,y1);        //Origin Point
-//                     CGPathAddCurveToPoint(aPath,nil, x1,y1,   //Control Point 1
-//                                           x1,y1+1,  //Control Point 2
-//                                           x1+1,y1-1); // End Point
-//                     animation.rotationMode = @"auto";
-//                     animation.path = aPath;
-//                     animation.duration = 0.8+arc4random()%4;
-//                     animation.autoreverses = YES;
-//                     animation.removedOnCompletion = YES;
-//                     animation.repeatCount = 100.0f;
-//                     CGRect rec1=CGRectMake(x1, y1, im.size.height, im.size.width);
-//                     c.frame=rec1;
-//                     [c.layer addAnimation:animation forKey:@"position" ];
-//                     
-//                 }];
-//                xx+=80;
-//
             }
         }
         
@@ -508,6 +462,7 @@ int tick=0;
 
 
 - (IBAction)DeleteViewController:(id)sender {
+    
      [self.navigationController popViewControllerAnimated:YES];
 }
 
