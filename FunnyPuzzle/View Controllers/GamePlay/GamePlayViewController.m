@@ -12,7 +12,7 @@
 #import "AccelerometerManager.h"
 #import "FPSoundManager.h"
 
-@interface GamePlayViewController () <ShakeHappendDelegate>
+@interface GamePlayViewController () <ShakeHappendDelegate, UIDynamicAnimatorDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *centerView;
@@ -25,9 +25,13 @@
 
 @property (nonatomic) UIDynamicAnimator *dAnimator;
 @property (nonatomic) UISnapBehavior *snap;
+@property (nonatomic) UISnapBehavior *basketSnap;
 @property (nonatomic) UICollisionBehavior *collisions;
 @property (nonatomic) UIPushBehavior *push;
 @property (nonatomic) UILabel *label;
+@property (nonatomic) UIImageView *basketView;
+@property (nonatomic) UIPushBehavior *basketPush;
+@property (nonatomic) UIImageView *candyView;
 
 @property (nonatomic) FPLevelManager *level;
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
@@ -101,6 +105,7 @@
     } else {
         [self startWinAnimations:nil];
     }
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -170,6 +175,7 @@
     [self.view addGestureRecognizer:pan];
     
     _dAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    _dAnimator.delegate=self;
     _collisions = [[UICollisionBehavior alloc] init];
     _collisions.translatesReferenceBoundsIntoBoundary = YES;
     _push = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeInstantaneous];
@@ -227,7 +233,7 @@
     res.alpha = 0;
     res.layer.zPosition = 255;
     res.tag = 43;
-    
+    [self showBasket];
     UILabel *label = [[UILabel alloc] init];
     label.text = _level.levelName;
     label.font = [UIFont fontWithName:@"KBCuriousSoul" size:30];
@@ -235,8 +241,8 @@
     [label sizeToFit];
     label.layer.position = CGPointMake(CGRectGetMinX(_leftView.frame), CGRectGetMinY(_leftView.frame));
     [self.view addSubview:label];
-    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame))];
-    _snap.damping = 0.2;
+    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame)+self.view.frame.size.width/5)];
+    _snap.damping = 0.8;
     [_push addItem:label];
     [_dAnimator addBehavior:_snap];
     [_collisions addItem:label];
@@ -265,13 +271,16 @@
 {
     PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
     PDFImageView *res = (PDFImageView *)[self.view viewWithTag:43];
+    UIImageView *basketView = (UIImageView*)[self.view viewWithTag:99];
     res.layer.zPosition = -1;
     UILabel *label = (UILabel *)[self.view viewWithTag:44];
     [_dAnimator removeBehavior:_snap];
+    [_dAnimator removeBehavior:_basketSnap];
     [_collisions removeItem:label];
     [UIView animateWithDuration:0.3 animations:^{
         imageView.transform = CGAffineTransformMakeScale(0, 0);
         res.transform = CGAffineTransformMakeScale(0, 0);
+        basketView.transform = CGAffineTransformMakeScale(0,0);
         res.alpha = 0;
         //label.transform = CGAffineTransformMakeScale(0, 0);
         label.alpha = 0;
@@ -279,9 +288,11 @@
         [label removeFromSuperview];
         [imageView removeFromSuperview];
         [res removeFromSuperview];
+        [basketView removeFromSuperview];
     }];
      [_accelerometerManager stopShakeDetect];
     _push.active = NO;
+    _basketPush.active = NO;
 }
 
 #pragma mark - IBAction
@@ -380,6 +391,45 @@
             [[GameModel sharedInstance] itemSelected];
         }
     }
+}
+
+#pragma mark - Basket
+
+- (void) showBasket{
+    _basketView=[[UIImageView alloc] initWithFrame:CGRectMake(_leftView.center.x-75.5,-150, 151, 151) ];
+    [_basketView setImage:[UIImage imageNamed:@"basket_icon"]];
+    _basketView.tag=99;
+    [self.view addSubview:_basketView];
+    _candyView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"candy_orange"]];
+    _candyView.tag=98;
+    _candyView.alpha=0;
+    _basketView.layer.zPosition=2;
+    _candyView.layer.zPosition=0;
+    _candyView.frame = CGRectMake(_basketView.frame.origin.x+_basketView.frame.size.width/3, CGRectGetMidY(self.leftView.frame)-70, 55, 55);
+    [self.view addSubview:_candyView];
+    _basketSnap = [[UISnapBehavior alloc] initWithItem:_basketView snapToPoint:CGPointMake(CGRectGetMidX(self.leftView.frame), CGRectGetMidY(self.leftView.frame))];
+    _basketSnap.damping = 0.8;
+    [_basketPush addItem:_basketView];
+    [_dAnimator addBehavior:_basketSnap];
+    _basketPush.active = YES;
+}
+
+- (void) pickCandy{
+    _candyView.alpha=1;
+    CGRect frame=_candyView.frame;
+    frame.origin.y+=100;
+    [UIView animateWithDuration:0.6 delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+        _candyView.frame = frame;
+    } completion:^(BOOL finished){
+        if (finished){
+            [_candyView removeFromSuperview];
+            _candyView=nil;
+        }
+    }];
+}
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator*)animator{
+    [self pickCandy];
 }
 
 @end
