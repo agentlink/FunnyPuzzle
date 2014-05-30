@@ -33,6 +33,7 @@
           self.Animation=false;
         self.click=false;
         [self config];
+       
     }
     return self;
 }
@@ -73,7 +74,6 @@
              ];
         }
     }
-    
     if (self.BonusLevelKind==1) {
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
@@ -85,9 +85,13 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+           
         }
     }
-    
+    for(UIGestureRecognizer *recognizer in self.gestureRecognizers)
+    {
+        [self removeGestureRecognizer:recognizer];
+    }
     
 }
 
@@ -97,15 +101,5 @@
 }
 
 
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
