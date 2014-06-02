@@ -18,4 +18,6 @@
 @property (nonatomic, strong) UIDynamicItemBehavior *CandiesPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 
+- (void)Move:(bool)animate;
+
 @end

@@ -51,7 +51,7 @@
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     int h=self.view.frame.size.height;
     int w=self.view.frame.size.width;
-    Numb=3;
+    Numb=0;
     switch (Numb) {
         case 0:
         {
@@ -84,23 +84,7 @@
                 [objectsc insertObject:c atIndex:i-1];
                 [objectsCD insertObject:c atIndex:i-1];
                 x+=50;
-                animation = [CAKeyframeAnimation animation];
-                aPath = CGPathCreateMutable();
-                float x = CGRectGetMidX(c.frame);
-                float y = CGRectGetMidY(c.frame);
-                CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
-                CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-                                      x+0.2,y,  //Control Point 2
-                                      x+0.1,y-0.1); // End Point
-                animation.rotationMode = @"auto";
-                animation.path = aPath;
-                animation.duration = 0.8+arc4random()%4;
-                animation.autoreverses = YES;
-                animation.removedOnCompletion = YES;
-                animation.repeatCount = 100.0f;
-                [c.layer addAnimation:animation forKey:@"position" ];
-                
-            
+                [c Move:true];
             }
             break;
         }
@@ -116,6 +100,7 @@
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
             imView.image=im2;
             [self.view addSubview:imView];
+            
             animation = [CAKeyframeAnimation animation];
             aPath = CGPathCreateMutable();
             float x = CGRectGetMidX(imView.frame);
@@ -151,6 +136,7 @@
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
                 x+=100;
+                [c Move:true];
             }
             break;
         }
@@ -171,33 +157,13 @@
             imView.image=im;
             int x=imView.frame.origin.x;
             int y=imView.frame.origin.y;
-            int pointsX[6];
-            int pointsY[6];
-            rec=CGRectMake(x+31, y+50, 45, 45);
-            pointsX[0]=rec.origin.x;
-            pointsY[0]=rec.origin.y;
-            rec=CGRectMake(x+76, y+25, 45, 45);
-            pointsX[1]=rec.origin.x;
-            pointsY[1]=rec.origin.y;
-            rec=CGRectMake(x+127, y+50, 45, 45);
-            pointsX[2]=rec.origin.x;
-            pointsY[2]=rec.origin.y;
-            rec=CGRectMake(x+38, y+100, 45, 45);
-            pointsX[3]=rec.origin.x;
-            pointsY[3]=rec.origin.y;
-            rec=CGRectMake(x+82, y+77, 45, 45);
-            pointsX[4]=rec.origin.x;
-            pointsY[4]=rec.origin.y;
-            rec=CGRectMake(x+122, y+100, 45, 45);
-            pointsX[5]=rec.origin.x;
-            pointsY[5]=rec.origin.y;
+            int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
+            int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
             [self.view addSubview:imView];
             objectsCD=[[NSMutableArray alloc] init];
             for (int i=0; i<6; i++) {
                 Candies *c=[Candies new];
                 rec=CGRectMake(pointsX[i], pointsY[i], 45, 45);
-                int mx=pointsX[i];
-                int my=pointsY[i];
                 c.frame=rec;
                 c.layer.zPosition=1;
                 UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
@@ -207,19 +173,7 @@
                 c.BonusLevelKind=2;
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
-                animation = [CAKeyframeAnimation animation];
-                aPath = CGPathCreateMutable();
-                CGPathMoveToPoint(aPath,nil,mx,my);        //Origin Point
-                CGPathAddCurveToPoint(aPath,nil, mx,my,   //Control Point 1
-                                      mx,my+1,  //Control Point 2
-                                      mx+1,my-1); // End Point
-                animation.rotationMode = @"auto";
-                animation.path = aPath;
-                animation.duration = 0.8+arc4random()%4;
-                animation.autoreverses = YES;
-                animation.removedOnCompletion = YES;
-                animation.repeatCount = 100.0f;
-                [c.layer addAnimation:animation forKey:@"position" ];
+                [c Move:true];
             }
             break;
         }
@@ -229,6 +183,7 @@
             self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             MainRec=CGRectMake( -80, -70, 80, 68);
             int x=0;
+            float deltaX=0;
             objectsCD=[[NSMutableArray alloc] init];
             for (int i=0; i<20; i++) {
                 Candies *c=[Candies new];
@@ -243,13 +198,11 @@
                 aPath = CGPathCreateMutable();
                 float y = c.frame.origin.y;
                 float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-                
                 CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
-                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame)+x,y);
-                
-                
+                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame),y);
+                float time=(wx-deltaX)/wx*5;
                 animation.path = aPath;
-                animation.duration = 20.0;
+                animation.duration = time;
                 animation.autoreverses = NO;
                 animation.removedOnCompletion = NO;
               //  animation.repeatCount = INFINITY;
@@ -259,7 +212,7 @@
                 [c.layer addAnimation:animation forKey:@"position"];
                 //[animation setDelegate:self];
                 x+=55;
-                
+                deltaX-=55;
             }
             break;
             
@@ -267,27 +220,27 @@
         default:
             break;
     }
-    NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
-    NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
-    moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-    [moviePlayerController.view setFrame:MainRec];
-    moviePlayerController.controlStyle=MPMovieControlStyleNone;
-    moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
-    [moviePlayerController prepareToPlay];
-    moviePlayerController.view.backgroundColor=[UIColor clearColor];
-    moviePlayerController.view.layer.zPosition=5;
-    [self.view addSubview:moviePlayerController.view];
-    [moviePlayerController play];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playMediaFinished:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:moviePlayerController];
-    tick=0;
-    timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
-                                             target: self
-                                           selector: @selector(handleTimer)
-                                           userInfo: nil
-                                            repeats: YES];
+//    NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
+//    NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
+//    moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
+//    [moviePlayerController.view setFrame:MainRec];
+//    moviePlayerController.controlStyle=MPMovieControlStyleNone;
+//    moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
+//    [moviePlayerController prepareToPlay];
+//    moviePlayerController.view.backgroundColor=[UIColor clearColor];
+//    moviePlayerController.view.layer.zPosition=5;
+//    [self.view addSubview:moviePlayerController.view];
+//    [moviePlayerController play];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(playMediaFinished:)
+//                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+//                                               object:moviePlayerController];
+//    tick=0;
+//    timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
+//                                             target: self
+//                                           selector: @selector(handleTimer)
+//                                           userInfo: nil
+//                                            repeats: YES];
 }
 int tick=0;
 -(void)handleTimer
@@ -339,7 +292,8 @@ int tick=0;
             {
                 Candies *c=[Candies new];
                 c=objectsCD[m];
-                [c.layer removeAnimationForKey:@"position"];
+               // [c.layer removeAnimationForKey:@"position"];
+                [c Move:false];
                 UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
                 UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
                 UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:@[c]];
