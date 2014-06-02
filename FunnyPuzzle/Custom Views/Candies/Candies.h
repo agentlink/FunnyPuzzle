@@ -14,10 +14,12 @@
 @property (nonatomic) bool Animation;
 @property (nonatomic) int BonusLevelKind;
 @property (nonatomic) bool click;
+@property (nonatomic) bool Size;
 
 @property (nonatomic, strong) UIDynamicItemBehavior *CandiesPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 
 - (void)Move:(bool)animate;
+- (void) cleanObject;
 
 @end

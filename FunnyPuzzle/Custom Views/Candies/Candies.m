@@ -70,10 +70,11 @@
                 displacedFrame1.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height+self.centrBascket.size.height+20;
                 self.layer.zPosition=0;
                 [UIView animateWithDuration:0.8 animations:^{
-                self.frame=displacedFrame1;
+                    self.frame=displacedFrame1;
+                }completion:^(BOOL finished){
+                    [self cleanObject];
                 }];
                 self.click=true;
-              //  self.backgroundColor=[UIColor clearColor];
             }
              ];
         }
@@ -82,6 +83,7 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+            [self cleanObject];
         }
     }
     
@@ -89,14 +91,26 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
-           
+            [self cleanObject];
         }
     }
-    for(UIGestureRecognizer *recognizer in self.gestureRecognizers)
-    {
-        [self removeGestureRecognizer:recognizer];
+    
+    if (self.BonusLevelKind==3) {
+            [UIView animateWithDuration:0.8 animations:^{
+                self.frame = self.centrBascket;
+            } completion:^(BOOL finished){
+                [self cleanObject];
+                self.click=true;
+            }
+             ];
     }
     
+}
+
+- (void) cleanObject{
+    [self.layer removeAnimationForKey:@"position"];
+    animation=nil;
+    aPath=nil;
 }
 
 -(void)setCentrBascket:(CGRect)centrBascket
@@ -122,6 +136,7 @@
         animation.removedOnCompletion = YES;
         animation.repeatCount = 100.0f;
         [self.layer addAnimation:animation forKey:@"position" ];
+        
     }
     else
     {
@@ -129,6 +144,14 @@
     }
     
 }
+
+
+
+-(void)dealloc
+{
+    NSLog(@"all");
+}
+
 
 
 @end
