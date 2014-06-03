@@ -20,6 +20,6 @@
 - (void) stopGameMusic;
 - (void) playSound:(NSURL*)sound;
 
-- (void) vibrate;
+- (void) vibrateWithMode:(FPVibrateMode)vibrateMode;
 
 @end

@@ -25,9 +25,13 @@
 
 @property (nonatomic) UIDynamicAnimator *dAnimator;
 @property (nonatomic) UISnapBehavior *snap;
+@property (nonatomic) UISnapBehavior *basketSnap;
 @property (nonatomic) UICollisionBehavior *collisions;
 @property (nonatomic) UIPushBehavior *push;
 @property (nonatomic) UILabel *label;
+@property (nonatomic) UIImageView *basketView;
+@property (nonatomic) UIPushBehavior *basketPush;
+@property (nonatomic) UIImageView *candyView;
 
 @property (nonatomic) FPLevelManager *level;
 
@@ -100,6 +104,7 @@
     } else {
         [self startWinAnimations:nil];
     }
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -125,14 +130,10 @@
     [super viewDidLoad];
     [self startConfiguration];
 }
-- (void)didReceiveMemoryWarning
+
+- (void) dealloc
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(void) dealloc
-{
-    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+
 }
 
 
@@ -216,7 +217,7 @@
     res.alpha = 0;
     res.layer.zPosition = 255;
     res.tag = 43;
-    
+    [self showBasket];
     UILabel *label = [[UILabel alloc] init];
     label.text = _level.levelName;
     label.font = [UIFont fontWithName:@"KBCuriousSoul" size:30];
@@ -224,7 +225,7 @@
     [label sizeToFit];
     label.layer.position = CGPointMake(CGRectGetMinX(_leftView.frame), CGRectGetMinY(_leftView.frame));
     [self.view addSubview:label];
-    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame))];
+    _snap = [[UISnapBehavior alloc] initWithItem:label snapToPoint:CGPointMake(CGRectGetMidX(_leftView.frame), CGRectGetMidY(_leftView.frame)+self.view.frame.size.width/5)];
     _snap.damping = 0.2;
     [_push addItem:label];
     [_dAnimator addBehavior:_snap];
@@ -254,13 +255,16 @@
 {
     PDFImageView *imageView = (PDFImageView *)[self.view viewWithTag:42];
     PDFImageView *res = (PDFImageView *)[self.view viewWithTag:43];
+    UIImageView *basketView = (UIImageView*)[self.view viewWithTag:99];
     res.layer.zPosition = -1;
     UILabel *label = (UILabel *)[self.view viewWithTag:44];
     [_dAnimator removeBehavior:_snap];
+    [_dAnimator removeBehavior:_basketSnap];
     [_collisions removeItem:label];
     [UIView animateWithDuration:0.3 animations:^{
         imageView.transform = CGAffineTransformMakeScale(0, 0);
         res.transform = CGAffineTransformMakeScale(0, 0);
+        basketView.transform = CGAffineTransformMakeScale(0,0);
         res.alpha = 0;
         //label.transform = CGAffineTransformMakeScale(0, 0);
         label.alpha = 0;
@@ -268,9 +272,12 @@
         [label removeFromSuperview];
         [imageView removeFromSuperview];
         [res removeFromSuperview];
+        [basketView removeFromSuperview];
+        [_candyView removeFromSuperview];
     }];
      [_accelerometerManager stopShakeDetect];
     _push.active = NO;
+    _basketPush.active = NO;
 }
 
 #pragma mark - IBAction
@@ -319,7 +326,7 @@
 
 - (void)levelFinish
 {
-    [[GameModel sharedInstance] levelComplet];
+    [[GameModel sharedInstance] levelComplete:[GameModel sharedInstance].level.soundURL];
     [self startWinAnimations:nil];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -10,6 +10,10 @@
 #import "FPBonusViewController.h"
 
 @implementation Candies
+{
+    CAKeyframeAnimation *animation;
+    CGMutablePathRef aPath;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -33,6 +37,7 @@
           self.Animation=false;
         self.click=false;
         [self config];
+       
     }
     return self;
 }
@@ -65,19 +70,20 @@
                 displacedFrame1.origin.y = self.centrBascket.origin.y+self.centrBascket.size.height-self.frame.size.height+self.centrBascket.size.height+20;
                 self.layer.zPosition=0;
                 [UIView animateWithDuration:0.8 animations:^{
-                self.frame=displacedFrame1;
+                    self.frame=displacedFrame1;
+                }completion:^(BOOL finished){
+                    [self cleanObject];
                 }];
                 self.click=true;
-              //  self.backgroundColor=[UIColor clearColor];
             }
              ];
         }
     }
-    
     if (self.BonusLevelKind==1) {
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+            [self cleanObject];
         }
     }
     
@@ -85,10 +91,26 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+            [self cleanObject];
         }
     }
     
+    if (self.BonusLevelKind==3) {
+            [UIView animateWithDuration:0.8 animations:^{
+                self.frame = self.centrBascket;
+            } completion:^(BOOL finished){
+                [self cleanObject];
+                self.click=true;
+            }
+             ];
+    }
     
+}
+
+- (void) cleanObject{
+    [self.layer removeAnimationForKey:@"position"];
+    animation=nil;
+    aPath=nil;
 }
 
 -(void)setCentrBascket:(CGRect)centrBascket
@@ -96,16 +118,40 @@
     _centrBascket=centrBascket;
 }
 
-
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)Move:(bool)animate
 {
-    // Drawing code
+    if (animate) {
+        animation= [CAKeyframeAnimation animation];
+        aPath= CGPathCreateMutable();
+        float x = CGRectGetMidX(self.frame);
+        float y = CGRectGetMidY(self.frame);
+        CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+        CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
+                              x+0.2,y,  //Control Point 2
+                              x+0.1,y-0.1); // End Point
+        animation.rotationMode = @"auto";
+        animation.path = aPath;
+        animation.duration = 0.8+arc4random()%4;
+        animation.autoreverses = YES;
+        animation.removedOnCompletion = YES;
+        animation.repeatCount = 100.0f;
+        [self.layer addAnimation:animation forKey:@"position" ];
+        
+    }
+    else
+    {
+        [self.layer removeAnimationForKey:@"position"];
+    }
+    
 }
-*/
+
+
+
+-(void)dealloc
+{
+    NSLog(@"all");
+}
+
+
 
 @end

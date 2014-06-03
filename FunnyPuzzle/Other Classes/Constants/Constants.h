@@ -4,7 +4,6 @@
 //  Created by Misha on 20.05.14.
 //  Copyright (c) 2014 KG. All rights reserved.
 //
-
 #ifndef FP_Constants_h
 #define FP_Constants_h
 
@@ -22,7 +21,6 @@
 
 
 #endif
-
 
 #pragma mark - enums
 

@@ -77,6 +77,12 @@
     [self.animator removeBehavior:_snapSettingsBehavior];
 }
 
+- (void) dealloc{
+    _settingsButtonPropertiesBehavior=nil;
+    _snapCandyBehavior=nil;
+    _snapSettingsBehavior=nil;
+}
+
 - (void)cofigGround
 {
     UIInterpolatingMotionEffect *horisontal1 =
@@ -199,7 +205,9 @@
     candyImage.image=[PDFImage imageNamed:@"candy"];
     _candiesView.image=candyImage.image;
     [_settingsButton setImage:[settingsImage currentUIImage]  forState:UIControlStateNormal];
+    
     UIGravityBehavior *gravityBeahvior = [[UIGravityBehavior alloc] initWithItems:@[_settingsButton, _candiesView]];
+    
     UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[_settingsButton, _groundForSettingsButton, _candiesView]];
     collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
     self.settingsButtonPropertiesBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[_settingsButton, _candiesView]];

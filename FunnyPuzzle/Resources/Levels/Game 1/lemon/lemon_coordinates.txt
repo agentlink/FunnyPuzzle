@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Lemon");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Лимон");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "lemon");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "8 92 173 85 105");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 131 140 198 262");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "150 35 105 82 224");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "265 185 32 313 109");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "485");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "40");

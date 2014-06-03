@@ -48,12 +48,12 @@
 {
     [super viewDidLoad];
     [self setControlsState];
-    self.dataSource = [NSArray arrayWithObjects:
-                       @"English",
-                       @"Русский",
-                       @"Français",
-                       @"Deutschland",
-                       @"Español", nil];
+    self.dataSource = [[FPGameManager sharedInstance] getLanguages];
+}
+
+- (void) dealloc{
+    _dataSource = nil;
+    _pickerView = nil;
 }
 
 #pragma mark - UIActions
@@ -179,7 +179,8 @@
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"fr"]) {
         language=@"Français";
-    }    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
         language=@"Deutschland";
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
@@ -187,7 +188,6 @@
     }
     else {
         language=@"English";
-        [self setlanguage];
     }
     return language;
 }

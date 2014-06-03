@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Crab");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Краб");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "crab");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "106 8 75 180 185 81 180");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "66 8 109 105 10 195 195");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "40 215 210 155 20 40 245");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "100 300 85 235 300 175 185");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "430");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "120");

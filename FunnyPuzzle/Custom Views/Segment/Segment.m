@@ -41,6 +41,12 @@
     }
     return self;
 }
+
+- (void) dealloc{
+    _image=nil;
+    _imageView=nil;
+    _attachPoint=nil;
+}
 #pragma mark - Custom Accessors
 - (void)setImage:(PDFImage *)image
 {

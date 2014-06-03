@@ -8,6 +8,7 @@
 
 #import "GameModel.h"
 #import "FPSoundManager.h"
+#import "FPGameManager.h"
 
 @interface GameModel ()
 @property (nonatomic) NSUserDefaults *defaults;
@@ -25,7 +26,7 @@ static GameModel *_instance = nil;
     _objectsLeft = _level.segmentsCount;
     _levelCompleet = [defaults boolForKey:_level.levelName];
         
-    if (_gameMode == FPGameModeEase) {
+    if ([FPGameManager sharedInstance].displayInnerBorders) {
         _currentField = _level.grayLinedFiewld;
     } else {
         _currentField = _level.grayField;
@@ -43,7 +44,7 @@ static GameModel *_instance = nil;
 - (void)checkForRightPlace:(Segment *)segment
 {
     CGPoint currentPoint = segment.frame.origin;
-    CGPoint win = segment.rect.origin;//CGPointMake(CGRectGetMinX(_currentField.frame)+CGRectGetMinX(_currentField.superview.frame)+segment.rect.origin.x, CGRectGetMinY(_currentField.frame)+CGRectGetMinY(_currentField.superview.frame)+segment.rect.origin.y);
+    CGPoint win = segment.rect.origin;
 
     BOOL xPos = 10>=abs(win.x-currentPoint.x);
     BOOL yPos = 10>=abs(win.y-currentPoint.y);
@@ -110,15 +111,18 @@ static GameModel *_instance = nil;
     }
     return _instance;
 }
-#pragma mark - Public
+
+#pragma mark - Multimedia methods
+
 - (void)itemSelected
 {
-    [[FPSoundManager sharedInstance] vibrate];
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
 }
 - (void)itemDrop
 {
-    
+    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
 }
+
 - (void)itemDropInPlace
 {
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
@@ -165,8 +169,10 @@ static GameModel *_instance = nil;
    // AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
     
 }
-- (void)levelComplet
+
+- (void)levelComplete:(NSURL*)url
 {
-    
+    [[FPSoundManager sharedInstance] playSound:url];
 }
+
 @end

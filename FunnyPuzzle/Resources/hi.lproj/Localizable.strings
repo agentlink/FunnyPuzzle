@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "सूअर का बच्चा";
+"Pigeon" = "कबूतर";
+"Frogling" = "मेढक का बच्चा";
+"Rabbit" = "खरगोश";
+"Hen" = "मुर्गी";
+"Octopus" = "ऑक्टोपस";
+"Pencil" = "पेंसिल";
+"Ice cream"	= "आइसक्रीम";
+
+
+"Fingerling" = "मछली का बच्चा";
+"Elephant" = "हाथी";
+"Lamb" = "भेड़ का बच्चा";
+"Owl" = "उल्लू";
+"Snail"	= "घोंघा";
+"Squirrel" = "गिलहरी";
+"Apple"	= "सेब";
+"Carrot" = "गाजर";
+
+
+"Goat" = "बकरी";
+"Bee" = "बी";
+"Turtle" = "कछुआ";
+"Dolphin" = "डॉल्फिन";
+"Hippo"	= "हिप्पो";
+"Teddy-bear" = "टेडी - बीयर";
+"Penguin" = "पेंगुइन";
+"Snake" = "साँप";
+"Flamingo" = "राजहंस";
+"Toucan" = "टूकेन";
+"Giraffe" = "जिराफ़";
+"Monkey" = "बंदर";
+"Zebra"	= "ज़ेबरा";
+"Lion" = "शेर";
+
+"Kettle" = "केतली";
+"Car" = "कार";
+"Eggplant" = "बैंगन";
+"Bread"	= "रोटी";
+"Baseball cap" = "बेसबॉल कैप";
+"Computer chair" = "कंप्यूटर कुर्सी";
+"Train" = "रेलगाड़ी";
+"Wagon"	= "वैगन";
+"Peas" = "मटर";
+"Pot with honey" = "शहद के साथ बर्तन";
+"Mushrooms" = "मशरूम";
+"Potato" = "आलू";
+"Key" = "कुंजी";
+"Strawberries" = "स्ट्रॉबेरी";
+"Crab" = "केकड़ा";
+"Corn" = "मकई";
+"Jug with milk" = "दूध के साथ सुराही";
+"Lightbulb"	= "लाइटबल्ब";
+"Stork" = "सारस";
+"Pepper" = "काली मिर्च";
+"Cock" = "मुर्गा";
+"Cancer" = "कैंसर";
+"Backpack" = "बैग";
+"Wizard hat" = "जादूगर टोपी";
+"Soother" = "चुसनी";
+"Stapler" = "स्टेपलर";
+"Beet" = "चुकंदर";
+"Pumpkin" = "कद्दू";
+"Shuttlecocks" = "शटलकॉक";
+"Hamburger" = "हैमबर्गर";
+"Yacht"	= "नौका";
+"Scrambled eggs" = "अंडे तले";
+"Umbrella" = "छाता";
+
+"Perfect" = "सही";
+"Wonderfull" = "अद्भुत";
+"Well done" = "अच्छी तरह से किया";
+"Good job" = "अच्छा काम";
