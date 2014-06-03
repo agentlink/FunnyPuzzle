@@ -36,7 +36,7 @@
         self.centrBascket = r;
           self.Animation=false;
         self.click=false;
-        [self config];
+      //  [self config];
        
     }
     return self;
@@ -47,6 +47,12 @@
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self addGestureRecognizer:tap];
     
+}
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self config];
 }
 
 -(void)tap:(UITapGestureRecognizer *)recognizer
@@ -96,9 +102,10 @@
     }
     
     if (self.BonusLevelKind==3) {
-            [UIView animateWithDuration:0.8 animations:^{
+            [UIView animateWithDuration:0.6 animations:^{
                 self.frame = self.centrBascket;
             } completion:^(BOOL finished){
+                self.backgroundColor=[UIColor clearColor];
                 [self cleanObject];
                 self.click=true;
             }

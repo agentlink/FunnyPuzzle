@@ -63,8 +63,9 @@
             imView.image=im;
             imView.layer.zPosition=1;
             [self.view addSubview:imView];
-            int x=20;
-            int y=20;
+            float x=20;
+            float y=20;
+            float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
             objectsc=[[NSMutableArray alloc]init];
             objectsCD=[[NSMutableArray alloc] init];
             imView.layer.zPosition=1;
@@ -81,7 +82,7 @@
                 [self.view addSubview:c];
                 [objectsc insertObject:c atIndex:i-1];
                 [objectsCD insertObject:c atIndex:i-1];
-                x+=50;
+                x+=delta;
                 [c Move:true];
             }
             break;
@@ -91,6 +92,7 @@
             UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
             self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
             UIImage *im2=[UIImage imageNamed:@"sun_img"];
+            float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
             CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
             MainRec=CGRectMake( h/2-40, w/2,  80, 68);
             UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
@@ -111,7 +113,7 @@
             objectsCD=[[NSMutableArray alloc] init];
             objectsCF=[[NSMutableArray alloc] init];
             x=50;
-            for (int i=0; i<4; i++)
+            for (int i=0; i<5; i++)
             {
                 FPFlovers *f=[FPFlovers new];
                 UIImage *im=[UIImage imageNamed:@"flower_img"];
@@ -130,7 +132,7 @@
                 [objectsc insertObject:c atIndex:i];
                 [objectsCD insertObject:c atIndex:i];
                 [self.view addSubview:c];
-                x+=100;
+                x+=delta;
                 [c Move:true];
             }
             break;
@@ -179,14 +181,15 @@
             CGRect rect=CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height );
             imView.frame=rect;
             imView.image=im;
+            imView.layer.zPosition=0;
             [self.view addSubview:imView];
             MainRec=CGRectMake( -80, -70, 80, 68);
             int x=0;
             float deltaX=0;
             objectsCD=[[NSMutableArray alloc] init];
-            for (int i=0; i<20; i++) {
+            for (int i=0; i<5; i++) {
                 Candies *c=[Candies new];
-                c.layer.zPosition=2;
+                c.layer.zPosition=0;
                 c.Animation=true;
                 c.BonusLevelKind=3;
                 CGRect r;
@@ -194,52 +197,76 @@
                 UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
                 CGSize size;
                 UIImage *im2;
+                
                 if (s==0) {
                     r=CGRectMake(0, 20+arc4random()%100, 45, 45);
                     size=CGSizeMake(45, 45);
                     im2=[self imageWithImage:im scaledToSize:size];
                     c.Size=0;
-                    c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.height/2, imView.frame.origin.x+50, 45, 45);
+                    c.centrBascket=CGRectMake(imView.frame.origin.y, imView.frame.origin.x+imView.frame.size.height*0.6, 45, 45);
                 }
                 else
                 {
                     r=CGRectMake(0, 20+arc4random()%100, 55, 55);
                     size=CGSizeMake(55, 55);
                     im2=[self imageWithImage:im scaledToSize:size];
-                    c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.height/2, imView.frame.origin.x+imView.frame.size.width-60, 55, 55);
-                   c.Size=1;
+                    c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.width*0.7, imView.frame.origin.x+imView.frame.size.height*0.5, 55, 55);
+                    c.Size=1;
                 }
                 
                 c.backgroundColor=[UIColor colorWithPatternImage:im2];
                 c.frame = r;
                 c.BonusLevelKind=3;
+                c.tag=255;
+                UITapGestureRecognizer* gestureRecognizer;
+                
+                gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doSomthing:)];
+                gestureRecognizer.numberOfTapsRequired = 1;
+                
                 [self.view addSubview:c];
-                animation = [CAKeyframeAnimation animation];
-                aPath = CGPathCreateMutable();
+                
+                [c addGestureRecognizer:gestureRecognizer];
+
+                
+                
                 float y = c.frame.origin.y;
                 float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-                CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
-                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame),y);
-                float time=(wx-deltaX)/wx*7;
-                animation.path = aPath;
-                animation.duration = time;
-                animation.autoreverses = NO;
-                animation.removedOnCompletion = NO;
-                animation.timingFunction = [CAMediaTimingFunction
-                                            functionWithName:kCAMediaTimingFunctionLinear];
+                float time=(wx-deltaX)/wx*10;
                 CGRect rec;
                 if (s==0) {
                     rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 45, 45);
+                    CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 45, 45);
+                    c.frame=rect;
                 }
                 else
                 {
                     rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 55, 55);
+                    CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 55, 55);
+                    c.frame=rect;
                 }
-                
-                c.frame=rec;
-                
-                [c.layer addAnimation:animation forKey:@"position"];
-                
+                CGPoint point=CGPointMake(300, 300);
+                [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                    c.layer.position=point;
+                    // c.frame = rec;
+                } completion:^(BOOL finished){
+                    [c cleanObject];
+                    [c removeFromSuperview];
+                }];
+
+//                animation = [CAKeyframeAnimation animation];
+//                aPath = CGPathCreateMutable();
+//                //float y = c.frame.origin.y;
+//                //float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+//                CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
+//                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame),y);
+//                //float time=(wx-deltaX)/wx*7;
+//                animation.path = aPath;
+//                animation.duration = time;
+//                animation.autoreverses = NO;
+//                animation.removedOnCompletion = NO;
+//                animation.timingFunction = [CAMediaTimingFunction
+//                                            functionWithName:kCAMediaTimingFunctionLinear];
+//                [c.layer addAnimation:animation forKey:@"position"];
                 x+=55;
                 deltaX-=55;
             }
@@ -271,6 +298,20 @@
                                            userInfo: nil
                                             repeats: YES];
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+   // NSLog(@"view number :%@",[[touch view] class]);
+    NSLog(@"view %li", (long)[[touch view] tag]);
+}
+
+-(void)doSomthing:(id)sender
+{
+    UIView* temp = [(UITapGestureRecognizer*)sender view];
+    NSLog(@"view number :%@",[temp class]);
+}
+
+
 int tick=0;
 -(void)handleTimer
 {
