@@ -137,6 +137,7 @@
                 CATransform3D transform = CATransform3DIdentity;
                 _transform = _gamemodeFirst.superview.layer.transform;
                 transform = CATransform3DTranslate(transform, -_gamemodeFirst.superview.frame.origin.x-40, -_gamemodeFirst.superview.frame.origin.y-25, 0);
+                NSLog(@"%f",-_gamemodeFirst.superview.frame.origin.x-40);
                 transform = CATransform3DScale(transform, 0.3, 0.3, 0.3);
                 [_gamemodeFirst.superview.layer setTransform:transform];
                 [controller startEnterAnimation];
@@ -155,7 +156,9 @@
             [UIView animateWithDuration:kAnimationDuration*1.5 animations:^{
                 CATransform3D transform = CATransform3DIdentity;
                 _transform = _gamemodeSecond.superview.layer.transform;
-                transform = CATransform3DTranslate(transform, (-_gamemodeSecond.superview.frame.origin.x-40), -_gamemodeSecond.superview.frame.origin.y-25, 0);
+                transform = CATransform3DTranslate(transform, -_gamemodeSecond.superview.frame.origin.x-_leftView.frame.size.width-40, -_gamemodeSecond.superview.frame.origin.y-20, 0);
+                NSLog(@"%f",-_gamemodeSecond.superview.frame.origin.x-_leftView.frame.size.width);
+                
                 transform = CATransform3DScale(transform, 0.3, 0.3, 0.3);
                 [_gamemodeSecond.superview.layer setTransform:transform];
                 [controller startEnterAnimation];
@@ -170,6 +173,13 @@
     if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeFirs) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             [_gamemodeFirst.superview.layer setTransform:_transform];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeSecond) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [_gamemodeSecond.superview.layer setTransform:_transform];
         } completion:^(BOOL finished) {
             
         }];

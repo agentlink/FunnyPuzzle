@@ -12,5 +12,7 @@
 @property (nonatomic, weak) IBOutlet PDFImageView *field;
 @property (nonatomic, weak) IBOutlet PDFImageView *star;
 
+@property (nonatomic) int BonusLevelCount;
+
 - (void)levelFinish;
 @end

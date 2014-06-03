@@ -51,7 +51,7 @@
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     int h=self.view.frame.size.height;
     int w=self.view.frame.size.width;
-    Numb=3;
+    Numb=0;
     switch (Numb) {
         case 0:
         {

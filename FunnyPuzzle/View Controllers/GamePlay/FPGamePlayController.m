@@ -75,7 +75,7 @@
     _levelType = type;
     switch (type) {
         case FPGameTypeFirs:
-            _compleetKey = @"color";
+            _compleetKey = @"colorPath";
             _notCompleetKey = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?@"gray_linedPath":@"grayPath";
             break;
         case FPGameTypeSecond:
@@ -363,6 +363,7 @@
         NSLog(@"%li", _elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
+            
             [self centerField:YES animate:YES];
             [self compleetAnimation];
         }
