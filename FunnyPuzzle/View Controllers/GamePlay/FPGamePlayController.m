@@ -74,7 +74,7 @@
 {
     _levelType = type;
     switch (type) {
-        case FPGameTypeFirs:
+        case FPGameTypeFirst:
             _compleetKey = @"colorPath";
             _notCompleetKey = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?@"gray_linedPath":@"grayPath";
             break;
@@ -358,9 +358,9 @@
     if (xPosition&&yPosition) {
         _dragingElement.inPlace = YES;
         [self bounceElement:_dragingElement];
-        NSLog(@"%li", _elementsLeft);
+        NSLog(@"%li", (unsigned long)_elementsLeft);
         _elementsLeft--;
-        NSLog(@"%li", _elementsLeft);
+        NSLog(@"%li", (unsigned long)_elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
             

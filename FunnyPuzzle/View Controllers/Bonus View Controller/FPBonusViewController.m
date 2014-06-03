@@ -467,7 +467,7 @@ int tick=0;
         {
             [candy removeGestureRecognizer:recognizer];
         }
-        candy.cleanObject;
+        [candy cleanObject];
     }
     for (int i=0; i<objectsCD.count; i++) {
         Candies *candy=[objectsCD objectAtIndex:i];
@@ -475,7 +475,7 @@ int tick=0;
         {
             [candy removeGestureRecognizer:recognizer];
         }
-        candy.cleanObject;
+        [candy cleanObject];
     }
     _accelerometer=nil;
     _animator=nil;

@@ -38,6 +38,7 @@
 @property (nonatomic, strong) UISnapBehavior *snapCandyBehavior;
 @property (nonatomic) CATransform3D transform;
 
+@property (nonatomic) BOOL needToDropButtons;
 
 @property (nonatomic) UIDynamicAnimator *animator;
 
@@ -50,11 +51,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _needToDropButtons = NO;
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
     _gamemodeFirst.tap = ^{
-        [self play:self type:FPGameTypeFirs];
+        [self play:self type:FPGameTypeFirst];
     };
     _gamemodeSecond.tap =  ^{
         [self play:self type:FPGameTypeSecond];
@@ -125,12 +126,12 @@
 
 - (void)play:(id)sender type:(FPGameType)type
 {
-    if (type == FPGameTypeFirs) {
+    if (type == FPGameTypeFirst) {
         [GameModel sharedInstance].gameType = type;
         FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [controller.view setHidden:YES];
-        [controller setGameType:FPGameTypeFirs];
+        [controller setGameType:FPGameTypeFirst];
         [controller setParrent:self];
         [self presentViewController:controller animated:NO completion:^{
             [UIView animateWithDuration:kAnimationDuration*1.5 animations:^{
@@ -168,9 +169,10 @@
         }];
     }
 }
+
 - (void)returnFromLevelSelection
 {
-    if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeFirs) {
+    if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeFirst) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             [_gamemodeFirst.superview.layer setTransform:_transform];
         } completion:^(BOOL finished) {
@@ -184,8 +186,11 @@
             
         }];
     }
+    self.navigationController.modalPresentationStyle = UIModalPresentationNone;
 }
+
 - (IBAction)goToSettings:(id)sender {
+    _needToDropButtons = YES;
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     CGPoint pointSettings = CGPointMake(_settingsButton.center.x,_settingsButton.frame.size.height/4);
     CGPoint pointCandy = CGPointMake(_candiesView.center.x,_candiesView.frame.size.height/4);
@@ -228,12 +233,15 @@
 }
 
 - (void) dropSettings{
+    if (_needToDropButtons==YES){
     _settingsButton.center = CGPointMake(_settingsButton.center.x,0);
     _candiesView.center = CGPointMake(_candiesView.center.x,0);
     [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_settingsButton].y) forItem:_settingsButton];
     [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_candiesView].y) forItem:_candiesView];
     [_animator updateItemUsingCurrentState:_candiesView];
     [_animator updateItemUsingCurrentState:_settingsButton];
+        _needToDropButtons = NO;
+    }
 }
 
 #pragma mark - Animations

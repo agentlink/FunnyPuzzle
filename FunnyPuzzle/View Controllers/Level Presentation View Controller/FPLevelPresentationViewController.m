@@ -37,7 +37,7 @@
 {
     _gameType = gameType;
     switch (gameType) {
-        case FPGameTypeFirs:
+        case FPGameTypeFirst:
             _compleetKey = @"color";
             _notCompleet = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?@"gray_lined":@"gray";
             break;

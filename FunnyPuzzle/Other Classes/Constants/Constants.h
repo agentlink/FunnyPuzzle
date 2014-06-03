@@ -30,7 +30,7 @@ typedef enum {
 }FPGameMode;
 
 typedef enum {
-    FPGameTypeFirs,
+    FPGameTypeFirst,
     FPGameTypeSecond,
     FPGameTypeBonus
 }FPGameType;
