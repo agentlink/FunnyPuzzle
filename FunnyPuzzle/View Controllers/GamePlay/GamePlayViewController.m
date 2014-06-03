@@ -118,6 +118,14 @@
     [self stopWinAnimations:self.view];
     [GameModel sharedInstance].level = nil;
     [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
+    _dragingSegment=nil;
+    _accelerometerManager=nil;
+    _dAnimator=nil;
+    _snap=nil;
+    _collisions=nil;
+    _push=nil;
+    _label=nil;
+    _level=nil;
 }
 
 - (void)shakedVector:(CGVector)vector
@@ -385,10 +393,43 @@
     }
 }
 
+#pragma mark - Basket
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    
-//}
+- (void) showBasket{
+    _basketView=[[UIImageView alloc] initWithFrame:CGRectMake(_leftView.center.x-75.5,-150, 120, 120) ];
+    [_basketView setImage:[UIImage imageNamed:@"basket_full"]];
+    _basketView.tag=99;
+    [self.view addSubview:_basketView];
+    _candyView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"candy_orange"]];
+    _candyView.tag=98;
+    _candyView.alpha=0;
+    _candyView.frame = CGRectMake(_basketView.frame.origin.x+_basketView.frame.size.width/2.5, CGRectGetMidY(self.leftView.frame)-70, 55, 55);
+    [self.view addSubview:_candyView];
+    _basketSnap = [[UISnapBehavior alloc] initWithItem:_basketView snapToPoint:CGPointMake(CGRectGetMidX(self.leftView.frame), CGRectGetMidY(self.leftView.frame))];
+    _basketSnap.damping = 0.8;
+    [_basketPush addItem:_basketView];
+    [_dAnimator addBehavior:_basketSnap];
+    _basketPush.active = YES;
+    [UIImageView animateWithDuration:1.2 delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+        _candyView.alpha=1;
+    }completion:^(BOOL finished){
+        _basketView.layer.zPosition=2;
+        _candyView.layer.zPosition=0;
+            [self pickCandy];
+    }];
+}
+
+- (void) pickCandy{
+    CGRect frame=_candyView.frame;
+    frame.origin.y+=50;
+        [UIView animateWithDuration:0.6 delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+            _candyView.frame = frame;
+            } completion:^(BOOL finished){
+                    if (finished){
+                        [_candyView removeFromSuperview];
+                        _candyView=nil;
+                    }
+            }];
+}
 
 @end

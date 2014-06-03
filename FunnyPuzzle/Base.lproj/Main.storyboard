@@ -161,7 +161,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fZu-IS-JoB" kind="push" id="gY3-7e-pFq"/>
+                                    <segue destination="fZu-IS-JoB" kind="push" id="iCE-wS-65j"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Vp-tkv" userLabel="Settings">
@@ -525,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEf-oI-tqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="-97"/>
+            <point key="canvasLocation" x="1042" y="-97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="im0-YN-EcE">

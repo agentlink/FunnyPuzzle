@@ -26,7 +26,6 @@
 		7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */; };
 		7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE5B19373BBB007E154E /* FPLevelCell.m */; };
 		7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */; };
-		7F8DAE711937EB19007E154E /* LFGlassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE701937EB19007E154E /* LFGlassView.m */; };
 		7F8DAE7A19389E32007E154E /* FPGamePlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE7919389E32007E154E /* FPGamePlayController.m */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
@@ -116,8 +115,6 @@
 		7F8DAE5B19373BBB007E154E /* FPLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelCell.m; path = "View Controllers/Level Presentation View Controller/FPLevelCell.m"; sourceTree = "<group>"; };
 		7F8DAE6019376FC8007E154E /* FPLevelCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelCollectionFlowLayout.h; path = "View Controllers/Level Presentation View Controller/FPLevelCollectionFlowLayout.h"; sourceTree = "<group>"; };
 		7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelCollectionFlowLayout.m; path = "View Controllers/Level Presentation View Controller/FPLevelCollectionFlowLayout.m"; sourceTree = "<group>"; };
-		7F8DAE6F1937EB19007E154E /* LFGlassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFGlassView.h; path = "View Controllers/Level Presentation View Controller/glass/LFGlassView.h"; sourceTree = "<group>"; };
-		7F8DAE701937EB19007E154E /* LFGlassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFGlassView.m; path = "View Controllers/Level Presentation View Controller/glass/LFGlassView.m"; sourceTree = "<group>"; };
 		7F8DAE7819389E32007E154E /* FPGamePlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPGamePlayController.h; path = "View Controllers/GamePlay/FPGamePlayController.h"; sourceTree = "<group>"; };
 		7F8DAE7919389E32007E154E /* FPGamePlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPGamePlayController.m; path = "View Controllers/GamePlay/FPGamePlayController.m"; sourceTree = "<group>"; };
 		7FA4BA3E192C9AFD00A772BA /* FunnyPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,8 +357,6 @@
 				7FA57045192F42C000CE84F8 /* GameField.storyboard */,
 				7F8DAE7819389E32007E154E /* FPGamePlayController.h */,
 				7F8DAE7919389E32007E154E /* FPGamePlayController.m */,
-				7F8DAE6F1937EB19007E154E /* LFGlassView.h */,
-				7F8DAE701937EB19007E154E /* LFGlassView.m */,
 				7F8DAE59193736F3007E154E /* LevelPresentationViewController */,
 			);
 			name = "Gameplay Controller";
@@ -716,7 +711,6 @@
 			files = (
 				84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */,
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
-				7F8DAE711937EB19007E154E /* LFGlassView.m in Sources */,
 				7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */,
 				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
 				7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */,

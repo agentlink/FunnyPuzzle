@@ -29,6 +29,9 @@
 @property (nonatomic) CGPoint dragingWinPoint;
 @property (nonatomic) int levelsCount;
 @property (nonatomic) NSUInteger elementsLeft;
+@property (nonatomic) FPGameType levelType;
+@property (nonatomic) NSString *compleetKey;
+@property (nonatomic) NSString *notCompleetKey;
 
 @property (nonatomic) UIDynamicAnimator *animator;
 
@@ -69,6 +72,19 @@
 
 - (void)loadLevel:(int)level type:(FPGameType)type
 {
+    _levelType = type;
+    switch (type) {
+        case FPGameTypeFirs:
+            _compleetKey = @"color";
+            _notCompleetKey = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?@"gray_linedPath":@"grayPath";
+            break;
+        case FPGameTypeSecond:
+            _compleetKey = @"full";
+            _notCompleetKey = @"notFull";
+            break;
+        default:
+            break;
+    }
     _levelManager = [FPLevelManager loadLevel:level type:type];
 }
 
@@ -93,11 +109,7 @@
 {
     [_field setBackgroundColor:[UIColor clearColor]];
     NSString *path;
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]) {
-        path = [[_levelManager mcLevel] objectForKey:@"gray_linedPath"];
-    } else {
-        path = [[_levelManager mcLevel] objectForKey:@"grayPath"];
-    }
+    path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
     PDFImage *image = [PDFImage imageNamed:path];
     _field.image = image;
     [self configElements];
@@ -106,7 +118,7 @@
 {
     [self centerField:YES animate:NO];
     [_field setBackgroundColor:[UIColor clearColor]];
-    PDFImage *image = [PDFImage imageNamed:[[_levelManager mcLevel] objectForKey:@"colorPath"]];
+    PDFImage *image = [PDFImage imageNamed:[[_levelManager mcLevel] objectForKey:_compleetKey]];
     _field.image = image;
     _levelName.text = [_levelManager levelName];
     CGRect nameFrame = _levelName.frame;

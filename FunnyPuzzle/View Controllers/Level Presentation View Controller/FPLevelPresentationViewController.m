@@ -9,17 +9,17 @@
 #import "FPLevelPresentationViewController.h"
 #import "FPLevelManager.h"
 #import "FPLevelCell.h"
-#import "JMIBlur.h"
 #import "GamePlayViewController.h"
 #import "GameModel.h"
 #import "FPGamePlayController.h"
-#import "UIImage+ImageEffects.h"
 
 @interface FPLevelPresentationViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *back;
 @property (nonatomic, weak) IBOutlet UICollectionView *collection;
 @property (nonatomic, strong) NSArray *levels;
 @property (nonatomic, weak) IBOutlet FPGamePlayController *controller;
+@property (nonatomic) NSString *compleetKey;
+@property (nonatomic) NSString *notCompleet;
 - (IBAction)menu:(id)sender;
 @end
 
@@ -36,6 +36,18 @@
 - (void)setGameType:(FPGameType)gameType
 {
     _gameType = gameType;
+    switch (gameType) {
+        case FPGameTypeFirs:
+            _compleetKey = @"color";
+            _notCompleet = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?@"gray_lined":@"gray";
+            break;
+        case FPGameTypeSecond:
+            _compleetKey = @"full";
+            _notCompleet = @"notFull";
+            break;
+        default:
+            break;
+    }
     [self setLevels:[FPLevelManager allLevels:gameType]];
 }
 - (void)setLevels:(NSArray *)levels
@@ -77,10 +89,10 @@
     FPLevelCell *cell = (FPLevelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     PDFImage *image;
     if ([[NSUserDefaults standardUserDefaults] valueForKey:[level valueForKey:@"name"]]) {
-        image = [PDFImage imageNamed:[level valueForKey:@"color"]];
+        image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.isFinished = YES;
     } else {
-        image = [PDFImage imageNamed:[[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_INNER_BORDERS]?[level valueForKey:@"gray_lined"]:[level valueForKey:@"gray"]];
+        image = [PDFImage imageNamed:[level valueForKey:_notCompleet]];
         cell.isFinished = NO;
     }
     cell.imageVeiw.image = image;
@@ -94,7 +106,7 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-    [controller loadLevel:(int)[indexPath row] type:FPGameTypeFirs];
+    [controller loadLevel:(int)[indexPath row] type:_gameType];
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     
       FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];

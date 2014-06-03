@@ -40,6 +40,9 @@ typedef enum {
     FPGameplayAnimationModeNewLevel,
 }FPGameplayAnimationMode;
 //AnimationDuration
-
+typedef enum {
+    VibrateModeDragOrDrop,
+    VibrateModeInPlace
+}FPVibrateMode;
 static double kAnimationDuration = .3;
 //const double kAnimationDurationFull = 0.3;

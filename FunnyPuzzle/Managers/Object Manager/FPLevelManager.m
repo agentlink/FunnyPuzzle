@@ -59,9 +59,13 @@
     NSString *color = [NSString stringWithFormat:@"%@_result", _pathToColor];
     NSString *gray = [NSString stringWithFormat:@"%@_gray", _pathToColor];
     NSString *gray_lined = [NSString stringWithFormat:@"%@_bordered", _pathToColor];
+    NSString *full = [NSString stringWithFormat:@"%@_full", _pathToColor];
+    NSString *notFull = [NSString stringWithFormat:@"%@_not-full", _pathToColor];
     [_mcLevel setObject:color forKey:@"colorPath"];
     [_mcLevel setObject:gray forKey:@"grayPath"];
     [_mcLevel setObject:gray_lined forKey:@"gray_linedPath"];
+    [_mcLevel setObject:full forKey:@"full"];
+    [_mcLevel setObject:notFull forKey:@"notFull"];
     _levelName = [level valueForKey:@"name"];
     _mcElements = [self getMCSegmentsFromElements:[level valueForKey:@"elements"]];
     _soundURL = [self getSoundURL];
@@ -220,7 +224,9 @@
         NSString *color = [NSString stringWithFormat:@"Levels/%@/%@_result", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *gray = [NSString stringWithFormat:@"Levels/%@/%@_gray", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
-        [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"]}];
+        NSString *full = [NSString stringWithFormat:@"Levels/%@/%@_full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+        NSString *notFull = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+        [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull}];
     }
     return [NSArray arrayWithArray:levels];
 }
