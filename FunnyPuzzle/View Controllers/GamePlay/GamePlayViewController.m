@@ -30,7 +30,6 @@
 @property (nonatomic) UILabel *label;
 
 @property (nonatomic) FPLevelManager *level;
-@property (nonatomic, weak) IBOutlet PDFImageView *field;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -113,12 +112,12 @@
     [super viewDidDisappear:animated];
     [self stopWinAnimations:self.view];
     [GameModel sharedInstance].level = nil;
+    [self.view removeGestureRecognizer:[self.view.gestureRecognizers firstObject]];
 }
 
 - (void)shakedVector:(CGVector)vector
 {
     [_push setPushDirection:vector];
-    NSLog(@"vector: dx,dy: %f,%f", vector.dx, vector.dy);
     _push.active = YES;
 }
 - (void)viewDidLoad
@@ -170,7 +169,7 @@
     _accelerometerManager = [AccelerometerManager new];
     [_accelerometerManager setShakeRangeWithMinValue:0.3 MaxValue:1];
     
-    [GameModel sharedInstance].gamePlayViewController = self;
+    //[GameModel sharedInstance].gamePlayViewController = self;
     _accelerometerManager.delegate = self;
 }
 
@@ -290,7 +289,14 @@
 }
 - (IBAction)back:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self presentingViewController]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 #pragma mark - GestureRecognizers
 
@@ -310,6 +316,7 @@
         [[GameModel sharedInstance] checkForRightPlace:_dragingSegment];
     }
 }
+
 - (void)levelFinish
 {
     [[GameModel sharedInstance] levelComplet];
@@ -370,5 +377,11 @@
         }
     }
 }
+
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    
+//}
 
 @end

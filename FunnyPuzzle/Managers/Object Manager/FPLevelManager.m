@@ -27,6 +27,10 @@
     }
     return self;
 }
+- (void)dealloc
+{
+    
+}
 - (void)parce
 {
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
@@ -34,6 +38,45 @@
     _levels = [_plist objectAtIndex:_gameType];
     _levelDict = [_levels objectAtIndex:_level];
     [self initField:_levelDict];
+}
+- (void)memoryCareParce
+{
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
+    _plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    _mcLevel = [NSMutableDictionary new];
+    _levels = [_plist objectAtIndex:_gameType];
+    _levelDict = [_levels objectAtIndex:_level];
+    [self mcInitField:_levelDict];
+}
+- (void)mcInitField:(NSMutableDictionary *)level
+{
+    _pathToLevel = [NSString stringWithFormat:@"Levels/%@",
+                    [level valueForKey:@"folder"],
+                    nil];
+    _pathToColor = [NSString stringWithFormat:@"%@/%@", _pathToLevel, [level valueForKey:@"color"]];
+    NSString *color = [NSString stringWithFormat:@"%@_result", _pathToColor];
+    NSString *gray = [NSString stringWithFormat:@"%@_gray", _pathToColor];
+    NSString *gray_lined = [NSString stringWithFormat:@"%@_bordered", _pathToColor];
+    [_mcLevel setObject:color forKey:@"colorPath"];
+    [_mcLevel setObject:gray forKey:@"grayPath"];
+    [_mcLevel setObject:gray_lined forKey:@"gray_linedPath"];
+    _levelName = [level valueForKey:@"name"];
+    _mcElements = [self getMCSegmentsFromElements:[level valueForKey:@"elements"]];
+    _soundURL = [self getSoundURL];
+    
+}
+- (NSArray *)getMCSegmentsFromElements:(NSArray *)elements
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (int i = 0; i<elements.count; i++) {
+        NSDictionary *element = [NSDictionary dictionaryWithDictionary:[elements objectAtIndex:i]];
+        CGPoint nativePoint = CGPointMake([[[element valueForKey:@"point"] valueForKey:@"x"] floatValue], [[[element valueForKey:@"point"] valueForKey:@"y"] floatValue]);
+        NSString *path = [NSString stringWithFormat:@"%@%i",
+                          _pathToColor,
+                          i, nil];
+        [result addObject:@{@"path":path, @"nativePoint":[NSValue valueWithCGPoint:nativePoint]}];
+    }
+    return [NSArray arrayWithArray:result];
 }
 - (void)initField:(NSMutableDictionary *)level
 {
@@ -147,12 +190,34 @@
 }
 #pragma mark - Class Methods
 
-+(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
++(FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
 {
     FPLevelManager *manager = [FPLevelManager new];
     manager.gameType = type;
     manager.level = level;
     [manager parce];
     return manager;
+}
++ (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type
+{
+    FPLevelManager *manager = [FPLevelManager new];
+    manager.gameType = type;
+    manager.level = level;
+    [manager memoryCareParce];
+    return manager;
+}
++ (NSArray *)allLevels:(FPGameType)gameType
+{
+    NSMutableArray *levels = [[NSMutableArray alloc] init];
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
+    NSMutableArray *_plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    NSMutableDictionary *_levels = [_plist objectAtIndex:gameType];
+    for (NSDictionary *level in _levels) {
+        NSString *color = [NSString stringWithFormat:@"Levels/%@/%@_result", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+        NSString *gray = [NSString stringWithFormat:@"Levels/%@/%@_gray", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+        NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+        [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"]}];
+    }
+    return [NSArray arrayWithArray:levels];
 }
 @end

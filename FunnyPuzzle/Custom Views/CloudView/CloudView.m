@@ -29,10 +29,10 @@
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
         CGMutablePathRef aPath = CGPathCreateMutable();
         float y = self.frame.origin.y;
-        float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        float screenHeigth = CGRectGetHeight([[UIScreen mainScreen] bounds]);
         
-        CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(self.frame),y);
-        CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(self.frame),y);
+        CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(self.frame), y);
+        CGPathAddLineToPoint(aPath, nil, screenHeigth+CGRectGetWidth(self.frame), y);
        
         
         animation.path = aPath;
@@ -59,34 +59,33 @@
 #pragma mark - Private
 - (CGRect)calcRect:(CGRect)rect size:(CGSize)size
 {
-    float mult = 1;
+    float multiplayer = 1;
     if (size.width>self.frame.size.width)
     {
-        mult = self.frame.size.width/size.width;
+        multiplayer = self.frame.size.width/size.width;
     }
     CGRect result;
-    result.size = CGSizeMake(size.width*mult, size.height*mult);
-    //result.origin = rect.origin;
+    result.size = CGSizeMake(size.width*multiplayer, size.height*multiplayer);
     return result;
 }
 - (void)setupMotionEffect
 {
-    int dim = (10+arc4random()%50);
-    // Set vertical effect
+    int dimentions = (10+arc4random()%50);
+
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.y"
      type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-dim);
-    verticalMotionEffect.maximumRelativeValue = @(dim);
+    verticalMotionEffect.minimumRelativeValue = @(-dimentions);
+    verticalMotionEffect.maximumRelativeValue = @(dimentions);
     
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-dim);
-    horizontalMotionEffect.maximumRelativeValue = @(dim);
+    horizontalMotionEffect.minimumRelativeValue = @(-dimentions);
+    horizontalMotionEffect.maximumRelativeValue = @(dimentions);
     
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];

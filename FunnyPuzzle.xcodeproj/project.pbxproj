@@ -23,6 +23,11 @@
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
+		7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */; };
+		7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE5B19373BBB007E154E /* FPLevelCell.m */; };
+		7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */; };
+		7F8DAE711937EB19007E154E /* LFGlassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE701937EB19007E154E /* LFGlassView.m */; };
+		7F8DAE7A19389E32007E154E /* FPGamePlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE7919389E32007E154E /* FPGamePlayController.m */; };
 		7FA4BA42192C9AFD00A772BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA41192C9AFD00A772BA /* Foundation.framework */; };
 		7FA4BA44192C9AFD00A772BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */; };
 		7FA4BA46192C9AFD00A772BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4BA45192C9AFD00A772BA /* UIKit.framework */; };
@@ -138,6 +143,16 @@
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
 		7F8A15C4192E389A006A9D6B /* ball2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball2.pdf; path = Resources/General/ball2.pdf; sourceTree = "<group>"; };
+		7F8DAE56193736ED007E154E /* FPLevelPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelPresentationViewController.h; path = "View Controllers/Level Presentation View Controller/FPLevelPresentationViewController.h"; sourceTree = "<group>"; };
+		7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelPresentationViewController.m; path = "View Controllers/Level Presentation View Controller/FPLevelPresentationViewController.m"; sourceTree = "<group>"; };
+		7F8DAE5A19373BBB007E154E /* FPLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelCell.h; path = "View Controllers/Level Presentation View Controller/FPLevelCell.h"; sourceTree = "<group>"; };
+		7F8DAE5B19373BBB007E154E /* FPLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelCell.m; path = "View Controllers/Level Presentation View Controller/FPLevelCell.m"; sourceTree = "<group>"; };
+		7F8DAE6019376FC8007E154E /* FPLevelCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelCollectionFlowLayout.h; path = "View Controllers/Level Presentation View Controller/FPLevelCollectionFlowLayout.h"; sourceTree = "<group>"; };
+		7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelCollectionFlowLayout.m; path = "View Controllers/Level Presentation View Controller/FPLevelCollectionFlowLayout.m"; sourceTree = "<group>"; };
+		7F8DAE6F1937EB19007E154E /* LFGlassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFGlassView.h; path = "View Controllers/Level Presentation View Controller/glass/LFGlassView.h"; sourceTree = "<group>"; };
+		7F8DAE701937EB19007E154E /* LFGlassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFGlassView.m; path = "View Controllers/Level Presentation View Controller/glass/LFGlassView.m"; sourceTree = "<group>"; };
+		7F8DAE7819389E32007E154E /* FPGamePlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPGamePlayController.h; path = "View Controllers/GamePlay/FPGamePlayController.h"; sourceTree = "<group>"; };
+		7F8DAE7919389E32007E154E /* FPGamePlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPGamePlayController.m; path = "View Controllers/GamePlay/FPGamePlayController.m"; sourceTree = "<group>"; };
 		7FA4BA3E192C9AFD00A772BA /* FunnyPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA4BA41192C9AFD00A772BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FA4BA43192C9AFD00A772BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -411,6 +426,11 @@
 				7F316172192CA05A00C49EAE /* GamePlayViewController.h */,
 				7F316173192CA05A00C49EAE /* GamePlayViewController.m */,
 				7FA57045192F42C000CE84F8 /* GameField.storyboard */,
+				7F8DAE7819389E32007E154E /* FPGamePlayController.h */,
+				7F8DAE7919389E32007E154E /* FPGamePlayController.m */,
+				7F8DAE6F1937EB19007E154E /* LFGlassView.h */,
+				7F8DAE701937EB19007E154E /* LFGlassView.m */,
+				7F8DAE59193736F3007E154E /* LevelPresentationViewController */,
 			);
 			name = "Gameplay Controller";
 			sourceTree = "<group>";
@@ -431,6 +451,19 @@
 				7F316181192D092300C49EAE /* FPPreferences.m */,
 			);
 			name = "Preferences Controller";
+			sourceTree = "<group>";
+		};
+		7F8DAE59193736F3007E154E /* LevelPresentationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F8DAE56193736ED007E154E /* FPLevelPresentationViewController.h */,
+				7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */,
+				7F8DAE5A19373BBB007E154E /* FPLevelCell.h */,
+				7F8DAE5B19373BBB007E154E /* FPLevelCell.m */,
+				7F8DAE6019376FC8007E154E /* FPLevelCollectionFlowLayout.h */,
+				7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */,
+			);
+			name = LevelPresentationViewController;
 			sourceTree = "<group>";
 		};
 		7FA4BA35192C9AFD00A772BA = {
@@ -832,10 +865,15 @@
 			files = (
 				84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */,
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
+				7F8DAE711937EB19007E154E /* LFGlassView.m in Sources */,
+				7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */,
 				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
+				7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameModel.m in Sources */,
 				84E962D6192F512700DC785C /* FPLevelManager.m in Sources */,
+				7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */,
 				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
+				7F8DAE7A19389E32007E154E /* FPGamePlayController.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,

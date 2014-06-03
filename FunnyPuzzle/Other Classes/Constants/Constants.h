@@ -19,6 +19,8 @@
 //AdMob ID
 #define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"
 
+
+
 #endif
 
 
@@ -35,3 +37,11 @@ typedef enum {
     FPGameTypeBonus
 }FPGameType;
 
+typedef enum {
+    FPGameplayAnimationModeLevelCompleet,
+    FPGameplayAnimationModeNewLevel,
+}FPGameplayAnimationMode;
+//AnimationDuration
+
+static double kAnimationDuration = .3;
+//const double kAnimationDurationFull = 0.3;

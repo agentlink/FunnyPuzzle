@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <PDFImage/PDFImage.h>
 @interface GamePlayViewController : UIViewController
+@property (nonatomic, weak) IBOutlet PDFImageView *field;
+@property (nonatomic, weak) IBOutlet PDFImageView *star;
+
 - (void)levelFinish;
 @end

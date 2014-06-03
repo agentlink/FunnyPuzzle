@@ -13,6 +13,7 @@
 @interface FPLevelManager : NSObject
 
 @property (nonatomic, strong) NSArray *segments;
+@property (nonatomic, strong) NSArray *mcElements;
 @property (nonatomic, strong) PDFImageView *colorField;
 @property (nonatomic, strong) PDFImageView *grayField;
 @property (nonatomic, strong) PDFImageView *grayLinedFiewld;
@@ -23,7 +24,9 @@
 @property (nonatomic) CGRect fieldFrame;
 @property (nonatomic, readonly) NSInteger segmentsCount;
 @property (nonatomic, readonly) NSInteger levelsCount;
+@property (nonatomic, readonly) NSMutableDictionary *mcLevel;
 
-+(FPLevelManager *)gameObjectsWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
-
++ (FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
++ (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type;
++ (NSArray *)allLevels:(FPGameType)gameType;
 @end

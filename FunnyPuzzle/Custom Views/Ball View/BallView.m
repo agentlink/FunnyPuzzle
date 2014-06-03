@@ -22,10 +22,10 @@
     if (self) {
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
         CGMutablePathRef aPath = CGPathCreateMutable();
-        float x = CGRectGetMidX(self.frame);
-        float y = CGRectGetMidY(self.frame);
-        self.layer.anchorPoint = CGPointMake(0.5, 0.8);
-        CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
+        float x = CGRectGetMidX(self.bounds);
+        float y = CGRectGetMidY(self.bounds);
+        //self.layer.anchorPoint = CGPointMake(0.5, 0.8);
+        CGPathMoveToPoint(aPath,nil,x-7,y);        //Origin Point
         CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
                               x+7,y+0.5,  //Control Point 2
                               x+15,y); // End Point
