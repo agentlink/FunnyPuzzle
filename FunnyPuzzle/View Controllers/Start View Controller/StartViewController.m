@@ -15,8 +15,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "FPSoundManager.h"
 #import "GamePlayViewController.h"
+#import "FPLevelPresentationViewController.h"
 
-@interface StartViewController ()
+@interface StartViewController () //<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) IBOutlet BallView *gamemodeFirst;
 @property (nonatomic, weak) IBOutlet BallView *gamemodeSecond;
@@ -35,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIView *rightView;
 @property (nonatomic, strong) UISnapBehavior *snapSettingsBehavior;
 @property (nonatomic, strong) UISnapBehavior *snapCandyBehavior;
+@property (nonatomic) CATransform3D transform;
 
 
 @property (nonatomic) UIDynamicAnimator *animator;
@@ -57,35 +59,14 @@
     _gamemodeSecond.tap =  ^{
         [self play:self type:FPGameTypeSecond];
     };
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-    CGMutablePathRef aPath = CGPathCreateMutable();
-    float x = CGRectGetMidX(_gamemodeFirst.frame);
-    float y = CGRectGetMidY(_gamemodeFirst.frame);
-    _gamemodeFirst.layer.anchorPoint = CGPointMake(0.5, 0.8);
-    CGPathMoveToPoint(aPath,nil,x,y);        //Origin Point
-    CGPathAddCurveToPoint(aPath,nil, x,y,   //Control Point 1
-                          x+10,y+1,  //Control Point 2
-                          x+20,y); // End Point
-    animation.rotationMode = @"auto";
-    animation.path = aPath;
-    animation.duration = 3;
-    animation.autoreverses = YES;
-    animation.removedOnCompletion = NO;
-    animation.repeatCount = 100.0f;
-    animation.timingFunction = [CAMediaTimingFunction
-                                functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    CAKeyframeAnimation *animS = animation;
-    animS.duration = 1;
-    [self cofigGround];    
-    //[_gamemodeFirst.layer addAnimation:animation forKey:@"position"];
-    //[_gamemodeSecond.layer addAnimation:animation forKey:@"position"];
     
+    [self cofigGround];
+
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     [[FPGameManager sharedInstance] setSettings];
     [self setSettingsControl];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -144,11 +125,56 @@
 
 - (void)play:(id)sender type:(FPGameType)type
 {
-    GamePlayViewController *cont = (GamePlayViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateViewControllerWithIdentifier:@"GameFieldController"];
+    if (type == FPGameTypeFirs) {
         [GameModel sharedInstance].gameType = type;
-    [self.navigationController pushViewController:cont animated:YES];
+        FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [controller.view setHidden:YES];
+        [controller setGameType:FPGameTypeFirs];
+        [controller setParrent:self];
+        [self presentViewController:controller animated:NO completion:^{
+            [UIView animateWithDuration:kAnimationDuration*1.5 animations:^{
+                CATransform3D transform = CATransform3DIdentity;
+                _transform = _gamemodeFirst.superview.layer.transform;
+                transform = CATransform3DTranslate(transform, -_gamemodeFirst.superview.frame.origin.x-40, -_gamemodeFirst.superview.frame.origin.y-25, 0);
+                transform = CATransform3DScale(transform, 0.3, 0.3, 0.3);
+                [_gamemodeFirst.superview.layer setTransform:transform];
+                [controller startEnterAnimation];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }];
+    } else {
+        [GameModel sharedInstance].gameType = type;
+        FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [controller.view setHidden:YES];
+        [self presentViewController:controller animated:NO completion:^{
+            controller.gameType=type;
+            [controller setParrent:self];
+            [UIView animateWithDuration:kAnimationDuration*1.5 animations:^{
+                CATransform3D transform = CATransform3DIdentity;
+                _transform = _gamemodeSecond.superview.layer.transform;
+                transform = CATransform3DTranslate(transform, (-_gamemodeSecond.superview.frame.origin.x-40), -_gamemodeSecond.superview.frame.origin.y-25, 0);
+                transform = CATransform3DScale(transform, 0.3, 0.3, 0.3);
+                [_gamemodeSecond.superview.layer setTransform:transform];
+                [controller startEnterAnimation];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }];
+    }
 }
-//- (IBAction)playFirst:(id)sender
+- (void)returnFromLevelSelection
+{
+    if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeFirs) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [_gamemodeFirst.superview.layer setTransform:_transform];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
 - (IBAction)goToSettings:(id)sender {
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     CGPoint pointSettings = CGPointMake(_settingsButton.center.x,_settingsButton.frame.size.height/4);
@@ -198,6 +224,66 @@
     [_settingsButtonPropertiesBehavior addLinearVelocity:CGPointMake(0, -1 * [_settingsButtonPropertiesBehavior linearVelocityForItem:_candiesView].y) forItem:_candiesView];
     [_animator updateItemUsingCurrentState:_candiesView];
     [_animator updateItemUsingCurrentState:_settingsButton];
+}
+
+#pragma mark - Animations
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+//{
+//    return nil;
+//}
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+//{
+//    return (id)presenting;
+//}
+//
+//- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
+//{
+//    return nil;
+//}
+//- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator
+//{
+//    return (id)animator;
+//}
+
+
+// Add this view to superview, and slide it in from the bottom
+- (void)presentWithSuperview:(UIView *)superview {
+    // Set initial location at bottom of superview
+    CGRect frame = self.view.frame;
+    frame.origin = CGPointMake(0.0, superview.bounds.size.height);
+    self.view.frame = frame;
+    [superview addSubview:self.view];
+    
+    // Animate to new location
+    [UIView beginAnimations:@"presentWithSuperview" context:nil];
+    frame.origin = CGPointZero;
+    self.view.frame = frame;
+    [UIView commitAnimations];
+}
+
+// Method called when removeFromSuperviewWithAnimation's animation completes
+- (void)animationDidStop:(NSString *)animationID
+                finished:(NSNumber *)finished
+                 context:(void *)context {
+    if ([animationID isEqualToString:@"removeFromSuperviewWithAnimation"]) {
+        [self.view removeFromSuperview];
+    }
+}
+
+// Slide this view to bottom of superview, then remove from superview
+- (void)removeFromSuperviewWithAnimation {
+    [UIView beginAnimations:@"removeFromSuperviewWithAnimation" context:nil];
+    
+    // Set delegate and selector to remove from superview when animation completes
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    
+    // Move this view to bottom of superview
+    CGRect frame = self.view.frame;
+    frame.origin = CGPointMake(0.0, self.view.superview.bounds.size.height);
+    self.view.frame = frame;
+    
+    [UIView commitAnimations];
 }
 
 @end

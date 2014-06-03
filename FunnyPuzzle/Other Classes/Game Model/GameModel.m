@@ -22,7 +22,7 @@ static GameModel *_instance = nil;
 {
     [self loadPrefs];
     if (!_level)
-    _level = [FPLevelManager gameObjectsWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
+    _level = [FPLevelManager loadLevelWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.segmentsCount;
     _levelCompleet = [defaults boolForKey:_level.levelName];
         
@@ -78,7 +78,7 @@ static GameModel *_instance = nil;
         _lastLevel = 0;
     }
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
-    _level = [FPLevelManager gameObjectsWithType:_gameType mode:_gameMode level:_lastLevel];
+    _level = [FPLevelManager loadLevelWithType:_gameType mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.levelsCount;
     return _level;
 }
@@ -90,7 +90,7 @@ static GameModel *_instance = nil;
     } else {
         _lastLevel = _level.levelsCount-1;
     }
-    _level = [FPLevelManager gameObjectsWithType:_gameType mode:_gameMode level:_lastLevel];
+    _level = [FPLevelManager loadLevelWithType:_gameType mode:_gameMode level:_lastLevel];
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
     _objectsLeft = _level.levelsCount;
     return _level;

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="d3a-yJ-xw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="d3a-yJ-xw9">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -51,13 +52,13 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="124" id="5Sj-AX-C3U"/>
-                                                    <constraint firstAttribute="width" constant="124" id="c3B-l1-lQb"/>
+                                                    <constraint firstAttribute="width" secondItem="iwU-QI-lhl" secondAttribute="height" multiplier="1:1" id="5Bk-L5-qp7"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="iwU-QI-lhl" secondAttribute="height" multiplier="1:1" id="4j8-mP-ytQ"/>
                                             <constraint firstAttribute="centerY" secondItem="iwU-QI-lhl" secondAttribute="centerY" id="QAW-0K-7CA"/>
                                             <constraint firstAttribute="centerX" secondItem="iwU-QI-lhl" secondAttribute="centerX" id="eLY-1G-K4a"/>
                                             <constraint firstAttribute="height" constant="124" id="mqK-1Z-JMc"/>

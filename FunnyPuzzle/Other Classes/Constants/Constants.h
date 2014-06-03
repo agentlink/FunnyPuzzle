@@ -18,6 +18,8 @@
 //AdMob ID
 #define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"
 
+
+
 #endif
 
 #pragma mark - enums
@@ -34,7 +36,13 @@ typedef enum {
 }FPGameType;
 
 typedef enum {
+    FPGameplayAnimationModeLevelCompleet,
+    FPGameplayAnimationModeNewLevel,
+}FPGameplayAnimationMode;
+//AnimationDuration
+typedef enum {
     VibrateModeDragOrDrop,
     VibrateModeInPlace
 }FPVibrateMode;
-
+static double kAnimationDuration = .3;
+//const double kAnimationDurationFull = 0.3;
