@@ -11,6 +11,9 @@
 #import "FPFlovers.h"
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "GamePlayViewController.h"
+
+
 
 @interface FPBonusViewController ()<ShakeHappendDelegate>
 
@@ -265,22 +268,15 @@
             c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.width*0.7, imView.frame.origin.x+imView.frame.size.height*0.5, 55, 55);
             c.Size=1;
         }
-        
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.frame = r;
         c.BonusLevelKind=3;
         c.tag=255;
         UITapGestureRecognizer* gestureRecognizer;
-        
         gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doSomthing:)];
         gestureRecognizer.numberOfTapsRequired = 1;
-        
         [self.view addSubview:c];
-        
         [c addGestureRecognizer:gestureRecognizer];
-        
-        
-        
         float y = c.frame.origin.y;
         float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
         float time=(wx-deltaX)/wx*10;
@@ -499,6 +495,7 @@ int tick=0;
     aPath=nil;
    // [UIView commitAnimations];
 }
+
 
 - (IBAction)DeleteViewController:(id)sender {
     

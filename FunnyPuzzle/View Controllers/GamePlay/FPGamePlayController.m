@@ -267,9 +267,49 @@
 }
 
 #pragma mark - IBAction
++ (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
+    // Create a new context the size of the frame
+    UIGraphicsBeginImageContextWithOptions(frame.size, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Render the view
+    [view.layer renderInContext:context];
+    
+    // Get the image from the context
+    UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Cleanup the context you created
+    UIGraphicsEndImageContext();
+    
+    return renderedImage;
+}
+
+
 - (IBAction)next:(id)sender;
 {
+    UIImage *im=[[UIImage alloc]init];
+    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
+    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
     
+    [self.delegate didClose:YES ImageScreen:im];
+    
+    if ([self navigationController]) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    
+    }
+    else if ([self presentingViewController])
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
+    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    
+}
+
+-(void)dealloc
+{
+    NSLog(@"hello");
 }
 - (IBAction)prew:(id)sender
 {

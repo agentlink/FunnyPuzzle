@@ -134,6 +134,8 @@
             controller.view.alpha = 1;
 
         } completion:^(BOOL finished) {
+            controller.delegate = self;
+            
             controller.view.hidden = NO;
             [controller bounceField];
             [present removeFromSuperview];
@@ -189,5 +191,24 @@
         }];
     }];
    
+}
+
+-(void)didClose:(bool)ActivateScreen ImageScreen:(UIImage *)ImageScreenShot
+{
+    self.ImageScreenShot=ImageScreenShot;
+    self.ScreenShotActivate=ActivateScreen;
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (self.ScreenShotActivate) {
+        CGRect rect=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds]), CGRectGetWidth([[UIScreen mainScreen]bounds]));
+        UIView *viewImage=[[UIView alloc] initWithFrame:rect];
+        viewImage.backgroundColor=[UIColor colorWithPatternImage:self.ImageScreenShot];
+        viewImage.layer.zPosition=50;
+        [self.view addSubview:viewImage];
+        NSLog(@"nvsdnb");
+    }
 }
 @end

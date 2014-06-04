@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "StartViewController.h"
-@interface FPLevelPresentationViewController : UIViewController
+#import "FPGamePlayController.h"
+
+@interface FPLevelPresentationViewController : UIViewController<FPGamePlayViewControllerDelegate>
+
 @property (nonatomic) FPGameType gameType;
 @property (nonatomic) StartViewController *parrent;
+
+@property (nonatomic) UIImage *ImageScreenShot;
+@property (nonatomic) bool ScreenShotActivate;
+
 - (void)startEnterAnimation;
 @end

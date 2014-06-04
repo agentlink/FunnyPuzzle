@@ -44,6 +44,9 @@
 
 - (void)play:(id)sender type:(FPGameType)type;
 - (IBAction)goToSettings:(id)sender;
+
+
+
 @end
 
 @implementation StartViewController
@@ -51,6 +54,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _needToDropButtons = NO;
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
@@ -71,14 +75,17 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    
      [self dropSettings];
     [[FPSoundManager sharedInstance] stopGameMusic];
     [[FPSoundManager sharedInstance] playBackgroundMusic];
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
+    
 }
 
 - (void) dealloc{
+    _ImageScreenShot=nil;
     _settingsButtonPropertiesBehavior=nil;
     _snapCandyBehavior=nil;
     _snapSettingsBehavior=nil;
@@ -304,4 +311,17 @@
     [UIView commitAnimations];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+//    if ([[segue identifier] isEqualToString:@"OpenBonus"]) {
+//        FPBonusViewController *bonusVC=[segue destinationViewController];
+//        [bonusVC setDelegate:self];
+//    }
+}
+
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    self.ScreenShotActivate=false;
+}
 @end

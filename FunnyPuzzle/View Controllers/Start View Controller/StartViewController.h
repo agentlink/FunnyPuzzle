@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPBonusViewController.h"
+
 
 @interface StartViewController : UIViewController
+
+@property (nonatomic) UIImage *ImageScreenShot;
+@property (nonatomic) bool ScreenShotActivate;
 
 - (void)returnFromLevelSelection;
 
