@@ -24,6 +24,7 @@
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
     int ii;
+    CGRect  MainRec;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *Bt;
@@ -46,233 +47,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CGRect  MainRec=CGRectMake( 0, 0,  80, 68);
+    MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    int h=self.view.frame.size.height;
-    int w=self.view.frame.size.width;
-    Numb=0;
+    Numb=2;
     switch (Numb) {
         case 0:
-        {
-            self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
-            MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
-            UIImage *im=[UIImage imageNamed:@"basket_icon"];
-            CGRect rec=CGRectMake(h/2-im.size.height/2, w/2-im.size.width/2, im.size.width, im.size.height);
-            UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
-            imView.image=im;
-            imView.layer.zPosition=1;
-            [self.view addSubview:imView];
-            float x=20;
-            float y=20;
-            float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
-            objectsc=[[NSMutableArray alloc]init];
-            objectsCD=[[NSMutableArray alloc] init];
-            imView.layer.zPosition=1;
-            for(int i=1; i<10; i++)
-            {
-                Candies *c=[Candies new];
-                c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, 55, 55);
-                c.layer.zPosition=2;
-                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-                c.backgroundColor=[UIColor colorWithPatternImage:im];
-                CGRect r=CGRectMake(x, y, 55, 55);
-                c.frame = r;
-                c.BonusLevelKind=0;
-                [self.view addSubview:c];
-                [objectsc insertObject:c atIndex:i-1];
-                [objectsCD insertObject:c atIndex:i-1];
-                x+=delta;
-                [c Move:true];
-            }
+            [self FirstBonusLevelLoad];
             break;
-        }
-            case 1:
-        {
-            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-            UIImage *im2=[UIImage imageNamed:@"sun_img"];
-            float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
-            CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
-            MainRec=CGRectMake( h/2-40, w/2,  80, 68);
-            UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
-            imView.image=im2;
-            [self.view addSubview:imView];
-            animation = [CAKeyframeAnimation animation];
-            aPath = CGPathCreateMutable();
-            float x = CGRectGetMidX(imView.frame);
-            float y = CGRectGetMidY(imView.frame);
-            CGPathAddArc(aPath, NULL, x, y, 0.1f, 0.f, (360* M_PI)/180, NO);
-            animation.rotationMode = @"auto";
-            animation.path = aPath;
-            animation.duration = 2.8;
-            animation.removedOnCompletion = YES;
-            animation.repeatCount = 100.0f;
-            [imView.layer addAnimation:animation forKey:@"position" ];
-            objectsc=[[NSMutableArray alloc]init];
-            objectsCD=[[NSMutableArray alloc] init];
-            objectsCF=[[NSMutableArray alloc] init];
-            x=50;
-            for (int i=0; i<5; i++)
-            {
-                FPFlovers *f=[FPFlovers new];
-                UIImage *im=[UIImage imageNamed:@"flower_img"];
-                f.backgroundColor=[UIColor colorWithPatternImage:im];
-                CGRect rec1=CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height);
-                f.frame=rec1;
-                f.layer.zPosition=0;
-                [objectsCF insertObject:f atIndex:i];
-                [self.view addSubview:f];
-                Candies *c=[Candies new];
-                UIImage *im2 = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-                CGRect rec=CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width);
-                c.frame=rec;
-                c.layer.zPosition=1;
-                c.BonusLevelKind=1;
-                [objectsc insertObject:c atIndex:i];
-                [objectsCD insertObject:c atIndex:i];
-                [self.view addSubview:c];
-                x+=delta;
-                [c Move:true];
-            }
+        case 1:
+            [self SecondBonusLevelLoad];
             break;
-        }
-            case 2:
-        {
-            ii=0;
-            objectsc=[[NSMutableArray alloc]init];
-            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-            UIImage *im=[UIImage imageNamed:@"tree_img"];
-            int h=self.view.frame.size.height;
-            int w=self.view.frame.size.width;
-            CGRect rec=CGRectMake(h/2-im.size.height/4, w/2-im.size.width/2-50, im.size.width, im.size.height);
-            UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
-            MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
-            imView.image=im;
-            int x=imView.frame.origin.x;
-            int y=imView.frame.origin.y;
-            int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
-            int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
-            [self.view addSubview:imView];
-            objectsCD=[[NSMutableArray alloc] init];
-            for (int i=0; i<6; i++) {
-                Candies *c=[Candies new];
-                rec=CGRectMake(pointsX[i], pointsY[i], 45, 45);
-                c.frame=rec;
-                c.layer.zPosition=1;
-                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-                CGSize size=CGSizeMake(45, 45);
-                UIImage *im2=[self imageWithImage:im scaledToSize:size];
-                c.backgroundColor=[UIColor colorWithPatternImage:im2];
-                c.BonusLevelKind=2;
-                [objectsCD insertObject:c atIndex:i];
-                [self.view addSubview:c];
-                [c Move:true];
-            }
+        case 2:
+            [self ThirdBonusLevelLoad];
             break;
-        }
-            case 3:
-        {
-            UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-            self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-            UIImageView *imView=[[UIImageView alloc]init];
-            UIImage *im=[UIImage imageNamed:@"crew_cut_all_img"];
-            CGRect rect=CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height );
-            imView.frame=rect;
-            imView.image=im;
-            imView.layer.zPosition=0;
-            [self.view addSubview:imView];
-            MainRec=CGRectMake( -80, -70, 80, 68);
-            int x=0;
-            float deltaX=0;
-            objectsCD=[[NSMutableArray alloc] init];
-            for (int i=0; i<5; i++) {
-                Candies *c=[Candies new];
-                c.layer.zPosition=0;
-                c.Animation=true;
-                c.BonusLevelKind=3;
-                CGRect r;
-                int s=arc4random()%2;
-                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-                CGSize size;
-                UIImage *im2;
-                
-                if (s==0) {
-                    r=CGRectMake(0, 20+arc4random()%100, 45, 45);
-                    size=CGSizeMake(45, 45);
-                    im2=[self imageWithImage:im scaledToSize:size];
-                    c.Size=0;
-                    c.centrBascket=CGRectMake(imView.frame.origin.y, imView.frame.origin.x+imView.frame.size.height*0.6, 45, 45);
-                }
-                else
-                {
-                    r=CGRectMake(0, 20+arc4random()%100, 55, 55);
-                    size=CGSizeMake(55, 55);
-                    im2=[self imageWithImage:im scaledToSize:size];
-                    c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.width*0.7, imView.frame.origin.x+imView.frame.size.height*0.5, 55, 55);
-                    c.Size=1;
-                }
-                
-                c.backgroundColor=[UIColor colorWithPatternImage:im2];
-                c.frame = r;
-                c.BonusLevelKind=3;
-                c.tag=255;
-                UITapGestureRecognizer* gestureRecognizer;
-                
-                gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doSomthing:)];
-                gestureRecognizer.numberOfTapsRequired = 1;
-                
-                [self.view addSubview:c];
-                
-                [c addGestureRecognizer:gestureRecognizer];
-
-                
-                
-                float y = c.frame.origin.y;
-                float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-                float time=(wx-deltaX)/wx*10;
-                CGRect rec;
-                if (s==0) {
-                    rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 45, 45);
-                    CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 45, 45);
-                    c.frame=rect;
-                }
-                else
-                {
-                    rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 55, 55);
-                    CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 55, 55);
-                    c.frame=rect;
-                }
-                CGPoint point=CGPointMake(300, 300);
-                [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-                    c.layer.position=point;
-                    // c.frame = rec;
-                } completion:^(BOOL finished){
-                    [c cleanObject];
-                    [c removeFromSuperview];
-                }];
-
-//                animation = [CAKeyframeAnimation animation];
-//                aPath = CGPathCreateMutable();
-//                //float y = c.frame.origin.y;
-//                //float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-//                CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
-//                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame),y);
-//                //float time=(wx-deltaX)/wx*7;
-//                animation.path = aPath;
-//                animation.duration = time;
-//                animation.autoreverses = NO;
-//                animation.removedOnCompletion = NO;
-//                animation.timingFunction = [CAMediaTimingFunction
-//                                            functionWithName:kCAMediaTimingFunctionLinear];
-//                [c.layer addAnimation:animation forKey:@"position"];
-                x+=55;
-                deltaX-=55;
-            }
+        case 3:
+            [self ForthBonusLevelLoad];
             break;
-            
-        }
         default:
             break;
     }
@@ -301,7 +92,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
-   // NSLog(@"view number :%@",[[touch view] class]);
     NSLog(@"view %li", (long)[[touch view] tag]);
 }
 
@@ -311,6 +101,229 @@
     NSLog(@"view number :%@",[temp class]);
 }
 
+-(void)FirstBonusLevelLoad
+{
+    int h=self.view.frame.size.height;
+    int w=self.view.frame.size.width;
+    self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
+    MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+    UIImage *im=[UIImage imageNamed:@"basket_icon"];
+    CGRect rec=CGRectMake(h/2-im.size.height/2, w/2-im.size.width/2, im.size.width, im.size.height);
+    UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
+    imView.image=im;
+    imView.layer.zPosition=1;
+    [self.view addSubview:imView];
+    float x=20;
+    float y=20;
+    float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
+    objectsc=[[NSMutableArray alloc]init];
+    objectsCD=[[NSMutableArray alloc] init];
+    imView.layer.zPosition=1;
+    for(int i=1; i<10; i++)
+    {
+        Candies *c=[Candies new];
+        c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, 55, 55);
+        c.layer.zPosition=2;
+        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        c.backgroundColor=[UIColor colorWithPatternImage:im];
+        CGRect r=CGRectMake(x, y, 55, 55);
+        c.frame = r;
+        c.BonusLevelKind=0;
+        [self.view addSubview:c];
+        [objectsc insertObject:c atIndex:i-1];
+        [objectsCD insertObject:c atIndex:i-1];
+        x+=delta;
+        [c Move:true];
+   }
+}
+
+-(void)SecondBonusLevelLoad
+{
+    int h=self.view.frame.size.height;
+    int w=self.view.frame.size.width;
+    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
+    UIImage *im2=[UIImage imageNamed:@"sun_img"];
+    float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
+    CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
+    MainRec=CGRectMake( h/2-40, w/2,  80, 68);
+    UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
+    imView.image=im2;
+    [self.view addSubview:imView];
+    animation = [CAKeyframeAnimation animation];
+    aPath = CGPathCreateMutable();
+    float x = CGRectGetMidX(imView.frame);
+    float y = CGRectGetMidY(imView.frame);
+    CGPathAddArc(aPath, NULL, x, y, 0.1f, 0.f, (360* M_PI)/180, NO);
+    animation.rotationMode = @"auto";
+    animation.path = aPath;
+    animation.duration = 2.8;
+    animation.removedOnCompletion = YES;
+    animation.repeatCount = 100.0f;
+    [imView.layer addAnimation:animation forKey:@"position" ];
+    objectsc=[[NSMutableArray alloc]init];
+    objectsCD=[[NSMutableArray alloc] init];
+    objectsCF=[[NSMutableArray alloc] init];
+    x=50;
+    for (int i=0; i<5; i++)
+    {
+        FPFlovers *f=[FPFlovers new];
+        UIImage *im=[UIImage imageNamed:@"flower_img"];
+        f.backgroundColor=[UIColor colorWithPatternImage:im];
+        CGRect rec1=CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height);
+        f.frame=rec1;
+        f.layer.zPosition=0;
+        [objectsCF insertObject:f atIndex:i];
+        [self.view addSubview:f];
+        Candies *c=[Candies new];
+        UIImage *im2 = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        CGRect rec=CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width);
+        c.frame=rec;
+        c.layer.zPosition=1;
+        c.BonusLevelKind=1;
+        [objectsc insertObject:c atIndex:i];
+        [objectsCD insertObject:c atIndex:i];
+        [self.view addSubview:c];
+        x+=delta;
+        [c Move:true];
+    }
+}
+
+-(void)ThirdBonusLevelLoad
+{
+    ii=0;
+    objectsc=[[NSMutableArray alloc]init];
+    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
+    UIImage *im=[UIImage imageNamed:@"tree_img"];
+    int h=self.view.frame.size.height;
+    int w=self.view.frame.size.width;
+    CGRect rec=CGRectMake(h/2-im.size.height/4, w/2-im.size.width/2-50, im.size.width, im.size.height);
+    UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
+    MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
+    imView.image=im;
+    int x=imView.frame.origin.x;
+    int y=imView.frame.origin.y;
+    int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
+    int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
+    [self.view addSubview:imView];
+    objectsCD=[[NSMutableArray alloc] init];
+    for (int i=0; i<6; i++) {
+        Candies *c=[Candies new];
+        rec=CGRectMake(pointsX[i], pointsY[i], 45, 45);
+        c.frame=rec;
+        c.layer.zPosition=1;
+        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        CGSize size=CGSizeMake(45, 45);
+        UIImage *im2=[self imageWithImage:im scaledToSize:size];
+        c.backgroundColor=[UIColor colorWithPatternImage:im2];
+        c.BonusLevelKind=2;
+        [objectsCD insertObject:c atIndex:i];
+        [self.view addSubview:c];
+        [c Move:true];
+    }
+}
+
+-(void)ForthBonusLevelLoad
+{
+    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
+    UIImageView *imView=[[UIImageView alloc]init];
+    UIImage *im=[UIImage imageNamed:@"crew_cut_all_img"];
+    CGRect rect=CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height );
+    imView.frame=rect;
+    imView.image=im;
+    imView.layer.zPosition=0;
+    [self.view addSubview:imView];
+    MainRec=CGRectMake( -80, -70, 80, 68);
+    int x=0;
+    float deltaX=0;
+    objectsCD=[[NSMutableArray alloc] init];
+    for (int i=0; i<5; i++) {
+        Candies *c=[Candies new];
+        c.layer.zPosition=0;
+        c.Animation=true;
+        c.BonusLevelKind=3;
+        CGRect r;
+        int s=arc4random()%2;
+        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        CGSize size;
+        UIImage *im2;
+        
+        if (s==0) {
+            r=CGRectMake(0, 20+arc4random()%100, 45, 45);
+            size=CGSizeMake(45, 45);
+            im2=[self imageWithImage:im scaledToSize:size];
+            c.Size=0;
+            c.centrBascket=CGRectMake(imView.frame.origin.y, imView.frame.origin.x+imView.frame.size.height*0.6, 45, 45);
+        }
+        else
+        {
+            r=CGRectMake(0, 20+arc4random()%100, 55, 55);
+            size=CGSizeMake(55, 55);
+            im2=[self imageWithImage:im scaledToSize:size];
+            c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.width*0.7, imView.frame.origin.x+imView.frame.size.height*0.5, 55, 55);
+            c.Size=1;
+        }
+        
+        c.backgroundColor=[UIColor colorWithPatternImage:im2];
+        c.frame = r;
+        c.BonusLevelKind=3;
+        c.tag=255;
+        UITapGestureRecognizer* gestureRecognizer;
+        
+        gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doSomthing:)];
+        gestureRecognizer.numberOfTapsRequired = 1;
+        
+        [self.view addSubview:c];
+        
+        [c addGestureRecognizer:gestureRecognizer];
+        
+        
+        
+        float y = c.frame.origin.y;
+        float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        float time=(wx-deltaX)/wx*10;
+        CGRect rec;
+        if (s==0) {
+            rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 45, 45);
+            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 45, 45);
+            c.frame=rect;
+        }
+        else
+        {
+            rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 55, 55);
+            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 55, 55);
+            c.frame=rect;
+        }
+        CGPoint point=CGPointMake(300, 300);
+        [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            c.layer.position=point;
+            // c.frame = rec;
+        } completion:^(BOOL finished){
+            [c cleanObject];
+            [c removeFromSuperview];
+        }];
+        
+        //                animation = [CAKeyframeAnimation animation];
+        //                aPath = CGPathCreateMutable();
+        //                //float y = c.frame.origin.y;
+        //                //float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        //                CGPathMoveToPoint(aPath, nil,0-CGRectGetWidth(c.frame)-x,y);
+        //                CGPathAddLineToPoint(aPath, nil, wx+CGRectGetWidth(c.frame),y);
+        //                //float time=(wx-deltaX)/wx*7;
+        //                animation.path = aPath;
+        //                animation.duration = time;
+        //                animation.autoreverses = NO;
+        //                animation.removedOnCompletion = NO;
+        //                animation.timingFunction = [CAMediaTimingFunction
+        //                                            functionWithName:kCAMediaTimingFunctionLinear];
+        //                [c.layer addAnimation:animation forKey:@"position"];
+        x+=55;
+        deltaX-=55;
+
+      }
+}
 
 int tick=0;
 -(void)handleTimer
