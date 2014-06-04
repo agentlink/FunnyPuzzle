@@ -22,7 +22,7 @@ static GameModel *_instance = nil;
 {
     [self loadPrefs];
     if (!_level)
-    _level = [FPLevelManager loadLevelWithType:FPGameTypeFirs mode:_gameMode level:_lastLevel];
+    _level = [FPLevelManager loadLevelWithType:FPGameTypeFirst mode:_gameMode level:_lastLevel];
     _objectsLeft = _level.segmentsCount;
     _levelCompleet = [defaults boolForKey:_level.levelName];
         
