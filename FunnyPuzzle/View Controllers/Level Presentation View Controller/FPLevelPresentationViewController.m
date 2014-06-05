@@ -108,7 +108,6 @@
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     [controller loadLevel:(int)[indexPath row] type:_gameType];
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
       FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
       UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
       //present.imageVeiw.image = cell.imageVeiw.image;
@@ -202,13 +201,13 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (self.ScreenShotActivate) {
-        CGRect rect=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds]), CGRectGetWidth([[UIScreen mainScreen]bounds]));
-        UIView *viewImage=[[UIView alloc] initWithFrame:rect];
-        viewImage.backgroundColor=[UIColor colorWithPatternImage:self.ImageScreenShot];
-        viewImage.layer.zPosition=50;
-        [self.view addSubview:viewImage];
-        NSLog(@"nvsdnb");
-    }
+//    if (self.ScreenShotActivate) {
+//        CGRect rect=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds]), CGRectGetWidth([[UIScreen mainScreen]bounds]));
+//        UIView *viewImage=[[UIView alloc] initWithFrame:rect];
+//        viewImage.backgroundColor=[UIColor colorWithPatternImage:self.ImageScreenShot];
+//        viewImage.layer.zPosition=50;
+//        [self.view addSubview:viewImage];
+//        NSLog(@"nvsdnb");
+//    }
 }
 @end

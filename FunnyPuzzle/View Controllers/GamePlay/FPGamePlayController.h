@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *prew;
 @property (nonatomic, weak) IBOutlet UIButton *back;
 @property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) int levelNumber;
 
 @property(weak,nonatomic) id<FPGamePlayViewControllerDelegate> delegate;
 

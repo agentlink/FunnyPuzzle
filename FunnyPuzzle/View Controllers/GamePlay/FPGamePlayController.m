@@ -86,6 +86,8 @@
             break;
     }
     _levelManager = [FPLevelManager loadLevel:level type:type];
+    _levelsCount=22;
+    _levelNumber=level;
 }
 
 - (void)configureGameplayWithAnimationType:(FPGameplayAnimationMode)animationMode
@@ -166,7 +168,19 @@
                 [array addObjectsFromArray:@[_back, _next, _prew]];
                 [self bounceElements:array isInSuperView:YES];
             } else {
-                [self bounceElements:@[_back, _next, _prew] isInSuperView:YES];
+                if (_levelNumber==_levelsCount-1) {
+                    [self bounceElements:@[_back, _prew] isInSuperView:YES];
+                }
+                else
+                {
+                    if (_levelNumber==0) {
+                        [self bounceElements:@[_back, _next] isInSuperView:YES];
+                    }
+                    else
+                    {
+                      [self bounceElements:@[_back, _next, _prew] isInSuperView:YES];
+                    }
+                }
             }
         }];
     }];
@@ -290,20 +304,36 @@
     UIImage *im=[[UIImage alloc]init];
     CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
     im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
-    
+    FPGameType game=_levelType;
+    int i=_levelNumber+1;
     [self.delegate didClose:YES ImageScreen:im];
     
-    if ([self navigationController]) {
-        [[self navigationController] popViewControllerAnimated:YES];
+    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    [controller loadLevel:i type:game];
     
-    }
-    else if ([self presentingViewController])
-    {
-        [self dismissViewControllerAnimated:YES completion:^{
+    UIViewController *parent=self.presentingViewController;
+    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
+
+    [parent dismissViewControllerAnimated:NO completion:^{
+    
+        [parent presentViewController:controller animated:NO completion:^{
+            [controller bounceField];
             
         }];
-    }
-    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    
+    }];
+    
+//    if ([self navigationController]) {
+//        [[self navigationController] popViewControllerAnimated:YES];
+//    
+//    }
+//    else if ([self presentingViewController])
+//    {
+//        [self dismissViewControllerAnimated:YES completion:^{
+//            
+//        }];
+//    }
+    
     
 }
 
@@ -313,7 +343,28 @@
 }
 - (IBAction)prew:(id)sender
 {
+    UIImage *im=[[UIImage alloc]init];
+    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
+    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
+    FPGameType game=_levelType;
+    int i=_levelNumber-1;
+    [self.delegate didClose:YES ImageScreen:im];
     
+    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    [controller loadLevel:i type:game];
+    
+    UIViewController *parent=self.presentingViewController;
+    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [parent dismissViewControllerAnimated:NO completion:^{
+        
+        [parent presentViewController:controller animated:NO completion:^{
+            [controller bounceField];
+            
+        }];
+        
+    }];
+
 }
 - (IBAction)back:(id)sender
 {
