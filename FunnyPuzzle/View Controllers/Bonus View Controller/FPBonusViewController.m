@@ -53,7 +53,7 @@
     MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    Numb=2;
+    Numb=1;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -121,7 +121,6 @@
     float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
     objectsc=[[NSMutableArray alloc]init];
     objectsCD=[[NSMutableArray alloc] init];
-    imView.layer.zPosition=1;
     for(int i=1; i<10; i++)
     {
         Candies *c=[Candies new];
@@ -153,21 +152,11 @@
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
     imView.image=im2;
     [self.view addSubview:imView];
-    animation = [CAKeyframeAnimation animation];
-    aPath = CGPathCreateMutable();
-    float x = CGRectGetMidX(imView.frame);
-    float y = CGRectGetMidY(imView.frame);
-    CGPathAddArc(aPath, NULL, x, y, 0.1f, 0.f, (360* M_PI)/180, NO);
-    animation.rotationMode = @"auto";
-    animation.path = aPath;
-    animation.duration = 2.8;
-    animation.removedOnCompletion = YES;
-    animation.repeatCount = 100.0f;
-    [imView.layer addAnimation:animation forKey:@"position" ];
+    [self SunMove:imView];
     objectsc=[[NSMutableArray alloc]init];
     objectsCD=[[NSMutableArray alloc] init];
     objectsCF=[[NSMutableArray alloc] init];
-    x=50;
+    float x=50;
     for (int i=0; i<5; i++)
     {
         FPFlovers *f=[FPFlovers new];
@@ -190,6 +179,21 @@
         x+=delta;
         [c Move:true];
     }
+}
+
+-(void)SunMove:(UIView *)sunView
+{
+    animation = [CAKeyframeAnimation animation];
+    aPath = CGPathCreateMutable();
+    float x = CGRectGetMidX(sunView.frame);
+    float y = CGRectGetMidY(sunView.frame);
+    CGPathAddArc(aPath, NULL, x, y, 0.1f, 0.f, (360* M_PI)/180, NO);
+    animation.rotationMode = @"auto";
+    animation.path = aPath;
+    animation.duration = 2.8;
+    animation.removedOnCompletion = YES;
+    animation.repeatCount = 100.0f;
+    [sunView.layer addAnimation:animation forKey:@"position" ];
 }
 
 -(void)ThirdBonusLevelLoad
@@ -271,7 +275,7 @@
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.frame = r;
         c.BonusLevelKind=3;
-        c.tag=255;
+        c.tag=i;
         UITapGestureRecognizer* gestureRecognizer;
         gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doSomthing:)];
         gestureRecognizer.numberOfTapsRequired = 1;
@@ -281,25 +285,28 @@
         float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
         float time=(wx-deltaX)/wx*10;
         CGRect rec;
+       //  CGPoint point=CGPointMake(300, 300);
         if (s==0) {
             rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 45, 45);
-            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 45, 45);
+            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)+x, y, 45, 45);
             c.frame=rect;
         }
         else
         {
             rec=CGRectMake(wx+CGRectGetWidth(c.frame), y, 55, 55);
-            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)-x, y, 55, 55);
+            CGRect rect=CGRectMake(0-CGRectGetWidth(c.frame)+x, y, 55, 55);
             c.frame=rect;
         }
-        CGPoint point=CGPointMake(300, 300);
-        [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-            c.layer.position=point;
-            // c.frame = rec;
-        } completion:^(BOOL finished){
-            [c cleanObject];
-            [c removeFromSuperview];
-        }];
+       
+//        [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//          //  c.layer.position=point;
+//             c.frame = rec;
+//        } completion:^(BOOL finished){
+//            [c cleanObject];
+//            [c removeFromSuperview];
+//        }];
+        
+      
         
         //                animation = [CAKeyframeAnimation animation];
         //                aPath = CGPathCreateMutable();
@@ -356,116 +363,134 @@ int tick=0;
 #pragma  mark - ShakeHappendDelegate
 - (void) iPhoneDidShaked{
     if (Numb==0) {
-        int m;
-        if (objectsCD.count!=0) {
-            m=arc4random()%objectsCD.count;
-        }
-        else
-        {
-            if (objectsCD.count==0) {
-                m=-1;
-                 [_accelerometer stopShakeDetect];
+        [self FirstBonusLevelDidShaked];
             }
-        }
-        if (m!=-1) {
-            if (objectsCD[m]!=nil)
-            {
-                Candies *c=[Candies new];
-                c=objectsCD[m];
-                [c Move:false];
-                UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-                UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
-                UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:@[c]];
-                collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-                c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:@[c]];
-                c.CandiesPropertiesBehavior.elasticity = 0.4;
-                c.CandiesPropertiesBehavior.friction=0;
-                c.CandiesPropertiesBehavior.resistance=0.0;
-                c.CandiesPropertiesBehavior.allowsRotation=FALSE;
-                [animator addBehavior:c.CandiesPropertiesBehavior];
-                [animator addBehavior:gravityBeahvior];
-                [animator addBehavior:collisionBehavior];
-                c.animator = animator;
-                c.Animation=true;
-                [objectsCD removeObjectAtIndex:m];
-                CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
-                c.frame=rec;
-            }
-        }
-    }
     if (Numb==1) {
-        int m;
-        if (objectsCD.count!=0) {
-            m=arc4random()%objectsCD.count;
-        }
-        else
-        {
-            if (objectsCD.count==0) {
-                m=-1;
+        [self SecondBonusLevelDidShaked];
             }
-        }
-        if (m!=-1) {
-            if (objectsCD[m]!=nil)
-            {
-                FPFlovers *f=[FPFlovers new];
-                f=objectsCF[m];
-                CGRect rec1=CGRectMake(f.frame.origin.x, 190, 90, 125);
-                Candies *c=[Candies new];
-                c=objectsCD[m];
-                c.Animation=true;
-                [objectsCD removeObjectAtIndex:m];
-                [objectsCF removeObjectAtIndex:m];
-                UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-                c.backgroundColor=[UIColor colorWithPatternImage:im];
-                [UIView animateWithDuration:2.0 animations:^
-                 {
-                     f.frame=rec1;
-                     CGRect rec=CGRectMake(f.frame.origin.x+20, f.frame.origin.y+17, im.size.height, im.size.width);
-                     c.frame=rec;
-                 } completion:^(BOOL finished)
-                 {
-                     [c Move:true];
-                 } ];
-            }
-        }
-    }
     
     if (Numb==2) {
-        int m;
-        
-        if (objectsCD.count!=0) {
-            m=arc4random()%objectsCD.count;
-        }
-        else
-        {
-            if (objectsCD.count==0) {
-                m=-1;
-            }
-        }
-        if (m!=-1)
-        {
-            if (objectsCD[m]!=nil)
-            {
-                Candies *c=[Candies new];
-                c=objectsCD[m];
-                [objectsCD removeObjectAtIndex:m];
-                [objectsc insertObject:c atIndex:ii];
-                ii++;
-                [c Move:false];
-                UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-                UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsc];
-                UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsc];
-                collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-                c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsc];
-                c.CandiesPropertiesBehavior.elasticity = 0.5;
-                [animator addBehavior:c.CandiesPropertiesBehavior];
-                [animator addBehavior:gravityBeahvior];
-                [animator addBehavior:collisionBehavior];
-                c.animator = animator;
-                c.Animation=true;
-            }
+        [self ThirdBonusLevelDidShaked];
+           }
+}
+
+-(void)FirstBonusLevelDidShaked
+{
+    int m;
+    if (objectsCD.count!=0) {
+        m=arc4random()%objectsCD.count;
+    }
+    else
+    {
+        if (objectsCD.count==0) {
+            m=-1;
+            [_accelerometer stopShakeDetect];
         }
     }
+    if (m!=-1) {
+        if (objectsCD[m]!=nil)
+        {
+            Candies *c=[Candies new];
+            c=objectsCD[m];
+            [c Move:false];
+            UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
+            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:@[c]];
+            collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:@[c]];
+            c.CandiesPropertiesBehavior.elasticity = 0.4;
+            c.CandiesPropertiesBehavior.friction=0;
+            c.CandiesPropertiesBehavior.resistance=0.0;
+            c.CandiesPropertiesBehavior.allowsRotation=FALSE;
+            [animator addBehavior:c.CandiesPropertiesBehavior];
+            [animator addBehavior:gravityBeahvior];
+            [animator addBehavior:collisionBehavior];
+            c.animator = animator;
+            c.Animation=true;
+            [objectsCD removeObjectAtIndex:m];
+            CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
+            c.frame=rec;
+        }
+    }
+
+}
+
+-(void)SecondBonusLevelDidShaked
+{
+    int m;
+    if (objectsCD.count!=0) {
+        m=arc4random()%objectsCD.count;
+    }
+    else
+    {
+        if (objectsCD.count==0) {
+            m=-1;
+        }
+    }
+    if (m!=-1) {
+        if (objectsCD[m]!=nil)
+        {
+            FPFlovers *f=[FPFlovers new];
+            f=objectsCF[m];
+            CGRect rec1=CGRectMake(f.frame.origin.x, 190, 90, 125);
+            Candies *c=[Candies new];
+            c=objectsCD[m];
+            c.Animation=true;
+            [objectsCD removeObjectAtIndex:m];
+            [objectsCF removeObjectAtIndex:m];
+            UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+            c.backgroundColor=[UIColor colorWithPatternImage:im];
+            [UIView animateWithDuration:2.0 animations:^
+             {
+                 f.frame=rec1;
+                 CGRect rec=CGRectMake(f.frame.origin.x+20, f.frame.origin.y+17, im.size.height, im.size.width);
+                 c.frame=rec;
+             } completion:^(BOOL finished)
+             {
+                 [c Move:true];
+             } ];
+        }
+    }
+
+}
+
+-(void)ThirdBonusLevelDidShaked
+{
+    int m;
+    
+    if (objectsCD.count!=0) {
+        m=arc4random()%objectsCD.count;
+    }
+    else
+    {
+        if (objectsCD.count==0) {
+            m=-1;
+        }
+    }
+    if (m!=-1)
+    {
+        if (objectsCD[m]!=nil)
+        {
+            Candies *c=[Candies new];
+            c=objectsCD[m];
+            [objectsCD removeObjectAtIndex:m];
+            [objectsc insertObject:c atIndex:ii];
+            ii++;
+            [c Move:false];
+            UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsc];
+            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsc];
+            collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsc];
+            c.CandiesPropertiesBehavior.elasticity = 0.5;
+            [animator addBehavior:c.CandiesPropertiesBehavior];
+            [animator addBehavior:gravityBeahvior];
+            [animator addBehavior:collisionBehavior];
+            c.animator = animator;
+            c.Animation=true;
+        }
+    }
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated

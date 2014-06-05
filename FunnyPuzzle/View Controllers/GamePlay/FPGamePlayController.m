@@ -225,6 +225,7 @@
 }
 - (void)compleetAnimation
 {
+    
 }
 #pragma mark - Private
 - (void)configElements
@@ -282,17 +283,12 @@
 
 #pragma mark - IBAction
 + (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
-    // Create a new context the size of the frame
+    
     UIGraphicsBeginImageContextWithOptions(frame.size, YES, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Render the view
     [view.layer renderInContext:context];
     
-    // Get the image from the context
     UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Cleanup the context you created
     UIGraphicsEndImageContext();
     
     return renderedImage;
@@ -320,21 +316,7 @@
             [controller bounceField];
             
         }];
-    
     }];
-    
-//    if ([self navigationController]) {
-//        [[self navigationController] popViewControllerAnimated:YES];
-//    
-//    }
-//    else if ([self presentingViewController])
-//    {
-//        [self dismissViewControllerAnimated:YES completion:^{
-//            
-//        }];
-//    }
-    
-    
 }
 
 -(void)dealloc
@@ -454,9 +436,9 @@
         NSLog(@"%li", (unsigned long)_elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
-            
-            [self centerField:YES animate:YES];
             [self compleetAnimation];
+            [self centerField:YES animate:YES];
+            
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
         //_dragingElement.layer.position = rightPoint;
