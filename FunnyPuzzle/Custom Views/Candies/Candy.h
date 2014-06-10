@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Candies : UIView
+@interface Candy : UIView
 
 @property (nonatomic) CGRect centrBascket;
 @property (nonatomic) bool Animation;

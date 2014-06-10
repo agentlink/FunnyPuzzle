@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Mobilez365. All rights reserved.
 //
 
-#import "Candies.h"
+#import "Candy.h"
 #import "FPBonusViewController.h"
 
-@implementation Candies
+@implementation Candy
 {
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
@@ -26,6 +26,7 @@
     }
     return self;
 }
+
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -54,6 +55,8 @@
     [super awakeFromNib];
     [self config];
 }
+
+
 
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
@@ -101,17 +104,6 @@
         }
     }
     
-    if (self.BonusLevelKind==3) {
-            [UIView animateWithDuration:0.6 animations:^{
-                self.frame = self.centrBascket;
-            } completion:^(BOOL finished){
-                self.backgroundColor=[UIColor clearColor];
-                [self cleanObject];
-                self.click=true;
-            }
-             ];
-    }
-    
 }
 
 - (void) cleanObject{
@@ -156,7 +148,7 @@
 
 -(void)dealloc
 {
-    NSLog(@"all");
+    
 }
 
 

@@ -10,7 +10,7 @@
 		0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0439944F19360CD30006E3DB /* Comp4_1.mp4 */; };
 		045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045E3EEA19360B3000258680 /* MediaPlayer.framework */; };
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
-		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
+		046691A0192CE99A0095E1A8 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candy.m */; };
 		047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlovers.m */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
@@ -86,8 +86,8 @@
 		045E3EEA19360B3000258680 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBonusViewController.h; path = "View Controllers/Bonus View Controller/FPBonusViewController.h"; sourceTree = "<group>"; };
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBonusViewController.m; path = "View Controllers/Bonus View Controller/FPBonusViewController.m"; sourceTree = "<group>"; };
-		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candies.h; path = "Custom Views/Candies/Candies.h"; sourceTree = "<group>"; };
-		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Candies.m; path = "Custom Views/Candies/Candies.m"; sourceTree = "<group>"; };
+		0466919E192CE99A0095E1A8 /* Candy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candy.h; path = "Custom Views/Candies/Candy.h"; sourceTree = "<group>"; };
+		0466919F192CE99A0095E1A8 /* Candy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Candy.m; path = "Custom Views/Candies/Candy.m"; sourceTree = "<group>"; };
 		047D58A1192F2C0A003CE8BC /* FPFlovers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlovers.h; sourceTree = "<group>"; };
 		047D58A2192F2C0A003CE8BC /* FPFlovers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlovers.m; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 		046691A1192CE9A40095E1A8 /* Candies */ = {
 			isa = PBXGroup;
 			children = (
-				0466919E192CE99A0095E1A8 /* Candies.h */,
-				0466919F192CE99A0095E1A8 /* Candies.m */,
+				0466919E192CE99A0095E1A8 /* Candy.h */,
+				0466919F192CE99A0095E1A8 /* Candy.m */,
 			);
 			name = Candies;
 			sourceTree = "<group>";
@@ -727,7 +727,7 @@
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
-				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
+				046691A0192CE99A0095E1A8 /* Candy.m in Sources */,
 				84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
