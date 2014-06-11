@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FPFlovers : UIView
+@interface FPFlover : UIView
 
 @end

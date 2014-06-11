@@ -8,6 +8,7 @@
 
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
+#import "GameModel.h"
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
 @property (nonatomic) BOOL inPlace;
@@ -225,8 +226,22 @@
 }
 - (void)compleetAnimation
 {
+
+    NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
+    PDFImage *image = [PDFImage imageNamed:path];
+    _field.image = image;
+    for (int i = 0; i<[[_levelManager mcElements] count]; i++)
+    {
+        [_elements[i] removeFromSuperview];
+    }
+    CGRect rect=CGRectMake(-100, 50, 100, 100);
+    UILabel *LevelName=[[UILabel alloc] initWithFrame:rect];
+    LevelName.text=@"nrbfjbnsdlkb";
+    [self.view addSubview:LevelName];
     
 }
+
+
 #pragma mark - Private
 - (void)configElements
 {
@@ -436,14 +451,17 @@
         NSLog(@"%li", (unsigned long)_elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
+            
             [self compleetAnimation];
-            [self centerField:YES animate:YES];
+            //[self centerField:YES animate:YES];
             
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
         //_dragingElement.layer.position = rightPoint;
     }
 }
+
+
 
 - (BOOL) pointIsTransparent:(CGPoint)point inView:(UIView *)view
 {

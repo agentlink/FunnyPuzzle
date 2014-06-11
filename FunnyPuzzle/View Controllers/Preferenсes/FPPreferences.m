@@ -137,6 +137,7 @@
 }
 
 - (void) setLabelsText{
+    
     self.musicLabel.text=NSLocalizedString(@"playMusic", nil);
     self.soundLabel.text=NSLocalizedString(@"playSound", nil);
     self.vibrateLabel.text=NSLocalizedString(@"vibrate", nil);
@@ -170,6 +171,7 @@
 }
 
 - (NSString*) getCurrentLanguage{
+    
     NSString *language;
     if ([[FPGameManager sharedInstance].language isEqualToString:@"en"]) {
         language=@"English";

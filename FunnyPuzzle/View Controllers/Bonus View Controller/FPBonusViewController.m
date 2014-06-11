@@ -8,7 +8,7 @@
 
 #import "FPBonusViewController.h"
 #import "Candy.h"
-#import "FPFlovers.h"
+#import "FPFlover.h"
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "GamePlayViewController.h"
@@ -18,7 +18,7 @@
 @interface FPBonusViewController ()<ShakeHappendDelegate>
 
 {
-    NSMutableArray *objectsc,*objectsCD,*objectsCF;
+    NSMutableArray *objectsCandies2,*objectsCandies,*objectsFlowers;
     NSArray *imagesCandy;
     int Numb;
     int xx;
@@ -53,7 +53,7 @@
     MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    Numb=3;
+    Numb=2;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -110,21 +110,21 @@
     float x=20;
     float y=20;
     float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
-    objectsc=[[NSMutableArray alloc]init];
-    objectsCD=[[NSMutableArray alloc] init];
+    objectsCandies2=[[NSMutableArray alloc]init];
+    objectsCandies=[[NSMutableArray alloc] init];
     for(int i=1; i<10; i++)
     {
         Candy *c=[Candy new];
-        c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, 55, 55);
-        c.layer.zPosition=2;
         UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
         c.backgroundColor=[UIColor colorWithPatternImage:im];
-        CGRect r=CGRectMake(x, y, 55, 55);
+        c.centrBascket=CGRectMake(imView.frame.origin.x, imView.frame.origin.y, im.size.height, im.size.width);
+        c.layer.zPosition=2;
+        CGRect r=CGRectMake(x, y, im.size.height, im.size.width);
         c.frame = r;
         c.BonusLevelKind=0;
         [self.view addSubview:c];
-        [objectsc insertObject:c atIndex:i-1];
-        [objectsCD insertObject:c atIndex:i-1];
+        [objectsCandies2 insertObject:c atIndex:i-1];
+        [objectsCandies insertObject:c atIndex:i-1];
         x+=delta;
         [c Move:true];
    }
@@ -144,19 +144,19 @@
     imView.image=im2;
     [self.view addSubview:imView];
     [self SunMove:imView];
-    objectsc=[[NSMutableArray alloc]init];
-    objectsCD=[[NSMutableArray alloc] init];
-    objectsCF=[[NSMutableArray alloc] init];
+    objectsCandies2=[[NSMutableArray alloc]init];
+    objectsCandies=[[NSMutableArray alloc] init];
+    objectsFlowers=[[NSMutableArray alloc] init];
     float x=50;
     for (int i=0; i<5; i++)
     {
-        FPFlovers *f=[FPFlovers new];
+        FPFlover *f=[FPFlover new];
         UIImage *im=[UIImage imageNamed:@"flower_img"];
         f.backgroundColor=[UIColor colorWithPatternImage:im];
         CGRect rec1=CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height);
         f.frame=rec1;
         f.layer.zPosition=0;
-        [objectsCF insertObject:f atIndex:i];
+        [objectsFlowers insertObject:f atIndex:i];
         [self.view addSubview:f];
         Candy *c=[Candy new];
         UIImage *im2 = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
@@ -164,8 +164,8 @@
         c.frame=rec;
         c.layer.zPosition=1;
         c.BonusLevelKind=1;
-        [objectsc insertObject:c atIndex:i];
-        [objectsCD insertObject:c atIndex:i];
+        [objectsCandies2 insertObject:c atIndex:i];
+        [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         x+=delta;
         [c Move:true];
@@ -190,7 +190,7 @@
 -(void)ThirdBonusLevelLoad
 {
     ii=0;
-    objectsc=[[NSMutableArray alloc]init];
+    objectsCandies2=[[NSMutableArray alloc]init];
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im=[UIImage imageNamed:@"tree_img"];
@@ -205,18 +205,18 @@
     int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
     [self.view addSubview:imView];
-    objectsCD=[[NSMutableArray alloc] init];
+    objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
         Candy *c=[Candy new];
-        rec=CGRectMake(pointsX[i], pointsY[i], 45, 45);
+        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        rec=CGRectMake(pointsX[i], pointsY[i], im.size.height*0.9, im.size.width*0.9);
         c.frame=rec;
         c.layer.zPosition=1;
-        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-        CGSize size=CGSizeMake(45, 45);
+        CGSize size=CGSizeMake(im.size.height*0.9, im.size.width*0.9);
         UIImage *im2=[self imageWithImage:im scaledToSize:size];
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.BonusLevelKind=2;
-        [objectsCD insertObject:c atIndex:i];
+        [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         [c Move:true];
     }
@@ -227,8 +227,8 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     
-    for (int i=0; i<objectsCD.count; i++) {
-        Candy *c=objectsCD[i];
+    for (int i=0; i<objectsCandies.count; i++) {
+        Candy *c=objectsCandies[i];
         
         if ([[c.layer presentationLayer]hitTest:touchLocation]) {
             CGRect rect=CGRectMake(touchLocation.x, touchLocation.y, c.frame.size.width, c.frame.size.height);
@@ -263,14 +263,13 @@
     MainRec=CGRectMake( -80, -70, 80, 68);
     int x=0;
     float deltaX=0;
-    objectsCD=[[NSMutableArray alloc] init];
+    objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<20; i++) {
         Candy *c=[Candy new];
         c.userInteractionEnabled=true;
         c.layer.zPosition=0;
         c.Animation=true;
         c.BonusLevelKind=3;
-        
         UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
         CGSize size;
         UIImage *im2;
@@ -304,7 +303,7 @@
         float y = c.frame.origin.y;
         float wx = CGRectGetHeight([[UIScreen mainScreen] bounds]);
         float time=(wx-deltaX)/wx*10;
-        [objectsCD insertObject:c atIndex:i];
+        [objectsCandies insertObject:c atIndex:i];
         
         animation = [CAKeyframeAnimation animation];
         aPath = CGPathCreateMutable();
@@ -373,21 +372,21 @@ int tick=0;
 -(void)FirstBonusLevelDidShaked
 {
     int m;
-    if (objectsCD.count!=0) {
-        m=arc4random()%objectsCD.count;
+    if (objectsCandies.count!=0) {
+        m=arc4random()%objectsCandies.count;
     }
     else
     {
-        if (objectsCD.count==0) {
+        if (objectsCandies.count==0) {
             m=-1;
             [_accelerometer stopShakeDetect];
         }
     }
     if (m!=-1) {
-        if (objectsCD[m]!=nil)
+        if (objectsCandies[m]!=nil)
         {
             Candy *c=[Candy new];
-            c=objectsCD[m];
+            c=objectsCandies[m];
             [c Move:false];
             UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
             UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:@[c]];
@@ -403,7 +402,7 @@ int tick=0;
             [animator addBehavior:collisionBehavior];
             c.animator = animator;
             c.Animation=true;
-            [objectsCD removeObjectAtIndex:m];
+            [objectsCandies removeObjectAtIndex:m];
             CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
             c.frame=rec;
         }
@@ -414,26 +413,26 @@ int tick=0;
 -(void)SecondBonusLevelDidShaked
 {
     int m;
-    if (objectsCD.count!=0) {
-        m=arc4random()%objectsCD.count;
+    if (objectsCandies.count!=0) {
+        m=arc4random()%objectsCandies.count;
     }
     else
     {
-        if (objectsCD.count==0) {
+        if (objectsCandies.count==0) {
             m=-1;
         }
     }
     if (m!=-1) {
-        if (objectsCD[m]!=nil)
+        if (objectsCandies[m]!=nil)
         {
-            FPFlovers *f=[FPFlovers new];
-            f=objectsCF[m];
-            CGRect rec1=CGRectMake(f.frame.origin.x, 190, 90, 125);
+            FPFlover *f=[FPFlover new];
+            f=objectsFlowers[m];
+            CGRect rec1=CGRectMake(f.frame.origin.x, 190, f.frame.size.width, f.frame.size.height);
             Candy *c=[Candy new];
-            c=objectsCD[m];
+            c=objectsCandies[m];
             c.Animation=true;
-            [objectsCD removeObjectAtIndex:m];
-            [objectsCF removeObjectAtIndex:m];
+            [objectsCandies removeObjectAtIndex:m];
+            [objectsFlowers removeObjectAtIndex:m];
             UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
             c.backgroundColor=[UIColor colorWithPatternImage:im];
             [UIView animateWithDuration:2.0 animations:^
@@ -454,30 +453,30 @@ int tick=0;
 {
     int m;
     
-    if (objectsCD.count!=0) {
-        m=arc4random()%objectsCD.count;
+    if (objectsCandies.count!=0) {
+        m=arc4random()%objectsCandies.count;
     }
     else
     {
-        if (objectsCD.count==0) {
+        if (objectsCandies.count==0) {
             m=-1;
         }
     }
     if (m!=-1)
     {
-        if (objectsCD[m]!=nil)
+        if (objectsCandies[m]!=nil)
         {
             Candy *c=[Candy new];
-            c=objectsCD[m];
-            [objectsCD removeObjectAtIndex:m];
-            [objectsc insertObject:c atIndex:ii];
+            c=objectsCandies[m];
+            [objectsCandies removeObjectAtIndex:m];
+            [objectsCandies2 insertObject:c atIndex:ii];
             ii++;
             [c Move:false];
             UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsc];
-            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsc];
+            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:objectsCandies2];
+            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:objectsCandies2];
             collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsc];
+            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:objectsCandies2];
             c.CandiesPropertiesBehavior.elasticity = 0.5;
             [animator addBehavior:c.CandiesPropertiesBehavior];
             [animator addBehavior:gravityBeahvior];
@@ -491,16 +490,16 @@ int tick=0;
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    for (int i=0; i<objectsc.count; i++) {
-        Candy *candy=[objectsc objectAtIndex:i];
+    for (int i=0; i<objectsCandies2.count; i++) {
+        Candy *candy=[objectsCandies2 objectAtIndex:i];
         for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
         {
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
     }
-    for (int i=0; i<objectsCD.count; i++) {
-        Candy *candy=[objectsCD objectAtIndex:i];
+    for (int i=0; i<objectsCandies.count; i++) {
+        Candy *candy=[objectsCandies objectAtIndex:i];
         for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
         {
             [candy removeGestureRecognizer:recognizer];

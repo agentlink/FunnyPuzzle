@@ -90,9 +90,19 @@
     }
     if (self.BonusLevelKind==1) {
         if (self.Animation) {
-            self.backgroundColor=[UIColor clearColor];
-            self.click=true;
-            [self cleanObject];
+            [self Move:false];
+            CATransform3D transform = [[self layer] transform];
+            [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [self.layer setTransform:CATransform3DMakeScale(1.5, 1.5, 1.5)];
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    [self.layer setTransform:transform];
+                 } completion:^(BOOL finished) {
+                   self.backgroundColor=[UIColor clearColor];
+                   self.click=true;
+                   [self cleanObject];
+                 }];
+            }];
         }
     }
     
@@ -108,6 +118,7 @@
 
 - (void) cleanObject{
     [self.layer removeAnimationForKey:@"position"];
+    [UIView commitAnimations];
     animation=nil;
     aPath=nil;
 }

@@ -130,27 +130,34 @@ static FPSoundManager *_instance=nil;
 
 + (void) loadData{
     NSError *error;
+    
     //initialize Menu background player
+    
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"menu_background_music" ofType:@"mp3"];
     NSURL *fileURL = [NSURL URLWithString:soundPath];
     _instance.backGroundMusic=fileURL;
     _instance.backGroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     [_instance.backGroundMusicPlayer prepareToPlay];
     _instance.backGroundMusicPlayer.numberOfLoops=-1;
+    
     //initialize Game background player
+    
     soundPath = [[NSBundle mainBundle] pathForResource:@"game_background_music" ofType:@"mp3"];
     fileURL = [NSURL URLWithString:soundPath];
     _instance.gameMusic=fileURL;
     _instance.backGroundGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.backGroundGamePlayer.numberOfLoops=-1;
     [_instance.backGroundGamePlayer prepareToPlay];
+    
     //initialize Sound player
+    
     soundPath = [[NSBundle mainBundle] pathForResource:@"well_done" ofType:@"mp3"];
     fileURL = [NSURL URLWithString:soundPath];
     _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.soundPlayer.numberOfLoops=0;
     [_instance.soundPlayer prepareToPlay];
     //set sounds path
+    
     if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]){
         soundPath = [[NSBundle mainBundle] pathForResource:@"excellent_ru" ofType:@"mp3"];
         _instance.excellent = [NSURL URLWithString:soundPath];
