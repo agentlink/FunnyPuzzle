@@ -53,7 +53,7 @@
     MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    Numb=2;
+    Numb=3;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -224,9 +224,10 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   
+    
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
-    
+    if (Numb==3){
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *c=objectsCandies[i];
         
@@ -245,6 +246,7 @@
             break;
             
         }
+    }
     }
 }
 

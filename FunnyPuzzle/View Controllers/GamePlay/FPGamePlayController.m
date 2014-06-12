@@ -9,6 +9,8 @@
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
 #import "GameModel.h"
+#import "FPGameManager.h"
+
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
 @property (nonatomic) BOOL inPlace;
@@ -87,7 +89,7 @@
             break;
     }
     _levelManager = [FPLevelManager loadLevel:level type:type];
-    _levelsCount=22;
+    _levelsCount=40;
     _levelNumber=level;
 }
 
@@ -451,7 +453,7 @@
         NSLog(@"%li", (unsigned long)_elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
-            
+          //  [FPGameManager sharedInstance].CandiesCount++;
             [self compleetAnimation];
             //[self centerField:YES animate:YES];
             
