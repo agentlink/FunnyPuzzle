@@ -1469,9 +1469,9 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>aist</string>
+			<string>stork</string>
 			<key>folder</key>
-			<string>Game 1/aist</string>
+			<string>Game 1/stork</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -1539,7 +1539,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Aist</string>
+			<string>Stork</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>

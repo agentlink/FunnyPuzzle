@@ -1,0 +1,11 @@
+cv = new ContentValues();
+cv.put(PuzzlesDBHelper.GAME_TYPE, "1");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Mushrooms");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Грибы");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "mushrooms");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "8 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "63 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "60 300 70 290");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "80 80 300 275");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "560");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "150");

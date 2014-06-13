@@ -1,0 +1,11 @@
+cv = new ContentValues();
+cv.put(PuzzlesDBHelper.GAME_TYPE, "1");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Tikva");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Тиква");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "tikva");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "76 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "60 92 280 300");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "300 92 92 300");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "500");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "125");

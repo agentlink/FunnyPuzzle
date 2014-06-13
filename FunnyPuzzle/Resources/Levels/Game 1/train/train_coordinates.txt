@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Train");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Паровозик");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "train");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "180 24 55 168 200 244 8 102 236 37 76 160 249");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 36 62 86 64 75 101 101 108 163 196 175 184");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "200 22 197 125 305 195 165 30 305 51 50 260 41");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "275 185 190 95 222 95 360 260 311 382 150 85 83");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "460");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "130");
