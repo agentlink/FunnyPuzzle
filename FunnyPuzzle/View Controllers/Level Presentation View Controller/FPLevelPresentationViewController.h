@@ -19,4 +19,7 @@
 @property (nonatomic) bool ScreenShotActivate;
 
 - (void)startEnterAnimation;
+
+- (void)nextLevel;
+- (void)previousLevel;
 @end

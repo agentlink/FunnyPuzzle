@@ -7,6 +7,8 @@
 //
 
 #import "FPLevelCell.h"
+#import "UIImage+ImageEffects.h"
+
 //#import "JMIBlur.h"
 @interface FPLevelCell ()
 @property (nonatomic) PDFImageView *star;
@@ -27,11 +29,23 @@
     if (self) {
         [[self layer] setBorderColor:[[UIColor grayColor] CGColor]];
         [[self layer] setBorderWidth:3];
+        
+        //[self setBackgroundColor:[UIColor colorWithPatternImage:[self blurredSnapshot]]];
+        
         //[self capture];
     }
     return self;
 }
 
+-(UIImage *)blurredSnapshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, self.window.screen.scale);
+    [self drawViewHierarchyInRect:self.frame afterScreenUpdates:NO];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *blurredSnapshotImage = [snapshotImage applyLightEffect];
+    UIGraphicsEndImageContext();
+    return blurredSnapshotImage;
+}
 
 - (void)setIsFinished:(BOOL)isFinished
 {

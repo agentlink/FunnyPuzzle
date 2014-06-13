@@ -210,4 +210,71 @@
 //        NSLog(@"nvsdnb");
 //    }
 }
+#pragma mark - Levels Navigation
+- (void)nextLevel
+{
+    FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
+    FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    int currentLevelNumber = currentGamePlay.levelNumber;
+    if (currentLevelNumber+1<self.levels.count) {
+        currentLevelNumber+=1;
+        [nextController loadLevel:currentLevelNumber type:[self gameType]];
+        UIImage *screenshot = [currentGamePlay screenshot];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:screenshot];
+        [self.view addSubview:imageView];
+        [self dismissViewControllerAnimated:NO completion:nil];
+        [self presentViewController:nextController animated:NO completion:^{
+            [[nextController view] setFrame:CGRectMake(0, nextController.view.frame.size.height+10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
+            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
+            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
+            nextController.view.layer.shadowOpacity = 1;
+            nextController.view.layer.shadowRadius = 10;
+            CGAffineTransform transform = CGAffineTransformIdentity;
+            transform = CGAffineTransformTranslate(transform, -imageView.bounds.size.width*0.8, 0);
+            [UIView animateWithDuration:kAnimationDuration animations:^{
+                [imageView setTransform:transform];
+                [[nextController view] setFrame:CGRectMake(0, 0, nextController.view.frame.size.width, nextController.view.frame.size.height)];
+            } completion:^(BOOL finished) {
+                [nextController bounceField];
+                [imageView removeFromSuperview];
+                nextController.view.layer.shadowOpacity = 0;
+                nextController.view.layer.shadowRadius = 0;
+            }];
+        }];
+    }
+}
+- (void)previousLevel
+{
+    FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
+    FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+    int currentLevelNumber = currentGamePlay.levelNumber;
+    if (currentLevelNumber-1>=0) {
+        currentLevelNumber-=1;
+        [nextController loadLevel:currentLevelNumber type:[self gameType]];
+        UIImage *screenshot = [currentGamePlay screenshot];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:screenshot];
+        [self.view addSubview:imageView];
+        [self dismissViewControllerAnimated:NO completion:nil];
+        [self presentViewController:nextController animated:NO completion:^{
+            [[nextController view] setFrame:CGRectMake(0, -nextController.view.frame.size.height-10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
+            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
+            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
+            nextController.view.layer.shadowOpacity = 1;
+            nextController.view.layer.shadowRadius = 10;
+            CGAffineTransform transform = CGAffineTransformIdentity;
+            //transform = CGAffineTransformScale(transform, 0.8, 0.8);
+            transform = CGAffineTransformTranslate(transform, imageView.bounds.size.height, 0);
+            [UIView animateWithDuration:kAnimationDuration animations:^{
+                [imageView setTransform:transform];
+                [[nextController view] setFrame:CGRectMake(0, 0, nextController.view.frame.size.width+10, nextController.view.frame.size.height)];
+            } completion:^(BOOL finished) {
+                [nextController bounceField];
+                [imageView removeFromSuperview];
+                nextController.view.layer.shadowOpacity = 0;
+                nextController.view.layer.shadowRadius = 0;
+            }];
+        }];
+    }
+
+}
 @end
