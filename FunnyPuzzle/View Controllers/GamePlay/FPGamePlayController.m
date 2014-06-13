@@ -8,6 +8,7 @@
 
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
+#import "FPLevelPresentationViewController.h"
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
 @property (nonatomic) BOOL inPlace;
@@ -227,6 +228,15 @@
 {
     
 }
+#pragma mark - Publick
+- (UIImage *)screenshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
+}
 #pragma mark - Private
 - (void)configElements
 {
@@ -297,55 +307,54 @@
 
 - (IBAction)next:(id)sender;
 {
-    UIImage *im=[[UIImage alloc]init];
-    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
-    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
-    FPGameType game=_levelType;
-    int i=_levelNumber+1;
-    [self.delegate didClose:YES ImageScreen:im];
-    
-    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-    [controller loadLevel:i type:game];
-    
-    UIViewController *parent=self.presentingViewController;
-    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
-
-    [parent dismissViewControllerAnimated:NO completion:^{
-    
-        [parent presentViewController:controller animated:NO completion:^{
-            [controller bounceField];
-            
-        }];
-    }];
-}
-
--(void)dealloc
-{
-    NSLog(@"hello");
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController nextLevel];
+//    UIImage *im=[[UIImage alloc]init];
+//    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
+//    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
+//    FPGameType game=_levelType;
+//    int i=_levelNumber+1;
+//    [self.delegate didClose:YES ImageScreen:im];
+//    
+//    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+//    [controller loadLevel:i type:game];
+//    
+//    UIViewController *parent=self.presentingViewController;
+//    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
+//
+//    [parent dismissViewControllerAnimated:NO completion:^{
+//    
+//        [parent presentViewController:controller animated:NO completion:^{
+//            [controller bounceField];
+//            
+//        }];
+//    }];
 }
 - (IBAction)prew:(id)sender
 {
-    UIImage *im=[[UIImage alloc]init];
-    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
-    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
-    FPGameType game=_levelType;
-    int i=_levelNumber-1;
-    [self.delegate didClose:YES ImageScreen:im];
-    
-    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-    [controller loadLevel:i type:game];
-    
-    UIViewController *parent=self.presentingViewController;
-    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
-    [parent dismissViewControllerAnimated:NO completion:^{
-        
-        [parent presentViewController:controller animated:NO completion:^{
-            [controller bounceField];
-            
-        }];
-        
-    }];
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController previousLevel];
+//    UIImage *im=[[UIImage alloc]init];
+//    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
+//    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
+//    FPGameType game=_levelType;
+//    int i=_levelNumber-1;
+//    [self.delegate didClose:YES ImageScreen:im];
+//    
+//    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+//    [controller loadLevel:i type:game];
+//    
+//    UIViewController *parent=self.presentingViewController;
+//    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    
+//    [parent dismissViewControllerAnimated:NO completion:^{
+//        
+//        [parent presentViewController:controller animated:NO completion:^{
+//            [controller bounceField];
+//            
+//        }];
+//        
+//    }];
 
 }
 - (IBAction)back:(id)sender
