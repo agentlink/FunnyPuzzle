@@ -1,17 +1,10 @@
-"octopus_gray_lines.svg" & "octopus_gray.svg" & "octopus.svg":
-X - 420 px
-Y - 140 px
-width - 350 px
-height - 350 px
-
-octopus1.svg:
-X - 2 px
-Y - 133 px
-
-octopus2.svg:
-X - 89 px
-Y - 18 px
-
-octopus3.svg:
-X - 199 px
-Y - 138 px
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Octopus");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Осьминог");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "octopus");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINALv_POSITION_X, "2 89 199");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "133 18 138");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "250 120 15");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "60 228 60");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "420");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "90");

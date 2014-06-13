@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Mobilez365. All rights reserved.
 //
 
-#import "FPFlovers.h"
+#import "FPFlover.h"
 
-@implementation FPFlovers
+@implementation FPFlover
 
 - (id)initWithFrame:(CGRect)frame
 {

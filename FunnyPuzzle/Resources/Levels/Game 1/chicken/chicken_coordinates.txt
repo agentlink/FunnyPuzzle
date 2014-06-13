@@ -1,17 +1,10 @@
-"chicken_gray_lines.svg" & "chicken_gray.svg" & "chicken.svg":
-X - 350 px
-Y - 140 px
-width - 350 px
-height - 350 px
-
-chicken1.svg:
-X - 6 px
-Y - 46 px
-
-chicken2.svg:
-X - 142 px
-Y - 122 px
-
-chicken3.svg:
-X - 227 px
-Y - 15 px
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Hen");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Курочка");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "chicken");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "8 110 207");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "35 96 8");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "270 125 40");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "270 90 270");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "460");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "100");
