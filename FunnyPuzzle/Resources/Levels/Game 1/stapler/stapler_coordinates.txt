@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Stapler");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Степлер");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "stapler");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "40 96 63 49 8");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 26 63 126 65");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "75 40 200 260 15");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "355 275 185 275 85");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "470");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "145");

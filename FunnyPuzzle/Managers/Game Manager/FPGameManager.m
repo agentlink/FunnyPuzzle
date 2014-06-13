@@ -36,6 +36,10 @@ static FPGameManager *_instance=nil;
     return _instance;
 }
 
+-(void)setCandiesCount:(int)CandiesCount
+{
+    _CandiesCount+=CandiesCount;
+}
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:VIBRATE]) {

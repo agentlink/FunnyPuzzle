@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Backpack");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "аўъчръ");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "backpack");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "74 8 59 87 104");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 122 61 44 112");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "240 20 290 45 125");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "360 115 100 350 145");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "500");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "115");

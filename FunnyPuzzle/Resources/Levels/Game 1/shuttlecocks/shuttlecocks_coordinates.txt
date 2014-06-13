@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Shuttlecocks");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Воланчик");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "shuttlecocks");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "93 156 59 100 8");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 44 101 119 157");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "35 205 205 135 35");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "325 160 350 70 175");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "485");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "105");

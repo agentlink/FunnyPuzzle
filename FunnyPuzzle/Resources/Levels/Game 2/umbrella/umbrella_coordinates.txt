@@ -1,0 +1,11 @@
+cv = new ContentValues();
+cv.put(PuzzlesDBHelper.GAME_TYPE, "1");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Umbrella");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Зонтик");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "umbrella");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "137 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "61 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "50 50 280 285");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "245 80 80 280");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "460");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "135");

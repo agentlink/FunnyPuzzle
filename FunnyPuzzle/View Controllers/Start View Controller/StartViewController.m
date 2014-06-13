@@ -16,6 +16,7 @@
 #import "FPSoundManager.h"
 #import "GamePlayViewController.h"
 #import "FPLevelPresentationViewController.h"
+#import "FPGameManager.h"
 
 @interface StartViewController () //<UIViewControllerTransitioningDelegate>
 
@@ -41,6 +42,7 @@
 @property (nonatomic) BOOL needToDropButtons;
 
 @property (nonatomic) UIDynamicAnimator *animator;
+@property (weak, nonatomic) IBOutlet UILabel *CandiesCountLabel;
 
 - (void)play:(id)sender type:(FPGameType)type;
 - (IBAction)goToSettings:(id)sender;
@@ -81,6 +83,10 @@
     [[FPSoundManager sharedInstance] playBackgroundMusic];
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
+    
+    NSString *s=[NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].CandiesCount];
+    _CandiesCountLabel.text=s;
+ 
     
 }
 
@@ -223,9 +229,13 @@
     _candiesView.frame = CGRectMake((CGRectGetHeight(self.view.frame)/4)*3, 0, CGRectGetWidth(_candiesView.frame), CGRectGetHeight(_candiesView.frame));
     PDFImageView *settingsImage=[[PDFImageView alloc] initWithFrame:_settingsButton.frame];
     settingsImage.image=[PDFImage imageNamed:@"prefs"];
+    
     PDFImageView *candyImage=[[PDFImageView alloc] initWithFrame:_candiesView.frame];
     candyImage.image=[PDFImage imageNamed:@"candy"];
     _candiesView.image=candyImage.image;
+    _candiesView.layer.zPosition=10;
+    _CandiesCountLabel.layer.zPosition=11;
+    
     [_settingsButton setImage:[settingsImage currentUIImage]  forState:UIControlStateNormal];
     
     UIGravityBehavior *gravityBeahvior = [[UIGravityBehavior alloc] initWithItems:@[_settingsButton, _candiesView]];
