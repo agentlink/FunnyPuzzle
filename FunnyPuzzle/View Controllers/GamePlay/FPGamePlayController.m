@@ -245,6 +245,7 @@
     [UIView animateWithDuration:kAnimationDuration*0.2 animations:^{
         oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
         _field.transform = CGAffineTransformMakeScale(1.2, 1.2) ;
+        oldImage.alpha = 0.5;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             oldImage.transform = CGAffineTransformMakeScale(0, 0);
