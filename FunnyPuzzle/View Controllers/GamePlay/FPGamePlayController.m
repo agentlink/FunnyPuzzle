@@ -233,9 +233,28 @@
 {
 
     NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
-    PDFImage *image = [PDFImage imageNamed:path];
-    PDFImageView *oldImage = [_field copy];
+    PDFImageView *oldImage = [[PDFImageView alloc] initWithFrame:_field.frame];
+    oldImage.image = _field.image;
+    oldImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:oldImage];
+    PDFImage *image = [PDFImage imageNamed:path];
+    CGAffineTransform transform = _field.transform;
+    _field.alpha = 0;
+    _field.layer.zPosition = MAXFLOAT;
+    //[_field removeConstraints:_field.constraints];
+    [UIView animateWithDuration:kAnimationDuration*0.2 animations:^{
+        oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        _field.transform = CGAffineTransformMakeScale(1.2, 1.2) ;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            oldImage.transform = CGAffineTransformMakeScale(0, 0);
+            _field.transform = transform;
+            _field.alpha = 1;
+            oldImage.alpha = 0;
+        } completion:^(BOOL finished) {
+            [oldImage removeFromSuperview];
+        }];
+    }];
     _field.image = image;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++)
     {
