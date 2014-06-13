@@ -9,8 +9,7 @@
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
 #import "GameModel.h"
-#import "FPGameManager.h"
-
+#import "FPLevelPresentationViewController.h"
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
 @property (nonatomic) BOOL inPlace;
