@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PDFImage/PDFImage.h>
 
-@protocol FPGamePlayViewControllerDelegate <NSObject>
+@protocol FPGamePlayControllerDelegate <NSObject>
 
 -(void)didClose:(bool)ActivateScreen ImageScreen:(UIImage *)ImageScreenShot;
 
@@ -24,7 +24,7 @@
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) int levelNumber;
 
-@property(weak,nonatomic) id<FPGamePlayViewControllerDelegate> delegate;
+@property(weak,nonatomic) id<FPGamePlayControllerDelegate> delegate;
 
 
 - (void)loadLevel:(int)level type:(FPGameType)type;

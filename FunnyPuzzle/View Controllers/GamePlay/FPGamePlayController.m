@@ -10,6 +10,7 @@
 #import "FPLevelManager.h"
 #import "GameModel.h"
 #import "FPGameManager.h"
+#import "FPLevelPresentationViewController.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -63,11 +64,7 @@
     _back.alpha = 0;
     _next.alpha = 0;
     _prew.alpha = 0;
-    //_animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-//    UIFont *font = [UIFont fontWithName:@"KBCuriousSoul" size:60];
-//    _next.titleLabel.font = font;
-//    _prew.titleLabel.font = font;
-   // _back.titleLabel.font = font;
+    _field.layer.zPosition = -2;
     _next.backgroundColor = [UIColor clearColor];
     _prew.backgroundColor = [UIColor clearColor];
     _back.backgroundColor = [UIColor clearColor];
@@ -147,19 +144,16 @@
 {
     CGRect fieldFrameToEdit = _field.frame;
     if (center) {
-        //_fieldRightConstraint.constant = (CGRectGetWidth([[self view] bounds])*0.5)-(CGRectGetWidth([_field frame])*0.5);
         fieldFrameToEdit.size.height = fieldFrameToEdit.size.height*0.9;
         fieldFrameToEdit.size.width = fieldFrameToEdit.size.height;
         fieldFrameToEdit.origin.x = (CGRectGetWidth([[self view] bounds])*0.5)-(CGRectGetWidth([_field frame])*0.5);
     } else {
-        //_fieldRightConstraint.constant = 20;
         fieldFrameToEdit.origin.x = (CGRectGetWidth([[self view] bounds]))-(CGRectGetWidth([_field frame])*0.5);
     }
     if (animate) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             [[self view] layoutIfNeeded];
             _field.frame = fieldFrameToEdit;
-            //_field.layer.position = fieldFrameToEdit.origin;
         }];
     } else {
         [[self view] layoutIfNeeded];
@@ -240,6 +234,8 @@
 
     NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
     PDFImage *image = [PDFImage imageNamed:path];
+    PDFImageView *oldImage = [_field copy];
+    [[self view] addSubview:oldImage];
     _field.image = image;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++)
     {
@@ -423,18 +419,14 @@
     BOOL xPosition = 20>=abs(rightPoint.x-currentPoint.x);
     BOOL yPosition = 20>=abs(rightPoint.y-currentPoint.y);
     
-    if (xPosition&&yPosition) {
+    if (xPosition&&yPosition&&_dragingElement) {
         _dragingElement.inPlace = YES;
+        _dragingElement.layer.zPosition = -1;
         [self bounceElement:_dragingElement];
-        NSLog(@"%li", (unsigned long)_elementsLeft);
         _elementsLeft--;
-        NSLog(@"%li", (unsigned long)_elementsLeft);
         if (_elementsLeft<=0) {
 #warning Тут викликатиметься метод для виграшу
-          //  [FPGameManager sharedInstance].CandiesCount++;
             [self compleetAnimation];
-            //[self centerField:YES animate:YES];
-            
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
         //_dragingElement.layer.position = rightPoint;
