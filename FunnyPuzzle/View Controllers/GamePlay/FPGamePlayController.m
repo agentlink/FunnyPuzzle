@@ -57,13 +57,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view
-    [self configureGameplayWithAnimationType:![[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName ]];
     //[self.view setBackgroundColor:[UIColor clearColor]];
     _levelName.alpha = 0;
     _back.alpha = 0;
     _next.alpha = 0;
     _prew.alpha = 0;
     //_animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+//    UIFont *font = [UIFont fontWithName:@"KBCuriousSoul" size:60];
+//    _next.titleLabel.font = font;
+//    _prew.titleLabel.font = font;
+   // _back.titleLabel.font = font;
+    _next.backgroundColor = [UIColor clearColor];
+    _prew.backgroundColor = [UIColor clearColor];
+    _back.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self configureGameplayWithAnimationType:![[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName ]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,6 +127,7 @@
     path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
     PDFImage *image = [PDFImage imageNamed:path];
     _field.image = image;
+    [_field layoutIfNeeded];
     [self configElements];
 }
 - (void)startAnimationForCompleetLevel
@@ -129,13 +141,9 @@
     nameFrame.origin.x = nameFrame.origin.x*2;
     _levelName.frame = nameFrame;
     _levelName.alpha = 1;
-   // UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:_levelName snapToPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(_field.frame))];
-    //[_animator addBehavior:snap];
-    
 }
 - (void)centerField:(BOOL)center animate:(BOOL)animate
 {
-    //[[self view] layoutIfNeeded];
     CGRect fieldFrameToEdit = _field.frame;
     if (center) {
         //_fieldRightConstraint.constant = (CGRectGetWidth([[self view] bounds])*0.5)-(CGRectGetWidth([_field frame])*0.5);
@@ -161,9 +169,11 @@
 {
     CATransform3D transform = [[_field layer] transform];
     [UIView animateWithDuration:kAnimationDuration*0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-         [_field.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
+        [_field layoutIfNeeded];
+        [_field.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
+            [_field layoutIfNeeded];
             [_field.layer setTransform:transform];
             if (_elements) {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
@@ -191,23 +201,24 @@
 {
     for (UIView *element in elements) {
         CATransform3D transform = [[element layer] transform];
-        if (inSuperview) {
+//        if (element.constraints.count > 0) {
+//            [element layoutIfNeeded];
+//        }
+        if ([[[self view] subviews ] containsObject:element]) {
             [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
-            element.alpha = 0;
-            if ([element isHidden]) {
-                [element setHidden:NO];
-            }
+            element.alpha = 1;
         } else {
             [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
-            element.alpha = 0;
             [self.view addSubview:element];
         }
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
+            [element layoutIfNeeded];
             [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
             element.alpha = 1;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
+                [element layoutIfNeeded];
             }];
         }];
     }
@@ -215,8 +226,6 @@
 - (void)bounceElement:(FPElement *)element
 {
     [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-//        element.layer.anchorPoint = CGPointMake(0, 0);
-//        element.layer.position = element.winPlace;
         element.frame = CGRectMake(element.winPlace.x, element.winPlace.y, element.frame.size.width, element.frame.size.height);
         element.transform = CGAffineTransformMakeScale(1.2, 1.2);
     } completion:^(BOOL finished) {
@@ -264,11 +273,11 @@
         imageView.image = image;
         [elements addObject:imageView];
         [imageView setAlpha:0];
-        [imageView setHidden:YES];
+        //[imageView setHidden:YES];
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
     }
     _elements = [NSArray arrayWithArray:elements];
-    [self bounceElements:_elements isInSuperView:NO];
+    //[self bounceElements:_elements isInSuperView:NO];
 }
 - (CGRect)adaptRectFromRect:(CGRect)rect
 {
@@ -284,9 +293,14 @@
     } else {
         multiplier = _field.frame.size.width/_field.image.size.width;
     }
-    double x = 40+arc4random_uniform(CGRectGetWidth(self.view.bounds)-size.width)+1;
-    double y = 40+arc4random_uniform(CGRectGetWidth(self.view.bounds)-size.height-40)+1;
-    return CGRectMake(x, y, size.width*multiplier, size.height*multiplier);
+    size.width = size.width*multiplier;
+    size.height = size.height*multiplier;
+    double maxX, maxY;
+    maxX = CGRectGetHeight(self.view.bounds)-size.width;
+    maxY = CGRectGetHeight(self.view.bounds)-size.height-40;
+    double x = arc4random_uniform(maxX - 39) + 40;
+    double y = arc4random_uniform(maxY - 40) + 40;
+    return CGRectMake(x, y, size.width, size.height);
 }
 - (CGPoint)getAdaptedPoint:(CGPoint)point
 {
@@ -322,53 +336,11 @@
 {
     FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
     [presentationController nextLevel];
-//    UIImage *im=[[UIImage alloc]init];
-//    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
-//    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
-//    FPGameType game=_levelType;
-//    int i=_levelNumber+1;
-//    [self.delegate didClose:YES ImageScreen:im];
-//    
-//    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-//    [controller loadLevel:i type:game];
-//    
-//    UIViewController *parent=self.presentingViewController;
-//    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
-//
-//    [parent dismissViewControllerAnimated:NO completion:^{
-//    
-//        [parent presentViewController:controller animated:NO completion:^{
-//            [controller bounceField];
-//            
-//        }];
-//    }];
 }
 - (IBAction)prew:(id)sender
 {
     FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
     [presentationController previousLevel];
-//    UIImage *im=[[UIImage alloc]init];
-//    CGRect rec=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds ]), CGRectGetWidth([[UIScreen mainScreen] bounds]));
-//    im=[FPGamePlayController renderImageFromView:self.view withRect:rec];
-//    FPGameType game=_levelType;
-//    int i=_levelNumber-1;
-//    [self.delegate didClose:YES ImageScreen:im];
-//    
-//    FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-//    [controller loadLevel:i type:game];
-//    
-//    UIViewController *parent=self.presentingViewController;
-//    parent.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    
-//    [parent dismissViewControllerAnimated:NO completion:^{
-//        
-//        [parent presentViewController:controller animated:NO completion:^{
-//            [controller bounceField];
-//            
-//        }];
-//        
-//    }];
-
 }
 - (IBAction)back:(id)sender
 {
