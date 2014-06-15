@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Beet");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "—векла");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "beet");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "217 233 252 101 91 19");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 53 97 81 123 221");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "280 286 40 63 63 228");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "311 90 244 323 75 188м\");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "435");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "70");

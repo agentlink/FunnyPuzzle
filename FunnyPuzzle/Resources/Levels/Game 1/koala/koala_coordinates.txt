@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Koala");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Коала");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "koala");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "8 27 78 164 183 64 120 156 25 95 46 152");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "31 50 16 8 28 78 91 122 151 158 182 182");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "40 205 125 275 30 275 180 275 40 130 115 20 225");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "75 400 150 355 395 355 60 170 190 255 345 275 240");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "490");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "115");

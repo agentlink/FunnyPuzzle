@@ -23,6 +23,7 @@
 @property (nonatomic, weak) GamePlayViewController *gamePlayViewController;
 @property (nonatomic) NSInteger objectsLeft;
 
+
 - (void)checkForRightPlace:(Segment *)segment;
 - (FPLevelManager *)nextLevel;
 - (FPLevelManager *)prewLevel;

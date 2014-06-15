@@ -10,7 +10,7 @@
 #import "StartViewController.h"
 #import "FPGamePlayController.h"
 
-@interface FPLevelPresentationViewController : UIViewController<FPGamePlayViewControllerDelegate>
+@interface FPLevelPresentationViewController : UIViewController<FPGamePlayControllerDelegate>
 
 @property (nonatomic) FPGameType gameType;
 @property (nonatomic) StartViewController *parrent;
@@ -19,4 +19,7 @@
 @property (nonatomic) bool ScreenShotActivate;
 
 - (void)startEnterAnimation;
+
+- (void)nextLevel;
+- (void)previousLevel;
 @end

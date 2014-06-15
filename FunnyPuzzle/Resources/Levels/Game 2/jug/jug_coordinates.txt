@@ -1,0 +1,11 @@
+cv = new ContentValues();
+cv.put(PuzzlesDBHelper.GAME_TYPE, "1");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Jug with milk");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Кувшин с молоком");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "jug");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "166 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "14 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "90 85 255 265");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POvSITION_Y, "285 85 90 285");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "490");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "165");

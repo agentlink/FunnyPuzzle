@@ -10,8 +10,9 @@
 		0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0439944F19360CD30006E3DB /* Comp4_1.mp4 */; };
 		045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045E3EEA19360B3000258680 /* MediaPlayer.framework */; };
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
-		046691A0192CE99A0095E1A8 /* Candies.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candies.m */; };
-		047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlovers.m */; };
+		046691A0192CE99A0095E1A8 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candy.m */; };
+		047D58A3192F2C0A003CE8BC /* FPFlover.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlover.m */; };
+		04E761D01949C7F400414F58 /* cherry_full.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 04E761CF1949C7F400414F58 /* cherry_full.pdf */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
@@ -50,6 +51,7 @@
 		7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5703D192F399A00CE84F8 /* ground4.pdf */; };
 		7FA57043192F399A00CE84F8 /* ground5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5703E192F399A00CE84F8 /* ground5.pdf */; };
 		7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA57045192F42C000CE84F8 /* GameField.storyboard */; };
+		7FC90C7F19479C78001E1E2E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC90C7E19479C78001E1E2E /* UIImage+ImageEffects.m */; };
 		7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */; };
 		7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */; };
 		7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */; };
@@ -86,10 +88,10 @@
 		045E3EEA19360B3000258680 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBonusViewController.h; path = "View Controllers/Bonus View Controller/FPBonusViewController.h"; sourceTree = "<group>"; };
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBonusViewController.m; path = "View Controllers/Bonus View Controller/FPBonusViewController.m"; sourceTree = "<group>"; };
-		0466919E192CE99A0095E1A8 /* Candies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candies.h; path = "Custom Views/Candies/Candies.h"; sourceTree = "<group>"; };
-		0466919F192CE99A0095E1A8 /* Candies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Candies.m; path = "Custom Views/Candies/Candies.m"; sourceTree = "<group>"; };
-		047D58A1192F2C0A003CE8BC /* FPFlovers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlovers.h; sourceTree = "<group>"; };
-		047D58A2192F2C0A003CE8BC /* FPFlovers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlovers.m; sourceTree = "<group>"; };
+		0466919E192CE99A0095E1A8 /* Candy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Candy.h; path = "Custom Views/Candies/Candy.h"; sourceTree = "<group>"; };
+		0466919F192CE99A0095E1A8 /* Candy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Candy.m; path = "Custom Views/Candies/Candy.m"; sourceTree = "<group>"; };
+		047D58A1192F2C0A003CE8BC /* FPFlover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlover.h; sourceTree = "<group>"; };
+		047D58A2192F2C0A003CE8BC /* FPFlover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlover.m; sourceTree = "<group>"; };
 		7F316159192C9F9D00C49EAE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = "Custom Views/Ball View/BallView.h"; sourceTree = "<group>"; };
 		7F31615A192C9F9D00C49EAE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = "Custom Views/Ball View/BallView.m"; sourceTree = "<group>"; };
 		7F31615E192C9FC200C49EAE /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = "Custom Views/CloudView/CloudView.h"; sourceTree = "<group>"; };
@@ -144,6 +146,8 @@
 		7FA5703D192F399A00CE84F8 /* ground4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ground4.pdf; path = Resources/General/ground4.pdf; sourceTree = "<group>"; };
 		7FA5703E192F399A00CE84F8 /* ground5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ground5.pdf; path = Resources/General/ground5.pdf; sourceTree = "<group>"; };
 		7FA57045192F42C000CE84F8 /* GameField.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameField.storyboard; path = "View Controllers/GamePlay/GameField.storyboard"; sourceTree = "<group>"; };
+		7FC90C7D19479C78001E1E2E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Other Classes/UIImage+ImageEffects/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		7FC90C7E19479C78001E1E2E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Other Classes/UIImage+ImageEffects/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
 		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
 		7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -231,8 +235,8 @@
 		046691A1192CE9A40095E1A8 /* Candies */ = {
 			isa = PBXGroup;
 			children = (
-				0466919E192CE99A0095E1A8 /* Candies.h */,
-				0466919F192CE99A0095E1A8 /* Candies.m */,
+				0466919E192CE99A0095E1A8 /* Candy.h */,
+				0466919F192CE99A0095E1A8 /* Candy.m */,
 			);
 			name = Candies;
 			sourceTree = "<group>";
@@ -240,8 +244,8 @@
 		047D58A4192F2C10003CE8BC /* Flovers */ = {
 			isa = PBXGroup;
 			children = (
-				047D58A1192F2C0A003CE8BC /* FPFlovers.h */,
-				047D58A2192F2C0A003CE8BC /* FPFlovers.m */,
+				047D58A1192F2C0A003CE8BC /* FPFlover.h */,
+				047D58A2192F2C0A003CE8BC /* FPFlover.m */,
 			);
 			name = Flovers;
 			sourceTree = "<group>";
@@ -365,8 +369,8 @@
 		7F31617A192CA08F00C49EAE /* Start Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7F316174192CA05A00C49EAE /* StartViewController.h */,
 				7F316175192CA05A00C49EAE /* StartViewController.m */,
+				7F316174192CA05A00C49EAE /* StartViewController.h */,
 			);
 			name = "Start Controller";
 			sourceTree = "<group>";
@@ -385,6 +389,8 @@
 			children = (
 				7F8DAE56193736ED007E154E /* FPLevelPresentationViewController.h */,
 				7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */,
+				7FC90C7D19479C78001E1E2E /* UIImage+ImageEffects.h */,
+				7FC90C7E19479C78001E1E2E /* UIImage+ImageEffects.m */,
 				7F8DAE5A19373BBB007E154E /* FPLevelCell.h */,
 				7F8DAE5B19373BBB007E154E /* FPLevelCell.m */,
 				7F8DAE6019376FC8007E154E /* FPLevelCollectionFlowLayout.h */,
@@ -711,13 +717,14 @@
 			files = (
 				84F85BF9192F371D00BDECB5 /* FPGameManager.m in Sources */,
 				7FA4BA52192C9AFD00A772BA /* FPAppDelegate.m in Sources */,
+				7FC90C7F19479C78001E1E2E /* UIImage+ImageEffects.m in Sources */,
 				7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */,
 				0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */,
 				7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameModel.m in Sources */,
 				84E962D6192F512700DC785C /* FPLevelManager.m in Sources */,
 				7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */,
-				047D58A3192F2C0A003CE8BC /* FPFlovers.m in Sources */,
+				047D58A3192F2C0A003CE8BC /* FPFlover.m in Sources */,
 				7F8DAE7A19389E32007E154E /* FPGamePlayController.m in Sources */,
 				7F316176192CA05A00C49EAE /* GamePlayViewController.m in Sources */,
 				7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */,
@@ -727,7 +734,7 @@
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
-				046691A0192CE99A0095E1A8 /* Candies.m in Sources */,
+				046691A0192CE99A0095E1A8 /* Candy.m in Sources */,
 				84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

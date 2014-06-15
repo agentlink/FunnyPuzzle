@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "A³st");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "À³ñò");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "a³st");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "42 46 64 136 8 50 177");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 73 53 83 163 133 108");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "80 275 245 275 60 50 44");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "75 325 55 200 385 280 200");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "440");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "135");

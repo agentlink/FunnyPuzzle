@@ -1,0 +1,10 @@
+cv.put(PuzzlesDBHelper.GAME_TYPE, "0");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Potato");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Картошка");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "potato");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "35 124 8 78 143 45 111");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "10 8 35 71 27 113 94");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "22 260 150 180 305 80 255");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "223 140 60 270 215 360 350");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "525");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "160");

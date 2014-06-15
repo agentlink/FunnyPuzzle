@@ -36,6 +36,10 @@ static FPGameManager *_instance=nil;
     return _instance;
 }
 
+-(void)setCandiesCount:(int)CandiesCount
+{
+    _CandiesCount+=CandiesCount;
+}
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:VIBRATE]) {
@@ -94,6 +98,7 @@ static FPGameManager *_instance=nil;
 }
 
 - (NSString*) languageCode:(NSString*)language_{
+    
     if ([language_ isEqualToString:@"English"]) {
         return @"en";
     }

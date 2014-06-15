@@ -1,0 +1,11 @@
+cv = new ContentValues();
+cv.put(PuzzlesDBHelper.GAME_TYPE, "1");
+cv.put(PuzzlesDBHelper.GAME_WORD_ENG, "Fox");
+cv.put(PuzzlesDBHelper.GAME_WORD_RUS, "Ћисицаv");
+cv.put(PuzzlesDBHelper.GAME_ITEM_NAME, "fox");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_X, "230 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_FINAL_POSITION_Y, "8 10000 10000 10000");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_X, "45 75 275 235");
+cv.put(PuzzlesDBHelper.GAME_PARTS_START_POSITION_Y, "340 125 115 380м");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_X, "415");
+cv.put(PuzzlesDBHelper.GAME_FIGURE_POSITION_Y, "155");
