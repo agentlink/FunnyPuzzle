@@ -12,6 +12,8 @@
 #import "GamePlayViewController.h"
 #import "GameModel.h"
 #import "FPGamePlayController.h"
+#import "UIImage+ImageEffects.h"
+#import "JMIBlur.h"
 
 @interface FPLevelPresentationViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *back;
@@ -20,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet FPGamePlayController *controller;
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleet;
+@property (nonatomic) UIImageView *imageView;
 - (IBAction)menu:(id)sender;
 @end
 
@@ -58,15 +61,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    
+}
+- (void) viewDidAppear:(BOOL)animated
+{
+    _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [self.view insertSubview:_imageView atIndex:0];
+    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     [self.view setBackgroundColor:[UIColor clearColor]];
-   // [self.view setBackgroundColor:]
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[self capture:self.view]]];
+
+}
+- (void)tick:(NSTimer *)timer
+{
+    UINavigationController *controller = (UINavigationController *)self.presentingViewController;
+    UIImage *backg = [(StartViewController *)controller.topViewController snapshot];
+    backg = [backg applyBlurWithRadius:10 tintColor:[UIColor clearColor] saturationDeltaFactor:1 maskImage:nil];
+    [_imageView setImage:backg];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:backg]];
+}
+- (void)screenDidChange:(NSNotification *)notification
+{
+    UINavigationController *controller = (UINavigationController *)self.presentingViewController;
+    UIImage *backg = [(StartViewController *)controller.topViewController snapshot];
+    backg = [backg applyBlurWithRadius:10 tintColor:[UIColor clearColor] saturationDeltaFactor:1 maskImage:nil];
+    [_imageView setImage:backg];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:backg]];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (UIImage *)screenshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    [snapshotImage applyDarkEffect];
+    UIGraphicsEndImageContext();
+    return snapshotImage;
 }
 
 -(void)dealloc

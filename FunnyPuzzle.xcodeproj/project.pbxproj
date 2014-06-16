@@ -12,7 +12,6 @@
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
 		046691A0192CE99A0095E1A8 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candy.m */; };
 		047D58A3192F2C0A003CE8BC /* FPFlover.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D58A2192F2C0A003CE8BC /* FPFlover.m */; };
-		04E761D01949C7F400414F58 /* cherry_full.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 04E761CF1949C7F400414F58 /* cherry_full.pdf */; };
 		7F31615B192C9F9D00C49EAE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615A192C9F9D00C49EAE /* BallView.m */; };
 		7F316160192C9FC200C49EAE /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F31615F192C9FC200C49EAE /* CloudView.m */; };
 		7F316164192C9FDA00C49EAE /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316163192C9FDA00C49EAE /* Segment.m */; };
@@ -24,6 +23,8 @@
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
+		7F8C5E29194ED9A5001BA8A2 /* BlurLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5E25194ED9A5001BA8A2 /* BlurLayer.m */; };
+		7F8C5E2A194ED9A5001BA8A2 /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5E28194ED9A5001BA8A2 /* BlurView.m */; };
 		7F8DAE58193736ED007E154E /* FPLevelPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */; };
 		7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE5B19373BBB007E154E /* FPLevelCell.m */; };
 		7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DAE6119376FC8007E154E /* FPLevelCollectionFlowLayout.m */; };
@@ -111,6 +112,12 @@
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
 		7F8A15C4192E389A006A9D6B /* ball2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball2.pdf; path = Resources/General/ball2.pdf; sourceTree = "<group>"; };
+		7F8C5E23194ED9A5001BA8A2 /* JMIBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMIBlur.h; sourceTree = "<group>"; };
+		7F8C5E24194ED9A5001BA8A2 /* BlurLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurLayer.h; sourceTree = "<group>"; };
+		7F8C5E25194ED9A5001BA8A2 /* BlurLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurLayer.m; sourceTree = "<group>"; };
+		7F8C5E26194ED9A5001BA8A2 /* BlurStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurStyle.h; sourceTree = "<group>"; };
+		7F8C5E27194ED9A5001BA8A2 /* BlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurView.h; sourceTree = "<group>"; };
+		7F8C5E28194ED9A5001BA8A2 /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
 		7F8DAE56193736ED007E154E /* FPLevelPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelPresentationViewController.h; path = "View Controllers/Level Presentation View Controller/FPLevelPresentationViewController.h"; sourceTree = "<group>"; };
 		7F8DAE57193736ED007E154E /* FPLevelPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLevelPresentationViewController.m; path = "View Controllers/Level Presentation View Controller/FPLevelPresentationViewController.m"; sourceTree = "<group>"; };
 		7F8DAE5A19373BBB007E154E /* FPLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLevelCell.h; path = "View Controllers/Level Presentation View Controller/FPLevelCell.h"; sourceTree = "<group>"; };
@@ -303,6 +310,7 @@
 		7F31616B192CA01500C49EAE /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7F8C5E22194ED9A5001BA8A2 /* JMIBlur */,
 				8443DE07192F4F16009F1EF8 /* Game Model */,
 				84E962E7192F75D200DC785C /* Constants */,
 			);
@@ -369,8 +377,8 @@
 		7F31617A192CA08F00C49EAE /* Start Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7F316175192CA05A00C49EAE /* StartViewController.m */,
 				7F316174192CA05A00C49EAE /* StartViewController.h */,
+				7F316175192CA05A00C49EAE /* StartViewController.m */,
 			);
 			name = "Start Controller";
 			sourceTree = "<group>";
@@ -382,6 +390,19 @@
 				7F316181192D092300C49EAE /* FPPreferences.m */,
 			);
 			name = "Preferences Controller";
+			sourceTree = "<group>";
+		};
+		7F8C5E22194ED9A5001BA8A2 /* JMIBlur */ = {
+			isa = PBXGroup;
+			children = (
+				7F8C5E23194ED9A5001BA8A2 /* JMIBlur.h */,
+				7F8C5E24194ED9A5001BA8A2 /* BlurLayer.h */,
+				7F8C5E25194ED9A5001BA8A2 /* BlurLayer.m */,
+				7F8C5E26194ED9A5001BA8A2 /* BlurStyle.h */,
+				7F8C5E27194ED9A5001BA8A2 /* BlurView.h */,
+				7F8C5E28194ED9A5001BA8A2 /* BlurView.m */,
+			);
+			path = JMIBlur;
 			sourceTree = "<group>";
 		};
 		7F8DAE59193736F3007E154E /* LevelPresentationViewController */ = {
@@ -730,10 +751,12 @@
 				7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,
+				7F8C5E2A194ED9A5001BA8A2 /* BlurView.m in Sources */,
 				7F316182192D092300C49EAE /* FPPreferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
+				7F8C5E29194ED9A5001BA8A2 /* BlurLayer.m in Sources */,
 				046691A0192CE99A0095E1A8 /* Candy.m in Sources */,
 				84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */,
 			);
@@ -888,7 +911,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5782116A-140E-422B-ADCC-A11145D4584B";
+				PROVISIONING_PROFILE = "6D476C73-ECFC-4E62-83E0-CABAF0F81FEB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -913,7 +936,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5782116A-140E-422B-ADCC-A11145D4584B";
+				PROVISIONING_PROFILE = "6D476C73-ECFC-4E62-83E0-CABAF0F81FEB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
