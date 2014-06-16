@@ -38,6 +38,8 @@
 @property (nonatomic) NSString *notCompleetKey;
 
 @property (nonatomic) UIDynamicAnimator *animator;
+@property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
+@property (nonatomic) UICollisionBehavior *collision;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -51,6 +53,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+       
     }
     return self;
 }
@@ -68,6 +71,10 @@
     _next.backgroundColor = [UIColor clearColor];
     _prew.backgroundColor = [UIColor clearColor];
     _back.backgroundColor = [UIColor clearColor];
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    self.collision = [[UICollisionBehavior alloc] init];
+    self.collision.translatesReferenceBoundsIntoBoundary = YES;
+    [self.animator addBehavior:self.collision];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -237,23 +244,34 @@
     oldImage.image = _field.image;
     oldImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:oldImage];
+    
     PDFImage *image = [PDFImage imageNamed:path];
-    CGAffineTransform transform = _field.transform;
+    PDFImageView *newImage = [[PDFImageView alloc] initWithFrame:_field.frame];
+    newImage.image = [PDFImage imageNamed:path];
+    newImage.contentMode = UIViewContentModeScaleAspectFit;
+    [[self view] addSubview:newImage];
+
+    CGAffineTransform transform = newImage.transform;
+    //_field.alpha = 0;
+    newImage.layer.zPosition = MAXFLOAT;
+    newImage.layer.transform = CATransform3DMakeScale(2, 2, 2);
+    newImage.alpha = 0;
     _field.alpha = 0;
-    _field.layer.zPosition = MAXFLOAT;
-    //[_field removeConstraints:_field.constraints];
-    [UIView animateWithDuration:kAnimationDuration*0.2 animations:^{
-        oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        _field.transform = CGAffineTransformMakeScale(1.2, 1.2) ;
-        oldImage.alpha = 0.5;
+    [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
+        oldImage.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        //oldImage.alpha = 0.5;
+        newImage.alpha = 1;
+        newImage.transform = CGAffineTransformMakeScale(0.8, 0.8);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:kAnimationDuration animations:^{
+        [UIView animateWithDuration:kAnimationDuration*0.4 animations:^{
             oldImage.transform = CGAffineTransformMakeScale(0, 0);
-            _field.transform = transform;
-            _field.alpha = 1;
+            newImage.transform = transform;
+            newImage.alpha = 1;
             oldImage.alpha = 0;
         } completion:^(BOOL finished) {
+            _field.alpha = 1;
             [oldImage removeFromSuperview];
+            [newImage removeFromSuperview];
         }];
     }];
     _field.image = image;
@@ -410,6 +428,7 @@
         }]];
         [array removeObject:element];
         for (int i = 0; i<[array count]; i++) {
+            if (!element.inPlace)
             [[[array objectAtIndex:i] layer] setZPosition:i];
         }
         _dragingElement = element;
@@ -428,10 +447,16 @@
     } else {
         _dragingElement.layer.anchorPoint = _dragingPoint;
         _dragingElement.layer.position = touchLocation;
+//        [self.attachmentBehavior setAnchorPoint:touchLocation];
         [self checkForRightPlace:_dragingElementIndex];
+//        [self.collision addItem:_dragingElement];
     }
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.collision removeItem:_dragingElement];
+}
 - (void)checkForRightPlace:(NSUInteger)index
 {
     CGPoint rightPoint = _dragingElement.winPlace;
