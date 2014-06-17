@@ -16,5 +16,5 @@
 @property (nonatomic) bool ScreenShotActivate;
 
 - (void)returnFromLevelSelection;
-
+- (UIImage *)snapshot;
 @end

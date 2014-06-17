@@ -17,6 +17,7 @@
 #import "GamePlayViewController.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPGameManager.h"
+#import "JMIBlur.h"
 
 @interface StartViewController () //<UIViewControllerTransitioningDelegate>
 
@@ -159,6 +160,8 @@
                 
             }];
         }];
+//        BlurView *bView = [[BlurView alloc] initWithFrame:self.view.frame blurStyle:blurStyleCustom];
+//        [self.view addSubview:bView];
     } else {
         [GameModel sharedInstance].gameType = type;
         FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
@@ -333,5 +336,14 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     self.ScreenShotActivate=false;
+}
+#pragma mark -Pablic
+- (UIImage *)snapshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
 }
 @end
