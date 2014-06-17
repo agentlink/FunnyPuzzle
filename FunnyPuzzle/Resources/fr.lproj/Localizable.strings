@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "Porcin";
+"Pigeon" = "Pigeon";
+"Frogling" = "Grenouille";
+"Rabbit" = "Lapin";
+"Hen" = "Poule";
+"Octopus" = "Poulpe";
+"Pencil" = "Crayon";
+"Ice cream"	= "La crème glacée";
+
+
+"Fingerling" = "Poisson";
+"Elephant" = "Eléphant";
+"Lamb" = "Agneau";
+"Owl" = "Hibou";
+"Snail"	= "Escargot";
+"Squirrel" = "Ecureuil";
+"Apple"	= "Pomme";
+"Carrot" = "Carotte";
+
+
+"Goat" = "Chèvre";
+"Bee" = "Abeille";
+"Turtle" = "Tortue";
+"Dolphin" = "Dauphin";
+"Hippo"	= "Hippopotame";
+"Teddy-bear" = "Ours en peluche";
+"Penguin" = "Manchot";
+"Snake" = "Serpent";
+"Flamingo" = "Flamant";
+"Toucan" = "Toucan";
+"Giraffe" = "Girafe";
+"Monkey" = "Singe";
+"Zebra"	= "Zèbre";
+"Lion" = "Lion";
+
+"Kettle" = "Bouilloire";
+"Car" = "Voiture";
+"Eggplant" = "Aubergine";
+"Bread"	= "Pain";
+"Baseball cap" = "Casquette de baseball";
+"Computer chair" = "Chaise d'ordinateur";
+"Train" = "Train";
+"Wagon"	= "Wagon";
+"Peas" = "Pois";
+"Pot with honey" = "Pot de miel";
+"Mushrooms" = "Champignons";
+"Potato" = "Pomme de terre";
+"Key" = "Clé";
+"Strawberries" = "Fraises";
+"Crab" = "Crabe";
+"Corn" = "Maïs";
+"Jug with milk" = "Jug avec du lait";
+"Lightbulb"	= "Ampoule";
+"Stork" = "Cigogne";
+"Pepper" = "Poivre";
+"Cock" = "Coq";
+"Cancer" = "Cancer";
+"Backpack" = "Sac à dos";
+"Wizard hat" = "Chapeau de magicien";
+"Soother" = "Calmant";
+"Stapler" = "Agrafeuse";
+"Beet" = "Betterave";
+"Pumpkin" = "Citrouille";
+"Shuttlecocks" = "Volants";
+"Hamburger" = "Hamburger";
+"Yacht"	= "Yacht";
+"Scrambled eggs" = "Oeufs brouillés";
+"Umbrella" = "Parapluie";
+
+"Banana" = "banane";
+"Butterfly" = "papillon";
+"Cherry" = "cerise";
+"Crew cut" = "coupe de cheveux en court";
+"Crocodile" = "crocodile";
+"Dog" = "chien";
+"Fox" = "renard";
+"Gorilla" = "gorille";
+"Koala" = "Koala";
+"Lemon" = "citron";
+"Lime" = "chaux";
+"Pear" = "poire";
+"Pitching" = "Pitching";
+"Radish" = "radis";
+"Rhino" = "rhinocéros";
+"Sea bear" = "Ours de mer";
+"Tea cup" = "tasse de thé";
+
+
+
+"Perfect" = "parfait";
+"Wonderfull" = "Wonderfull";
+"Well done" = "Bravo";
+"Good job" = "bon travail";

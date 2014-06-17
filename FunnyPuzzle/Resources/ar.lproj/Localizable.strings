@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "أصبع";
+"Pigeon" = "حمامة ";
+"Frogling" = "ضفدع ";
+"Rabbit" = "أرنب";
+"Hen" = "دجاجة ";
+"Octopus" = "أخطبوط ";
+"Pencil" = "قلم رصاص";
+"Ice cream"	= "أيس كريم";
+
+
+"Fingerling" = "الإصبعيات";
+"Elephant" = "فيل";
+"Lamb" = "خروف";
+"Owl" = "بومة";
+"Snail"	= "حلزون";
+"Squirrel" = "سنجاب";
+"Apple"	= "تفاحة ";
+"Carrot" = "جزر";
+
+
+"Goat" = "ماعز";
+"Bee" = "نحلة ";
+"Turtle" = "سلحفاة";
+"Dolphin" = "دلفين";
+"Hippo"	= "فرس النهر";
+"Teddy-bear" = "دمية دب";
+"Penguin" = "البطريق طائر";
+"Snake" = "ثعبان ";
+"Flamingo" = "البشروس طائر مائي";
+"Toucan" = "الطوقان طائر";
+"Giraffe" = "زرافة";
+"Monkey" = "قرد";
+"Zebra"	= "حمار الوحش";
+"Lion" = "الأسد";
+
+"Kettle" = "غلاية ";
+"Car" = "سيارة ";
+"Eggplant" = "باذنجان";
+"Bread"	= "خبز ";
+"Baseball cap" = "قبعة بيسبول";
+"Computer chair" = "كرسي الكمبيوتر";
+"Train" = "قطار";
+"Wagon"	= "عربة";
+"Peas" = "بازلاء";
+"Pot with honey" = "وعاء من العسل";
+"Mushrooms" = "عش الغراب ";
+"Potato" = "البطاطس";
+"Key" = "مفتاح ";
+"Strawberries" = "فراولة ";
+"Crab" = "سلطعون ";
+"Corn" = "ذرة";
+"Jug with milk" = "إبريق مع الحليب";
+"Lightbulb"	= "المصباح";
+"Stork" = "اللقلق طائر";
+"Pepper" = "فلفل";
+"Cock" = "صياح الديك";
+"Cancer" = "سرطان";
+"Backpack" = "حقيبة ظهر";
+"Wizard hat" = "قبعة المعالج";
+"Soother" = "مهدئ";
+"Stapler" = "دباسة ";
+"Beet" = "بنجر";
+"Pumpkin" = "قرع نباتي";
+"Shuttlecocks" = "الكرات ";
+"Hamburger" = "هامبورجر";
+"Yacht"	= "أبحر بيخت ";
+"Scrambled eggs" = "بيض مخلوط ";
+"Umbrella" = "مظلة ";
+
+"Banana" = "موز";
+"Butterfly" = "فراشة";
+"Cherry" = "الكرز";
+"Crew cut" = "قطع الطاقم ";
+"Crocodile" = "تمساح";
+"Dog" = "الكلب";
+"Fox" = "ثعلب ";
+"Gorilla" = "غوريلا";
+"Koala" = "الكوال دب أسترالي";
+"Lemon" = "ليمون ";
+"Lime" = "كلس";
+"Pear" = "كمثرى";
+"Pitching" = "نصب";
+"Radish" = "فجل ";
+"Rhino" = "وحيد القرن";
+"Sea bear" = "الدب البحر";
+"Tea cup" = "كوب الشاي";
+
+
+
+"Perfect" = "مثالي";
+"Wonderfull" = "خلابة ";
+"Well done" = "أحسنت ";
+"Good job" = "وظيفة جيدة";
