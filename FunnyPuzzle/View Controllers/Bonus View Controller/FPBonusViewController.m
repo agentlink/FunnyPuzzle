@@ -97,20 +97,17 @@
 
 -(void)FirstBonusLevelLoad
 {
-    int h=self.view.frame.size.height;
-    int w=self.view.frame.size.width;
     self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
     MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
     UIImage *im=[UIImage imageNamed:@"basket_icon"];
-    CGRect rec=CGRectMake(h/2-im.size.height/2, w/2-im.size.width/2, im.size.width, im.size.height);
+    CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/2, self.view.frame.size.width/2-im.size.width/2, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
     imView.image=im;
     imView.layer.zPosition=1;
     [self.view addSubview:imView];
     float x=20;
     float y=20;
-    float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
-    objectsCandies2=[[NSMutableArray alloc]init];
+    float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
     objectsCandies=[[NSMutableArray alloc] init];
     for(int i=1; i<10; i++)
     {
@@ -123,51 +120,42 @@
         c.frame = r;
         c.BonusLevelKind=0;
         [self.view addSubview:c];
-        [objectsCandies2 insertObject:c atIndex:i-1];
         [objectsCandies insertObject:c atIndex:i-1];
-        x+=delta;
+        x+=deltaX;
         [c Move:true];
    }
 }
 
 -(void)SecondBonusLevelLoad
 {
-    int h=self.view.frame.size.height;
-    int w=self.view.frame.size.width;
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im2=[UIImage imageNamed:@"sun_img"];
-    float delta=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
-    CGRect rec=CGRectMake( h/2-im2.size.height/2, w/2-im2.size.width,  im2.size.height, im2.size.width);
-    MainRec=CGRectMake( h/2-40, w/2,  80, 68);
-    UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
+    float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
+    MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
+    UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake( self.view.frame.size.height/2-im2.size.height/2, self.view.frame.size.width/2-im2.size.width,  im2.size.height, im2.size.width)];
     imView.image=im2;
     [self.view addSubview:imView];
     [self SunMove:imView];
-    objectsCandies2=[[NSMutableArray alloc]init];
     objectsCandies=[[NSMutableArray alloc] init];
     objectsFlowers=[[NSMutableArray alloc] init];
     float x=50;
     for (int i=0; i<5; i++)
     {
-        FPFlover *f=[FPFlover new];
+       
         UIImage *im=[UIImage imageNamed:@"flower_img"];
+        FPFlover *f=[[FPFlover alloc] initWithFrame:CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height)];
         f.backgroundColor=[UIColor colorWithPatternImage:im];
-        CGRect rec1=CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height);
-        f.frame=rec1;
         f.layer.zPosition=0;
         [objectsFlowers insertObject:f atIndex:i];
         [self.view addSubview:f];
-        Candy *c=[Candy new];
         UIImage *im2 = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-        CGRect rec=CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width);
-        c.frame=rec;
+        Candy *c=[[Candy alloc] initWithFrame:CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width)];
         c.layer.zPosition=1;
         c.BonusLevelKind=1;
-        [objectsCandies2 insertObject:c atIndex:i];
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
-        x+=delta;
+        x+=deltaX;
         [c Move:true];
     }
 }
@@ -189,14 +177,11 @@
 
 -(void)ThirdBonusLevelLoad
 {
-    ii=0;
     objectsCandies2=[[NSMutableArray alloc]init];
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im=[UIImage imageNamed:@"tree_img"];
-    int h=self.view.frame.size.height;
-    int w=self.view.frame.size.width;
-    CGRect rec=CGRectMake(h/2-im.size.height/4, w/2-im.size.width/2-50, im.size.width, im.size.height);
+    CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/4, self.view.frame.size.width/2-im.size.width/2-50, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
     MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
     imView.image=im;
@@ -207,10 +192,9 @@
     [self.view addSubview:imView];
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
-        Candy *c=[Candy new];
+     
         UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-        rec=CGRectMake(pointsX[i], pointsY[i], im.size.height*0.9, im.size.width*0.9);
-        c.frame=rec;
+        Candy *c=[[Candy alloc] initWithFrame:CGRectMake(pointsX[i], pointsY[i], im.size.height*0.9, im.size.width*0.9)];
         c.layer.zPosition=1;
         CGSize size=CGSizeMake(im.size.height*0.9, im.size.width*0.9);
         UIImage *im2=[self imageWithImage:im scaledToSize:size];
@@ -230,7 +214,6 @@
     if (Numb==3){
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *c=objectsCandies[i];
-        
         if ([[c.layer presentationLayer]hitTest:touchLocation]) {
             CGRect rect=CGRectMake(touchLocation.x, touchLocation.y, c.frame.size.width, c.frame.size.height);
             c.frame=rect;
@@ -255,10 +238,8 @@
 {
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-    UIImageView *imView=[[UIImageView alloc]init];
     UIImage *im=[UIImage imageNamed:@"crew_cut_all_img"];
-    CGRect rect=CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height );
-    imView.frame=rect;
+    UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height )];
     imView.image=im;
     imView.layer.zPosition=0;
     [self.view addSubview:imView];
@@ -295,7 +276,6 @@
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.frame = r;
         c.BonusLevelKind=3;
-        c.tag=i;
         
         for (id r in c.gestureRecognizers) {
             [c removeGestureRecognizer:r];

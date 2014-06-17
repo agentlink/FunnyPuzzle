@@ -39,6 +39,10 @@
 @property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
 @property (nonatomic) UICollisionBehavior *collision;
 
+
+
+
+
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
