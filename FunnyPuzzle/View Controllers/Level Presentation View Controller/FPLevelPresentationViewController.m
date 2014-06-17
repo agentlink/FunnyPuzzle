@@ -249,6 +249,8 @@
 {
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
     FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+
+
     int currentLevelNumber = currentGamePlay.levelNumber;
 
     if (currentLevelNumber+1<self.levels.count) {
@@ -316,6 +318,7 @@
 #pragma mark - Publick
 - (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath
 {
+     NSLog(@"Index Path %@", indexPath);
     [self.collection reloadItemsAtIndexPaths:@[indexPath]];
 }
 @end

@@ -12,6 +12,7 @@
 #import "FPLevelPresentationViewController.h"
 #import "FPSoundManager.h"
 #import "AccelerometerManager.h"
+#import "FPGameManager.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -115,8 +116,8 @@
             break;
     }
     _levelManager = [FPLevelManager loadLevel:level type:type];
-    _levelsCount=40;
-    _levelNumber=level;
+    self.levelsCount=40;
+    self.levelNumber=level;
 }
 
 - (void)configureGameplayWithAnimationType:(FPGameplayAnimationMode)animationMode
@@ -133,7 +134,13 @@
             break;
     }
 }
+#pragma mark - Custom Accsesors
 
+- (void)setLevelNumber:(int)levelNumber
+{
+    _levelNumber = levelNumber;
+    _indexPath = [NSIndexPath indexPathForRow:levelNumber inSection:0];
+}
 #pragma mark - Animations
 
 - (void)startAnimationForNewLevel
@@ -157,6 +164,11 @@
     nameFrame.origin.x = nameFrame.origin.x*2;
     _levelName.frame = nameFrame;
     _levelName.alpha = 1;
+    _ACManager = [AccelerometerManager new];
+    _ACManager.delegate = (id)self;
+    [_ACManager setShakeRangeWithMinValue:0.75 MaxValue:0.80];
+    _resetImage = 0;
+    [_ACManager startShakeDetect];
 }
 - (void)centerField:(BOOL)center animate:(BOOL)animate
 {
@@ -288,11 +300,8 @@
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
             [self showBasket:nil];
-            _ACManager = [AccelerometerManager new];
-            _ACManager.delegate = (id)self;
-            [_ACManager setShakeRangeWithMinValue:0.75 MaxValue:0.80];
-            _resetImage = 0;
-            [_ACManager startShakeDetect];
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName] == NO)
+                [[FPGameManager sharedInstance] pickUpCandies:1];
         }];
     }];
     _field.image = image;
@@ -334,6 +343,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
+    [[FPSoundManager sharedInstance] playPraise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -353,7 +363,6 @@
 
     [_animator addBehavior:candySnap];
     [UIView animateWithDuration:kAnimationDuration*2 animations:^{
-        //_candyView.alpha=1;
         candyView.transform = CGAffineTransformMakeRotation(M_PI);
     } completion:^(BOOL finished) {
         _basketView.layer.zPosition=2;
@@ -505,7 +514,6 @@
 }
 - (IBAction)back:(id)sender
 {
-    
     if ([self navigationController]) {
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
@@ -516,6 +524,7 @@
             
         }];
     }
+
 }
 
 #pragma mark - Gameplay Methods
@@ -599,6 +608,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
+
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
 
             [self compleetAnimation];
@@ -639,9 +649,18 @@
 - (void) iPhoneDidShaked
 {
     _resetImage++;
+    _field.alpha-=0.1;
     NSLog(@"%i",_resetImage);
+    switch (_resetImage) {
+        case 1:
+            
+            break;
+            
+        default:
+            break;
+    }
     if (_resetImage == 10) {
-        [_ACManager startShakeDetect];
+        [_ACManager stopShakeDetect];
         [self resetImageProgress];
     }
 }
