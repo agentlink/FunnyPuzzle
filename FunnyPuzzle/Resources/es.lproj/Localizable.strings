@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "Cerdito";
+"Pigeon" = "Paloma";
+"Frogling" = "Rana";
+"Rabbit" = "Conejo";
+"Hen" = "Gallina";
+"Octopus" = "Pulpo";
+"Pencil" = "Lápiz";
+"Ice cream"	= "Helado";
+
+
+"Fingerling" = "Pescado";
+"Elephant" = "Elefante";
+"Lamb" = "Cordero";
+"Owl" = "Búho";
+"Snail"	= "Caracol";
+"Squirrel" = "Ardilla";
+"Apple"	= "Manzana";
+"Carrot" = "Zanahoria";
+
+
+"Goat" = "Cabra";
+"Bee" = "Abeja";
+"Turtle" = "Turtle";
+"Dolphin" = "Delfín";
+"Hippo"	= "Hipopótamo";
+"Teddy-bear" = "Oso de peluche";
+"Penguin" = "Pingüino";
+"Snake" = "Serpiente";
+"Flamingo" = "Flamenco";
+"Toucan" = "Tucán";
+"Giraffe" = "Jirafa";
+"Monkey" = "Mono";
+"Zebra"	= "Cebra";
+"Lion" = "León";
+
+"Kettle" = "Hervidor";
+"Car" = "Coche";
+"Eggplant" = "Berenjena";
+"Bread"	= "Pan";
+"Baseball cap" = "Gorra de béisbol";
+"Computer chair" = "Silla de la computadora";
+"Train" = "Tren";
+"Wagon"	= "Vagón";
+"Peas" = "Chícharos";
+"Pot with honey" = "Pot con miel";
+"Mushrooms" = "Hongos";
+"Potato" = "Patata";
+"Key" = "Clave";
+"Strawberries" = "Fresas";
+"Crab" = "Cangrejo";
+"Corn" = "Maíz";
+"Jug with milk" = "Jarro con leche";
+"Lightbulb"	= "Bombilla";
+"Stork" = "Cigüeña";
+"Pepper" = "Pimienta";
+"Cock" = "Polla";
+"Cancer" = "Cáncer";
+"Backpack" = "Mochila";
+"Wizard hat" = "Sombrero de mago";
+"Soother" = "Chupete";
+"Stapler" = "Grapadora";
+"Beet" = "Remolacha";
+"Pumpkin" = "Calabaza";
+"Shuttlecocks" = "Volantes";
+"Hamburger" = "Hamburguesa";
+"Yacht"	= "Yate";
+"Scrambled eggs" = "Huevos revueltos";
+"Umbrella" = "Paraguas";
+
+"Banana" = "Plátano";
+"Butterfly" = "Mariposa";
+"Cherry" = "Cereza";
+"Crew cut" = "Corte de pelo";
+"Crocodile" = "Cocodrilo";
+"Dog" = "Perro";
+"Fox" = "Zorro";
+"Gorilla" = "Gorila";
+"Koala" = "Koala";
+"Lemon" = "Limón";
+"Lime" = "Cal";
+"Pear" = "Pera";
+"Pitching" = "Cabeceo";
+"Radish" = "Rábano";
+"Rhino" = "Rinoceronte";
+"Sea bear" = "Oso de Mar";
+"Tea cup" = "Taza de té";
+
+
+
+"Perfect" = "Perfecto";
+"Wonderfull" = "Wonderfull";
+"Well done" = "Bien hecho ";
+"Good job" = "Buen trabajo";
