@@ -259,18 +259,18 @@
         CGRect r;
         int s=arc4random()%2;
         if (s==0) {
-            r=CGRectMake(0, 20+arc4random()%100, im.size.height*0.8, im.size.width*0.8);
+            r=CGRectMake(-150, 20+arc4random()%100, im.size.height*0.8, im.size.width*0.8);
             size=CGSizeMake(im.size.height*0.8, im.size.width*0.8);
             im2=[self imageWithImage:im scaledToSize:size];
             c.Size=0;
-            c.centrBascket=CGRectMake(imView.frame.origin.y-im2.size.width/2, imView.frame.origin.x+imView.frame.size.height*0.6, im2.size.height, im2.size.width);
+            c.centrBascket=CGRectMake(imView.center.x-imView.frame.size.width/2+c.frame.size.width, imView.center.y-c.frame.size.height, im2.size.height, im2.size.width);
         }
         else
         {
-            r=CGRectMake(0, 20+arc4random()%100, im.size.height, im.size.width);
+            r=CGRectMake(-150, 20+arc4random()%100, im.size.height, im.size.width);
             size=CGSizeMake(im.size.height, im.size.width);
-            im2=[self imageWithImage:im scaledToSize:size];
-            c.centrBascket=CGRectMake(imView.frame.origin.y+imView.frame.size.width*0.7, imView.frame.origin.x+imView.frame.size.height*0.5, im.size.height, im.size.width);
+            im2=im;
+            c.centrBascket=CGRectMake(imView.center.x+imView.frame.size.width/2-im2.size.width, imView.center.y-im2.size.height/2, im2.size.height, im2.size.width);
             c.Size=1;
         }
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
@@ -296,12 +296,21 @@
         animation.autoreverses = NO;
         animation.removedOnCompletion = NO;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+        
         [c.layer addAnimation:animation forKey:@"position"];
-
+        
+   //     [c.layer animationDidStop:animation finished:YES ];
+        
+        
         x+=55;
         deltaX-=55;
 
       }
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    NSLog(@"stop");
 }
 
 
@@ -487,6 +496,7 @@ int tick=0;
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
+        [candy removeFromSuperview];
     }
     _accelerometer=nil;
     _animator=nil;
