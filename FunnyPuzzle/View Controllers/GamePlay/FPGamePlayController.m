@@ -9,7 +9,6 @@
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
 #import "GameModel.h"
-#import "FPGameManager.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPSoundManager.h"
 

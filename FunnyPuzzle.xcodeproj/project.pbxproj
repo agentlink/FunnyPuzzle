@@ -86,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		0439944F19360CD30006E3DB /* Comp4_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Comp4_1.mp4; path = Resources/Comp4_1.mp4; sourceTree = "<group>"; };
+		045781891950451000D7ABA2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		045E3EEA19360B3000258680 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0466919A192CE88D0095E1A8 /* FPBonusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBonusViewController.h; path = "View Controllers/Bonus View Controller/FPBonusViewController.h"; sourceTree = "<group>"; };
 		0466919B192CE88D0095E1A8 /* FPBonusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBonusViewController.m; path = "View Controllers/Bonus View Controller/FPBonusViewController.m"; sourceTree = "<group>"; };
@@ -678,6 +679,7 @@
 				Base,
 				ru,
 				hi,
+				uk,
 			);
 			mainGroup = 7FA4BA35192C9AFD00A772BA;
 			productRefGroup = 7FA4BA3F192C9AFD00A772BA /* Products */;
@@ -787,6 +789,7 @@
 				7F8A15C1192E2069006A9D6B /* Base */,
 				84AEB9BC1933256C00DF942A /* en */,
 				848CC491193C715A00E13C93 /* hi */,
+				045781891950451000D7ABA2 /* uk */,
 			);
 			name = Localizable.strings;
 			path = Resources;
