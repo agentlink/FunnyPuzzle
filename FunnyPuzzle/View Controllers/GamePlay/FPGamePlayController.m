@@ -111,8 +111,8 @@
             break;
     }
     _levelManager = [FPLevelManager loadLevel:level type:type];
-    _levelsCount=40;
-    _levelNumber=level;
+    self.levelsCount=40;
+    self.levelNumber=level;
 }
 
 - (void)configureGameplayWithAnimationType:(FPGameplayAnimationMode)animationMode
@@ -129,7 +129,13 @@
             break;
     }
 }
+#pragma mark - Custom Accsesors
 
+- (void)setLevelNumber:(int)levelNumber
+{
+    _levelNumber = levelNumber;
+    _indexPath = [NSIndexPath indexPathForRow:levelNumber inSection:0];
+}
 #pragma mark - Animations
 
 - (void)startAnimationForNewLevel
@@ -326,6 +332,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
+    [[FPSoundManager sharedInstance] playPraise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -345,7 +352,6 @@
 
     [_animator addBehavior:candySnap];
     [UIView animateWithDuration:kAnimationDuration*2 animations:^{
-        //_candyView.alpha=1;
         candyView.transform = CGAffineTransformMakeRotation(M_PI);
     } completion:^(BOOL finished) {
         _basketView.layer.zPosition=2;
@@ -358,7 +364,6 @@
             transform = CGAffineTransformTranslate(transform, 0, -95);
             candyView.transform = transform;
         } completion:^(BOOL compleat){
-            [[FPSoundManager sharedInstance] playPraise];
             candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
             [_basketView insertSubview:candyView atIndex:0];
             [_animator removeBehavior:_basketSnap];
@@ -497,17 +502,11 @@
 }
 - (IBAction)back:(id)sender
 {
-    
-    if ([self navigationController]) {
-        [[self navigationController] popViewControllerAnimated:YES];
-    } else if ([self presentingViewController])
-    {
-        FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-        [presentationController updateColleCellAtIndexPath:self.indexPath];
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController updateColleCellAtIndexPath:self.indexPath];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Gameplay Methods
