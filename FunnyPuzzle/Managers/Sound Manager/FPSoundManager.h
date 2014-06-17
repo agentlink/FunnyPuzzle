@@ -19,6 +19,7 @@
 - (void) playGameMusic;
 - (void) stopGameMusic;
 - (void) playSound:(NSURL*)sound;
+- (void)playPraise;
 
 - (void) vibrateWithMode:(FPVibrateMode)vibrateMode;
 

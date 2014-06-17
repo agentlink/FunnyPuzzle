@@ -141,6 +141,7 @@
 {
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     [controller loadLevel:(int)[indexPath row] type:_gameType];
+    controller.indexPath = indexPath;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
       FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
       UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
@@ -155,7 +156,6 @@
     [[present layer] setBorderWidth:3];
     [present addSubview:imView];
     [[self view] addSubview:present];
-#warning Переписати на збереження останього рівня
     [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastLevel"];
     [self presentViewController:controller animated:YES completion:^{
         controller.view.alpha = 0;
@@ -250,6 +250,7 @@
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
     FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     int currentLevelNumber = currentGamePlay.levelNumber;
+
     if (currentLevelNumber+1<self.levels.count) {
         currentLevelNumber+=1;
         [nextController loadLevel:currentLevelNumber type:[self gameType]];
@@ -282,6 +283,8 @@
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
     FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     int currentLevelNumber = currentGamePlay.levelNumber;
+
+
     if (currentLevelNumber-1>=0) {
         currentLevelNumber-=1;
         [nextController loadLevel:currentLevelNumber type:[self gameType]];
@@ -309,6 +312,10 @@
             }];
         }];
     }
-
+}
+#pragma mark - Publick
+- (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.collection reloadItemsAtIndexPaths:@[indexPath]];
 }
 @end
