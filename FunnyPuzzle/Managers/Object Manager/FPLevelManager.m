@@ -162,8 +162,8 @@
 - (NSURL *)getSoundURL
 {
     NSURL *result;
-    NSString *suffix = [FPGameManager sharedInstance].language;
-    NSString *path_ = [NSString stringWithFormat:@"%@/%@_%@.mp3",[[NSBundle mainBundle] resourcePath], _pathToColor, suffix];
+    NSString *suffix = [[FPGameManager sharedInstance].language isEqualToString:@"en"] ? @"" :     [NSString stringWithFormat:@"_%@", [FPGameManager sharedInstance].language];
+    NSString *path_ = [NSString stringWithFormat:@"%@/%@%@.mp3",[[NSBundle mainBundle] resourcePath], _pathToColor, suffix];
     result = [NSURL fileURLWithPath:path_];
     return result;
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:path_ ofType:@"mp3"];

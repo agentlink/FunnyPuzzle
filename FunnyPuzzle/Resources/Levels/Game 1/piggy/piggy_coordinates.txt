@@ -1,0 +1,17 @@
+"pig_gray_lines.svg" & "pig_gray.svg" & "pig.svg":
+X - 420 px
+Y - 140 px
+width - 335 px
+height - 190 px
+
+pig1.svg:
+X - 2 px
+Y - 49 px
+
+pig2.svg:
+X - 71 px
+Y - 2 px
+
+pig3.svg
+X - 231 px
+Y - 19 px

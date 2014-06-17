@@ -69,7 +69,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>toad</string>
+			<string>frogling</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -92,7 +92,7 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/toad</string>
+			<string>Game 1/frogling</string>
 			<key>name</key>
 			<string>Frogling</string>
 		</dict>
@@ -100,7 +100,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>dove</string>
+			<string>pigeon</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -132,7 +132,7 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/dove</string>
+			<string>Game 1/pigeon</string>
 			<key>name</key>
 			<string>Pigeon</string>
 		</dict>
@@ -140,7 +140,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>pig</string>
+			<string>piggy</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -172,7 +172,7 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/pig</string>
+			<string>Game 1/piggy</string>
 			<key>name</key>
 			<string>Piggy</string>
 		</dict>
@@ -220,7 +220,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>chicken</string>
+			<string>hen</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -252,7 +252,7 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/chicken</string>
+			<string>Game 1/hen</string>
 			<key>name</key>
 			<string>Hen</string>
 		</dict>
@@ -991,7 +991,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>bear</string>
+			<string>teddy_bear</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -1050,9 +1050,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/bear</string>
+			<string>Game 1/teddy_bear</string>
 			<key>name</key>
-			<string>Bear</string>
+			<string>Teddy_bear</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3806,7 +3806,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>duck</string>
+			<string>pitching</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -3847,9 +3847,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/duck</string>
+			<string>Game 2/pitching</string>
 			<key>name</key>
-			<string>Duck</string>
+			<string>Pitching</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3904,7 +3904,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>hedgehog</string>
+			<string>crew_cut</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -3945,15 +3945,15 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/hedgehog</string>
+			<string>Game 2/crew_cut</string>
 			<key>name</key>
-			<string>Hedgehog</string>
+			<string>Crew_cut</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>jug</string>
+			<string>jug_with_milk</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -3994,9 +3994,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/jug</string>
+			<string>Game 2/jug_with_milk</string>
 			<key>name</key>
-			<string>Jug</string>
+			<string>Jug_with_milk</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>

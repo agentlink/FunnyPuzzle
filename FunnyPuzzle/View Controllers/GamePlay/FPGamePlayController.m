@@ -9,8 +9,9 @@
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
 #import "GameModel.h"
-#import "FPGameManager.h"
 #import "FPLevelPresentationViewController.h"
+#import "FPSoundManager.h"
+#import "AccelerometerManager.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -21,7 +22,7 @@
 
 @end
 
-@interface FPGamePlayController ()
+@interface FPGamePlayController () <ShakeHappendDelegate>
 @property (nonatomic) FPLevelManager *levelManager;
 @property (nonatomic) NSArray *elements;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *fieldRightConstraint;
@@ -40,6 +41,16 @@
 @property (nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
 @property (nonatomic) UICollisionBehavior *collision;
+
+
+@property (nonatomic) UISnapBehavior *basketSnap;
+@property (nonatomic) UICollisionBehavior *collisions;
+@property (nonatomic) UIPushBehavior *push;
+@property (nonatomic) UIView *basketView;
+
+@property (nonatomic) AccelerometerManager *ACManager;
+@property (nonatomic) int resetImage;
+
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -238,6 +249,10 @@
 }
 - (void)compleetAnimation
 {
+    for (int i = 0; i<[[_levelManager mcElements] count]; i++)
+    {
+        [_elements[i] removeFromSuperview];
+    }
 
     NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
     PDFImageView *oldImage = [[PDFImageView alloc] initWithFrame:_field.frame];
@@ -252,39 +267,147 @@
     [[self view] addSubview:newImage];
 
     CGAffineTransform transform = newImage.transform;
-    //_field.alpha = 0;
     newImage.layer.zPosition = MAXFLOAT;
-    newImage.layer.transform = CATransform3DMakeScale(2, 2, 2);
     newImage.alpha = 0;
     _field.alpha = 0;
     [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-        oldImage.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
         //oldImage.alpha = 0.5;
         newImage.alpha = 1;
-        newImage.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        oldImage.alpha = 0;
+        newImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        [self showRays];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:kAnimationDuration*0.4 animations:^{
-            oldImage.transform = CGAffineTransformMakeScale(0, 0);
-            newImage.transform = transform;
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [oldImage removeFromSuperview];
+            newImage.transform = CGAffineTransformMakeScale(0.9, 0.9);
             newImage.alpha = 1;
-            oldImage.alpha = 0;
+            newImage.transform = transform;
         } completion:^(BOOL finished) {
             _field.alpha = 1;
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
+            [self showBasket:nil];
+            _ACManager = [AccelerometerManager new];
+            _ACManager.delegate = (id)self;
+            [_ACManager setShakeRangeWithMinValue:0.75 MaxValue:0.80];
+            _resetImage = 0;
+            [_ACManager startShakeDetect];
         }];
     }];
     _field.image = image;
-    for (int i = 0; i<[[_levelManager mcElements] count]; i++)
-    {
-        [_elements[i] removeFromSuperview];
-    }
-    CGRect rect=CGRectMake(-100, 50, 100, 100);
-    UILabel *LevelName=[[UILabel alloc] initWithFrame:rect];
-    LevelName.text=@"nrbfjbnsdlkb";
-    [self.view addSubview:LevelName];
-    
 }
+
+- (void)showLevelName:(void (^)())completion
+{
+    [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+    [[self levelName] setText:NSLocalizedString([[self levelManager] levelName], nil)];
+    CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
+    [[self levelName] setAlpha:1];
+    [[self animator] addBehavior:snap];
+}
+
+- (void)showRays
+{
+    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    CGRect frame = CGRectMake((-star.size.width/2)+CGRectGetMidX(_field.frame), (-star.size.height/2)+CGRectGetMidY(_field.frame), star.size.width, star.size.height);
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:frame];
+    imageView.tag = FPTagRay;
+    imageView.image = star;
+    CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    rotate.fromValue = @0;
+    rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
+    rotate.duration = 10;
+    rotate.repeatCount = INFINITY;
+    [imageView.layer addAnimation:rotate forKey:@"rotation"];
+    CGAffineTransform transform = imageView.transform;
+    imageView.transform = CGAffineTransformMakeScale(0, 0);
+    imageView.layer.zPosition = -5;
+    [self.view insertSubview:imageView atIndex:0];
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        imageView.transform = transform;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+
+- (void) showBasket:(void (^)())completion
+{
+    float xShift = 0.5;
+    _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
+    UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
+    [imageVeiw setImage:[UIImage imageNamed:@"basket_full_img"]];
+    [_basketView addSubview:imageVeiw];
+    _basketView.tag=99;
+    [self.view addSubview:_basketView];
+    UIImageView *candyView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"candy_orange"]];
+    candyView.tag=98;
+    candyView.frame = CGRectMake(CGRectGetMidX(self.view.bounds), (CGRectGetMidX(self.view.bounds)*0.3)-70, 35, 35);
+    [self.view addSubview:candyView];
+    _basketSnap = [[UISnapBehavior alloc] initWithItem:_basketView snapToPoint:CGPointMake(CGRectGetMidX(self.view.bounds)*xShift, CGRectGetMidY(self.view.bounds))];
+    _basketSnap.damping = 0.3;
+    [_animator addBehavior:_basketSnap];
+    UISnapBehavior *candySnap = [[UISnapBehavior alloc] initWithItem:candyView snapToPoint:CGPointMake(CGRectGetMidX(self.view.bounds)*xShift, CGRectGetMidY(_basketView.frame)-70)];
+    candySnap.damping = 0.4;
+
+    [_animator addBehavior:candySnap];
+    [UIView animateWithDuration:kAnimationDuration*2 animations:^{
+        //_candyView.alpha=1;
+        candyView.transform = CGAffineTransformMakeRotation(M_PI);
+    } completion:^(BOOL finished) {
+        _basketView.layer.zPosition=2;
+        candyView.layer.zPosition=0;
+        [_animator removeBehavior:candySnap];
+
+        [UIView animateWithDuration:kAnimationDuration*1.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            CGAffineTransform transform = candyView.transform;
+            transform = CGAffineTransformRotate(transform, M_PI);
+            transform = CGAffineTransformTranslate(transform, 0, -95);
+            candyView.transform = transform;
+        } completion:^(BOOL compleat){
+            [[FPSoundManager sharedInstance] playPraise];
+            candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
+            [_basketView insertSubview:candyView atIndex:0];
+            [_animator removeBehavior:_basketSnap];
+            [_animator removeBehavior:candySnap];
+            [self performSelector:@selector(moveFieldToCenter:) withObject:nil afterDelay:kAnimationDuration];
+            if (completion) {
+                completion();
+            }
+        }];
+    }];
+}
+
+- (void)moveFieldToCenter:(void(^)())completion
+{
+//    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:_basketView snapToPoint:CGPointMake(-100, 0)];
+//    [_animator addBehavior:snap];
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
+    imageView.image = _field.image;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:imageView];
+    _field.alpha = 0;
+    CGRect centerRect = imageView.frame;
+    centerRect.size.height = imageView.frame.size.height - _levelName.frame.size.height;
+    centerRect.origin.x = CGRectGetMidX(self.view.bounds)-(imageView.frame.size.width/2);
+    centerRect.origin.y = CGRectGetMidY(self.view.bounds)-(centerRect.size.height/2)-_levelName.frame.size.height;
+
+    PDFImageView *star = (PDFImageView *)[self.view viewWithTag:FPTagRay];
+    CGRect frame = CGRectMake((-star.image.size.width/2)+CGRectGetMidX(centerRect), (-star.image.size.height/2)+CGRectGetMidY(centerRect), star.image.size.width, star.image.size.height);
+    [self showLevelName:nil];
+    CGAffineTransform imageTransform = imageView.transform;
+    imageTransform = CGAffineTransformTranslate(imageTransform, -(_field.frame.origin.x-centerRect.origin.x),  -(_field.frame.origin.y-centerRect.origin.y));
+    imageTransform = CGAffineTransformScale(imageTransform, centerRect.size.height/_field.frame.size.height, centerRect.size.height/_field.frame.size.height);
+    [UIView animateWithDuration:kAnimationDuration*2 animations:^{
+        //imageView.frame = centerRect;
+        imageView.transform = imageTransform;
+        star.frame = frame;
+        _basketView.transform = CGAffineTransformMakeTranslation(-(_basketView.frame.origin.x+_basketView.frame.size.width), 0);
+    } completion:^(BOOL finished) {
+    }];
+}
+
 #pragma mark - Publick
 - (UIImage *)screenshot
 {
@@ -370,19 +493,25 @@
 - (IBAction)next:(id)sender;
 {
     FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController updateColleCellAtIndexPath:self.indexPath];
     [presentationController nextLevel];
 }
 - (IBAction)prew:(id)sender
 {
     FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+     [presentationController updateColleCellAtIndexPath:self.indexPath];
     [presentationController previousLevel];
+
 }
 - (IBAction)back:(id)sender
 {
+    
     if ([self navigationController]) {
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
     {
+        FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+        [presentationController updateColleCellAtIndexPath:self.indexPath];
         [self dismissViewControllerAnimated:YES completion:^{
             
         }];
@@ -398,7 +527,7 @@
     _dragingPoint = CGPointZero;
     NSMutableArray *tapElements = [[NSMutableArray alloc] init];
     for (FPElement *element in _elements) {
-        if (CGRectContainsPoint(element.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:element] inView:element]) {
+        if (CGRectContainsPoint(element.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:element] inView:element] && !element.inPlace) {
             [tapElements addObject:element];
         }
     }
@@ -470,7 +599,8 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-#warning Тут викликатиметься метод для виграшу
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
+
             [self compleetAnimation];
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
@@ -498,4 +628,22 @@
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
     return CGColorGetAlpha([color CGColor])==0;
 }
+
+- (void) resetImageProgress
+{
+    NSLog(@"reset");
+}
+
+#pragma mark - Accelerometer Delegate
+
+- (void) iPhoneDidShaked
+{
+    _resetImage++;
+    NSLog(@"%i",_resetImage);
+    if (_resetImage == 10) {
+        [_ACManager startShakeDetect];
+        [self resetImageProgress];
+    }
+}
+
 @end
