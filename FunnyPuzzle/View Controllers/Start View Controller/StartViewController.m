@@ -84,11 +84,7 @@
     [[FPSoundManager sharedInstance] playBackgroundMusic];
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
-    
-    NSString *s=[NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].CandiesCount];
-    _CandiesCountLabel.text=s;
- 
-    
+    _CandiesCountLabel.text = [NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].candiesCount];    
 }
 
 - (void) dealloc{
