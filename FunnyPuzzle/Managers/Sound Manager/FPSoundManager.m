@@ -87,19 +87,36 @@ static FPSoundManager *_instance=nil;
         NSError *error;
         [_soundPlayer stop];
         _soundToPlay = sound;
-        NSURL *url;
-        int random=1+arc4random()%2;
-        if (random==1) {
-            url=_well_done;
-        }
-        else{
-            url=_excellent;
-        }
-        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        _soundPlayer.delegate=(id)self;
+        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:sound error:&error];
+        //_soundPlayer.delegate=(id)self;
         [_soundPlayer prepareToPlay];
         [_soundPlayer play];
+
+//        NSURL *url;
+//        int random=1+arc4random()%2;
+//        if (random==1) {
+//            url=_well_done;
+//        }
+//        else{
+//            url=_excellent;
+//        }
+//        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+//        _soundPlayer.delegate=(id)self;
+//        [_soundPlayer prepareToPlay];
+//        [_soundPlayer play];
     }
+}
+
+- (void)playPraise
+{
+    NSArray *allPrices = @[/*@"excellent", */@"good_job", @"perfect", @"well_done", @"wonderfull"];
+    NSString *suffix = [FPGameManager sharedInstance].language;
+    NSUInteger soundIndex = arc4random_uniform(allPrices.count);
+    NSURL *soundURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@Levels/Price/%@_%@.mp3", [[NSBundle mainBundle] resourcePath], allPrices[soundIndex], suffix]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[soundURL path]])
+        [self playSound:soundURL];
+    else
+        [self playSound:[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/Levels/Price/%@.mp3", [[NSBundle mainBundle] resourcePath], allPrices[soundIndex]]]];
 }
 
 - (void) vibrateWithMode:(FPVibrateMode)vibrateMode{

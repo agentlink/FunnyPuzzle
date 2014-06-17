@@ -125,9 +125,11 @@
     if ([[NSUserDefaults standardUserDefaults] valueForKey:[level valueForKey:@"name"]]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.isFinished = YES;
+        NSLog(@"Path: %@", [level valueForKey:_compleetKey]);
     } else {
         image = [PDFImage imageNamed:[level valueForKey:_notCompleet]];
         cell.isFinished = NO;
+        NSLog(@"Path: %@", [level valueForKey:_notCompleet]);
     }
     cell.imageVeiw.image = image;
     return cell;
@@ -155,7 +157,6 @@
     [[present layer] setBorderWidth:3];
     [present addSubview:imView];
     [[self view] addSubview:present];
-#warning Переписати на збереження останього рівня
     [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastLevel"];
     [self presentViewController:controller animated:YES completion:^{
         controller.view.alpha = 0;
@@ -249,7 +250,10 @@
 {
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
     FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+
+
     int currentLevelNumber = currentGamePlay.levelNumber;
+
     if (currentLevelNumber+1<self.levels.count) {
         currentLevelNumber+=1;
         [nextController loadLevel:currentLevelNumber type:[self gameType]];
@@ -282,6 +286,8 @@
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
     FPGamePlayController *nextController = [[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     int currentLevelNumber = currentGamePlay.levelNumber;
+
+
     if (currentLevelNumber-1>=0) {
         currentLevelNumber-=1;
         [nextController loadLevel:currentLevelNumber type:[self gameType]];
@@ -309,6 +315,11 @@
             }];
         }];
     }
-
+}
+#pragma mark - Publick
+- (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath
+{
+     NSLog(@"Index Path %@", indexPath);
+    [self.collection reloadItemsAtIndexPaths:@[indexPath]];
 }
 @end

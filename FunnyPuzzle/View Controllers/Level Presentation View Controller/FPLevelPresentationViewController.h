@@ -22,4 +22,6 @@
 
 - (void)nextLevel;
 - (void)previousLevel;
+- (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

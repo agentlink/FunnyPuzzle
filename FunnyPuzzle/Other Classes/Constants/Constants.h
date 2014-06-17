@@ -46,3 +46,10 @@ typedef enum {
 }FPVibrateMode;
 static double kAnimationDuration = .3;
 //const double kAnimationDurationFull = 0.3;
+
+
+#pragma mark - Views tag
+typedef enum {
+    FPTagRay = 42,
+    FPTagBasket
+} FPTag;
