@@ -125,9 +125,11 @@
     if ([[NSUserDefaults standardUserDefaults] valueForKey:[level valueForKey:@"name"]]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.isFinished = YES;
+        NSLog(@"Path: %@", [level valueForKey:_compleetKey]);
     } else {
         image = [PDFImage imageNamed:[level valueForKey:_notCompleet]];
         cell.isFinished = NO;
+        NSLog(@"Path: %@", [level valueForKey:_notCompleet]);
     }
     cell.imageVeiw.image = image;
     return cell;
