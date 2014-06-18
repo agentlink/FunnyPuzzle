@@ -10,7 +10,7 @@
 #import "StartViewController.h"
 #import "FPGamePlayController.h"
 
-@interface FPLevelPresentationViewController : UIViewController<FPGamePlayControllerDelegate>
+@interface FPLevelPresentationViewController : UIViewController
 
 @property (nonatomic) FPGameType gameType;
 @property (nonatomic) StartViewController *parrent;

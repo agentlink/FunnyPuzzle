@@ -36,6 +36,7 @@
 @property (nonatomic) FPGameType levelType;
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleetKey;
+@property (nonatomic) BOOL levelDone;
 
 @property (nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
@@ -43,8 +44,6 @@
 
 
 @property (nonatomic) UISnapBehavior *basketSnap;
-@property (nonatomic) UICollisionBehavior *collisions;
-@property (nonatomic) UIPushBehavior *push;
 @property (nonatomic) UIView *basketView;
 
 
@@ -86,7 +85,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self configureGameplayWithAnimationType:![[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName ]];
+    _levelDone =[[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName];
+    [self configureGameplayWithAnimationType:!_levelDone];
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,73 +141,63 @@
 - (void)startAnimationForNewLevel
 {
     [_field setBackgroundColor:[UIColor clearColor]];
-    NSString *path;
-    path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
+    NSString *path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
     PDFImage *image = [PDFImage imageNamed:path];
-    _field.image = image;
-    [_field layoutIfNeeded];
+
+
+    _field.hidden = YES;
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = image;
+
+    CGRect rRect = _field.frame;
+    rRect.size.height = _field.frame.size.width;
+    rRect.origin.x = CGRectGetMaxX(self.view.bounds)-(_field.frame.size.width+40);
+    rRect.origin.y = (CGRectGetMaxY(self.view.bounds)-(rRect.size.height))/2;
+    self.fieldFrame = rRect;
+    imageView.frame = rRect;
+
+    [self.view addSubview:imageView];
+    _field = imageView;
+    _field.layer.zPosition = -5;
     [self configElements];
 }
 - (void)startAnimationForCompleetLevel
 {
-    [self centerField:YES animate:NO];
-    [_field setBackgroundColor:[UIColor clearColor]];
-    PDFImage *image = [PDFImage imageNamed:[[_levelManager mcLevel] objectForKey:_compleetKey]];
-    _field.image = image;
-    _levelName.text = [_levelManager levelName];
-    CGRect nameFrame = _levelName.frame;
-    nameFrame.origin.x = nameFrame.origin.x*2;
-    _levelName.frame = nameFrame;
-    _levelName.alpha = 1;
+    NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
+    PDFImage *image = [PDFImage imageNamed:path];
+    _field.hidden = YES;
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = image;
+    CGRect centerRect = _field.frame;
+    centerRect.size.height = _field.frame.size.height - _levelName.frame.size.height;
+    centerRect.origin.x = CGRectGetMidX(self.view.bounds)-(_field.frame.size.width/2);
+    centerRect.origin.y = CGRectGetMidY(self.view.bounds)-(centerRect.size.height/2)-_levelName.frame.size.height;
+    self.fieldFrame = centerRect;
+    [self showLevelName:nil];
+    imageView.frame = centerRect;
+    [self.view addSubview:imageView];
+    _field = imageView;
+    [self showRays];
 }
-- (void)centerField:(BOOL)center animate:(BOOL)animate
-{
-    CGRect fieldFrameToEdit = _field.frame;
-    if (center) {
-        fieldFrameToEdit.size.height = fieldFrameToEdit.size.height*0.9;
-        fieldFrameToEdit.size.width = fieldFrameToEdit.size.height;
-        fieldFrameToEdit.origin.x = (CGRectGetWidth([[self view] bounds])*0.5)-(CGRectGetWidth([_field frame])*0.5);
-    } else {
-        fieldFrameToEdit.origin.x = (CGRectGetWidth([[self view] bounds]))-(CGRectGetWidth([_field frame])*0.5);
-    }
-    if (animate) {
-        [UIView animateWithDuration:kAnimationDuration animations:^{
-            [[self view] layoutIfNeeded];
-            _field.frame = fieldFrameToEdit;
-        }];
-    } else {
-        [[self view] layoutIfNeeded];
-        _field.frame = fieldFrameToEdit;
-    }
-}
+
 - (void)bounceField
 {
     CATransform3D transform = [[_field layer] transform];
     [UIView animateWithDuration:kAnimationDuration*0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [_field layoutIfNeeded];
         [_field.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-            [_field layoutIfNeeded];
             [_field.layer setTransform:transform];
-            if (_elements) {
+            if (!_levelDone) {
+                NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
+                [array addObjectsFromArray:@[_back, _prew]];
+                [self bounceElements:array isInSuperView:YES];
+            } else {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
                 [array addObjectsFromArray:@[_back, _next, _prew]];
                 [self bounceElements:array isInSuperView:YES];
-            } else {
-                if (_levelNumber==_levelsCount-1) {
-                    [self bounceElements:@[_back, _prew] isInSuperView:YES];
-                }
-                else
-                {
-                    if (_levelNumber==0) {
-                        [self bounceElements:@[_back, _next] isInSuperView:YES];
-                    }
-                    else
-                    {
-                      [self bounceElements:@[_back, _next, _prew] isInSuperView:YES];
-                    }
-                }
             }
         }];
     }];
@@ -216,9 +206,6 @@
 {
     for (UIView *element in elements) {
         CATransform3D transform = [[element layer] transform];
-//        if (element.constraints.count > 0) {
-//            [element layoutIfNeeded];
-//        }
         if ([[[self view] subviews ] containsObject:element]) {
             [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
             element.alpha = 1;
@@ -378,8 +365,6 @@
 
 - (void)moveFieldToCenter:(void(^)())completion
 {
-//    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:_basketView snapToPoint:CGPointMake(-100, 0)];
-//    [_animator addBehavior:snap];
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
     imageView.image = _field.image;
     imageView.contentMode = UIViewContentModeScaleAspectFit;

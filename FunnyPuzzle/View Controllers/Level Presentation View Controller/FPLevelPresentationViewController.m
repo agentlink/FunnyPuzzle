@@ -146,8 +146,6 @@
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
       FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
       UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
-      //present.imageVeiw.image = cell.imageVeiw.image;
-      //present.isFinished = cell.isFinished;
     present.frame = [[self view] convertRect:cell.frame fromView:collectionView];
     present.backgroundColor = cell.backgroundColor;
     PDFImageView *imView = [[PDFImageView alloc] initWithFrame:cell.imageVeiw.frame];
@@ -163,22 +161,17 @@
         controller.view.hidden = YES;
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [[present layer] setBorderWidth:0];
-            imView.frame = controller.field.frame;
+            imView.frame = controller.fieldFrame;
             present.frame = CGRectMake(0, 0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame));
             controller.view.alpha = 1;
 
         } completion:^(BOOL finished) {
-            controller.delegate = self;
-            
             controller.view.hidden = NO;
             [controller bounceField];
             [present removeFromSuperview];
 
         }];
     }];
-    
-    
-    
     
     return false;
 }
@@ -189,7 +182,6 @@
     fpCell.isFinished = NO;
 }
 
-//- (void)colle
 #pragma mark - IBAction`s
 - (IBAction)menu:(id)sender
 {
@@ -203,7 +195,6 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
-
 
 - (void)startEnterAnimation
 {

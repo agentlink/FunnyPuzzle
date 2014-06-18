@@ -274,7 +274,6 @@
         res.transform = CGAffineTransformMakeScale(0, 0);
         basketView.transform = CGAffineTransformMakeScale(0,0);
         res.alpha = 0;
-        //label.transform = CGAffineTransformMakeScale(0, 0);
         label.alpha = 0;
     } completion:^(BOOL finished) {
         [label removeFromSuperview];
