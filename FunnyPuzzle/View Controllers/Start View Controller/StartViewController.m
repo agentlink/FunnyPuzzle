@@ -83,11 +83,7 @@
     [[FPSoundManager sharedInstance] playBackgroundMusic];
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
-    
-    NSString *s=[NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].CandiesCount];
-    _CandiesCountLabel.text=s;
- 
-    
+    _CandiesCountLabel.text = [NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].candiesCount];    
 }
 
 - (void) dealloc{
@@ -214,9 +210,7 @@
     _needToDropButtons = YES;
     FPPreferences *preferences = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Preferences"];
     CGPoint pointSettings = CGPointMake(_settingsButton.center.x,_settingsButton.frame.size.height/4);
-    CGPoint pointCandy = CGPointMake(_candiesView.center.x,_candiesView.frame.size.height/4);
-    // Remove the previous behavior.
-    
+    CGPoint pointCandy = CGPointMake(_candiesView.center.x,_candiesView.frame.size.height/4);    
     UISnapBehavior *snapSettingsBehavior = [[UISnapBehavior alloc] initWithItem:_settingsButton snapToPoint:pointSettings];
     snapSettingsBehavior.damping=1.0f;
     _snapSettingsBehavior = snapSettingsBehavior;

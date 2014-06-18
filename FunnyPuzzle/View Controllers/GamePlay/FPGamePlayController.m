@@ -11,6 +11,8 @@
 #import "GameModel.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPSoundManager.h"
+#import "AccelerometerManager.h"
+#import "FPGameManager.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -21,7 +23,7 @@
 
 @end
 
-@interface FPGamePlayController ()
+@interface FPGamePlayController () <ShakeHappendDelegate>
 @property (nonatomic) FPLevelManager *levelManager;
 @property (nonatomic) NSArray *elements;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *fieldRightConstraint;
@@ -45,6 +47,9 @@
 
 @property (nonatomic) UISnapBehavior *basketSnap;
 @property (nonatomic) UIView *basketView;
+
+@property (nonatomic) AccelerometerManager *ACManager;
+@property (nonatomic) int resetImage;
 
 
 - (IBAction)next:(id)sender;
@@ -288,6 +293,7 @@
 {
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
     [[self levelName] setText:NSLocalizedString([[self levelManager] levelName], nil)];
+    [_levelName sizeToFit];
     CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
     [[self levelName] setAlpha:1];
@@ -320,7 +326,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
-    [[FPSoundManager sharedInstance] playPraise];
+    [[FPSoundManager sharedInstance] playPrise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -352,6 +358,7 @@
             transform = CGAffineTransformTranslate(transform, 0, -95);
             candyView.transform = transform;
         } completion:^(BOOL compleat){
+            [[FPSoundManager sharedInstance] playPrise];
             candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
             [_basketView insertSubview:candyView atIndex:0];
             [_animator removeBehavior:_basketSnap];
@@ -488,11 +495,17 @@
 }
 - (IBAction)back:(id)sender
 {
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-    [presentationController updateColleCellAtIndexPath:self.indexPath];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    if ([self navigationController]) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    } else if ([self presentingViewController])
+    {
+        FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+        [presentationController updateColleCellAtIndexPath:self.indexPath];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
+
 }
 
 #pragma mark - Gameplay Methods
@@ -576,7 +589,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-#warning Тут викликатиметься метод для виграшу
+
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
 
             [self compleetAnimation];
@@ -606,4 +619,31 @@
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
     return CGColorGetAlpha([color CGColor])==0;
 }
+
+- (void) resetImageProgress
+{
+    NSLog(@"reset");
+}
+
+#pragma mark - Accelerometer Delegate
+
+- (void) iPhoneDidShaked
+{
+    _resetImage++;
+    _field.alpha-=0.1;
+    NSLog(@"%i",_resetImage);
+    switch (_resetImage) {
+        case 1:
+            
+            break;
+            
+        default:
+            break;
+    }
+    if (_resetImage == 10) {
+        [_ACManager stopShakeDetect];
+        [self resetImageProgress];
+    }
+}
+
 @end

@@ -142,6 +142,7 @@
 {
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
     [controller loadLevel:(int)[indexPath row] type:_gameType];
+    controller.indexPath = indexPath;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
       FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
       UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];

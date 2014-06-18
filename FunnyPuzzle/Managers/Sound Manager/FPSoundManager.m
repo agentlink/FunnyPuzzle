@@ -107,7 +107,7 @@ static FPSoundManager *_instance=nil;
     }
 }
 
-- (void)playPraise
+- (void)playPrise
 {
     NSArray *allPrices = @[/*@"excellent", */@"good_job", @"perfect", @"well_done", @"wonderfull"];
     NSString *suffix = [FPGameManager sharedInstance].language;
@@ -258,6 +258,5 @@ int timerTick;
         }
     }
 }
-
 
 @end

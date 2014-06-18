@@ -14,6 +14,7 @@
 #define VIBRATE @"vibrate"
 #define MUSIC @"music"
 #define LANGUAGE @"language"
+#define CANDIES_COUNT @"candiesCount"
 
 //AdMob ID
 #define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"

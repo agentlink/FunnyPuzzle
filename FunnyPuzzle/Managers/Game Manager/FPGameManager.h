@@ -19,10 +19,11 @@
 @property (nonatomic) BOOL playSoundWhenImageAppear;
 @property (nonatomic) BOOL vibrate;
 @property (nonatomic, weak) NSString* language;
-@property (nonatomic) int CandiesCount;
+@property (nonatomic) int candiesCount;
 
 - (void) setSettings;
 - (void) changeSettings:(BOOL)value forKey:(NSString*)key;
 - (void) showFullScreenAdvertisment:(UIViewController*)viewController;
+- (void) pickUpCandies:(int)candies;
 - (NSArray*) getLanguages;
 @end

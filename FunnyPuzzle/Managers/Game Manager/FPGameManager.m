@@ -36,10 +36,6 @@ static FPGameManager *_instance=nil;
     return _instance;
 }
 
--(void)setCandiesCount:(int)CandiesCount
-{
-    _CandiesCount+=CandiesCount;
-}
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:VIBRATE]) {
@@ -48,11 +44,13 @@ static FPGameManager *_instance=nil;
         [defaults setBool:YES forKey:DISPLAY_INNER_BORDERS];
         [defaults setBool:YES forKey:DISPLAY_WORDS];
         [defaults setBool:YES forKey:MUSIC];
+        [defaults setInteger:0 forKey:CANDIES_COUNT];
         [defaults setObject:[self getDefaultLanguage] forKey:LANGUAGE];
         [defaults synchronize];
         _vibrate=YES;
         _playSoundWhenImageAppear=YES;
         _displayInnerBorders=YES;
+        _candiesCount = 0;
         _language = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     }
     else{
@@ -61,6 +59,7 @@ static FPGameManager *_instance=nil;
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
         _music=[defaults boolForKey:MUSIC];
         _language = [defaults objectForKey:LANGUAGE];
+        _candiesCount = (int)[defaults integerForKey:CANDIES_COUNT];
     }
 }
 
@@ -121,6 +120,12 @@ static FPGameManager *_instance=nil;
     return _instance.languages;
 }
 
+- (void) pickUpCandies:(int)candies{
+    _candiesCount+=candies;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:_candiesCount forKey:@"candiesCount"];
+    [defaults synchronize];
+}
          
 - (void) dealloc{
     _instance.languages=nil;
