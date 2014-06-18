@@ -30,7 +30,12 @@ static FPGameManager *_instance=nil;
                                    @"Русский",
                                    @"Français",
                                    @"Deutschland",
-                                   @"Español"];
+                                   @"Español",
+                                   @"Українська",
+                                   @"हिन्दी",
+                                   @"汉语",
+                                   @"العربية",
+                                   @"Magyar"];
         }
     }
     return _instance;
@@ -112,6 +117,21 @@ static FPGameManager *_instance=nil;
     }
     else if ([language_ isEqualToString:@"Español"]) {
         return @"es";
+    }
+    else if ([language_ isEqualToString:@"Українська"]) {
+        return @"uk";
+    }
+    else if ([language_ isEqualToString:@"Magyar"]) {
+        return @"hu";
+    }
+    else if ([language_ isEqualToString:@"हिन्दी"]) {
+        return @"hi";
+    }
+    else if ([language_ isEqualToString:@"汉语"]) {
+        return @"zh-Hant";
+    }
+    else if ([language_ isEqualToString:@"العربية"]) {
+        return @"ar";
     }
     return @"en";
 }

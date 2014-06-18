@@ -164,6 +164,21 @@
     else if ([self.languageButton.titleLabel.text isEqualToString:@"Español"]) {
         language=@"es";
     }
+    else if ([self.languageButton.titleLabel.text isEqualToString:@"हिन्दी"]) {
+        language=@"hi";
+    }
+    else if ([self.languageButton.titleLabel.text isEqualToString:@"Українська"]) {
+        language=@"uk";
+    }
+    else if ([self.languageButton.titleLabel.text isEqualToString:@"Magyar"]) {
+        language=@"hu";
+    }
+    else if ([self.languageButton.titleLabel.text isEqualToString:@"العربية"]) {
+        language=@"ar";
+    }
+    else if ([self.languageButton.titleLabel.text isEqualToString:@"汉语"]) {
+        language=@"zh-Hant";
+    }
     [FPGameManager sharedInstance].language=language;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:language forKey:LANGUAGE];
@@ -188,6 +203,21 @@
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
         language=@"Español";
     }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"zh-Hant"]) {
+        language=@"汉语";
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ar"]) {
+        language=@"العربية";
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hu"]) {
+        language=@"Magyar";
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hi"]) {
+        language=@"हिन्दी";
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"uk"]) {
+        language=@"Українська";
+    }
     else {
         language=@"English";
     }
@@ -204,12 +234,29 @@
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"fr"]) {
         row=2;
-    }    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
         row=3;
     }
     else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
         row=4;
     }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"uk"]) {
+        row=5;
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hi"]) {
+        row=6;
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"zh-Hant"]) {
+        row=7;
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ar"]) {
+        row=8;
+    }
+    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hu"]) {
+        row=9;
+    }
+
     return row;
 }
 

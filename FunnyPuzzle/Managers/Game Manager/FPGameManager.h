@@ -1,4 +1,3 @@
-                                                                                                                                                                                                                                                                                                                                                                                            //
 //  FPGameManager.h
 //  FunnyPuzzle
 //
