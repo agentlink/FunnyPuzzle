@@ -6,38 +6,38 @@
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
 
-"Piggy" = "Порося";
+"Piggy" = "Свинька";
 "Pigeon" = "Голуб";
-"Frogling" = "Жаба";
+"Frogling" = "Жабка";
 "Rabbit" = "Кролик";
-"Hen" = "Курча";
+"Hen" = "Курочка";
 "Octopus" = "Восьминіг";
 "Pencil" = "Олівець";
 "Ice cream"	= "Морозиво";
 
 
-"Fingerling" = "Риба";
-"Elephant" = "Слон";
+"Fingerling" = "Рибка";
+"Elephant" = "Слоник";
 "Lamb" = "Вівця";
 "Owl" = "Сова";
 "Snail"	= "Равлик";
-"Squirrel" = "Білка";
-"Apple"	= "Яблуко";
-"Carrot" = "Морква";
+"Squirrel" = "Білочка";
+"Apple"	= "Яблучко";
+"Carrot" = "Морквинка";
 
 
 "Goat" = "Козлик";
 "Bee" = "Бджола";
-"Turtle" = "Черепаха";
+"Turtle" = "Черепашка";
 "Dolphin" = "Дельфін";
-"Hippo"	= "Гіпопотам";
-"Teddy-bear" = "Ведмідь";
-"Penguin" = "Пінгвін";
+"Hippo"	= "Бегемотик";
+"Teddy-bear" = "Медведик";
+"Penguin" = "Пінгвінчик";
 "Snake" = "Змія";
 "Flamingo" = "Фламінго";
 "Toucan" = "Тукан";
 "Giraffe" = "Жираф";
-"Monkey" = "Мавпа";
+"Monkey" = "Мавпочка";
 "Zebra"	= "Зебра";
 "Lion" = "Лев";
 
@@ -47,10 +47,10 @@
 "Bread"	= "Хліб";
 "Baseball cap" = "Бейсболка";
 "Computer chair" = "Комп'ютерне крісло";
-"Train" = "Паравоз";
-"Wagon"	= "Вагон";
+"Train" = "Паравозик";
+"Wagon"	= "Вагончик";
 "Peas" = "Горох";
-"Pot with honey" = "Горщик з медом";
+"Pot with honey" = "Горшок з медом";
 "Mushrooms" = "Гриби";
 "Potato" = "Картопля";
 "Key" = "Ключ";
@@ -69,7 +69,7 @@
 "Stapler" = "Степлер";
 "Beet" = "Буряк";
 "Pumpkin" = "Гарбуз";
-"Shuttlecocks" = "Воланчік";
+"Shuttlecocks" = "Воланчик";
 "Hamburger" = "Гамбургер";
 "Yacht"	= "Яхта";
 "Scrambled eggs" = "Яєшня";
@@ -80,14 +80,14 @@
 "Cherry" = "Вишня";
 "Crew cut" = "Їжачок";
 "Crocodile" = "Крокодил";
-"Dog" = "Собачка";
-"Fox" = "Лисичка";
+"Dog" = "Собака";
+"Fox" = "Лисиця";
 "Gorilla" = "Горила";
 "Koala" = "Коала";
 "Lemon" = "Лимон";
 "Lime" = "Лайм";
 "Pear" = "Груша";
-"Pitching" = "Качечка";
+"Pitching" = "Качка";
 "Radish" = "Редиска";
 "Rhino" = "Носоріг";
 "Sea bear" = "Морський котик";

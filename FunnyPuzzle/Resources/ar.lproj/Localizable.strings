@@ -6,17 +6,17 @@
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
 
-"Piggy" = "أصبع";
-"Pigeon" = "حمامة ";
-"Frogling" = "ضفدع ";
+"Piggy" = "خنزير صغير";
+"Pigeon" = "حمامة";
+"Frogling" = "ضفدع صغير";
 "Rabbit" = "أرنب";
-"Hen" = "دجاجة ";
+"Hen" = "دجاجة";
 "Octopus" = "أخطبوط ";
 "Pencil" = "قلم رصاص";
-"Ice cream"	= "أيس كريم";
+"Ice cream"	= "ايس كريم";
 
 
-"Fingerling" = "الإصبعيات";
+"Fingerling" = "سمكة الإصبع";
 "Elephant" = "فيل";
 "Lamb" = "خروف";
 "Owl" = "بومة";
@@ -26,20 +26,20 @@
 "Carrot" = "جزر";
 
 
-"Goat" = "ماعز";
+"Goat" = "عنزة";
 "Bee" = "نحلة ";
 "Turtle" = "سلحفاة";
-"Dolphin" = "دلفين";
+"Dolphin" = "درفيل";
 "Hippo"	= "فرس النهر";
-"Teddy-bear" = "دمية دب";
-"Penguin" = "البطريق طائر";
+"Teddy-bear" = "دبدوب";
+"Penguin" = "بطريق";
 "Snake" = "ثعبان ";
-"Flamingo" = "البشروس طائر مائي";
-"Toucan" = "الطوقان طائر";
+"Flamingo" = "فلامنغو";
+"Toucan" = "طائر الطوقان";
 "Giraffe" = "زرافة";
 "Monkey" = "قرد";
-"Zebra"	= "حمار الوحش";
-"Lion" = "الأسد";
+"Zebra"	= "الحمار الوحشي";
+"Lion" = "أسد";
 
 "Kettle" = "غلاية ";
 "Car" = "سيارة ";
