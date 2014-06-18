@@ -311,6 +311,7 @@
 {
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
     [[self levelName] setText:NSLocalizedString([[self levelManager] levelName], nil)];
+    [_levelName sizeToFit];
     CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
     [[self levelName] setAlpha:1];
@@ -343,7 +344,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
-    [[FPSoundManager sharedInstance] playPraise];
+    [[FPSoundManager sharedInstance] playPrise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -375,7 +376,7 @@
             transform = CGAffineTransformTranslate(transform, 0, -95);
             candyView.transform = transform;
         } completion:^(BOOL compleat){
-            [[FPSoundManager sharedInstance] playPraise];
+            [[FPSoundManager sharedInstance] playPrise];
             candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
             [_basketView insertSubview:candyView atIndex:0];
             [_animator removeBehavior:_basketSnap];
