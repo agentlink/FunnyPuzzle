@@ -12,6 +12,7 @@
 //#import "JMIBlur.h"
 @interface FPLevelCell ()
 @property (nonatomic) PDFImageView *star;
+@property (nonatomic) IBOutlet NSLayoutConstraint *height;
 @end
 @implementation FPLevelCell
 
@@ -59,9 +60,11 @@
         rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
         rotate.duration = INFINITY;
         [_star.layer addAnimation:rotate forKey:@"rotate"];
-        
+        _height.constant = _name.frame.size.height;
+        //[self layoutIfNeeded];
         [self insertSubview:_star atIndex:0];
     } else {
+        _height.constant = 0;
         [_star removeFromSuperview];
         [self setNeedsDisplay];
     }

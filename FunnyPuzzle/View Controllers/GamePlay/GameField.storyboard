@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="c1W-T9-Shz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="c1W-T9-Shz">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -160,23 +160,37 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7dn-Vr-s4d" customClass="PDFImageView">
-                                                    <rect key="frame" x="68" y="16" width="85" height="86"/>
+                                                    <rect key="frame" x="76" y="14" width="68" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="cwA-WP-OO5"/>
-                                                        <constraint firstAttribute="width" secondItem="7dn-Vr-s4d" secondAttribute="height" multiplier="85:86" id="ghS-o2-9Tv"/>
+                                                        <constraint firstAttribute="width" secondItem="7dn-Vr-s4d" secondAttribute="height" multiplier="1:1" id="E7u-ys-Un1"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmR-hs-PBi">
+                                                    <rect key="frame" x="20" y="89" width="180" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="VmO-EL-pAt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.91372549020000005" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="7dn-Vr-s4d" secondAttribute="centerY" id="CwP-ic-D2A"/>
+                                            <constraint firstItem="kmR-hs-PBi" firstAttribute="leading" secondItem="fe3-Eg-ghO" secondAttribute="leading" constant="20" id="D6V-RB-VbL"/>
+                                            <constraint firstAttribute="trailing" secondItem="kmR-hs-PBi" secondAttribute="trailing" constant="20" id="DLk-84-jnn"/>
                                             <constraint firstAttribute="centerX" secondItem="7dn-Vr-s4d" secondAttribute="centerX" id="JP2-YL-Rsb"/>
+                                            <constraint firstAttribute="bottom" secondItem="kmR-hs-PBi" secondAttribute="bottom" constant="7" id="MVW-cX-Nev"/>
+                                            <constraint firstItem="7dn-Vr-s4d" firstAttribute="top" secondItem="fe3-Eg-ghO" secondAttribute="top" constant="14" id="SPI-FE-Xym"/>
+                                            <constraint firstItem="kmR-hs-PBi" firstAttribute="top" secondItem="7dn-Vr-s4d" secondAttribute="bottom" constant="7" id="q52-aA-YDM"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="height" destination="VmO-EL-pAt" id="9Up-1J-0eo"/>
                                             <outlet property="imageVeiw" destination="7dn-Vr-s4d" id="DnQ-8S-iKD"/>
                                         </connections>
                                     </collectionViewCell>
@@ -291,9 +305,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taddy Bear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIQ-bv-ByJ" userLabel="Level Name">
-                                <rect key="frame" x="163" y="264" width="259" height="36"/>
+                                <rect key="frame" x="163" y="267" width="259" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

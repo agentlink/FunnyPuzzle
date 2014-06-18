@@ -12,6 +12,7 @@
 @interface FPLevelCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet PDFImageView *imageVeiw;
 @property (nonatomic) BOOL isFinished;
+@property (nonatomic) IBOutlet UILabel *name;
 
 - (void)changeFrameWithAnimationToRect:(CGRect)rect;
 @end
