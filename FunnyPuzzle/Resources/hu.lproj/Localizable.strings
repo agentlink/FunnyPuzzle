@@ -1,0 +1,102 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "Kismalac";
+"Pigeon" = "Galamb";
+"Frogling" = "Béka";
+"Rabbit" = "Nyúl";
+"Hen" = "Tyúk";
+"Octopus" = "Polip";
+"Pencil" = "Ceruza";
+"Ice cream"	= "Fagylalt";
+
+
+"Fingerling" = "Hal";
+"Elephant" = "Elefánt";
+"Lamb" = "Bárány";
+"Owl" = "Bagoly";
+"Snail"	= "Csiga";
+"Squirrel" = "Mókus";
+"Apple"	= "Alma";
+"Carrot" = "Sárgarépa";
+
+"Goat" = "Kecske";
+"Bee" = "Méh";
+"Turtle" = "Teknősbéka";
+"Dolphin" = "Delfin";
+"Hippo"	= "Hippo";
+"Teddy-bear" = "Teddy-bear";
+"Penguin" = "Pingvin";
+"Snake" = "Kígyó";
+"Flamingo" = "Flamingó";
+"Toucan" = "Tukánmadár";
+"Giraffe" = "Zsiráf";
+"Monkey" = "Majom";
+"Zebra"	= "Zebra";
+"Lion" = "Oroszlán";
+
+
+"Kettle" = "Vízforraló";
+"Car" = "Autó";
+"Eggplant" = "Padlizsán";
+"Bread"	= "Kenyér";
+"Baseball cap" = "Baseball sapka";
+"Computer chair" = "Számítógép szék";
+"Train" = "Vonat";
+"Wagon"	= "Kocsi";
+"Peas" = "Borsó";
+"Pot with honey" = "Pot mézzel";
+"Mushrooms" = "Gomba";
+"Potato" = "Burgonya";
+"Key" = "Kulcs";
+"Strawberries" = "Eper";
+"Crab" = "Rák";
+"Corn" = "Kukorica";
+"Jug with milk" = "Kancsó tejjel";
+"Lightbulb"	= "Lightbulb";
+"Stork" = "Gólya";
+"Pepper" = "Bors";
+"Cock" = "Kakas";
+"Cancer" = "Rák";
+"Backpack" = "Hátizsák";
+"Wizard hat" = "Varázsló kalap";
+"Soother" = "Cucli";
+"Stapler" = "Fűzőgép";
+"Beet" = "Cukorrépa";
+"Pumpkin" = "Tök";
+"Shuttlecocks" = "Tollaslabdák";
+"Hamburger" = "Hamburger";
+"Yacht"	= "Jacht";
+"Scrambled eggs" = "Tojásrántotta";
+"Umbrella" = "Esernyő";
+
+
+"Banana" = "Banán";
+"Butterfly" = "Pillangó";
+"Cherry" = "Cseresznye";
+"Crew cut" = "Crew vágás";
+"Crocodile" = "Krokodil";
+"Dog" = "Kutya";
+"Fox" = "Róka";
+"Gorilla" = "Gorilla";
+"Koala" = "Koala";
+"Lemon" = "Citrom";
+"Lime" = "Mész";
+"Pear" = "Körte";
+"Pitching" = "Dobás";
+"Radish" = "Retek";
+"Rhino" = "Rhino";
+"Sea bear" = "Sea medve";
+"Tea cup" = "Tea cup";
+
+
+
+"Perfect" = "Tökéletes";
+"Wonderfull" = "Wonderfull";
+"Well done" = "Remek";
+"Good job" = "Szép munka";

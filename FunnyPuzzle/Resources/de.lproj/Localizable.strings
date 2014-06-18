@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  FunnyPuzzle
+
+  Created by Misha on 22.05.14.
+  Copyright (c) 2014 Mobilez365. All rights reserved.
+*/
+
+"Piggy" = "Schweinchen";
+"Pigeon" = "Taube";
+"Frogling" = "Frosch";
+"Rabbit" = "Kaninchen";
+"Hen" = "Henne";
+"Octopus" = "Krake";
+"Pencil" = "Bleistift";
+"Ice cream"	= "Eis";
+
+
+"Fingerling" = "Fisch";
+"Elephant" = "Elefant";
+"Lamb" = "Lamm";
+"Owl" = "Eule";
+"Snail"	= "Schnecke";
+"Squirrel" = "Eichhörnchen";
+"Apple"	= "Apfel";
+"Carrot" = "Karotte";
+
+
+"Goat" = "Ziege";
+"Bee" = "Biene";
+"Turtle" = "Schildkröte";
+"Dolphin" = "Delphin";
+"Hippo"	= "Nilpferd";
+"Teddy-bear" = "Teddy-Bär";
+"Penguin" = "Pinguin";
+"Snake" = "Schlange";
+"Flamingo" = "Flamingo";
+"Toucan" = "Tukan";
+"Giraffe" = "Giraffe";
+"Monkey" = "Affe";
+"Zebra"	= "Zebra";
+"Lion" = "Löwe";
+
+"Kettle" = "Kessel";
+"Car" = "Auto";
+"Eggplant" = "Aubergine";
+"Bread"	= "Brot";
+"Baseball cap" = "Baseball-Cap";
+"Computer chair" = "Computer-Stuhl";
+"Train" = "Zug";
+"Wagon"	= "Wagen";
+"Peas" = "Erbsen";
+"Pot with honey" = "Topf mit Honig";
+"Mushrooms" = "Pilze";
+"Potato" = "Kartoffel";
+"Key" = "Schlüssel";
+"Strawberries" = "Erdbeeren";
+"Crab" = "Krebs";
+"Corn" = "Mais";
+"Jug with milk" = "Krug mit Milch;
+"Lightbulb"	= "Glühbirne";
+"Stork" = "Storch";
+"Pepper" = "Pfeffer";
+"Cock" = "Hahn";
+"Cancer" = "Krebs";
+"Backpack" = "Rucksack";
+"Wizard hat" = "Wizard hat";
+"Soother" = "Schnuller";
+"Stapler" = "Hefter";
+"Beet" = "Rübe";
+"Pumpkin" = "Kürbis";
+"Shuttlecocks" = "Federbälle";
+"Hamburger" = "Hamburger";
+"Yacht"	= "Yacht";
+"Scrambled eggs" = "Rührei";
+"Umbrella" = "Regenschirm";
+
+"Banana" = "Banane";
+"Butterfly" = "Schmetterling";
+"Cherry" = "Kirsche";
+"Crew cut" = "Bürstenschnitt";
+"Crocodile" = "Crocodile";
+"Dog" = "Hund";
+"Fox" = "Fuchs";
+"Gorilla" = "Gorilla";
+"Koala" = "Koala";
+"Lemon" = "Zitrone";
+"Lime" = "Kalk";
+"Pear" = "Birne";
+"Pitching" = "Pitching";
+"Radish" = "Rettich";
+"Rhino" = "Nashorn";
+"Sea bear" = "Sea Bär";
+"Tea cup" = "Tee-Tasse";
+
+
+
+"Perfect" = "Perfekt";
+"Wonderfull" = "Wonderfull";
+"Well done" = "Gut gemacht";
+"Good job" = "Gute Arbeit";
