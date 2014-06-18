@@ -12,7 +12,8 @@
     GADInterstitial *interstitial_;
 }
 
-@property (nonatomic, strong) NSArray *languages;
+@property (nonatomic, strong) NSDictionary *languages;
+@property (nonatomic, strong) NSArray *langCodes;
 
 @end
 
@@ -26,16 +27,17 @@ static FPGameManager *_instance=nil;
         if (nil==_instance) {
             _instance=[[self alloc] init];
             [_instance loadNewAdv];
-            _instance.languages= @[@"English",
-                                   @"Русский",
-                                   @"Français",
-                                   @"Deutschland",
-                                   @"Español",
-                                   @"Українська",
-                                   @"हिन्दी",
-                                   @"汉语",
-                                   @"العربية",
-                                   @"Magyar"];
+            _instance.languages = @{@"en":@"English",
+                                   @"ru":@"Русский",
+                                   @"fr":@"Français",
+                                   @"de":@"Deutschland",
+                                   @"es":@"Español",
+                                   @"uk":@"Українська",
+                                   @"hi":@"हिन्दी",
+                                   @"zh-Hant":@"汉语",
+                                   @"ar":@"العربية",
+                                   @"hu":@"Magyar"};
+            _instance.langCodes = @[@"en",@"ru",@"fr",@"de",@"es",@"uk",@"hi",@"zh-Hant",@"ar",@"hu",];
         }
     }
     return _instance;
@@ -93,7 +95,7 @@ static FPGameManager *_instance=nil;
     for (int j=0; j<iPhoneLanguages.count; j++) {
         defaultLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:j];
         for (int i=0; i<_instance.languages.count; i++) {
-            if ([[_instance languageCode:[_instance.languages objectAtIndex:i]] isEqualToString:defaultLanguage]) {
+            if ([[_instance.langCodes objectAtIndex:i] isEqualToString:defaultLanguage]) {
                 return defaultLanguage;
             }
         }
@@ -101,43 +103,12 @@ static FPGameManager *_instance=nil;
     return @"en";
 }
 
-- (NSString*) languageCode:(NSString*)language_{
-    
-    if ([language_ isEqualToString:@"English"]) {
-        return @"en";
-    }
-    else if ([language_ isEqualToString:@"Русский"]) {
-        return @"ru";
-    }
-    else if ([language_ isEqualToString:@"Français"]) {
-        return @"fr";
-    }
-    else if ([language_ isEqualToString:@"Deutschland"]) {
-        return @"de";
-    }
-    else if ([language_ isEqualToString:@"Español"]) {
-        return @"es";
-    }
-    else if ([language_ isEqualToString:@"Українська"]) {
-        return @"uk";
-    }
-    else if ([language_ isEqualToString:@"Magyar"]) {
-        return @"hu";
-    }
-    else if ([language_ isEqualToString:@"हिन्दी"]) {
-        return @"hi";
-    }
-    else if ([language_ isEqualToString:@"汉语"]) {
-        return @"zh-Hant";
-    }
-    else if ([language_ isEqualToString:@"العربية"]) {
-        return @"ar";
-    }
-    return @"en";
+- (NSDictionary*) getLanguages{
+    return _instance.languages;
 }
 
-- (NSArray*) getLanguages{
-    return _instance.languages;
+- (NSArray*) getLanguagesCodes{
+    return _langCodes;
 }
 
 - (void) pickUpCandies:(int)candies{

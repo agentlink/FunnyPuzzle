@@ -24,5 +24,6 @@
 - (void) changeSettings:(BOOL)value forKey:(NSString*)key;
 - (void) showFullScreenAdvertisment:(UIViewController*)viewController;
 - (void) pickUpCandies:(int)candies;
-- (NSArray*) getLanguages;
+- (NSDictionary*) getLanguages;
+- (NSArray*) getLanguagesCodes;
 @end

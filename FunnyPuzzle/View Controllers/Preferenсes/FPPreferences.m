@@ -24,21 +24,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *soundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bordersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vibrateLabel;
-- (IBAction)changeLanguage:(id)sender;
+
+@property (weak, nonatomic) NSArray *languageCodes;
+@property (weak, nonatomic) NSDictionary *languages;
 
 @property (weak, nonatomic) IBOutlet UIView *viewForPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerHeight;
 @property (weak, nonatomic) IBOutlet UIButton *languageButton;
-- (IBAction)done:(id)sender;
 
+- (IBAction)done:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)playMusic:(id)sender;
 - (IBAction)playSound:(id)sender;
 - (IBAction)displayInnerBoarders:(id)sender;
 - (IBAction)vibrate:(id)sender;
-
+- (IBAction)changeLanguage:(id)sender;
 
 @end
 
@@ -47,8 +49,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _dataSource = [NSMutableArray new];
+    _languageCodes = [[FPGameManager sharedInstance] getLanguagesCodes];
+    _languages = [[FPGameManager sharedInstance] getLanguages];
+    for(NSString* code in _languageCodes) {
+        [_dataSource addObject:[_languages valueForKey:code]];
+    }
     [self setControlsState];
-    self.dataSource = [[FPGameManager sharedInstance] getLanguages];
 }
 
 - (void) dealloc{
@@ -137,7 +144,6 @@
 }
 
 - (void) setLabelsText{
-    
     self.musicLabel.text=NSLocalizedString(@"playMusic", nil);
     self.soundLabel.text=NSLocalizedString(@"playSound", nil);
     self.vibrateLabel.text=NSLocalizedString(@"vibrate", nil);
@@ -148,37 +154,7 @@
 }
 
 - (void) setlanguage{
-    NSString *language;
-    if ([self.languageButton.titleLabel.text isEqualToString:@"English"]) {
-        language=@"en";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Русский"]) {
-        language=@"ru";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Français"]) {
-        language=@"fr";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Deutschland"]) {
-        language=@"de";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Español"]) {
-        language=@"es";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"हिन्दी"]) {
-        language=@"hi";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Українська"]) {
-        language=@"uk";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"Magyar"]) {
-        language=@"hu";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"العربية"]) {
-        language=@"ar";
-    }
-    else if ([self.languageButton.titleLabel.text isEqualToString:@"汉语"]) {
-        language=@"zh-Hant";
-    }
+    NSString *language = [_languageCodes objectAtIndex:[_pickerView selectedRowInComponent:0]];
     [FPGameManager sharedInstance].language=language;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:language forKey:LANGUAGE];
@@ -186,77 +162,15 @@
 }
 
 - (NSString*) getCurrentLanguage{
-    
-    NSString *language;
-    if ([[FPGameManager sharedInstance].language isEqualToString:@"en"]) {
-        language=@"English";
-    }
-    if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]) {
-        language=@"Русский";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"fr"]) {
-        language=@"Français";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
-        language=@"Deutschland";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
-        language=@"Español";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"zh-Hant"]) {
-        language=@"汉语";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ar"]) {
-        language=@"العربية";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hu"]) {
-        language=@"Magyar";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hi"]) {
-        language=@"हिन्दी";
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"uk"]) {
-        language=@"Українська";
-    }
-    else {
-        language=@"English";
-    }
-    return language;
+    return [_languages valueForKey:[FPGameManager sharedInstance].language];
 }
 
 - (int) getRow{
     int row=0;
-    if ([[FPGameManager sharedInstance].language isEqualToString:@"en"]) {
-        row=0;
+    for (int i=0; i<_languageCodes.count; i++) {
+        if ([[FPGameManager sharedInstance].language isEqualToString:[_languageCodes objectAtIndex:i]])
+            row=i;
     }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ru"]) {
-        row=1;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"fr"]) {
-        row=2;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"de"]) {
-        row=3;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"es"]) {
-        row=4;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"uk"]) {
-        row=5;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hi"]) {
-        row=6;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"zh-Hant"]) {
-        row=7;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"ar"]) {
-        row=8;
-    }
-    else if ([[FPGameManager sharedInstance].language isEqualToString:@"hu"]) {
-        row=9;
-    }
-
     return row;
 }
 
@@ -297,7 +211,6 @@
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-
 {
     [self.languageButton setTitle:[_dataSource objectAtIndex:row] forState:UIControlStateNormal];
     [self setlanguage];
