@@ -85,7 +85,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone =[[NSUserDefaults standardUserDefaults] boolForKey:_levelManager.levelName];
+    _levelDone =[[NSUserDefaults standardUserDefaults] boolForKey:NSLocalizedString( _levelManager.levelName, nil)];
     [self configureGameplayWithAnimationType:!_levelDone];
 }
 
@@ -277,6 +277,7 @@
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
             [self showBasket:nil];
+            [self bounceElements:@[_next] isInSuperView:YES];
 
         }];
     }];

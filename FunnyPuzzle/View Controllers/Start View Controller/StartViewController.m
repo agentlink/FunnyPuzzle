@@ -67,7 +67,6 @@
     _gamemodeSecond.tap =  ^{
         [self play:self type:FPGameTypeSecond];
     };
-    
     [self cofigGround];
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -184,6 +183,14 @@
             }];
         }];
     }
+//    UIToolbar* blurredView = [[UIToolbar alloc] initWithFrame:self.view.bounds];
+//    [blurredView setBarStyle:UIBarStyleDefault];
+//    blurredView.alpha = 0;
+//    [self.view insertSubview:blurredView atIndex:0];
+//    blurredView.layer.zPosition = 1;
+//    [UIView animateWithDuration:kAnimationDuration animations:^{
+//        blurredView.alpha = 1;
+//    }];
 }
 
 - (void)returnFromLevelSelection
@@ -192,14 +199,12 @@
         [UIView animateWithDuration:kAnimationDuration animations:^{
             [_gamemodeFirst.superview.layer setTransform:_transform];
         } completion:^(BOOL finished) {
-            
         }];
     }
     if ([(FPLevelPresentationViewController *)self.presentedViewController gameType] == FPGameTypeSecond) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             [_gamemodeSecond.superview.layer setTransform:_transform];
         } completion:^(BOOL finished) {
-            
         }];
     }
     self.navigationController.modalPresentationStyle = UIModalPresentationNone;

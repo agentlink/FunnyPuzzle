@@ -61,7 +61,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
 }
 - (void) viewDidAppear:(BOOL)animated
@@ -122,7 +121,7 @@
     NSDictionary *level = [_levels objectAtIndex:indexPath.row];
     FPLevelCell *cell = (FPLevelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     PDFImage *image;
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:[level valueForKey:@"name"]]) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:NSLocalizedString([level valueForKey:@"name"], nil)]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.isFinished = YES;
         NSLog(@"Path: %@", [level valueForKey:_compleetKey]);
@@ -192,7 +191,7 @@
     [[self view] setAlpha:0];
         [_parrent returnFromLevelSelection];
     } completion:^(BOOL finished) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }];
 }
 
@@ -218,12 +217,12 @@
    
 }
 
--(void)didClose:(bool)ActivateScreen ImageScreen:(UIImage *)ImageScreenShot
-{
-    self.ImageScreenShot=ImageScreenShot;
-    self.ScreenShotActivate=ActivateScreen;
-    
-}
+//-(void)didClose:(bool)ActivateScreen ImageScreen:(UIImage *)ImageScreenShot
+//{
+//    self.ImageScreenShot=ImageScreenShot;
+//    self.ScreenShotActivate=ActivateScreen;
+//    
+//}
 
 -(void)viewWillAppear:(BOOL)animated
 {
