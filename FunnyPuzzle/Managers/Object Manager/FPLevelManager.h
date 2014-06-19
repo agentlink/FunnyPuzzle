@@ -26,7 +26,7 @@
 @property (nonatomic, readonly) NSInteger levelsCount;
 @property (nonatomic, readonly) NSMutableDictionary *mcLevel;
 
-
++ (NSString *)itemsPlistPath;
 + (FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
 + (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type;
 + (NSArray *)allLevels:(FPGameType)gameType;

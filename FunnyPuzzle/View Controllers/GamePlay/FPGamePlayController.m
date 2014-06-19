@@ -266,7 +266,6 @@
     _field.alpha = 0;
     [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
         oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        //oldImage.alpha = 0.5;
         newImage.alpha = 1;
         oldImage.alpha = 0;
         newImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
@@ -411,7 +410,7 @@
 - (void)configElements
 {
     NSMutableArray *elements = [NSMutableArray new];
-    _elementsLeft = [[_levelManager mcElements] count];
+    _elementsLeft =  [[_levelManager mcElements] count];
     for (int i = 0; i<[[_levelManager mcElements] count]; i++) {
         NSString *path = [[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"path"];
         PDFImage *image = [PDFImage imageNamed:path];
@@ -465,7 +464,16 @@
     }
     return CGPointMake((point.x*multiplier)+_field.frame.origin.x+widthShift, (point.y*multiplier)+_field.frame.origin.y+heightShift);
 }
-
+- (void)levelCompleet
+{
+    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:NSLocalizedString([[self levelManager] levelName], nil)];
+    if (!level) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
+        [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
+    }
+    //[self updateCollectionView];
+    [self compleetAnimation];
+}
 #pragma mark - IBAction
 + (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
     
@@ -482,15 +490,11 @@
 
 - (IBAction)next:(id)sender;
 {
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-    [presentationController updateColleCellAtIndexPath:self.indexPath];
-    [presentationController nextLevel];
+    [[self updateCollectionView] nextLevel];
 }
 - (IBAction)prew:(id)sender
 {
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-     [presentationController updateColleCellAtIndexPath:self.indexPath];
-    [presentationController previousLevel];
+    [[self updateCollectionView] previousLevel];
 
 }
 - (IBAction)back:(id)sender
@@ -499,13 +503,17 @@
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
     {
-        FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-        [presentationController updateColleCellAtIndexPath:self.indexPath];
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+
+        [[self updateCollectionView] closeGameplay];
     }
 
+}
+
+- (FPLevelPresentationViewController *)updateCollectionView
+{
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController updateColleCellAtIndexPath:self.indexPath];
+    return presentationController;
 }
 
 #pragma mark - Gameplay Methods
@@ -589,10 +597,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
-
-            [self compleetAnimation];
+            [self levelCompleet];
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
         //_dragingElement.layer.position = rightPoint;

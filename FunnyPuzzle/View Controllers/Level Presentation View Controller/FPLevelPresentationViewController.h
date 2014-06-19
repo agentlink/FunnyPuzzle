@@ -22,6 +22,7 @@
 
 - (void)nextLevel;
 - (void)previousLevel;
+- (void)closeGameplay;
 - (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

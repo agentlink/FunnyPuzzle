@@ -60,13 +60,40 @@
         rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
         rotate.duration = INFINITY;
         [_star.layer addAnimation:rotate forKey:@"rotate"];
+        [_name sizeToFit];
         _height.constant = _name.frame.size.height;
         //[self layoutIfNeeded];
         [self insertSubview:_star atIndex:0];
     } else {
+        _name.text = @"";
         _height.constant = 0;
         [_star removeFromSuperview];
         [self setNeedsDisplay];
+    }
+}
+- (void)setIsLocked:(BOOL)isLocked
+{
+    _isLocked = isLocked;
+    if (isLocked) {
+        [self setIsFinished:NO];
+        self.imageVeiw.image = [PDFImage imageNamed:@"Levels/locked"];
+        self.tintColor = [UIColor greenColor];
+        PDFImageOptions *imageOptions = [PDFImageOptions optionsWithSize:self.imageVeiw.image.size];
+        imageOptions.tintColor = [UIColor blueColor];
+        CGRect frame = CGRectMake(0, 10, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)-20);
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [self.imageVeiw.image imageWithOptions:imageOptions];
+        imageView.alpha = 0.3;
+        imageView.tag = 3;
+        [self addSubview:imageView];
+        self.imageVeiw.hidden = YES;
+
+    } else {
+        [[(UIImageView *)self viewWithTag:3] removeFromSuperview];
+        self.imageVeiw.image = nil;
+        self.tintColor = [UIColor clearColor];
+        self.imageVeiw.hidden = NO;
     }
 }
 - (void)changeFrameWithAnimationToRect:(CGRect)rect
