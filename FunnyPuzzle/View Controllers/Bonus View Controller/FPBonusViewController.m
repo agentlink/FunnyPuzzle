@@ -28,6 +28,7 @@
     CGMutablePathRef aPath;
     int ii;
     CGRect  MainRec;
+    int lichulnuk;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *Bt;
@@ -52,8 +53,9 @@
     [super viewDidLoad];
     MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
+    lichulnuk=0;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    Numb=3;
+    Numb=2;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -191,6 +193,7 @@
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
     [self.view addSubview:imView];
     objectsCandies=[[NSMutableArray alloc] init];
+  //  objectsCandies2=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
      
         UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
@@ -201,6 +204,7 @@
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.BonusLevelKind=2;
         [objectsCandies insertObject:c atIndex:i];
+    //    [objectsCandies2 insertObject:c atIndex:i];
         [self.view addSubview:c];
         [c Move:true];
     }
@@ -396,6 +400,7 @@ int tick=0;
             [objectsCandies removeObjectAtIndex:m];
             CGRect rec=CGRectMake(c.frame.origin.x, self.view.frame.size.width-c.frame.size.height, c.frame.size.height, c.frame.size.width );
             c.frame=rec;
+            
         }
     }
 
@@ -453,6 +458,8 @@ int tick=0;
             m=-1;
         }
     }
+   // if (lichulnuk==1)
+   // {m=-1;}
     if (m!=-1)
     {
         if (objectsCandies[m]!=nil)
@@ -474,9 +481,54 @@ int tick=0;
             [animator addBehavior:collisionBehavior];
             c.animator = animator;
             c.Animation=true;
+            lichulnuk++;
         }
     }
+  /*  if (lichulnuk>=6)
+    {
+        
+        UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+        
+        
+        for (int i=0; i<objectsCandies2.count; i++) {
+            NSMutableArray *arrayC=[[NSMutableArray alloc] init];
+            Candy *c=objectsCandies2[i];
+            for (int j=0; j<objectsCandies2.count-1; j++) {
+                Candy *cc=objectsCandies2[j];
+                if (cc!=c) {
+                    [arrayC insertObject:cc atIndex:arrayC.count];
+                }
+            }
+            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:arrayC];
+            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:arrayC];
+            collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:arrayC];
+            c.CandiesPropertiesBehavior.elasticity = 0.5;
+            [animator addBehavior:c.CandiesPropertiesBehavior];
+            [animator addBehavior:gravityBeahvior];
+            [animator addBehavior:collisionBehavior];
+            c.animator = animator;
+   
 
+        }*/
+    /*    for (int i=0; i<objectsCandies2.count; i++) {
+            Candy *c=objectsCandies2[i];
+            animation = [CAKeyframeAnimation animation];
+            aPath = CGPathCreateMutable();
+            CGPathMoveToPoint(aPath, nil,CGRectGetMaxX(c.frame),CGRectGetMaxY(c.frame));
+            CGPathAddLineToPoint(aPath, nil, CGRectGetMaxX(c.frame)+20,CGRectGetMaxY(c.frame));
+            animation.path = aPath;
+            animation.duration = 1.0;
+            animation.autoreverses = NO;
+            animation.removedOnCompletion = NO;
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+            
+            [c.layer addAnimation:animation forKey:@"position"];
+            
+        }*/
+        
+        
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
