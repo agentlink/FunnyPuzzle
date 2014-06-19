@@ -291,7 +291,7 @@
 - (void)showLevelName:(void (^)())completion
 {
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
-    [[self levelName] setText:NSLocalizedString([[self levelManager] levelName], nil)];
+    [_levelName setText:NSLocalizedStringFromTableInBundle(_levelManager.levelName, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]], nil)];
     [_levelName sizeToFit];
     CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
