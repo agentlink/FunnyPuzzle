@@ -10,17 +10,13 @@
 		0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0439944F19360CD30006E3DB /* Comp4_1.mp4 */; };
 		04460FE51951DFFD00F810E8 /* good_job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC21951DFFC00F810E8 /* good_job.mp3 */; };
 		04460FE61951DFFD00F810E8 /* perfect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC31951DFFC00F810E8 /* perfect.mp3 */; };
-		04460FE71951DFFD00F810E8 /* well_done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC41951DFFC00F810E8 /* well_done.mp3 */; };
 		04460FE81951DFFD00F810E8 /* wonderfull.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC51951DFFC00F810E8 /* wonderfull.mp3 */; };
 		04460FE91951DFFD00F810E8 /* good_job_ar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC71951DFFC00F810E8 /* good_job_ar.mp3 */; };
 		04460FEA1951DFFD00F810E8 /* perfect_ar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC81951DFFC00F810E8 /* perfect_ar.mp3 */; };
 		04460FEB1951DFFD00F810E8 /* well_done_ar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FC91951DFFC00F810E8 /* well_done_ar.mp3 */; };
 		04460FEC1951DFFD00F810E8 /* wonderful_ar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FCA1951DFFC00F810E8 /* wonderful_ar.mp3 */; };
 		04460FED1951DFFD00F810E8 /* excellent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FCC1951DFFC00F810E8 /* excellent.mp3 */; };
-		04460FEE1951DFFD00F810E8 /* good_job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FCD1951DFFC00F810E8 /* good_job.mp3 */; };
-		04460FEF1951DFFD00F810E8 /* perfect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FCE1951DFFC00F810E8 /* perfect.mp3 */; };
 		04460FF01951DFFD00F810E8 /* well_done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FCF1951DFFC00F810E8 /* well_done.mp3 */; };
-		04460FF11951DFFD00F810E8 /* wonderfull.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FD01951DFFC00F810E8 /* wonderfull.mp3 */; };
 		04460FF21951DFFD00F810E8 /* good_job_es.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FD21951DFFC00F810E8 /* good_job_es.mp3 */; };
 		04460FF31951DFFD00F810E8 /* perfect_es.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FD31951DFFC00F810E8 /* perfect_es.mp3 */; };
 		04460FF41951DFFD00F810E8 /* well_done_es.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04460FD41951DFFC00F810E8 /* well_done_es.mp3 */; };
@@ -858,14 +854,12 @@
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
 				7FA57038192F1B3000CE84F8 /* cloud2.pdf in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
-				04460FEF1951DFFD00F810E8 /* perfect.mp3 in Resources */,
 				04460FEA1951DFFD00F810E8 /* perfect_ar.mp3 in Resources */,
 				7FA57040192F399A00CE84F8 /* ground2.pdf in Resources */,
 				04460FF81951DFFD00F810E8 /* well_done_hi.mp3 in Resources */,
 				04460FFB1951DFFD00F810E8 /* perfect_uk.mp3 in Resources */,
 				04460FFF1951DFFD00F810E8 /* perfect_zh.mp3 in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
-				04460FEE1951DFFD00F810E8 /* good_job.mp3 in Resources */,
 				7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */,
 				84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */,
 				7FA57041192F399A00CE84F8 /* ground3.pdf in Resources */,
@@ -885,7 +879,6 @@
 				04460FEB1951DFFD00F810E8 /* well_done_ar.mp3 in Resources */,
 				04460FEC1951DFFD00F810E8 /* wonderful_ar.mp3 in Resources */,
 				04460FE61951DFFD00F810E8 /* perfect.mp3 in Resources */,
-				04460FE71951DFFD00F810E8 /* well_done.mp3 in Resources */,
 				04460FF51951DFFD00F810E8 /* wonderfull_es.mp3 in Resources */,
 				04460FE51951DFFD00F810E8 /* good_job.mp3 in Resources */,
 				04460FE81951DFFD00F810E8 /* wonderfull.mp3 in Resources */,
@@ -902,7 +895,6 @@
 				7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */,
 				04460FFC1951DFFD00F810E8 /* well_done_uk.mp3 in Resources */,
 				04460FF01951DFFD00F810E8 /* well_done.mp3 in Resources */,
-				04460FF11951DFFD00F810E8 /* wonderfull.mp3 in Resources */,
 				8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */,
 				04460FF71951DFFD00F810E8 /* perfect_hi.mp3 in Resources */,
 			);

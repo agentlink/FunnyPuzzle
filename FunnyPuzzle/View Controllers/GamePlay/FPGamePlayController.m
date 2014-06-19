@@ -90,7 +90,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone =[[NSUserDefaults standardUserDefaults] boolForKey:NSLocalizedString( _levelManager.levelName, nil)];
+    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager localStringForKey:_levelManager.levelName]];
     [self configureGameplayWithAnimationType:!_levelDone];
 }
 
@@ -128,8 +128,11 @@
             break;
         case FPGameplayAnimationModeLevelCompleet:
             [self startAnimationForCompleetLevel];
+//            self.ACManager = [AccelerometerManager new];
+//            [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.8];
+//            self.ACManager.delegate = self;
+//            [self.ACManager startShakeDetect];
             break;
-            
         default:
             break;
     }
@@ -325,7 +328,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
-    [[FPSoundManager sharedInstance] playPrise];
+    //[[FPSoundManager sharedInstance] playPrise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -357,7 +360,7 @@
             transform = CGAffineTransformTranslate(transform, 0, -95);
             candyView.transform = transform;
         } completion:^(BOOL compleat){
-            [[FPSoundManager sharedInstance] playPrise];
+            //[[FPSoundManager sharedInstance] playPrise];
             candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
             [_basketView insertSubview:candyView atIndex:0];
             [_animator removeBehavior:_basketSnap];
@@ -410,7 +413,7 @@
 - (void)configElements
 {
     NSMutableArray *elements = [NSMutableArray new];
-    _elementsLeft =  [[_levelManager mcElements] count];
+    _elementsLeft =  self.levelType==FPGameTypeFirst? [[_levelManager mcElements] count] : 1;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++) {
         NSString *path = [[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"path"];
         PDFImage *image = [PDFImage imageNamed:path];
@@ -466,13 +469,17 @@
 }
 - (void)levelCompleet
 {
-    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:NSLocalizedString([[self levelManager] levelName], nil)];
+    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager localStringForKey:NSLocalizedString([[self levelManager] levelName], nil)]];
     if (!level) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager localStringForKey:NSLocalizedString([[self levelManager] levelName], nil)]];
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
     }
     //[self updateCollectionView];
     [self compleetAnimation];
+}
+- (void)restartLevel
+{
+    [self startAnimationForNewLevel];
 }
 #pragma mark - IBAction
 + (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
@@ -638,9 +645,11 @@
     _field.alpha-=0.1;
     NSLog(@"%i",_resetImage);
     switch (_resetImage) {
-        case 1:
-            
-            break;
+        case 10:
+//            [self restartLevel];
+//            [self loadLevel:self.levelNumber type:self.levelType];
+//            [self.ACManager stopShakeDetect];
+        break;
             
         default:
             break;
