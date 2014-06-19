@@ -308,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE17A7F19353913008BBC3F /* Accelerometer Manager */,
-				84E962D3192F512700DC785C /* Object Manager */,
+				84E962D3192F512700DC785C /* Level Manager */,
 				84F85BF6192F370500BDECB5 /* Game Manager */,
 				84F85BBE192E97BB00BDECB5 /* Sound Manager */,
 			);
@@ -553,13 +553,13 @@
 			name = "Game Model";
 			sourceTree = "<group>";
 		};
-		84E962D3192F512700DC785C /* Object Manager */ = {
+		84E962D3192F512700DC785C /* Level Manager */ = {
 			isa = PBXGroup;
 			children = (
 				84E962D4192F512700DC785C /* FPLevelManager.h */,
 				84E962D5192F512700DC785C /* FPLevelManager.m */,
 			);
-			name = "Object Manager";
+			name = "Level Manager";
 			path = "Managers/Object Manager";
 			sourceTree = "<group>";
 		};
