@@ -20,7 +20,7 @@
 
 {
     NSMutableArray *objectsCandies2,*objectsCandies,*objectsFlowers;
-    NSArray *imagesCandy;
+    NSArray *imagesCandy,*imagesCandySmall;
     int Numb;
     int xx;
     MPMoviePlayerController *moviePlayerController;
@@ -58,6 +58,7 @@
     xx=20;
     lichulnuk=0;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
+    imagesCandySmall=[NSArray arrayWithObjects:@"candy_blue_small",@"candy_orange_small",@"candy_yellow_blue_small", nil];
     Numb=arc4random()%4;
     switch (Numb) {
         case 0:
@@ -132,8 +133,6 @@
 
 -(void)SecondBonusLevelLoad
 {
-    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im2=[UIImage imageNamed:@"sun_img"];
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
     MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
@@ -181,8 +180,6 @@
 -(void)ThirdBonusLevelLoad
 {
     objectsCandies2=[[NSMutableArray alloc]init];
-    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im=[UIImage imageNamed:@"tree_img"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/4, self.view.frame.size.width/2-im.size.width/2-50, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
@@ -209,6 +206,15 @@
     }
 }
 
+- (UIImage *)screenshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -216,18 +222,21 @@
     if (Numb==3){
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *c=objectsCandies[i];
-        if ([[c.layer presentationLayer]hitTest:touchLocation]) {
-            CGPoint point=CGPointMake(touchLocation.x, touchLocation.y);
-            c.layer.position=point;
+        if ([[c.layer presentationLayer]hitTest:touchLocation])
+        {
+            CGRect position = [[c.layer presentationLayer] frame];
+            c.frame=position;
+            CATransform3D transform = [[c layer] transform];
             [UIView animateWithDuration:0.4 animations:^{
-                c.frame = c.centrBascket;
+                  c.frame = c.centrBascket;
+                  [c.layer setTransform:transform];
             } completion:^(BOOL finished){
-                c.backgroundColor=[UIColor clearColor];
-                [c cleanObject];
-                [[FPGameManager sharedInstance] pickUpCandies:1];
-                c.click=true;
-            }
-             ];
+               c.backgroundColor=[UIColor clearColor];
+               [c cleanObject];
+               [[FPGameManager sharedInstance] pickUpCandies:1];
+               c.click=true;
+            }];
+            
             break;
             
         }
@@ -237,8 +246,6 @@
 
 -(void)ForthBonusLevelLoad
 {
-    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     UIImage *im=[UIImage imageNamed:@"crew_cut_all_img"];
     UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.height/2-im.size.width/2, self.view.frame.size.width-im.size.height, im.size.width ,im.size.height )];
     imView.image=im;
@@ -254,27 +261,26 @@
         c.layer.zPosition=0;
         c.Animation=true;
         c.BonusLevelKind=3;
-        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
+        UIImage *im;
         CGSize size;
-        UIImage *im2;
         CGRect r;
         int s=arc4random()%2;
         if (s==0) {
-            r=CGRectMake(-150, 20+arc4random()%100, im.size.height*0.8, im.size.width*0.8);
+            im = [UIImage imageNamed:[imagesCandySmall objectAtIndex:arc4random()%(imagesCandySmall.count)]];
+            r=CGRectMake(-150, 20+arc4random()%100, im.size.height, im.size.width);
             size=CGSizeMake(im.size.height*0.8, im.size.width*0.8);
-            im2=[self imageWithImage:im scaledToSize:size];
             c.Size=0;
-            c.centrBascket=CGRectMake(imView.center.x-imView.frame.size.width/2+c.frame.size.width, imView.center.y-c.frame.size.height, im2.size.height, im2.size.width);
+            c.centrBascket=CGRectMake(imView.center.x-imView.frame.size.width/2+c.frame.size.width, imView.center.y-c.frame.size.height, im.size.height, im.size.width);
         }
         else
         {
+            im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
             r=CGRectMake(-150, 20+arc4random()%100, im.size.height, im.size.width);
             size=CGSizeMake(im.size.height, im.size.width);
-            im2=im;
-            c.centrBascket=CGRectMake(imView.center.x+imView.frame.size.width/2-im2.size.width, imView.center.y-im2.size.height/2, im2.size.height, im2.size.width);
+            c.centrBascket=CGRectMake(imView.center.x+imView.frame.size.width/2-im.size.width, imView.center.y-im.size.height/2, im.size.height, im.size.width);
             c.Size=1;
         }
-        c.backgroundColor=[UIColor colorWithPatternImage:im2];
+        c.backgroundColor=[UIColor colorWithPatternImage:im];
         c.frame = r;
         c.BonusLevelKind=3;
         
