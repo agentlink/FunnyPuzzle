@@ -107,18 +107,6 @@ static FPSoundManager *_instance=nil;
     }
 }
 
-- (void)playPrise
-{
-    NSArray *allPrices = @[/*@"excellent", */@"good_job", @"perfect", @"well_done", @"wonderfull"];
-    NSString *suffix = [FPGameManager sharedInstance].language;
-    NSUInteger soundIndex = arc4random_uniform(allPrices.count);
-    NSURL *soundURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@Levels/Price/%@_%@.mp3", [[NSBundle mainBundle] resourcePath], allPrices[soundIndex], suffix]];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[soundURL path]])
-        [self playSound:soundURL];
-    else
-        [self playSound:[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/Levels/Price/%@.mp3", [[NSBundle mainBundle] resourcePath], allPrices[soundIndex]]]];
-}
-
 - (void) vibrateWithMode:(FPVibrateMode)vibrateMode{
     if ([FPGameManager sharedInstance].vibrate==YES){
         NSMutableDictionary* dict = [NSMutableDictionary dictionary];

@@ -8,7 +8,6 @@
 
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
-#import "GameModel.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPSoundManager.h"
 #import "AccelerometerManager.h"
@@ -90,7 +89,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager localStringForKey:_levelManager.levelName]];
+    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [self configureGameplayWithAnimationType:!_levelDone];
 }
 
@@ -136,6 +135,11 @@
         default:
             break;
     }
+}
+- (void)dealloc
+{
+    [self.animator removeAllBehaviors];
+    self.animator = nil;
 }
 #pragma mark - Custom Accsesors
 
@@ -294,7 +298,7 @@
 - (void)showLevelName:(void (^)())completion
 {
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
-    [_levelName setText:NSLocalizedStringFromTableInBundle(_levelManager.levelName, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]], nil)];
+    [_levelName setText:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [_levelName sizeToFit];
     CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
@@ -304,6 +308,7 @@
 
 - (void)showRays
 {
+    return;
     PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
     CGRect frame = CGRectMake((-star.size.width/2)+CGRectGetMidX(_field.frame), (-star.size.height/2)+CGRectGetMidY(_field.frame), star.size.width, star.size.height);
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:frame];
@@ -469,9 +474,9 @@
 }
 - (void)levelCompleet
 {
-    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager localStringForKey:NSLocalizedString([[self levelManager] levelName], nil)]];
+    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
     if (!level) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager localStringForKey:NSLocalizedString([[self levelManager] levelName], nil)]];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
     }
     //[self updateCollectionView];

@@ -304,6 +304,7 @@
         animation.removedOnCompletion = NO;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [c.layer addAnimation:animation forKey:@"position"];
+        
         x+=55;
         deltaX-=55;
 

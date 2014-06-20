@@ -22,7 +22,6 @@
 @property (nonatomic, weak) IBOutlet FPGamePlayController *controller;
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleet;
-@property (nonatomic) UIImageView *imageView;
 - (IBAction)menu:(id)sender;
 @end
 
@@ -61,13 +60,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     
 }
 - (void) viewDidAppear:(BOOL)animated
 {
-    _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [self.view insertSubview:_imageView atIndex:0];
-    [self.view setBackgroundColor:[UIColor clearColor]];
+
 
 }
 
@@ -75,6 +73,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)dealloc
+{
+    _levels = nil;
 }
 #pragma mark - Navigation
 
@@ -98,7 +100,7 @@
     PDFImage *image;
     if ([[level valueForKey:@"compleet"] boolValue]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
-        cell.name.text = NSLocalizedString([level valueForKey:@"name"], nil);
+        cell.name.text = [FPLevelManager gameLocalizedStringForKey:[level valueForKey:@"name"]];//NSLocalizedString([level valueForKey:@"name"], nil);
         cell.isFinished = YES;
         cell.imageVeiw.image = image;
     } else if (prewLevelDone) {
