@@ -13,7 +13,7 @@
 "Hen" = "دجاجة";
 "Octopus" = "أخطبوط ";
 "Pencil" = "قلم رصاص";
-"Ice cream"	= "ايس كريم";
+"Ice Cream"	= "ايس كريم";
 
 
 "Fingerling" = "سمكة الإصبع";
@@ -31,7 +31,7 @@
 "Turtle" = "سلحفاة";
 "Dolphin" = "درفيل";
 "Hippo"	= "فرس النهر";
-"Teddy-bear" = "دبدوب";
+"Teddy_bear" = "دبدوب";
 "Penguin" = "بطريق";
 "Snake" = "ثعبان ";
 "Flamingo" = "فلامنغو";
@@ -45,8 +45,8 @@
 "Car" = "سيارة";
 "Eggplant" = "الباذنجان";
 "Bread"	= "خبز ";
-"Baseball cap" = "كاب البيسبول";
-"Computer chair" = "كرسي الكمبيوتر";
+"Baseball Cap" = "كاب البيسبول";
+"Computer_chair" = "كرسي الكمبيوتر";
 "Train" = "قطار";
 "Wagon"	= "عرب";
 "Peas" = "البازلاء";
@@ -90,8 +90,8 @@
 "Pitching" = "الرمي والقذف";
 "Radish" = "الفجل";
 "Rhino" = "وحيد القرن";
-"Sea bear" = "دب البحر";
-"Tea cup" = "كوب الشاي";
+"Sea_bear" = "دب البحر";
+"Tea_cup" = "كوب الشاي";
 
 
 

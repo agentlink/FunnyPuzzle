@@ -13,7 +13,7 @@
 "Hen" = "Курочка";
 "Octopus" = "Восьминіг";
 "Pencil" = "Олівець";
-"Ice cream"	= "Морозиво";
+"Ice Cream"	= "Морозиво";
 
 
 "Fingerling" = "Рибка";
@@ -31,7 +31,7 @@
 "Turtle" = "Черепашка";
 "Dolphin" = "Дельфін";
 "Hippo"	= "Бегемотик";
-"Teddy-bear" = "Медведик";
+"Teddy_bear" = "Медведик";
 "Penguin" = "Пінгвінчик";
 "Snake" = "Змія";
 "Flamingo" = "Фламінго";
@@ -45,8 +45,8 @@
 "Car" = "Машина";
 "Eggplant" = "Баклажан";
 "Bread"	= "Хліб";
-"Baseball cap" = "Бейсболка";
-"Computer chair" = "Комп'ютерне крісло";
+"Baseball Cap" = "Бейсболка";
+"Computer_chair" = "Комп'ютерне крісло";
 "Train" = "Паравозик";
 "Wagon"	= "Вагончик";
 "Peas" = "Горох";
@@ -90,8 +90,8 @@
 "Pitching" = "Качка";
 "Radish" = "Редиска";
 "Rhino" = "Носоріг";
-"Sea bear" = "Морський котик";
-"Tea cup" = "Чашка";
+"Sea_bear" = "Морський котик";
+"Tea_cup" = "Чашка";
 
 "Perfect" = "Молодець";
 "Wonderfull" = "Дякую";
