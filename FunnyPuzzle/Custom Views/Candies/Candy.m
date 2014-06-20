@@ -8,6 +8,7 @@
 
 #import "Candy.h"
 #import "FPBonusViewController.h"
+#import "FPGameManager.h"
 
 @implementation Candy
 {
@@ -81,6 +82,7 @@
                 [UIView animateWithDuration:0.8 animations:^{
                     self.frame=displacedFrame1;
                 }completion:^(BOOL finished){
+                    [[FPGameManager sharedInstance] pickUpCandies:1];
                     [self cleanObject];
                 }];
                 self.click=true;
@@ -100,6 +102,7 @@
                  } completion:^(BOOL finished) {
                    self.backgroundColor=[UIColor clearColor];
                    self.click=true;
+                   [[FPGameManager sharedInstance] pickUpCandies:1];
                    [self cleanObject];
                  }];
             }];
@@ -110,6 +113,7 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+            [[FPGameManager sharedInstance] pickUpCandies:1];
             [self cleanObject];
         }
     }

@@ -12,6 +12,7 @@
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "GamePlayViewController.h"
+#import "FPGameManager.h"
 
 
 
@@ -51,11 +52,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     MainRec=CGRectMake( 0, 0,  80, 68);
     xx=20;
     lichulnuk=0;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
-    Numb=2;
+    Numb=arc4random()%4;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -99,7 +102,6 @@
 
 -(void)FirstBonusLevelLoad
 {
-    self.view.backgroundColor=[UIColor colorWithRed:209 green:233 blue:250 alpha:1];
     MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
     UIImage *im=[UIImage imageNamed:@"basket_icon"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/2, self.view.frame.size.width/2-im.size.width/2, im.size.width, im.size.height);
@@ -144,7 +146,6 @@
     float x=50;
     for (int i=0; i<5; i++)
     {
-       
         UIImage *im=[UIImage imageNamed:@"flower_img"];
         FPFlover *f=[[FPFlover alloc] initWithFrame:CGRectMake(x, self.view.frame.size.width,im.size.width,im.size.height)];
         f.backgroundColor=[UIColor colorWithPatternImage:im];
@@ -193,7 +194,6 @@
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
     [self.view addSubview:imView];
     objectsCandies=[[NSMutableArray alloc] init];
-  //  objectsCandies2=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
      
         UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
@@ -204,29 +204,27 @@
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.BonusLevelKind=2;
         [objectsCandies insertObject:c atIndex:i];
-    //    [objectsCandies2 insertObject:c atIndex:i];
         [self.view addSubview:c];
         [c Move:true];
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  
-    
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     if (Numb==3){
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *c=objectsCandies[i];
         if ([[c.layer presentationLayer]hitTest:touchLocation]) {
-            CGRect rect=CGRectMake(touchLocation.x, touchLocation.y, c.frame.size.width, c.frame.size.height);
-            c.frame=rect;
-            NSLog(@"x%f,   y%f",rect.origin.x,rect.origin.y);
+            CGPoint point=CGPointMake(touchLocation.x, touchLocation.y);
+            c.layer.position=point;
             [UIView animateWithDuration:0.4 animations:^{
                 c.frame = c.centrBascket;
             } completion:^(BOOL finished){
                 c.backgroundColor=[UIColor clearColor];
                 [c cleanObject];
+                [[FPGameManager sharedInstance] pickUpCandies:1];
                 c.click=true;
             }
              ];
@@ -236,7 +234,6 @@
     }
     }
 }
-
 
 -(void)ForthBonusLevelLoad
 {
@@ -300,24 +297,12 @@
         animation.autoreverses = NO;
         animation.removedOnCompletion = NO;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-        
         [c.layer addAnimation:animation forKey:@"position"];
-        
-   //     [c.layer animationDidStop:animation finished:YES ];
-        
-        
         x+=55;
         deltaX-=55;
 
       }
 }
-
--(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    NSLog(@"stop");
-}
-
-
 int tick=0;
 -(void)handleTimer
 {
@@ -458,8 +443,6 @@ int tick=0;
             m=-1;
         }
     }
-   // if (lichulnuk==1)
-   // {m=-1;}
     if (m!=-1)
     {
         if (objectsCandies[m]!=nil)
@@ -484,51 +467,6 @@ int tick=0;
             lichulnuk++;
         }
     }
-  /*  if (lichulnuk>=6)
-    {
-        
-        UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-        
-        
-        for (int i=0; i<objectsCandies2.count; i++) {
-            NSMutableArray *arrayC=[[NSMutableArray alloc] init];
-            Candy *c=objectsCandies2[i];
-            for (int j=0; j<objectsCandies2.count-1; j++) {
-                Candy *cc=objectsCandies2[j];
-                if (cc!=c) {
-                    [arrayC insertObject:cc atIndex:arrayC.count];
-                }
-            }
-            UIGravityBehavior *gravityBeahvior=[[UIGravityBehavior alloc] initWithItems:arrayC];
-            UICollisionBehavior *collisionBehavior=[[UICollisionBehavior alloc] initWithItems:arrayC];
-            collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-            c.CandiesPropertiesBehavior= [[UIDynamicItemBehavior alloc] initWithItems:arrayC];
-            c.CandiesPropertiesBehavior.elasticity = 0.5;
-            [animator addBehavior:c.CandiesPropertiesBehavior];
-            [animator addBehavior:gravityBeahvior];
-            [animator addBehavior:collisionBehavior];
-            c.animator = animator;
-   
-
-        }*/
-    /*    for (int i=0; i<objectsCandies2.count; i++) {
-            Candy *c=objectsCandies2[i];
-            animation = [CAKeyframeAnimation animation];
-            aPath = CGPathCreateMutable();
-            CGPathMoveToPoint(aPath, nil,CGRectGetMaxX(c.frame),CGRectGetMaxY(c.frame));
-            CGPathAddLineToPoint(aPath, nil, CGRectGetMaxX(c.frame)+20,CGRectGetMaxY(c.frame));
-            animation.path = aPath;
-            animation.duration = 1.0;
-            animation.autoreverses = NO;
-            animation.removedOnCompletion = NO;
-            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-            
-            [c.layer addAnimation:animation forKey:@"position"];
-            
-        }*/
-        
-        
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
