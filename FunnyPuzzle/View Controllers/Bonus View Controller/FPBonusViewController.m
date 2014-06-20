@@ -303,9 +303,6 @@
         
         [c.layer addAnimation:animation forKey:@"position"];
         
-   //     [c.layer animationDidStop:animation finished:YES ];
-        
-        
         x+=55;
         deltaX-=55;
 

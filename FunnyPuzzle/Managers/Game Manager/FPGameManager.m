@@ -132,4 +132,6 @@ static FPGameManager *_instance=nil;
     [_instance loadNewAdv];
 }
 
+
+
 @end
