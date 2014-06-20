@@ -13,7 +13,7 @@
 "Hen" = "Hen";
 "Octopus" = "Octopus";
 "Pencil" = "Pencil";
-"Ice cream"	= "Ice cream";
+"Ice Cream"	= "Ice Cream";
 
 
 "Fingerling" = "Fingerling";
@@ -31,7 +31,7 @@
 "Turtle" = "Turtle";
 "Dolphin" = "Dolphin";
 "Hippo"	= "Hippo";
-"Teddy-bear" = "Teddy-bear";
+"Teddy_bear" = "Teddy-bear";
 "Penguin" = "Penguin";
 "Snake" = "Snake";
 "Flamingo" = "Flamingo";
@@ -45,8 +45,8 @@
 "Car" = "Car";
 "Eggplant" = "Eggplant";
 "Bread"	= "Bread";
-"Baseball cap" = "Baseball cap";
-"Computer chair" = "Computer chair";
+"Baseball Cap" = "Baseball cap";
+"Computer_chair" = "Computer chair";
 "Train" = "Train";
 "Wagon"	= "Wagon";
 "Peas" = "Peas";
@@ -90,8 +90,8 @@
 "Pitching" = "Pitching";
 "Radish" = "Radish";
 "Rhino" = "Rhino";
-"Sea bear" = "Sea bear";
-"Tea cup" = "Tea cup";
+"Sea_bear" = "Sea bear";
+"Tea_cup" = "Tea cup";
 
 
 

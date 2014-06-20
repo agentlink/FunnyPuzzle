@@ -13,7 +13,7 @@
 "Hen" = "Pollito";
 "Octopus" = "Pulpo";
 "Pencil" = "Lápiz";
-"Ice cream"	= "Helado";
+"Ice Cream"	= "Helado";
 
 
 "Fingerling" = "Alevîn - pez";
@@ -31,7 +31,7 @@
 "Turtle" = "Tortuga";
 "Dolphin" = "Delfín";
 "Hippo"	= "Hipopôtamo";
-"Teddy-bear" = "Osito de peluche";
+"Teddy_bear" = "Osito de peluche";
 "Penguin" = "Pinguîno";
 "Snake" = "Serpiente";
 "Flamingo" = "Flamenco";
@@ -45,8 +45,8 @@
 "Car" = "Coche";
 "Eggplant" = "Berenjena";
 "Bread"	= "Pan";
-"Baseball cap" = "Gorra de bêisbol";
-"Computer chair" = "Sillâ";
+"Baseball Cap" = "Gorra de bêisbol";
+"Computer_chair" = "Sillâ";
 "Train" = "Tren";
 "Wagon"	= "Vâgon";
 "Peas" = "Guisante";
@@ -91,8 +91,8 @@
 "Pitching" = "Pato";
 "Radish" = "Rábano";
 "Rhino" = "Rinoceronte";
-"Sea bear" = "Lêon marino";
-"Tea cup" = "Taza de tê";
+"Sea_bear" = "Lêon marino";
+"Tea_cup" = "Taza de tê";
 
 
 

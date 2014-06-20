@@ -74,6 +74,10 @@
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     [[FPGameManager sharedInstance] setSettings];
     [self setSettingsControl];
+    NSString *addr = [NSString stringWithFormat:@"%p", _leftView];
+    NSLog(@"leftView %@",addr);
+    addr = [NSString stringWithFormat:@"%p", _groundForSettingsButton];
+    NSLog(@"groundForSettingsButton %@",addr);
 }
 
 - (void) viewWillAppear:(BOOL)animated{

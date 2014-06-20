@@ -14,7 +14,7 @@
 "Hen" = "母鸡";
 "Octopus" = "章鱼";
 "Pencil" = "铅笔";
-"Ice cream"	= "冰淇淋";
+"Ice Cream"	= "冰淇淋";
 
 
 
@@ -33,7 +33,7 @@
 "Turtle" = "乌龟";
 "Dolphin" = "海豚";
 "Hippo"	= "河马";
-"Teddy-bear" = "泰迪熊";
+"Teddy_bear" = "泰迪熊";
 "Penguin" = "企鵝";
 "Snake" = "蛇";
 "Flamingo" = "火烈鳥";
@@ -51,8 +51,8 @@
 "Car" = "车";
 "Eggplant" = "茄子";
 "Bread"	= "面包";
-"Baseball cap" = "棒球帽";
-"Computer chair" = "电脑椅";
+"Baseball Cap" = "棒球帽";
+"Computer_chair" = "电脑椅";
 "Train" = "火车";
 "Wagon"	= "货车";
 "Peas" = "豆";
@@ -96,8 +96,8 @@
 "Pitching" = "投球";
 "Radish" = "萝卜";
 "Rhino" = "犀牛";
-"Sea bear" = "海熊";
-"Tea cup" = "茶杯";
+"Sea_bear" = "海熊";
+"Tea_cup" = "茶杯";
 
 
 
