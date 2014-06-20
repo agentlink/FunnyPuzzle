@@ -580,8 +580,11 @@
         
         if (_field==[touch view])
         {
-            NSLog(@"ok");
-          [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch locationInView:_field] inView:_field]) {
+                NSLog(@"ok");
+                [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+            }
+            
         }
     }
     
