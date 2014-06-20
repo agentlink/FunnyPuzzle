@@ -263,9 +263,15 @@
         NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *full = [NSString stringWithFormat:@"Levels/%@/%@_full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *notFull = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
-        NSNumber *compleet = [[NSUserDefaults standardUserDefaults] valueForKey:NSLocalizedString([level valueForKey:@"name"], nil)] ? @1 : @0;
+        NSNumber *compleet = [[NSUserDefaults standardUserDefaults] valueForKey:
+                              [self localStringForKey:[level valueForKey:@"name"]]] ? @1 : @0;
         [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull, @"compleet":compleet}];
     }
     return [NSArray arrayWithArray:levels];
+}
+#pragma mark - Private
++ (NSString *)localStringForKey:(NSString *)key
+{
+        return  NSLocalizedStringFromTableInBundle(key, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
 }
 @end

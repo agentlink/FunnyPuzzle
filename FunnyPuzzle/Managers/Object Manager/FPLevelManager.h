@@ -30,4 +30,5 @@
 + (FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
 + (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type;
 + (NSArray *)allLevels:(FPGameType)gameType;
++ (NSString *)localStringForKey:(NSString *)key;
 @end

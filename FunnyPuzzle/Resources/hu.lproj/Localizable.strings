@@ -1,11 +1,10 @@
-/* 
-  Localizable.strings
-  FunnyPuzzle
+/*
+ Localizable.strings
+ FunnyPuzzle
 
-  Created by Misha on 22.05.14.
-  Copyright (c) 2014 Mobilez365. All rights reserved.
-*/
-
+ Created by Misha on 22.05.14.
+ Copyright (c) 2014 Mobilez365. All rights reserved.
+ */
 "Piggy" = "Kismalac";
 "Pigeon" = "Galamb";
 "Frogling" = "Béka";
@@ -14,6 +13,7 @@
 "Octopus" = "Polip";
 "Pencil" = "Ceruza";
 "Ice cream"	= "Fagylalt";
+
 
 
 "Fingerling" = "Halacska";
