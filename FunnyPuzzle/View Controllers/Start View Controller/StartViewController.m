@@ -58,7 +58,7 @@
 {
     [super viewDidLoad];
     
-    _needToDropButtons = NO;
+//    _needToDropButtons = NO;
     _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
     _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
     _gamemodeFirst.tap = ^{
@@ -68,12 +68,16 @@
         [self play:self type:FPGameTypeSecond];
     };
     [self cofigGround];
-
+//
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    
+//
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     [[FPGameManager sharedInstance] setSettings];
     [self setSettingsControl];
+    NSString *addr = [NSString stringWithFormat:@"%p", _leftView];
+    NSLog(@"leftView %@",addr);
+    addr = [NSString stringWithFormat:@"%p", _groundForSettingsButton];
+    NSLog(@"groundForSettingsButton %@",addr);
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -83,14 +87,13 @@
     [[FPSoundManager sharedInstance] playBackgroundMusic];
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
-    _CandiesCountLabel.text = [NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].candiesCount];    
+    _CandiesCountLabel.text = [NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].candiesCount];
 }
 
 - (void) dealloc{
-    _ImageScreenShot=nil;
-    _settingsButtonPropertiesBehavior=nil;
-    _snapCandyBehavior=nil;
-    _snapSettingsBehavior=nil;
+//    _settingsButtonPropertiesBehavior=nil;
+//    _snapCandyBehavior=nil;
+//    _snapSettingsBehavior=nil;
 }
 
 - (void)cofigGround
@@ -231,7 +234,7 @@
     _candiesView.frame = CGRectMake((CGRectGetHeight(self.view.frame)/4)*3, 0, CGRectGetWidth(_candiesView.frame), CGRectGetHeight(_candiesView.frame));
     PDFImageView *settingsImage=[[PDFImageView alloc] initWithFrame:_settingsButton.frame];
     settingsImage.image=[PDFImage imageNamed:@"prefs"];
-    
+
     PDFImageView *candyImage=[[PDFImageView alloc] initWithFrame:_candiesView.frame];
     candyImage.image=[PDFImage imageNamed:@"candy"];
     _candiesView.image=candyImage.image;
@@ -263,79 +266,6 @@
     }
 }
 
-#pragma mark - Animations
-//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-//{
-//    return nil;
-//}
-//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-//{
-//    return (id)presenting;
-//}
-//
-//- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
-//{
-//    return nil;
-//}
-//- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator
-//{
-//    return (id)animator;
-//}
-
-
-// Add this view to superview, and slide it in from the bottom
-- (void)presentWithSuperview:(UIView *)superview {
-    // Set initial location at bottom of superview
-    CGRect frame = self.view.frame;
-    frame.origin = CGPointMake(0.0, superview.bounds.size.height);
-    self.view.frame = frame;
-    [superview addSubview:self.view];
-    
-    // Animate to new location
-    [UIView beginAnimations:@"presentWithSuperview" context:nil];
-    frame.origin = CGPointZero;
-    self.view.frame = frame;
-    [UIView commitAnimations];
-}
-
-// Method called when removeFromSuperviewWithAnimation's animation completes
-- (void)animationDidStop:(NSString *)animationID
-                finished:(NSNumber *)finished
-                 context:(void *)context {
-    if ([animationID isEqualToString:@"removeFromSuperviewWithAnimation"]) {
-        [self.view removeFromSuperview];
-    }
-}
-
-// Slide this view to bottom of superview, then remove from superview
-- (void)removeFromSuperviewWithAnimation {
-    [UIView beginAnimations:@"removeFromSuperviewWithAnimation" context:nil];
-    
-    // Set delegate and selector to remove from superview when animation completes
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-    
-    // Move this view to bottom of superview
-    CGRect frame = self.view.frame;
-    frame.origin = CGPointMake(0.0, self.view.superview.bounds.size.height);
-    self.view.frame = frame;
-    
-    [UIView commitAnimations];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-//    if ([[segue identifier] isEqualToString:@"OpenBonus"]) {
-//        FPBonusViewController *bonusVC=[segue destinationViewController];
-//        [bonusVC setDelegate:self];
-//    }
-}
-
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    self.ScreenShotActivate=false;
-}
 #pragma mark -Pablic
 - (UIImage *)snapshot
 {

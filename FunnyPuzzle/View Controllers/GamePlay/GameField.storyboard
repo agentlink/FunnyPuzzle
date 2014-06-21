@@ -192,6 +192,7 @@
                                         <connections>
                                             <outlet property="height" destination="VmO-EL-pAt" id="9Up-1J-0eo"/>
                                             <outlet property="imageVeiw" destination="7dn-Vr-s4d" id="DnQ-8S-iKD"/>
+                                            <outlet property="name" destination="kmR-hs-PBi" id="9EG-65-K60"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

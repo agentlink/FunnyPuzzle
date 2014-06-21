@@ -8,7 +8,6 @@
 
 #import "FPGamePlayController.h"
 #import "FPLevelManager.h"
-#import "GameModel.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPSoundManager.h"
 #import "AccelerometerManager.h"
@@ -90,7 +89,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone =[[NSUserDefaults standardUserDefaults] boolForKey:NSLocalizedString( _levelManager.levelName, nil)];
+    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [self configureGameplayWithAnimationType:!_levelDone];
 }
 
@@ -128,11 +127,19 @@
             break;
         case FPGameplayAnimationModeLevelCompleet:
             [self startAnimationForCompleetLevel];
+//            self.ACManager = [AccelerometerManager new];
+//            [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.8];
+//            self.ACManager.delegate = self;
+//            [self.ACManager startShakeDetect];
             break;
-            
         default:
             break;
     }
+}
+- (void)dealloc
+{
+    [self.animator removeAllBehaviors];
+    self.animator = nil;
 }
 #pragma mark - Custom Accsesors
 
@@ -266,7 +273,6 @@
     _field.alpha = 0;
     [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
         oldImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        //oldImage.alpha = 0.5;
         newImage.alpha = 1;
         oldImage.alpha = 0;
         newImage.transform = CGAffineTransformMakeScale(1.2, 1.2);
@@ -292,7 +298,7 @@
 - (void)showLevelName:(void (^)())completion
 {
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
-    [_levelName setText:NSLocalizedStringFromTableInBundle(_levelManager.levelName, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]], nil)];
+    [_levelName setText:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [_levelName sizeToFit];
     CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
@@ -302,6 +308,7 @@
 
 - (void)showRays
 {
+    return;
     PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
     CGRect frame = CGRectMake((-star.size.width/2)+CGRectGetMidX(_field.frame), (-star.size.height/2)+CGRectGetMidY(_field.frame), star.size.width, star.size.height);
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:frame];
@@ -326,7 +333,7 @@
 
 - (void) showBasket:(void (^)())completion
 {
-    [[FPSoundManager sharedInstance] playPrise];
+    //[[FPSoundManager sharedInstance] playPrise];
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -358,7 +365,7 @@
             transform = CGAffineTransformTranslate(transform, 0, -95);
             candyView.transform = transform;
         } completion:^(BOOL compleat){
-            [[FPSoundManager sharedInstance] playPrise];
+            //[[FPSoundManager sharedInstance] playPrise];
             candyView.frame = [self.view convertRect:candyView.frame toView:_basketView];
             [_basketView insertSubview:candyView atIndex:0];
             [_animator removeBehavior:_basketSnap];
@@ -411,7 +418,7 @@
 - (void)configElements
 {
     NSMutableArray *elements = [NSMutableArray new];
-    _elementsLeft = [[_levelManager mcElements] count];
+    _elementsLeft =  self.levelType==FPGameTypeFirst? [[_levelManager mcElements] count] : 1;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++) {
         NSString *path = [[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"path"];
         PDFImage *image = [PDFImage imageNamed:path];
@@ -465,7 +472,20 @@
     }
     return CGPointMake((point.x*multiplier)+_field.frame.origin.x+widthShift, (point.y*multiplier)+_field.frame.origin.y+heightShift);
 }
-
+- (void)levelCompleet
+{
+    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
+    if (!level) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
+        [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
+    }
+    //[self updateCollectionView];
+    [self compleetAnimation];
+}
+- (void)restartLevel
+{
+    [self startAnimationForNewLevel];
+}
 #pragma mark - IBAction
 + (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
     
@@ -482,15 +502,11 @@
 
 - (IBAction)next:(id)sender;
 {
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-    [presentationController updateColleCellAtIndexPath:self.indexPath];
-    [presentationController nextLevel];
+    [[self updateCollectionView] nextLevel];
 }
 - (IBAction)prew:(id)sender
 {
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-     [presentationController updateColleCellAtIndexPath:self.indexPath];
-    [presentationController previousLevel];
+    [[self updateCollectionView] previousLevel];
 
 }
 - (IBAction)back:(id)sender
@@ -499,13 +515,17 @@
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
     {
-        FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
-        [presentationController updateColleCellAtIndexPath:self.indexPath];
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+
+        [[self updateCollectionView] closeGameplay];
     }
 
+}
+
+- (FPLevelPresentationViewController *)updateCollectionView
+{
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[self presentingViewController];
+    [presentationController updateColleCellAtIndexPath:self.indexPath];
+    return presentationController;
 }
 
 #pragma mark - Gameplay Methods
@@ -555,6 +575,19 @@
                                     [touch1 locationInView:element].y/element.frame.size.height);
         _dragingWinPoint = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue]];
     }
+    UITouch *touch = [[event allTouches] anyObject];
+    if (_levelDone) {
+        
+        if (_field==[touch view])
+        {
+            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch locationInView:_field] inView:_field]) {
+                NSLog(@"ok");
+                [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+            }
+            
+        }
+    }
+    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -589,10 +622,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSLocalizedString([[self levelManager] levelName], nil)];
-
-            [self compleetAnimation];
+            [self levelCompleet];
         }
         //_dragingElement.layer.anchorPoint = CGPointZero;
         //_dragingElement.layer.position = rightPoint;
@@ -633,9 +663,11 @@
     _field.alpha-=0.1;
     NSLog(@"%i",_resetImage);
     switch (_resetImage) {
-        case 1:
-            
-            break;
+        case 10:
+//            [self restartLevel];
+//            [self loadLevel:self.levelNumber type:self.levelType];
+//            [self.ACManager stopShakeDetect];
+        break;
             
         default:
             break;

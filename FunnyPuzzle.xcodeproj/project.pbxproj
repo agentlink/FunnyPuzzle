@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0439944F19360CD30006E3DB /* Comp4_1.mp4 */; };
+		04460FE51951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FE61951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FE81951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FEA1951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FEB1951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FEC1951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FED1951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FF01951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FF51951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		04460FFC1951DFFD00F810E8 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045E3EEA19360B3000258680 /* MediaPlayer.framework */; };
 		0466919C192CE88D0095E1A8 /* FPBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919B192CE88D0095E1A8 /* FPBonusViewController.m */; };
 		046691A0192CE99A0095E1A8 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466919F192CE99A0095E1A8 /* Candy.m */; };
@@ -308,7 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE17A7F19353913008BBC3F /* Accelerometer Manager */,
-				84E962D3192F512700DC785C /* Object Manager */,
+				84E962D3192F512700DC785C /* Level Manager */,
 				84F85BF6192F370500BDECB5 /* Game Manager */,
 				84F85BBE192E97BB00BDECB5 /* Sound Manager */,
 			);
@@ -553,13 +563,13 @@
 			name = "Game Model";
 			sourceTree = "<group>";
 		};
-		84E962D3192F512700DC785C /* Object Manager */ = {
+		84E962D3192F512700DC785C /* Level Manager */ = {
 			isa = PBXGroup;
 			children = (
 				84E962D4192F512700DC785C /* FPLevelManager.h */,
 				84E962D5192F512700DC785C /* FPLevelManager.m */,
 			);
-			name = "Object Manager";
+			name = "Level Manager";
 			path = "Managers/Object Manager";
 			sourceTree = "<group>";
 		};
@@ -714,6 +724,7 @@
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
 				7FA57038192F1B3000CE84F8 /* cloud2.pdf in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,
+				04460FEA1951DFFD00F810E8 /* (null) in Resources */,
 				7FA57040192F399A00CE84F8 /* ground2.pdf in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
 				7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */,
@@ -723,6 +734,13 @@
 				84FDADF91935D49F00366C6E /* prefs.pdf in Resources */,
 				84FDADFB1936210C00366C6E /* candy.pdf in Resources */,
 				7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */,
+				04460FED1951DFFD00F810E8 /* (null) in Resources */,
+				04460FEB1951DFFD00F810E8 /* (null) in Resources */,
+				04460FEC1951DFFD00F810E8 /* (null) in Resources */,
+				04460FE61951DFFD00F810E8 /* (null) in Resources */,
+				04460FF51951DFFD00F810E8 /* (null) in Resources */,
+				04460FE51951DFFD00F810E8 /* (null) in Resources */,
+				04460FE81951DFFD00F810E8 /* (null) in Resources */,
 				7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */,
@@ -732,6 +750,8 @@
 				7FA5703F192F399A00CE84F8 /* ground1.pdf in Resources */,
 				0439945019360CD30006E3DB /* Comp4_1.mp4 in Resources */,
 				7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */,
+				04460FFC1951DFFD00F810E8 /* (null) in Resources */,
+				04460FF01951DFFD00F810E8 /* (null) in Resources */,
 				8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,6 +897,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "5782116A-140E-422B-ADCC-A11145D4584B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -909,6 +930,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "5782116A-140E-422B-ADCC-A11145D4584B";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -934,7 +956,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6D476C73-ECFC-4E62-83E0-CABAF0F81FEB";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -959,7 +981,7 @@
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks/GoogleAdMob",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6D476C73-ECFC-4E62-83E0-CABAF0F81FEB";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

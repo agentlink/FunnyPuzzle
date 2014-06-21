@@ -13,7 +13,7 @@
 "Hen" = "मुर्गी";
 "Octopus" = "ऑक्टोपस";
 "Pencil" = "पेंसिल";
-"Ice cream"	= "आइसक्रीम";
+"Ice Cream"	= "आइसक्रीम";
 
 
 "Fingerling" = "मछली का बच्चा";
@@ -31,7 +31,7 @@
 "Turtle" = "कछुआ";
 "Dolphin" = "डॉल्फिन";
 "Hippo"	= "हिप्पो";
-"Teddy-bear" = "टेडी - बीयर";
+"Teddy_bear" = "टेडी - बीयर";
 "Penguin" = "पेंगुइन";
 "Snake" = "साँप";
 "Flamingo" = "राजहंस";
@@ -45,8 +45,8 @@
 "Car" = "कार";
 "Eggplant" = "बैंगन";
 "Bread"	= "रोटी";
-"Baseball cap" = "बेसबॉल कैप";
-"Computer chair" = "कंप्यूटर कुर्सी";
+"Baseball Cap" = "बेसबॉल कैप";
+"Computer_chair" = "कंप्यूटर कुर्सी";
 "Train" = "रेलगाड़ी";
 "Wagon"	= "वैगन";
 "Peas" = "मटर";
@@ -57,6 +57,7 @@
 "Strawberries" = "स्ट्रॉबेरी";
 "Crab" = "केकड़ा";
 "Corn" = "मकई";
+
 "Jug with milk" = "दूध के साथ सुराही";
 "Lightbulb"	= "लाइटबल्ब";
 "Stork" = "सारस";
@@ -68,7 +69,7 @@
 "Soother" = "चुसनी";
 "Stapler" = "स्टेपलर";
 "Beet" = "चुकंदर";
-"Pumpkin" = "कद्दू";
+"Pumpkin" = "कद्द";
 "Shuttlecocks" = "शटलकॉक";
 "Hamburger" = "हैमबर्गर";
 "Yacht"	= "नौका";
@@ -78,7 +79,7 @@
 "Banana" = "केला ";
 "Butterfly" = "तितली ";
 "Cherry" = "चेरी ";
-"Crew cut" = "चालक दल में कटौती ";
+"Crew cut" = "हाथी";
 "Crocodile" = "मगरमच्छ";
 "Dog" = "कुत्ता ";
 "Fox" = "लोमड़ी ";
@@ -89,9 +90,9 @@
 "Pear" = "नाशपाती ";
 "Pitching" = "पिचिंग ";
 "Radish" = "मूली ";
-"Rhino" = "राइनो";
-"Sea bear" = "ध्रवीय भालू ";
-"Tea cup" = "चाय का प्याला";
+"Rhino" = "गेंडा (का संक्षिप्त रूप)";
+"Sea_bear" = "ध्रवीय भालू ";
+"Tea_cup" = "चाय का प्याला";
 
 
 

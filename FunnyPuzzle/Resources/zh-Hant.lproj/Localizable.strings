@@ -9,38 +9,38 @@
 
 "Piggy" = "小豬";
 "Pigeon" = "鴿子";
-"Frogling" = "青蛙";
+"Frogling" = "小蛙";
 "Rabbit" = "兔子";
-"Hen" = "母雞";
-"Octopus" = "章魚";
-"Pencil" = "鉛筆";
-"Ice cream"	= "冰淇淋";
+"Hen" = "母鸡";
+"Octopus" = "章鱼";
+"Pencil" = "铅笔";
+"Ice Cream"	= "冰淇淋";
 
 
 
-"Fingerling" = "魚種";
-"Elephant" = "象";
-"Lamb" = "羊肉";
-"Owl" = "貓頭鷹";
-"Snail"	= "蝸牛";
+"Fingerling" = "小鱼";
+"Elephant" = "大象";
+"Lamb" = "绵羊";
+"Owl" = "猫头鹰";
+"Snail"	= "蜗牛";
 "Squirrel" = "松鼠";
-"Apple"	= "蘋果";
-"Carrot" = "胡蘿蔔";
+"Apple"	= "苹果";
+"Carrot" = "胡萝卜";
 
 
 "Goat" = "山羊";
 "Bee" = "蜜蜂";
-"Turtle" = "龜";
+"Turtle" = "乌龟";
 "Dolphin" = "海豚";
-"Hippo"	= "河馬";
-"Teddy-bear" = "玩具熊";
+"Hippo"	= "河马";
+"Teddy_bear" = "泰迪熊";
 "Penguin" = "企鵝";
 "Snake" = "蛇";
 "Flamingo" = "火烈鳥";
-"Toucan" = "巨嘴鳥";
-"Giraffe" = "長頸鹿";
+"Toucan" = "犀鸟";
+"Giraffe" = "长颈鹿";
 "Monkey" = "猴子";
-"Zebra"	= "斑馬";
+"Zebra"	= "斑马";
 "Lion" = "獅子";
 
 
@@ -48,62 +48,62 @@
 
 
 "Kettle" = "水壺";
-"Car" = "汽車";
+"Car" = "车";
 "Eggplant" = "茄子";
-"Bread"	= "麵包";
-"Baseball cap" = "棒球帽";
-"Computer chair" = "電腦椅";
-"Train" = "火車";
-"Wagon"	= "車皮";
-"Peas" = "豌豆";
-"Pot with honey" = "鍋中加蜂蜜";
+"Bread"	= "面包";
+"Baseball Cap" = "棒球帽";
+"Computer_chair" = "电脑椅";
+"Train" = "火车";
+"Wagon"	= "货车";
+"Peas" = "豆";
+"Pot with honey" = "蜜糖罐";
 "Mushrooms" = "蘑菇";
 "Potato" = "土豆";
-"Key" = "關鍵";
+"Key" = "钥匙";
 "Strawberries" = "草莓";
 "Crab" = "螃蟹";
 "Corn" = "玉米";
-"Jug with milk" = "壺與牛奶";
-"Lightbulb"	= "燈泡";
+"Jug with milk" = "奶壶";
+"Lightbulb"	= "电灯泡";
 "Stork" = "鸛";
 "Pepper" = "胡椒";
-"Cock" = "公雞";
-"Cancer" = "癌症";
-"Backpack" = "背包 ";
-"Wizard hat" = "精靈的帽子";
-"Soother" = "撫慰者";
-"Stapler" = "訂書機";
+"Cock" = "公鸡";
+"Cancer" = "小龙虾";
+"Backpack" = "背包";
+"Wizard hat" = "巫师帽";
+"Soother" = "奶嘴";
+"Stapler" = "订书机";
 "Beet" = "甜菜";
 "Pumpkin" = "南瓜";
 "Shuttlecocks" = "羽毛球";
-"Hamburger" = "漢堡";
-"Yacht"	= "遊艇";
-"Scrambled eggs" = "炒雞蛋";
-"Umbrella" = "傘";
+"Hamburger" = "汉堡包";
+"Yacht"	= "游艇";
+"Scrambled eggs" = "炒蛋";
+"Umbrella" = "雨伞";
 
 "Banana" = "香蕉";
 "Butterfly" = "蝴蝶";
-"Cherry" = "櫻桃";
-"Crew cut" = "平頭";
-"Crocodile" = "鱷魚";
+"Cherry" = "樱桃";
+"Crew cut" = "平头";
+"Crocodile" = "鳄鱼";
 "Dog" = "狗";
 "Fox" = "狐狸";
 "Gorilla" = "大猩猩";
-"Koala" = "考拉";
-"Lemon" = "檸檬";
-"Lime" = "石灰";
-"Pear" = "梨";
-"Pitching" = "鋪地石";
-"Radish" = "蘿蔔";
+"Koala" = "树熊";
+"Lemon" = "柠檬";
+"Lime" = "酸橙";
+"Pear" = "梨子";
+"Pitching" = "投球";
+"Radish" = "萝卜";
 "Rhino" = "犀牛";
-"Sea bear" = "熊海";
-"Tea cup" = "茶杯";
+"Sea_bear" = "海熊";
+"Tea_cup" = "茶杯";
 
 
 
 
 
 "Perfect" = "完美";
-"Wonderfull" = "完美的事情";
-"Well done" = "幹得好";
-"Good job" = "幹得好";
+"Wonderfull" = "太棒了";
+"Well done" = "干得好";
+"Good job" = "做得不错";

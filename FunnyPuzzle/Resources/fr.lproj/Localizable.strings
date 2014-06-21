@@ -6,92 +6,94 @@
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
 
-"Piggy" = "Porcin";
+"Piggy" = "Porcelet";
 "Pigeon" = "Pigeon";
 "Frogling" = "Grenouille";
 "Rabbit" = "Lapin";
-"Hen" = "Poule";
+"Hen" = "Poussin";
 "Octopus" = "Poulpe";
 "Pencil" = "Crayon";
-"Ice cream"	= "La crème glacée";
 
 
-"Fingerling" = "Poisson";
-"Elephant" = "Eléphant";
-"Lamb" = "Agneau";
+
+"Fingerling" = "Alevin";
+"Elephant" = "Elephant";
+"Lamb" = "Mouton";
 "Owl" = "Hibou";
 "Snail"	= "Escargot";
 "Squirrel" = "Ecureuil";
 "Apple"	= "Pomme";
 "Carrot" = "Carotte";
+"Ice Cream"	= "Glace";
 
-
-"Goat" = "Chèvre";
+"Goat" = "Chevre";
 "Bee" = "Abeille";
 "Turtle" = "Tortue";
 "Dolphin" = "Dauphin";
 "Hippo"	= "Hippopotame";
-"Teddy-bear" = "Ours en peluche";
-"Penguin" = "Manchot";
+"Teddy_bear" = "Nounours";
+"Penguin" = "Pinguin";
 "Snake" = "Serpent";
-"Flamingo" = "Flamant";
+"Flamingo" = "Flammand rose";
 "Toucan" = "Toucan";
-"Giraffe" = "Girafe";
+"Giraffe" = "Girafre";
 "Monkey" = "Singe";
-"Zebra"	= "Zèbre";
+"Zebra"	= "Zebre";
 "Lion" = "Lion";
 
 "Kettle" = "Bouilloire";
 "Car" = "Voiture";
 "Eggplant" = "Aubergine";
 "Bread"	= "Pain";
-"Baseball cap" = "Casquette de baseball";
-"Computer chair" = "Chaise d'ordinateur";
+"Baseball Cap" = "Casquette de base ball";
+"Computer_chair" = "Chaise de bureau";
 "Train" = "Train";
 "Wagon"	= "Wagon";
-"Peas" = "Pois";
+"Peas" = "Petit pois";
 "Pot with honey" = "Pot de miel";
-"Mushrooms" = "Champignons";
+"Mushrooms" = "Champignon";
 "Potato" = "Pomme de terre";
-"Key" = "Clé";
-"Strawberries" = "Fraises";
+"Key" = "Cle";
+"Strawberries" = "Fraise";
 "Crab" = "Crabe";
-"Corn" = "Maïs";
-"Jug with milk" = "Jug avec du lait";
+"Corn" = "Mais";
+
+"Jug with milk" = "Pot a lait";
 "Lightbulb"	= "Ampoule";
 "Stork" = "Cigogne";
 "Pepper" = "Poivre";
 "Cock" = "Coq";
-"Cancer" = "Cancer";
-"Backpack" = "Sac à dos";
+"Cancer" = "Ecrevisse";
+"Backpack" = "Sac a dos";
 "Wizard hat" = "Chapeau de magicien";
-"Soother" = "Calmant";
+"Soother" = "Sucette";
 "Stapler" = "Agrafeuse";
 "Beet" = "Betterave";
-"Pumpkin" = "Citrouille";
-"Shuttlecocks" = "Volants";
+"Pumpkin" = "Potiron";
+"Shuttlecocks" = "Volant";
 "Hamburger" = "Hamburger";
 "Yacht"	= "Yacht";
-"Scrambled eggs" = "Oeufs brouillés";
+"Scrambled eggs" = "Oeufs brouilles";
 "Umbrella" = "Parapluie";
 
-"Banana" = "banane";
-"Butterfly" = "papillon";
-"Cherry" = "cerise";
-"Crew cut" = "coupe de cheveux en court";
-"Crocodile" = "crocodile";
-"Dog" = "chien";
-"Fox" = "renard";
-"Gorilla" = "gorille";
+"Banana" = "Banane";
+"Butterfly" = "Papillon";
+"Cherry" = "Cerise";
+"Crew cut" = "Herisson";
+"Crocodile" = "Crocodile";
+"Dog" = "Chien";
+"Fox" = "Renard";
+"Gorilla" = "Gorille";
 "Koala" = "Koala";
-"Lemon" = "citron";
-"Lime" = "chaux";
-"Pear" = "poire";
-"Pitching" = "Pitching";
-"Radish" = "radis";
-"Rhino" = "rhinocéros";
-"Sea bear" = "Ours de mer";
-"Tea cup" = "tasse de thé";
+"Lemon" = "Citron";
+"Lime" = "Lime";
+"Pear" = "Poire";
+"Pitching" = "Canard";
+"Radish" = "Radis";
+"Rhino" = "Rhinoceros";
+"Sea_bear" = "Otarie";
+"Tea_cup" = "Tasse de the";
+
 
 
 

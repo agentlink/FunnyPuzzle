@@ -1,40 +1,40 @@
-/* 
-  Localizable.strings
-  FunnyPuzzle
+/*
+ Localizable.strings
+ FunnyPuzzle
 
-  Created by Misha on 22.05.14.
-  Copyright (c) 2014 Mobilez365. All rights reserved.
-*/
-
+ Created by Misha on 22.05.14.
+ Copyright (c) 2014 Mobilez365. All rights reserved.
+ */
 "Piggy" = "Kismalac";
 "Pigeon" = "Galamb";
 "Frogling" = "Béka";
-"Rabbit" = "Nyúl";
-"Hen" = "Tyúk";
+"Rabbit" = "Nyuszi";
+"Hen" = "Kiscsirke";
 "Octopus" = "Polip";
 "Pencil" = "Ceruza";
-"Ice cream"	= "Fagylalt";
+"Ice Cream"	= "Fagylalt";
 
 
-"Fingerling" = "Hal";
+
+"Fingerling" = "Halacska";
 "Elephant" = "Elefánt";
 "Lamb" = "Bárány";
 "Owl" = "Bagoly";
-"Snail"	= "Csiga";
+"Snail"	= "Csiga-Biga";
 "Squirrel" = "Mókus";
 "Apple"	= "Alma";
 "Carrot" = "Sárgarépa";
 
 "Goat" = "Kecske";
-"Bee" = "Méh";
+"Bee" = "Méhecske";
 "Turtle" = "Teknősbéka";
 "Dolphin" = "Delfin";
-"Hippo"	= "Hippo";
-"Teddy-bear" = "Teddy-bear";
+"Hippo"	= "Viziló";
+"Teddy_bear" = "Medve";
 "Penguin" = "Pingvin";
 "Snake" = "Kígyó";
 "Flamingo" = "Flamingó";
-"Toucan" = "Tukánmadár";
+"Toucan" = "Tukán";
 "Giraffe" = "Zsiráf";
 "Monkey" = "Majom";
 "Zebra"	= "Zebra";
@@ -45,54 +45,55 @@
 "Car" = "Autó";
 "Eggplant" = "Padlizsán";
 "Bread"	= "Kenyér";
-"Baseball cap" = "Baseball sapka";
-"Computer chair" = "Számítógép szék";
+"Baseball Cap" = "Baseball sapka";
+"Computer_chair" = "Számítógép szék";
 "Train" = "Vonat";
-"Wagon"	= "Kocsi";
+"Wagon"	= "Vagon";
 "Peas" = "Borsó";
-"Pot with honey" = "Pot mézzel";
+"Pot with honey" = "Mézescsupor";
 "Mushrooms" = "Gomba";
 "Potato" = "Burgonya";
 "Key" = "Kulcs";
 "Strawberries" = "Eper";
 "Crab" = "Rák";
 "Corn" = "Kukorica";
-"Jug with milk" = "Kancsó tejjel";
-"Lightbulb"	= "Lightbulb";
+
+"Jug with milk" = "Tejeskancsó";
+"Lightbulb"	= "Villanykörte";
 "Stork" = "Gólya";
 "Pepper" = "Bors";
 "Cock" = "Kakas";
 "Cancer" = "Rák";
 "Backpack" = "Hátizsák";
-"Wizard hat" = "Varázsló kalap";
-"Soother" = "Cucli";
+"Wizard hat" = "Varázsló sapka";
+"Soother" = "Cumi";
 "Stapler" = "Fűzőgép";
-"Beet" = "Cukorrépa";
-"Pumpkin" = "Tök";
+"Beet" = "Cékla";
+"Pumpkin" = "Sütőtök";
 "Shuttlecocks" = "Tollaslabdák";
 "Hamburger" = "Hamburger";
 "Yacht"	= "Jacht";
-"Scrambled eggs" = "Tojásrántotta";
+"Scrambled eggs" = "Rántotta";
 "Umbrella" = "Esernyő";
 
 
 "Banana" = "Banán";
 "Butterfly" = "Pillangó";
-"Cherry" = "Cseresznye";
-"Crew cut" = "Crew vágás";
+"Cherry" = "Meggy";
+"Crew cut" = "Sündisznó";
 "Crocodile" = "Krokodil";
 "Dog" = "Kutya";
 "Fox" = "Róka";
 "Gorilla" = "Gorilla";
 "Koala" = "Koala";
 "Lemon" = "Citrom";
-"Lime" = "Mész";
+"Lime" = "Lime";
 "Pear" = "Körte";
-"Pitching" = "Dobás";
+"Pitching" = "Kacsa";
 "Radish" = "Retek";
-"Rhino" = "Rhino";
-"Sea bear" = "Sea medve";
-"Tea cup" = "Tea cup";
+"Rhino" = "Orrszarvú";
+"Sea_bear" = "Medvefóka";
+"Tea_cup" = "Teáscsésze";
 
 
 

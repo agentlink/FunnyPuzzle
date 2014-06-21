@@ -45,7 +45,6 @@
                                     functionWithName:kCAMediaTimingFunctionLinear];
         
         [self.layer addAnimation:animation forKey:@"position"];
-        [animation setDelegate:self];
         NSArray *clouds = @[@"cloud1", @"cloud2", @"cloud3"];
         PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count)]];
         PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:[self calcRect:self.frame size:cloud.size]];

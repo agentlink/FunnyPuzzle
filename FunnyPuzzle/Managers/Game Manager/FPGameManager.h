@@ -26,4 +26,5 @@
 - (void) pickUpCandies:(int)candies;
 - (NSDictionary*) getLanguages;
 - (NSArray*) getLanguagesCodes;
+
 @end

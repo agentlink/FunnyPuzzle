@@ -6,17 +6,17 @@
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
 
-"Piggy" = "أصبع";
-"Pigeon" = "حمامة ";
-"Frogling" = "ضفدع ";
+"Piggy" = "خنزير صغير";
+"Pigeon" = "حمامة";
+"Frogling" = "ضفدع صغير";
 "Rabbit" = "أرنب";
-"Hen" = "دجاجة ";
+"Hen" = "دجاجة";
 "Octopus" = "أخطبوط ";
 "Pencil" = "قلم رصاص";
-"Ice cream"	= "أيس كريم";
+"Ice Cream"	= "ايس كريم";
 
 
-"Fingerling" = "الإصبعيات";
+"Fingerling" = "سمكة الإصبع";
 "Elephant" = "فيل";
 "Lamb" = "خروف";
 "Owl" = "بومة";
@@ -26,72 +26,72 @@
 "Carrot" = "جزر";
 
 
-"Goat" = "ماعز";
+"Goat" = "عنزة";
 "Bee" = "نحلة ";
 "Turtle" = "سلحفاة";
-"Dolphin" = "دلفين";
+"Dolphin" = "درفيل";
 "Hippo"	= "فرس النهر";
-"Teddy-bear" = "دمية دب";
-"Penguin" = "البطريق طائر";
+"Teddy_bear" = "دبدوب";
+"Penguin" = "بطريق";
 "Snake" = "ثعبان ";
-"Flamingo" = "البشروس طائر مائي";
-"Toucan" = "الطوقان طائر";
+"Flamingo" = "فلامنغو";
+"Toucan" = "طائر الطوقان";
 "Giraffe" = "زرافة";
 "Monkey" = "قرد";
-"Zebra"	= "حمار الوحش";
-"Lion" = "الأسد";
+"Zebra"	= "الحمار الوحشي";
+"Lion" = "أسد";
 
-"Kettle" = "غلاية ";
-"Car" = "سيارة ";
-"Eggplant" = "باذنجان";
+"Kettle" = "غلاية";
+"Car" = "سيارة";
+"Eggplant" = "الباذنجان";
 "Bread"	= "خبز ";
-"Baseball cap" = "قبعة بيسبول";
-"Computer chair" = "كرسي الكمبيوتر";
+"Baseball Cap" = "كاب البيسبول";
+"Computer_chair" = "كرسي الكمبيوتر";
 "Train" = "قطار";
-"Wagon"	= "عربة";
-"Peas" = "بازلاء";
+"Wagon"	= "عرب";
+"Peas" = "البازلاء";
 "Pot with honey" = "وعاء من العسل";
-"Mushrooms" = "عش الغراب ";
-"Potato" = "البطاطس";
-"Key" = "مفتاح ";
+"Mushrooms" = "ماشرووم";
+"Potato" = "بطاطس";
+"Key" = "مفتاح";
 "Strawberries" = "فراولة ";
-"Crab" = "سلطعون ";
+"Crab" = "كابوريا";
 "Corn" = "ذرة";
-"Jug with milk" = "إبريق مع الحليب";
-"Lightbulb"	= "المصباح";
-"Stork" = "اللقلق طائر";
+"Jug with milk" = "أبريق من الحليب";
+"Lightbulb"	= "لمبة";
+"Stork" = "طائر اللقلق";
 "Pepper" = "فلفل";
-"Cock" = "صياح الديك";
-"Cancer" = "سرطان";
-"Backpack" = "حقيبة ظهر";
-"Wizard hat" = "قبعة المعالج";
-"Soother" = "مهدئ";
+"Cock" = "ديك";
+"Cancer" = "السرطان";
+"Backpack" = "حقيبة الظهر";
+"Wizard hat" = "قبعة الساحر";
+"Soother" = "السكاتة";
 "Stapler" = "دباسة ";
-"Beet" = "بنجر";
-"Pumpkin" = "قرع نباتي";
-"Shuttlecocks" = "الكرات ";
+"Beet" = "البنجر";
+"Pumpkin" = "اليقطين";
+"Shuttlecocks" = "الكرات";
 "Hamburger" = "هامبورجر";
-"Yacht"	= "أبحر بيخت ";
-"Scrambled eggs" = "بيض مخلوط ";
+"Yacht"	= "يخت";
+"Scrambled eggs" = "البيض المقلي";
 "Umbrella" = "مظلة ";
 
 "Banana" = "موز";
 "Butterfly" = "فراشة";
 "Cherry" = "الكرز";
-"Crew cut" = "قطع الطاقم ";
-"Crocodile" = "تمساح";
+"Crew cut" = "قصة شعر";
+"Crocodile" = "التمساح";
 "Dog" = "الكلب";
 "Fox" = "ثعلب ";
-"Gorilla" = "غوريلا";
-"Koala" = "الكوال دب أسترالي";
+"Gorilla" = "الغوريلا";
+"Koala" = "دب الكوالا";
 "Lemon" = "ليمون ";
-"Lime" = "كلس";
+"Lime" = "ليمون أخضر";
 "Pear" = "كمثرى";
-"Pitching" = "نصب";
-"Radish" = "فجل ";
+"Pitching" = "الرمي والقذف";
+"Radish" = "الفجل";
 "Rhino" = "وحيد القرن";
-"Sea bear" = "الدب البحر";
-"Tea cup" = "كوب الشاي";
+"Sea_bear" = "دب البحر";
+"Tea_cup" = "كوب الشاي";
 
 
 

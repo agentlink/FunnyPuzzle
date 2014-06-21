@@ -22,7 +22,6 @@
 @property (nonatomic, weak) IBOutlet FPGamePlayController *controller;
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleet;
-@property (nonatomic) UIImageView *imageView;
 - (IBAction)menu:(id)sender;
 @end
 
@@ -61,50 +60,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     
 }
 - (void) viewDidAppear:(BOOL)animated
 {
-    _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [self.view insertSubview:_imageView atIndex:0];
-    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-    [self.view setBackgroundColor:[UIColor clearColor]];
+
 
 }
-- (void)tick:(NSTimer *)timer
-{
-    UINavigationController *controller = (UINavigationController *)self.presentingViewController;
-    UIImage *backg = [(StartViewController *)controller.topViewController snapshot];
-    backg = [backg applyBlurWithRadius:10 tintColor:[UIColor clearColor] saturationDeltaFactor:1 maskImage:nil];
-    [_imageView setImage:backg];
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:backg]];
-}
-- (void)screenDidChange:(NSNotification *)notification
-{
-    UINavigationController *controller = (UINavigationController *)self.presentingViewController;
-    UIImage *backg = [(StartViewController *)controller.topViewController snapshot];
-    backg = [backg applyBlurWithRadius:10 tintColor:[UIColor clearColor] saturationDeltaFactor:1 maskImage:nil];
-    [_imageView setImage:backg];
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:backg]];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (UIImage *)screenshot
+- (void)dealloc
 {
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
-    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    [snapshotImage applyDarkEffect];
-    UIGraphicsEndImageContext();
-    return snapshotImage;
-}
-
--(void)dealloc
-{
-    
+    _levels = nil;
 }
 #pragma mark - Navigation
 
@@ -120,17 +92,24 @@
 {
     NSDictionary *level = [_levels objectAtIndex:indexPath.row];
     FPLevelCell *cell = (FPLevelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.isLocked = NO;
+    BOOL prewLevelDone = true;
+    if (indexPath.row!=0) {
+        prewLevelDone = [[[_levels objectAtIndex:indexPath.row-1] valueForKey:@"compleet"] boolValue];
+    }
     PDFImage *image;
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:NSLocalizedString([level valueForKey:@"name"], nil)]) {
+    if ([[level valueForKey:@"compleet"] boolValue]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
+        cell.name.text = [FPLevelManager gameLocalizedStringForKey:[level valueForKey:@"name"]];//NSLocalizedString([level valueForKey:@"name"], nil);
         cell.isFinished = YES;
-        NSLog(@"Path: %@", [level valueForKey:_compleetKey]);
-    } else {
+        cell.imageVeiw.image = image;
+    } else if (prewLevelDone) {
         image = [PDFImage imageNamed:[level valueForKey:_notCompleet]];
         cell.isFinished = NO;
-        NSLog(@"Path: %@", [level valueForKey:_notCompleet]);
+        cell.imageVeiw.image = image;
+    } else {
+        cell.isLocked = YES;
     }
-    cell.imageVeiw.image = image;
     return cell;
 }
 #pragma mark - CollectionView Delegate
@@ -140,12 +119,19 @@
 }
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell.isLocked)
+        return NO;
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
+
     [controller loadLevel:(int)[indexPath row] type:_gameType];
     controller.indexPath = indexPath;
+
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
-      FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
-      UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
+
+
+
+    UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
     present.frame = [[self view] convertRect:cell.frame fromView:collectionView];
     present.backgroundColor = cell.backgroundColor;
     PDFImageView *imView = [[PDFImageView alloc] initWithFrame:cell.imageVeiw.frame];
@@ -154,8 +140,11 @@
     [[present layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[present layer] setBorderWidth:3];
     [present addSubview:imView];
+
     [[self view] addSubview:present];
+
     [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastLevel"];
+
     [self presentViewController:controller animated:YES completion:^{
         controller.view.alpha = 0;
         controller.view.hidden = YES;
@@ -173,7 +162,7 @@
         }];
     }];
     
-    return false;
+    return NO;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
@@ -218,24 +207,10 @@
    
 }
 
-//-(void)didClose:(bool)ActivateScreen ImageScreen:(UIImage *)ImageScreenShot
-//{
-//    self.ImageScreenShot=ImageScreenShot;
-//    self.ScreenShotActivate=ActivateScreen;
-//    
-//}
-
 -(void)viewWillAppear:(BOOL)animated
 {
-//    if (self.ScreenShotActivate) {
-//        CGRect rect=CGRectMake(0, 0, CGRectGetHeight([[UIScreen mainScreen]bounds]), CGRectGetWidth([[UIScreen mainScreen]bounds]));
-//        UIView *viewImage=[[UIView alloc] initWithFrame:rect];
-//        viewImage.backgroundColor=[UIColor colorWithPatternImage:self.ImageScreenShot];
-//        viewImage.layer.zPosition=50;
-//        [self.view addSubview:viewImage];
-//        NSLog(@"nvsdnb");
-//    }
 }
+
 #pragma mark - Levels Navigation
 - (void)nextLevel
 {
@@ -307,10 +282,53 @@
         }];
     }
 }
+- (void)closeGameplay
+{
+
+    FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
+    UICollectionViewScrollPosition scrollPosition = UICollectionViewScrollPositionRight;
+    int itemNumber = currentGamePlay.indexPath.row;
+    if (!(itemNumber%2)) {
+        if (!((itemNumber/2)%2)) {
+            scrollPosition = UICollectionViewScrollPositionLeft;
+        }
+    } else if (!((itemNumber/2)%2)) {
+        scrollPosition = UICollectionViewScrollPositionLeft;
+    }
+
+    [self.collection scrollToItemAtIndexPath:currentGamePlay.indexPath atScrollPosition:scrollPosition animated:NO];
+    FPLevelCell *cell = (FPLevelCell *)[self.collection cellForItemAtIndexPath:currentGamePlay.indexPath];
+
+    UIView *present = [[UIView alloc] initWithFrame:self.view.bounds];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[currentGamePlay screenshot]];
+    PDFImageView *field = currentGamePlay.field;
+    [present addSubview:field];
+    [present addSubview:imageView];
+    present.backgroundColor = currentGamePlay.view.backgroundColor;
+    currentGamePlay.view.alpha = 0;
+    [self.view addSubview:present];
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        present.frame = [[self view] convertRect:cell.frame fromView:self.collection];
+        field.frame = cell.imageVeiw.frame;
+        imageView.frame = CGRectMake(0, 0, CGRectGetWidth(present.frame), CGRectGetHeight(present.frame));
+        imageView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [present removeFromSuperview];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }];
+
+
+}
 #pragma mark - Publick
 - (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath
 {
-     NSLog(@"Index Path %@", indexPath);
-    [self.collection reloadItemsAtIndexPaths:@[indexPath]];
+    NSArray *indexPaths;
+    _levels = [FPLevelManager allLevels:_gameType];
+    if (indexPath.row < _levels.count) {
+        indexPaths = @[indexPath, [NSIndexPath indexPathForItem:indexPath.row+1 inSection:0]];
+    } else {
+        indexPaths = @[indexPath];
+    }
+    [self.collection reloadItemsAtIndexPaths:indexPaths];
 }
 @end

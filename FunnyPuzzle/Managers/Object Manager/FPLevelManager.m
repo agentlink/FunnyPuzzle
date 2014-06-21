@@ -8,6 +8,19 @@
 
 #import "FPLevelManager.h"
 #import "FPGameManager.h"
+@interface Level : NSObject
+@property (nonatomic) NSString *levelName;
+@property (nonatomic) NSString *colorPath;
+@property (nonatomic) NSString *grayPath;
+@property (nonatomic) NSString *borderedPath;
+@property (nonatomic) NSString *fullPath;
+@property (nonatomic) NSString *notFullPath;
+@property (nonatomic) int levelNumber;
+@property (nonatomic) BOOL compleet;
+@end
+
+@implementation Level
+@end
 
 @interface FPLevelManager ()
 @property (nonatomic, strong) NSMutableArray *levels;
@@ -43,8 +56,9 @@
 }
 - (void)memoryCareParce
 {
-    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
-    _plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
+
+    NSString *documentsPlist = [FPLevelManager itemsPlistPath];
+    _plist = [NSMutableArray arrayWithContentsOfFile:documentsPlist];
     _mcLevel = [NSMutableDictionary new];
     _levels = [_plist objectAtIndex:_gameType];
     _levelDict = [_levels objectAtIndex:_level];
@@ -198,6 +212,21 @@
 }
 #pragma mark - Class Methods
 
++ (NSString *)itemsPlistPath
+{
+    NSString *pathInDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    pathInDocument = [pathInDocument stringByAppendingString:@"/items.plist"];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:pathInDocument])
+    {
+        NSString *source = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
+        NSError *error;
+        [fileManager copyItemAtPath:source toPath:pathInDocument error:&error];
+    }
+    return pathInDocument;
+}
+
 +(FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level
 {
     FPLevelManager *manager = [FPLevelManager new];
@@ -217,17 +246,43 @@
 + (NSArray *)allLevels:(FPGameType)gameType
 {
     NSMutableArray *levels = [[NSMutableArray alloc] init];
-    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
+    NSString* plistPath = [FPLevelManager itemsPlistPath];
     NSMutableArray *_plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
     NSMutableDictionary *_levels = [_plist objectAtIndex:gameType];
     for (NSDictionary *level in _levels) {
+//        Level *levelObj = [Level new];
+//        levelObj.colorPath = [NSString stringWithFormat:@"Levels/%@/%@_result", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+//        levelObj.grayPath =  [NSString stringWithFormat:@"Levels/%@/%@_gray", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+//        levelObj.borderedPath = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+//        levelObj.fullPath = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+//        levelObj.notFullPath = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
+//        levelObj.compleet = [[level valueForKey:@"compleet"] boolValue];
+//        [levels addObject:level];
         NSString *color = [NSString stringWithFormat:@"Levels/%@/%@_result", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *gray = [NSString stringWithFormat:@"Levels/%@/%@_gray", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *full = [NSString stringWithFormat:@"Levels/%@/%@_full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *notFull = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
-        [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull}];
+        NSNumber *compleet = [[NSUserDefaults standardUserDefaults] valueForKey:
+                              [self localStringForKey:[level valueForKey:@"name"]]] ? @1 : @0;
+        [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull, @"compleet":compleet}];
     }
     return [NSArray arrayWithArray:levels];
+}
+
+
+#pragma mark - Private
++ (NSString *)localStringForKey:(NSString *)key
+{
+        return  NSLocalizedStringFromTableInBundle(key, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
+}
+#pragma mark - Class Methods
++ (NSString *)gameLocalizedStringForKey:(NSString *)key
+{
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]];
+
+    NSString *result = NSLocalizedStringFromTableInBundle(key, @"Localizable", bundle, nil);
+
+    return result;
 }
 @end

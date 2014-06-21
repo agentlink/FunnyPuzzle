@@ -6,70 +6,71 @@
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
 
-"Piggy" = "Cerdito";
+"Piggy" = "Lechôn";
 "Pigeon" = "Paloma";
 "Frogling" = "Rana";
 "Rabbit" = "Conejo";
-"Hen" = "Gallina";
+"Hen" = "Pollito";
 "Octopus" = "Pulpo";
 "Pencil" = "Lápiz";
-"Ice cream"	= "Helado";
+"Ice Cream"	= "Helado";
 
 
-"Fingerling" = "Pescado";
-"Elephant" = "Elefante";
-"Lamb" = "Cordero";
-"Owl" = "Búho";
+"Fingerling" = "Alevîn - pez";
+"Elephant" = "Elephant";
+"Lamb" = "Cornero";
+"Owl" = "Bûho";
 "Snail"	= "Caracol";
 "Squirrel" = "Ardilla";
 "Apple"	= "Manzana";
 "Carrot" = "Zanahoria";
 
 
-"Goat" = "Cabra";
+"Goat" = "Câbra";
 "Bee" = "Abeja";
-"Turtle" = "Turtle";
+"Turtle" = "Tortuga";
 "Dolphin" = "Delfín";
-"Hippo"	= "Hipopótamo";
-"Teddy-bear" = "Oso de peluche";
-"Penguin" = "Pingüino";
+"Hippo"	= "Hipopôtamo";
+"Teddy_bear" = "Osito de peluche";
+"Penguin" = "Pinguîno";
 "Snake" = "Serpiente";
 "Flamingo" = "Flamenco";
-"Toucan" = "Tucán";
+"Toucan" = "Tucân";
 "Giraffe" = "Jirafa";
 "Monkey" = "Mono";
 "Zebra"	= "Cebra";
-"Lion" = "León";
+"Lion" = "Lêon";
 
 "Kettle" = "Hervidor";
 "Car" = "Coche";
 "Eggplant" = "Berenjena";
 "Bread"	= "Pan";
-"Baseball cap" = "Gorra de béisbol";
-"Computer chair" = "Silla de la computadora";
+"Baseball Cap" = "Gorra de bêisbol";
+"Computer_chair" = "Sillâ";
 "Train" = "Tren";
-"Wagon"	= "Vagón";
-"Peas" = "Chícharos";
-"Pot with honey" = "Pot con miel";
-"Mushrooms" = "Hongos";
+"Wagon"	= "Vâgon";
+"Peas" = "Guisante";
+"Pot with honey" = "Pote de miel";
+"Mushrooms" = "Seta";
 "Potato" = "Patata";
-"Key" = "Clave";
-"Strawberries" = "Fresas";
+"Key" = "Llave";
+"Strawberries" = "Fresa";
 "Crab" = "Cangrejo";
-"Corn" = "Maíz";
-"Jug with milk" = "Jarro con leche";
+"Corn" = "Maiz";
+
+"Jug with milk" = "Pote de leche";
 "Lightbulb"	= "Bombilla";
 "Stork" = "Cigüeña";
 "Pepper" = "Pimienta";
-"Cock" = "Polla";
-"Cancer" = "Cáncer";
+"Cock" = "Gallo";
+"Cancer" = "Cangrejo de rîo";
 "Backpack" = "Mochila";
 "Wizard hat" = "Sombrero de mago";
 "Soother" = "Chupete";
 "Stapler" = "Grapadora";
 "Beet" = "Remolacha";
 "Pumpkin" = "Calabaza";
-"Shuttlecocks" = "Volantes";
+"Shuttlecocks" = "Volante";
 "Hamburger" = "Hamburguesa";
 "Yacht"	= "Yate";
 "Scrambled eggs" = "Huevos revueltos";
@@ -78,20 +79,20 @@
 "Banana" = "Plátano";
 "Butterfly" = "Mariposa";
 "Cherry" = "Cereza";
-"Crew cut" = "Corte de pelo";
+"Crew cut" = "Erizo";
 "Crocodile" = "Cocodrilo";
 "Dog" = "Perro";
 "Fox" = "Zorro";
 "Gorilla" = "Gorila";
 "Koala" = "Koala";
-"Lemon" = "Limón";
-"Lime" = "Cal";
+"Lemon" = "Limôn";
+"Lime" = "Limôn verde";
 "Pear" = "Pera";
-"Pitching" = "Cabeceo";
+"Pitching" = "Pato";
 "Radish" = "Rábano";
 "Rhino" = "Rinoceronte";
-"Sea bear" = "Oso de Mar";
-"Tea cup" = "Taza de té";
+"Sea_bear" = "Lêon marino";
+"Tea_cup" = "Taza de tê";
 
 
 

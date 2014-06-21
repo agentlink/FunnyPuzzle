@@ -8,12 +8,12 @@
 
 "Piggy" = "Поросенок";
 "Pigeon" = "Голубь";
-"Frogling" = "Лягушка";
+"Frogling" = "Лягушонок";
 "Rabbit" = "Кролик";
 "Hen" = "Курочка";
 "Octopus" = "Осьминог";
 "Pencil" = "Карандаш";
-"Ice cream"	= "Мороженое";
+"Ice Cream"	= "Мороженое";
 
 
 "Fingerling" = "Рыбка";
@@ -29,9 +29,9 @@
 "Goat" = "Козлик";
 "Bee" = "Пчелка";
 "Turtle" = "Черепашка";
-"Dolphin" = "Дельфін";
+"Dolphin" = "Дельфин";
 "Hippo"	= "Бегемотик";
-"Teddy-bear" = "Медвежонок";
+"Teddy_bear" = "Медвежонок";
 "Penguin" = "Пингвинчик";
 "Snake" = "Змея";
 "Flamingo" = "Фламинго";
@@ -45,8 +45,8 @@
 "Car" = "Машина";
 "Eggplant" = "Баклажан";
 "Bread"	= "Хлеб";
-"Baseball cap" = "Бейсболка";
-"Computer chair" = "Компютерное кресло";
+"Baseball Cap" = "Бейсболка";
+"Computer_chair" = "Компьютерное кресло";
 "Train" = "Паравозик";
 "Wagon"	= "Вагончик";
 "Peas" = "Горох";
@@ -60,13 +60,13 @@
 "Jug with milk" = "Кувшин с молоком";
 "Lightbulb"	= "Лампочка";
 "Stork" = "Аист";
-"Pepper" = "Перець";
+"Pepper" = "Перец";
 "Cock" = "Петух";
 "Cancer" = "Рак";
 "Backpack" = "Рюкзак";
 "Wizard hat" = "Шапка волшебника";
-"Soother" = "Пустышка";
-"Stapler" = "Стэплер";
+"Soother" = "Соска";
+"Stapler" = "Степлер";
 "Beet" = "Свекла";
 "Pumpkin" = "Тыква";
 "Shuttlecocks" = "Воланчик";
@@ -78,20 +78,20 @@
 "Banana" = "Банан";
 "Butterfly" = "Бабочка";
 "Cherry" = "Вишня";
-"Crew cut" = "Ежик";
+"Crew cut" = "Ёжик";
 "Crocodile" = "Крокодил";
 "Dog" = "Собачка";
-"Fox" = "Лисичка";
+"Fox" = "Лиса";
 "Gorilla" = "Горила";
 "Koala" = "Коала";
 "Lemon" = "Лимон";
 "Lime" = "Лайм";
 "Pear" = "Груша";
-"Pitching" = "Качечка";
-"Radish" = "Редис";
+"Pitching" = "Качка";
+"Radish" = "Редиска";
 "Rhino" = "Носорог";
-"Sea bear" = "Морской котик";
-"Tea cup" = "Чашка";
+"Sea_bear" = "Морской котик";
+"Tea_cup" = "Чашка";
 
 "Perfect" = "Умница";
 "Wonderfull" = "Превосходно";
