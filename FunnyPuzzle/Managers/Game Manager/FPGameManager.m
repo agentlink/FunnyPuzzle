@@ -37,7 +37,7 @@ static FPGameManager *_instance=nil;
                                    @"zh-Hant":@"汉语",
                                    @"ar":@"العربية",
                                    @"hu":@"Magyar"};
-            _instance.langCodes = @[@"en",@"ru",@"fr",@"de",@"es",@"uk",@"hi",@"zh-Hant",@"ar",@"hu",];
+            _instance.langCodes = @[@"en",@"ru",@"fr",@"de",@"es",@"uk",@"hi",@"zh-Hant",@"ar",@"hu"];
         }
     }
     return _instance;
