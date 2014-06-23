@@ -92,18 +92,6 @@ static FPSoundManager *_instance=nil;
         [_soundPlayer prepareToPlay];
         [_soundPlayer play];
         NSLog(@"%@", error);
-//        NSURL *url;
-//        int random=1+arc4random()%2;
-//        if (random==1) {
-//            url=_well_done;
-//        }
-//        else{
-//            url=_excellent;
-//        }
-//        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-//        _soundPlayer.delegate=(id)self;
-//        [_soundPlayer prepareToPlay];
-//        [_soundPlayer play];
     }
 }
 - (void)playBlob:(FPSoundBlobType)type

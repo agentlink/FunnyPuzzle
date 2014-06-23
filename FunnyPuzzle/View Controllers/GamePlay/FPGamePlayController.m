@@ -88,7 +88,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
+    _levelDone = self.levelManager.levelDone;
     [self configureGameplayWithAnimationType:!_levelDone];
 }
 
@@ -488,9 +488,9 @@
 }
 - (void)levelCompleet
 {
-    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
-    if (!level) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
+    if (!self.levelDone) {
+        //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
+        [FPLevelManager saveLevel:self.levelNumber gameType:self.levelType];
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
     }
     //[self updateCollectionView];
@@ -501,17 +501,6 @@
     [self startAnimationForNewLevel];
 }
 #pragma mark - IBAction
-+ (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
-    
-    UIGraphicsBeginImageContextWithOptions(frame.size, YES, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    
-    UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return renderedImage;
-}
 
 
 - (IBAction)next:(id)sender;

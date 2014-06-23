@@ -82,6 +82,7 @@
     [_mcLevel setObject:notFull forKey:@"notFull"];
     _levelName = [level valueForKey:@"name"];
     _mcElements = [self getMCSegmentsFromElements:[level valueForKey:@"elements"]];
+    _levelDone = [[FPLevelManager getLevelCompletation:level] boolValue];
     _soundURL = [self getSoundURL];
     
 }
@@ -237,7 +238,7 @@
 }
 + (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type
 {
-    FPLevelManager *manager = [FPLevelManager new];
+    FPLevelManager *manager = [[FPLevelManager alloc] init];
     manager.gameType = type;
     manager.level = level;
     [manager memoryCareParce];
@@ -263,19 +264,23 @@
         NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *full = [NSString stringWithFormat:@"Levels/%@/%@_full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *notFull = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
-        NSNumber *compleet = [[NSUserDefaults standardUserDefaults] valueForKey:
-                              [self localStringForKey:[level valueForKey:@"name"]]] ? @1 : @0;
+        NSNumber *compleet = [self getLevelCompletation:level];
         [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull, @"compleet":compleet}];
     }
     return [NSArray arrayWithArray:levels];
 }
-
++ (NSNumber *)getLevelCompletation:(NSDictionary *)level
+{
+    return [level valueForKey:[FPGameManager sharedInstance].language]?@1:@0;
+}
 
 #pragma mark - Private
 + (NSString *)localStringForKey:(NSString *)key
 {
-        return  NSLocalizedStringFromTableInBundle(key, @"altLocalization", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
+    NSBundle *bundle =[ NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE] ofType:@"lproj"]];
+        return  NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
 }
+
 #pragma mark - Class Methods
 + (NSString *)gameLocalizedStringForKey:(NSString *)key
 {
@@ -291,4 +296,12 @@
     resourcesPath = [resourcesPath stringByAppendingString:[NSString stringWithFormat:@"/%@.pdf",name]];
     return [PDFImage imageWithContentsOfFile:resourcesPath];
 }
++ (void)saveLevel:(NSUInteger)level gameType:(FPGameType)type
+{
+    NSString *plistFile = [FPLevelManager itemsPlistPath];
+    NSMutableArray *savedLevels = [NSMutableArray arrayWithContentsOfFile:plistFile];
+    [savedLevels[type][level] setObject:@1 forKey:[FPGameManager sharedInstance].language];
+    [savedLevels writeToFile:plistFile atomically:YES];
+}
+
 @end

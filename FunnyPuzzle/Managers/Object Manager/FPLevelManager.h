@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSInteger segmentsCount;
 @property (nonatomic, readonly) NSInteger levelsCount;
 @property (nonatomic, readonly) NSMutableDictionary *mcLevel;
+@property (assign, nonatomic) BOOL levelDone;
 
 + (NSString *)itemsPlistPath;
 + (FPLevelManager *)loadLevelWithType:(FPGameType)type mode:(FPGameMode)mode level:(int)level;
@@ -32,4 +33,5 @@
 + (NSArray *)allLevels:(FPGameType)gameType;
 + (NSString *)gameLocalizedStringForKey:(NSString *)key;
 + (PDFImage *)imageNamed:(NSString *)name;
++  (void)saveLevel:(NSUInteger)level gameType:(FPGameType)type;
 @end
