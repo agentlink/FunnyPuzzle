@@ -206,11 +206,17 @@
             [_field.layer setTransform:transform];
             if (!_levelDone) {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back, _prew]];
+                [array addObjectsFromArray:@[_back]];
+                if (self.indexPath.row != 0) {
+                    [array addObjectsFromArray:@[_prew]];
+                }
                 [self bounceElements:array isInSuperView:YES];
             } else {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back, _next, _prew]];
+                [array addObjectsFromArray:@[_back, _next]];
+                if (self.indexPath.row != 0) {
+                    [array addObjectsFromArray:@[_prew]];
+                }
                 [self bounceElements:array isInSuperView:YES];
             }
         }];
@@ -228,14 +234,12 @@
             [self.view addSubview:element];
         }
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
-            [element layoutIfNeeded];
             [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
             element.alpha = 1;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
                 [element layoutIfNeeded];
-                //[[FPSoundManager sharedInstance] playBlob:FPSoundBlobTypeApear];
             }];
         }];
     }
@@ -539,7 +543,7 @@
     _dragingPoint = CGPointZero;
     NSMutableArray *tapElements = [[NSMutableArray alloc] init];
     for (FPElement *element in _elements) {
-        if (CGRectContainsPoint(element.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:element] inView:element] && !element.inPlace) {
+        if (CGRectContainsPoint(element.frame, touchLocation) && ![self zoneIsTransparent:[touch1 locationInView:element] inView:element] && !element.inPlace) {
             [tapElements addObject:element];
         }
     }
@@ -577,13 +581,11 @@
                                     [touch1 locationInView:element].y/element.frame.size.height);
         _dragingWinPoint = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue]];
     }
-    UITouch *touch = [[event allTouches] anyObject];
     if (_levelDone) {
         
-        if (_field==[touch view])
+        if (_field==[touch1 view])
         {
-            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch locationInView:_field] inView:_field]) {
-                NSLog(@"ok");
+            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
                 [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
             }
             
@@ -650,6 +652,30 @@
     
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
     return CGColorGetAlpha([color CGColor])==0;
+}
+- (BOOL) zoneIsTransparent:(CGPoint)point inView:(UIView *)view
+{
+    int pixels = 40;
+    //pixel count: pixels*pixels*4
+    unsigned char pixel[6400] = {0};
+
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+    CGContextRef context = CGBitmapContextCreate(pixel, pixels, pixels, 8, pixels*4, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
+
+    CGContextTranslateCTM(context, -(point.x-(pixels*0.5)), -(point.y-(pixels*0.5)));
+
+    [view.layer renderInContext:context];
+
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+
+    for (int i = 3; i<1600; i+=4) {
+        if ((pixel[i]/255)>=1) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void) resetImageProgress

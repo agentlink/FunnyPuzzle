@@ -268,11 +268,12 @@
             nextController.view.layer.shadowOpacity = 1;
             nextController.view.layer.shadowRadius = 10;
             CGAffineTransform transform = CGAffineTransformIdentity;
+            
             //transform = CGAffineTransformScale(transform, 0.8, 0.8);
             transform = CGAffineTransformTranslate(transform, imageView.bounds.size.height, 0);
             [UIView animateWithDuration:kAnimationDuration animations:^{
                 [imageView setTransform:transform];
-                [[nextController view] setFrame:CGRectMake(0, 0, nextController.view.frame.size.width+10, nextController.view.frame.size.height)];
+                [[nextController view] setFrame:CGRectMake(0, 0, nextController.view.frame.size.width, nextController.view.frame.size.height)];
             } completion:^(BOOL finished) {
                 [nextController bounceField];
                 [imageView removeFromSuperview];

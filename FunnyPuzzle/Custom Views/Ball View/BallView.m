@@ -50,17 +50,17 @@
     // Set vertical effect
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"layer.transform"
+     initWithKeyPath:@"center.y"
      type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, -1, 0, 0)];
-    verticalMotionEffect.maximumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 1, 0, 0)];
+    verticalMotionEffect.minimumRelativeValue = @10;
+    verticalMotionEffect.maximumRelativeValue = @-10;
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"layer.transform"
+     initWithKeyPath:@"center.x"
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 0, -1, 0)];
-    horizontalMotionEffect.maximumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 0, 1, 0)];
+    horizontalMotionEffect.minimumRelativeValue = @10;
+    horizontalMotionEffect.maximumRelativeValue = @-10;
     
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
