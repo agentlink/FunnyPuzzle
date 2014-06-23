@@ -59,8 +59,8 @@
     [super viewDidLoad];
     
 //    _needToDropButtons = NO;
-    _gamemodeFirst.image = [PDFImage imageNamed:@"ball1"];
-    _gamemodeSecond.image = [PDFImage imageNamed:@"ball2"];
+    _gamemodeFirst.image = [FPLevelManager imageNamed:@"ball1"];
+    _gamemodeSecond.image = [FPLevelManager imageNamed:@"ball2"];
     _gamemodeFirst.tap = ^{
         [self play:self type:FPGameTypeFirst];
     };
@@ -118,11 +118,11 @@
     horisontal3.minimumRelativeValue = @(-20);
     horisontal3.maximumRelativeValue = @(20);
     
-    _ground1.image = [PDFImage imageNamed:@"ground1"];
-    _ground2.image = [PDFImage imageNamed:@"ground3"];
-    _ground3.image = [PDFImage imageNamed:@"ground2"];
-    _ground4.image = [PDFImage imageNamed:@"ground5"];
-    _ground5.image = [PDFImage imageNamed:@"ground4"];
+    _ground1.image = [FPLevelManager imageNamed:@"ground1"];
+    _ground2.image = [FPLevelManager imageNamed:@"ground3"];
+    _ground3.image = [FPLevelManager imageNamed:@"ground2"];
+    _ground4.image = [FPLevelManager imageNamed:@"ground5"];
+    _ground5.image = [FPLevelManager imageNamed:@"ground4"];
 
     [_ground1 addMotionEffect:horisontal1];
     [_ground2 addMotionEffect:horisontal2];
@@ -233,10 +233,10 @@
     _settingsButton.frame = CGRectMake(CGRectGetHeight(self.view.frame)/4, 0, CGRectGetWidth(_settingsButton.frame), CGRectGetHeight(_settingsButton.frame));
     _candiesView.frame = CGRectMake((CGRectGetHeight(self.view.frame)/4)*3, 0, CGRectGetWidth(_candiesView.frame), CGRectGetHeight(_candiesView.frame));
     PDFImageView *settingsImage=[[PDFImageView alloc] initWithFrame:_settingsButton.frame];
-    settingsImage.image=[PDFImage imageNamed:@"prefs"];
+    settingsImage.image=[FPLevelManager imageNamed:@"prefs"];
 
     PDFImageView *candyImage=[[PDFImageView alloc] initWithFrame:_candiesView.frame];
-    candyImage.image=[PDFImage imageNamed:@"candy"];
+    candyImage.image=[FPLevelManager imageNamed:@"candy"];
     _candiesView.image=candyImage.image;
     _candiesView.layer.zPosition=10;
     _CandiesCountLabel.layer.zPosition=11;

@@ -138,6 +138,8 @@
 }
 - (void)dealloc
 {
+    self.field.image = nil;
+    self.elements = nil;
     [self.animator removeAllBehaviors];
     self.animator = nil;
 }
@@ -154,7 +156,7 @@
 {
     [_field setBackgroundColor:[UIColor clearColor]];
     NSString *path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
 
 
     _field.hidden = YES;
@@ -177,7 +179,7 @@
 - (void)startAnimationForCompleetLevel
 {
     NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
     _field.hidden = YES;
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -261,9 +263,9 @@
     oldImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:oldImage];
     
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
     PDFImageView *newImage = [[PDFImageView alloc] initWithFrame:_field.frame];
-    newImage.image = [PDFImage imageNamed:path];
+    newImage.image = [FPLevelManager imageNamed:path];
     newImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:newImage];
 
@@ -305,11 +307,9 @@
     [[self levelName] setAlpha:1];
     [[self animator] addBehavior:snap];
 }
-
 - (void)showRays
 {
-    return;
-    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    PDFImage *star = [FPLevelManager imageNamed:@"Levels/star"];
     CGRect frame = CGRectMake((-star.size.width/2)+CGRectGetMidX(_field.frame), (-star.size.height/2)+CGRectGetMidY(_field.frame), star.size.width, star.size.height);
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:frame];
     imageView.tag = FPTagRay;
@@ -421,7 +421,7 @@
     _elementsLeft =  self.levelType==FPGameTypeFirst? [[_levelManager mcElements] count] : 1;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++) {
         NSString *path = [[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"path"];
-        PDFImage *image = [PDFImage imageNamed:path];
+        PDFImage *image = [FPLevelManager imageNamed:path];
         FPElement *imageView = [[FPElement alloc] initWithFrame:[self adaptRectSize:image.size]];
         imageView.layer.zPosition = i;
         imageView.tag = i;

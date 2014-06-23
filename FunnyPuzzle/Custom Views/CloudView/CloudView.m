@@ -7,6 +7,7 @@
 //
 
 #import "CloudView.h"
+#import "FPLevelManager.h"
 #import <PDFImage/PDFImage.h>
 @interface CloudView ()
 @end
@@ -46,7 +47,7 @@
         
         [self.layer addAnimation:animation forKey:@"position"];
         NSArray *clouds = @[@"cloud1", @"cloud2", @"cloud3"];
-        PDFImage *cloud = [PDFImage imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count)]];
+        PDFImage *cloud = [FPLevelManager imageNamed:[clouds objectAtIndex:arc4random()%(clouds.count)]];
         PDFImageView *cloudView = [[PDFImageView alloc] initWithFrame:[self calcRect:self.frame size:cloud.size]];
         cloudView.image = cloud;
         self.backgroundColor = [UIColor clearColor];

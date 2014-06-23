@@ -4394,7 +4394,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>tikva</string>
+			<string>pumpkin</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -4435,9 +4435,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/tikva</string>
+			<string>Game 2/pumpkin</string>
 			<key>name</key>
-			<string>Tikva</string>
+			<string>Pumpkin</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>

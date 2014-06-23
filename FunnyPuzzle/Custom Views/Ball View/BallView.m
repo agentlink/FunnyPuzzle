@@ -50,18 +50,17 @@
     // Set vertical effect
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
+     initWithKeyPath:@"layer.transform"
      type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-10);
-    verticalMotionEffect.maximumRelativeValue = @(10);
-    
+    verticalMotionEffect.minimumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, -1, 0, 0)];
+    verticalMotionEffect.maximumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 1, 0, 0)];
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
+     initWithKeyPath:@"layer.transform"
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-10);
-    horizontalMotionEffect.maximumRelativeValue = @(10);
+    horizontalMotionEffect.minimumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 0, -1, 0)];
+    horizontalMotionEffect.maximumRelativeValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(1, 0, 1, 0)];
     
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
@@ -98,7 +97,7 @@
 - (void)setImageName:(NSString *)imageName
 {
     _imageName = imageName;
-    [_imageVeiw setImage:[PDFImage imageNamed:imageName]];
+    [_imageVeiw setImage:[PDFImage imageWithContentsOfFile:imageName]];
 }
 - (PDFImageView *)imageVeiw
 {

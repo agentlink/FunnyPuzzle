@@ -88,10 +88,10 @@ static FPSoundManager *_instance=nil;
         [_soundPlayer stop];
         _soundToPlay = sound;
         _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:sound error:&error];
-        //_soundPlayer.delegate=(id)self;
+        _soundPlayer.delegate=(id)self;
         [_soundPlayer prepareToPlay];
         [_soundPlayer play];
-
+        NSLog(@"%@", error);
 //        NSURL *url;
 //        int random=1+arc4random()%2;
 //        if (random==1) {
@@ -158,7 +158,9 @@ static FPSoundManager *_instance=nil;
     
     soundPath = [[NSBundle mainBundle] pathForResource:@"well_done" ofType:@"mp3"];
     fileURL = [NSURL URLWithString:soundPath];
-    _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+    _instance.soundPlayer = nil;
+    
+//    _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.soundPlayer.numberOfLoops=0;
     [_instance.soundPlayer prepareToPlay];
     //set sounds path
@@ -238,7 +240,8 @@ int timerTick;
     if (flag==YES) {
         if (_soundToPlay) {
             [_soundPlayer stop];
-            _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundToPlay error:nil];
+            _soundPlayer = nil;
+//            _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundToPlay error:nil];
             _soundPlayer.numberOfLoops=0;
             [_soundPlayer prepareToPlay];
             [_soundPlayer play];

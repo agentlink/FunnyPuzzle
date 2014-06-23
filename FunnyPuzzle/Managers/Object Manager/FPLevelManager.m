@@ -104,9 +104,9 @@
                     [level valueForKey:@"folder"],
                     nil];
     _pathToColor = [NSString stringWithFormat:@"%@/%@", _pathToLevel, [level valueForKey:@"color"]];
-    PDFImage *color = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_result", _pathToColor]];
-    PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
-    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_bordered", _pathToColor]];
+    PDFImage *color = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_result", _pathToColor]];
+    PDFImage *gray = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
+    PDFImage *gray_lined = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_bordered", _pathToColor]];
     [self calcMultiplayerFromSize:color.size];
     _fieldFrame = [self getAdaptedRectFromSize:color.size];
     _colorField = [[PDFImageView alloc] initWithFrame:_fieldFrame];
@@ -130,7 +130,7 @@
                           _pathToColor,
                           i, nil];
         
-        PDFImage *image = [PDFImage imageNamed:path];
+        PDFImage *image = [PDFImage imageWithContentsOfFile:path];
         CGRect adaptedFrame = CGRectMake(((nativePoint.x)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
         Segment *segment = [[Segment alloc] initWithFrame:[self getAdaptedRectFromSize:image.size]];
         segment.image = image;
@@ -147,10 +147,10 @@
 }
 - (void)configFields:(NSDictionary *)level
 {
-    PDFImage *color = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"color"]]];
+    PDFImage *color = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"color"]]];
     [self calcMultiplayer:CGRectMake(0, 0, color.size.width, color.size.height)];
-    PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray"]]];
-    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray_lined"]]];
+    PDFImage *gray = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray"]]];
+    PDFImage *gray_lined = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray_lined"]]];
     CGRect rect = CGRectMake(0, 0, color.size.width*multiplayer, color.size.height*multiplayer);
     _colorField = [[PDFImageView alloc] initWithFrame:rect];
     _colorField.image = color;
@@ -284,5 +284,11 @@
     NSString *result = NSLocalizedStringFromTableInBundle(key, @"Localizable", bundle, nil);
 
     return result;
+}
++ (PDFImage *)imageNamed:(NSString *)name
+{
+    NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
+    resourcesPath = [resourcesPath stringByAppendingString:[NSString stringWithFormat:@"/%@.pdf",name]];
+    return [PDFImage imageWithContentsOfFile:resourcesPath];
 }
 @end

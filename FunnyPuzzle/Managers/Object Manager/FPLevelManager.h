@@ -31,5 +31,5 @@
 + (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type;
 + (NSArray *)allLevels:(FPGameType)gameType;
 + (NSString *)gameLocalizedStringForKey:(NSString *)key;
-
++ (PDFImage *)imageNamed:(NSString *)name;
 @end
