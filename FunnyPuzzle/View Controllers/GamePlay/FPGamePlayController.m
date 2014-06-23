@@ -235,6 +235,7 @@
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
                 [element layoutIfNeeded];
+                //[[FPSoundManager sharedInstance] playBlob:FPSoundBlobTypeApear];
             }];
         }];
     }
@@ -430,6 +431,7 @@
         [imageView setAlpha:0];
         //[imageView setHidden:YES];
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
+
     }
     _elements = [NSArray arrayWithArray:elements];
     //[self bounceElements:_elements isInSuperView:NO];

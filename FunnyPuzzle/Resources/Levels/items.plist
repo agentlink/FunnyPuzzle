@@ -100,6 +100,46 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>hen</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>35</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>110</integer>
+						<key>y</key>
+						<integer>96</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>207</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/hen</string>
+			<key>name</key>
+			<string>Hen</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>pigeon</string>
 			<key>elements</key>
 			<array>
@@ -140,41 +180,41 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>piggy</string>
+			<string>giraffe</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>2</integer>
+						<integer>8</integer>
 						<key>y</key>
-						<integer>49</integer>
+						<integer>8</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>71</integer>
+						<integer>104</integer>
 						<key>y</key>
-						<integer>2</integer>
+						<integer>184</integer>
 					</dict>
 				</dict>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>231</integer>
+						<integer>169</integer>
 						<key>y</key>
-						<integer>19</integer>
+						<integer>207</integer>
 					</dict>
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 1/piggy</string>
+			<string>Game 1/giraffe</string>
 			<key>name</key>
-			<string>Piggy</string>
+			<string>Giraffe</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -220,46 +260,6 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>hen</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>35</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>110</integer>
-						<key>y</key>
-						<integer>96</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>207</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 1/hen</string>
-			<key>name</key>
-			<string>Hen</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
 			<string>penguin</string>
 			<key>elements</key>
 			<array>
@@ -300,6 +300,46 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>piggy</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>2</integer>
+						<key>y</key>
+						<integer>49</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>71</integer>
+						<key>y</key>
+						<integer>2</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>231</integer>
+						<key>y</key>
+						<integer>19</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 1/piggy</string>
+			<key>name</key>
+			<string>Piggy</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>snake</string>
 			<key>elements</key>
 			<array>
@@ -335,46 +375,6 @@
 			<string>Game 1/snake</string>
 			<key>name</key>
 			<string>Snake</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>giraffe</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>104</integer>
-						<key>y</key>
-						<integer>184</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>169</integer>
-						<key>y</key>
-						<integer>207</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 1/giraffe</string>
-			<key>name</key>
-			<string>Giraffe</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1052,7 +1052,7 @@
 			<key>folder</key>
 			<string>Game 1/teddy_bear</string>
 			<key>name</key>
-			<string>Teddy_bear</string>
+			<string>Teddy Bear</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1320,7 +1320,7 @@
 			<key>folder</key>
 			<string>Game 1/tea_cup</string>
 			<key>name</key>
-			<string>Tea_cup</string>
+			<string>Tea Cup</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1937,7 +1937,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Computer_chair</string>
+			<string>Computer Chair</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -2022,7 +2022,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Sea_bear</string>
+			<string>Sea Bear</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -2679,6 +2679,300 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>mushrooms</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>63</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/mushrooms</string>
+			<key>name</key>
+			<string>Mushrooms</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>key</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>14</integer>
+						<key>y</key>
+						<integer>14</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/key</string>
+			<key>name</key>
+			<string>Key</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>strawberries</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>26</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/strawberries</string>
+			<key>name</key>
+			<string>Strawberries</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>rhino</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>60</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/rhino</string>
+			<key>name</key>
+			<string>Rhino</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>pumpkin</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>76</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/pumpkin</string>
+			<key>name</key>
+			<string>Pumpkin</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>scrambled_eggs</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>85</integer>
+						<key>y</key>
+						<integer>75</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/scrambled_eggs</string>
+			<key>name</key>
+			<string>Scrambled Eggs</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>apple</string>
 			<key>elements</key>
 			<array>
@@ -2826,6 +3120,300 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>dog</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>210</integer>
+						<key>y</key>
+						<integer>57</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/dog</string>
+			<key>name</key>
+			<string>Dog</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>eggplant</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>211</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/eggplant</string>
+			<key>name</key>
+			<string>Eggplant</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>fox</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>230</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/fox</string>
+			<key>name</key>
+			<string>Fox</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>peas</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>67</integer>
+						<key>y</key>
+						<integer>106</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/peas</string>
+			<key>name</key>
+			<string>Peas</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>cancer</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>150</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/cancer</string>
+			<key>name</key>
+			<string>Сrawfish</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>pepper</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>154</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/pepper</string>
+			<key>name</key>
+			<string>Pepper</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>monkey</string>
 			<key>elements</key>
 			<array>
@@ -2870,6 +3458,55 @@
 			<string>Game 2/monkey</string>
 			<key>name</key>
 			<string>Monkey</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>pot</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>52</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/pot</string>
+			<key>name</key>
+			<string>Pot With Honey</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -2924,6 +3561,55 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>wizard_hat</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>74</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/wizard_hat</string>
+			<key>name</key>
+			<string>Wizard Hat</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>squirrel</string>
 			<key>elements</key>
 			<array>
@@ -2968,6 +3654,104 @@
 			<string>Game 2/squirrel</string>
 			<key>name</key>
 			<string>Squirrel</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>crew_cut</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>189</integer>
+						<key>y</key>
+						<integer>48</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/crew_cut</string>
+			<key>name</key>
+			<string>Crew Cut</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>jug_with_milk</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>166</integer>
+						<key>y</key>
+						<integer>14</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/jug_with_milk</string>
+			<key>name</key>
+			<string>Jug With Milk</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3120,6 +3904,55 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
+			<string>soother</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>8</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/soother</string>
+			<key>name</key>
+			<string>Soother</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
 			<string>hippo</string>
 			<key>elements</key>
 			<array>
@@ -3218,790 +4051,6 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>bee</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>11</integer>
-						<key>y</key>
-						<integer>10</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/bee</string>
-			<key>name</key>
-			<string>Bee</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>snail</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>43</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/snail</string>
-			<key>name</key>
-			<string>Snail</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>elephant</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>5</integer>
-						<key>y</key>
-						<integer>5</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/elephant</string>
-			<key>name</key>
-			<string>Elephant</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>cherry</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>176</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/cherry</string>
-			<key>name</key>
-			<string>Cherry</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>eggplant</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>211</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/eggplant</string>
-			<key>name</key>
-			<string>Eggplant</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>key</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>14</integer>
-						<key>y</key>
-						<integer>14</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/key</string>
-			<key>name</key>
-			<string>Key</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>pear</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>92</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/pear</string>
-			<key>name</key>
-			<string>Pear</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>pot</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>52</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/pot</string>
-			<key>name</key>
-			<string>Pot with honey</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>scrambled_eggs</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>85</integer>
-						<key>y</key>
-						<integer>75</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/scrambled_eggs</string>
-			<key>name</key>
-			<string>Scrambled eggs</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>cancer</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>150</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/cancer</string>
-			<key>name</key>
-			<string>Cancer</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>cock</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>128</integer>
-						<key>y</key>
-						<integer>25</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/cock</string>
-			<key>name</key>
-			<string>Cock</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>dog</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>210</integer>
-						<key>y</key>
-						<integer>57</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/dog</string>
-			<key>name</key>
-			<string>Dog</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>pitching</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>54</integer>
-						<key>y</key>
-						<integer>111</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/pitching</string>
-			<key>name</key>
-			<string>Pitching</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>fox</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>230</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/fox</string>
-			<key>name</key>
-			<string>Fox</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>crew_cut</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>189</integer>
-						<key>y</key>
-						<integer>48</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/crew_cut</string>
-			<key>name</key>
-			<string>Crew_cut</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>jug_with_milk</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>166</integer>
-						<key>y</key>
-						<integer>14</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/jug_with_milk</string>
-			<key>name</key>
-			<string>Jug_with_milk</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
 			<string>lightbulb</string>
 			<key>elements</key>
 			<array>
@@ -4051,16 +4100,16 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>mushrooms</string>
+			<string>bee</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>8</integer>
+						<integer>11</integer>
 						<key>y</key>
-						<integer>63</integer>
+						<integer>10</integer>
 					</dict>
 				</dict>
 				<dict>
@@ -4092,107 +4141,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/mushrooms</string>
+			<string>Game 2/bee</string>
 			<key>name</key>
-			<string>Mushrooms</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>peas</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>67</integer>
-						<key>y</key>
-						<integer>106</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/peas</string>
-			<key>name</key>
-			<string>Peas</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>pepper</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>154</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/pepper</string>
-			<key>name</key>
-			<string>Pepper</string>
+			<string>Bee</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -4247,63 +4198,14 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>rhino</string>
+			<string>snail</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>8</integer>
-						<key>y</key>
-						<integer>60</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/rhino</string>
-			<key>name</key>
-			<string>Rhino</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>soother</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>8</integer>
+						<integer>43</integer>
 						<key>y</key>
 						<integer>8</integer>
 					</dict>
@@ -4337,107 +4239,9 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/soother</string>
+			<string>Game 2/snail</string>
 			<key>name</key>
-			<string>Soother</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>strawberries</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>26</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/strawberries</string>
-			<key>name</key>
-			<string>Strawberries</string>
-		</dict>
-		<dict>
-			<key>bgColor</key>
-			<string>d2e9f9</string>
-			<key>color</key>
-			<string>pumpkin</string>
-			<key>elements</key>
-			<array>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>76</integer>
-						<key>y</key>
-						<integer>8</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-				<dict>
-					<key>point</key>
-					<dict>
-						<key>x</key>
-						<integer>10000</integer>
-						<key>y</key>
-						<integer>10000</integer>
-					</dict>
-				</dict>
-			</array>
-			<key>folder</key>
-			<string>Game 2/pumpkin</string>
-			<key>name</key>
-			<string>Pumpkin</string>
+			<string>Snail</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -4492,16 +4296,16 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>wizard_hat</string>
+			<string>elephant</string>
 			<key>elements</key>
 			<array>
 				<dict>
 					<key>point</key>
 					<dict>
 						<key>x</key>
-						<integer>74</integer>
+						<integer>5</integer>
 						<key>y</key>
-						<integer>8</integer>
+						<integer>5</integer>
 					</dict>
 				</dict>
 				<dict>
@@ -4533,9 +4337,156 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/wizard_hat</string>
+			<string>Game 2/elephant</string>
 			<key>name</key>
-			<string>Wizard_hat</string>
+			<string>Elephant</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>cock</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>128</integer>
+						<key>y</key>
+						<integer>25</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/cock</string>
+			<key>name</key>
+			<string>Cock</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>cherry</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>176</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/cherry</string>
+			<key>name</key>
+			<string>Cherry</string>
+		</dict>
+		<dict>
+			<key>bgColor</key>
+			<string>d2e9f9</string>
+			<key>color</key>
+			<string>pear</string>
+			<key>elements</key>
+			<array>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>8</integer>
+						<key>y</key>
+						<integer>92</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>point</key>
+					<dict>
+						<key>x</key>
+						<integer>10000</integer>
+						<key>y</key>
+						<integer>10000</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>folder</key>
+			<string>Game 2/pear</string>
+			<key>name</key>
+			<string>Pear</string>
 		</dict>
 	</array>
 </array>

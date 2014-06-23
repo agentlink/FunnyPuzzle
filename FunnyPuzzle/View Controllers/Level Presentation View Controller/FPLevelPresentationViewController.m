@@ -324,7 +324,7 @@
 {
     NSArray *indexPaths;
     _levels = [FPLevelManager allLevels:_gameType];
-    if (indexPath.row < _levels.count) {
+    if (indexPath.row < _levels.count-1) {
         indexPaths = @[indexPath, [NSIndexPath indexPathForItem:indexPath.row+1 inSection:0]];
     } else {
         indexPaths = @[indexPath];

@@ -274,14 +274,14 @@
 #pragma mark - Private
 + (NSString *)localStringForKey:(NSString *)key
 {
-        return  NSLocalizedStringFromTableInBundle(key, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
+        return  NSLocalizedStringFromTableInBundle(key, @"altLocalization", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
 }
 #pragma mark - Class Methods
 + (NSString *)gameLocalizedStringForKey:(NSString *)key
 {
     NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]];
 
-    NSString *result = NSLocalizedStringFromTableInBundle(key, @"Localizable", bundle, nil);
+    NSString *result = NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
 
     return result;
 }

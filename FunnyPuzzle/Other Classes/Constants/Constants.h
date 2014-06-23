@@ -45,6 +45,12 @@ typedef enum {
     VibrateModeDragOrDrop,
     VibrateModeInPlace
 }FPVibrateMode;
+typedef NS_ENUM (int, FPSoundBlobType)
+{
+    FPSoundBlobTypeOnce,
+    FPSoundBlobTypeTwice,
+    FPSoundBlobTypeApear
+};
 static double kAnimationDuration = .3;
 //const double kAnimationDurationFull = 0.3;
 
