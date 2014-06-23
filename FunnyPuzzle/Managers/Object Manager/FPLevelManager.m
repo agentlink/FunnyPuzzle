@@ -42,10 +42,9 @@
     }
     return self;
 }
-- (void)dealloc
-{
-    
-}
+#pragma makr - Custom Accssesors
+
+#pragma mark - Private
 - (void)parce
 {
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
@@ -303,5 +302,4 @@
     [savedLevels[type][level] setObject:@1 forKey:[FPGameManager sharedInstance].language];
     [savedLevels writeToFile:plistFile atomically:YES];
 }
-
 @end

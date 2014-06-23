@@ -508,7 +508,7 @@ int tick=0;
 
 - (IBAction)DeleteViewController:(id)sender {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

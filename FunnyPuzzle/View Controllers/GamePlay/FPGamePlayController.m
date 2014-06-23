@@ -12,6 +12,7 @@
 #import "FPSoundManager.h"
 #import "AccelerometerManager.h"
 #import "FPGameManager.h"
+#import "FPBonusViewController.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -37,10 +38,11 @@
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
-
 @property (nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
 @property (nonatomic) UICollisionBehavior *collision;
+
+@property (assign, nonatomic) int leftToBonus;
 
 
 @property (nonatomic) UISnapBehavior *basketSnap;
@@ -56,6 +58,7 @@
 @end
 
 @implementation FPGamePlayController
+@synthesize leftToBonus = _leftToBonus;
 #pragma mark - Lifecicle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,6 +75,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view
     //[self.view setBackgroundColor:[UIColor clearColor]];
+    self.leftToBonus = (unsigned)[[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
     _levelName.alpha = 0;
     _back.alpha = 0;
     _next.alpha = 0;
@@ -153,6 +157,16 @@
 {
     _levelNumber = levelNumber;
     _indexPath = [NSIndexPath indexPathForRow:levelNumber inSection:0];
+}
+- (void)setLeftToBonus:(int)leftToBonus
+{
+    _leftToBonus = leftToBonus;
+    [[NSUserDefaults standardUserDefaults] setInteger:leftToBonus forKey:@"leftToBonus"];
+}
+- (int)leftToBonus
+{
+    _leftToBonus = [[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
+    return _leftToBonus;
 }
 #pragma mark - Animations
 
@@ -489,11 +503,11 @@
 - (void)levelCompleet
 {
     if (!self.levelDone) {
-        //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
         [FPLevelManager saveLevel:self.levelNumber gameType:self.levelType];
+        [FPGameManager sharedInstance].candiesCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
+        self.leftToBonus++;
     }
-    //[self updateCollectionView];
     [self compleetAnimation];
 }
 - (void)restartLevel
@@ -505,7 +519,14 @@
 
 - (IBAction)next:(id)sender;
 {
-    [[self updateCollectionView] nextLevel];
+    if (self.leftToBonus >=3) {
+        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+        [self presentViewController:bonusViewController animated:YES completion:^{
+            self.leftToBonus = 0;
+        }];
+    } else {
+        [[self updateCollectionView] nextLevel];
+    }
 }
 - (IBAction)prew:(id)sender
 {
@@ -585,10 +606,8 @@
             if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
                 [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
             }
-            
         }
     }
-    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -625,8 +644,6 @@
         if (_elementsLeft<=0) {
             [self levelCompleet];
         }
-        //_dragingElement.layer.anchorPoint = CGPointZero;
-        //_dragingElement.layer.position = rightPoint;
     }
 }
 

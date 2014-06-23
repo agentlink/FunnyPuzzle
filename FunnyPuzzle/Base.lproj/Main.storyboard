@@ -160,9 +160,6 @@
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="fZu-IS-JoB" kind="push" identifier="OpenBonus" id="iCE-wS-65j"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Vp-tkv" userLabel="Settings">
                                 <rect key="frame" x="144" y="192" width="40" height="40"/>
@@ -499,7 +496,7 @@
         <!--Bonus View Controller-->
         <scene sceneID="cEH-cx-fXj">
             <objects>
-                <viewController id="fZu-IS-JoB" customClass="FPBonusViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BonusLevel" id="fZu-IS-JoB" customClass="FPBonusViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yA9-dq-Qjv"/>
                         <viewControllerLayoutGuide type="bottom" id="fTF-Mt-lPc"/>
