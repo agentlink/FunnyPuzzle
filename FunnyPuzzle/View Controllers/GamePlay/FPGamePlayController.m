@@ -575,6 +575,19 @@
                                     [touch1 locationInView:element].y/element.frame.size.height);
         _dragingWinPoint = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue]];
     }
+    UITouch *touch = [[event allTouches] anyObject];
+    if (_levelDone) {
+        
+        if (_field==[touch view])
+        {
+            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch locationInView:_field] inView:_field]) {
+                NSLog(@"ok");
+                [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+            }
+            
+        }
+    }
+    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
