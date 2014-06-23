@@ -106,13 +106,6 @@ static FPSoundManager *_instance=nil;
 //        [_soundPlayer play];
     }
 }
-- (void)playSoundAsync:(NSURL *)soundURL
-{
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    [player prepareToPlay];
-    [player play];
-    player.delegate = self;
-}
 - (void)playBlob:(FPSoundBlobType)type
 {
     NSURL *blobURL;
@@ -121,20 +114,19 @@ static FPSoundManager *_instance=nil;
         case FPSoundBlobTypeOnce:
             blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blob"];
             blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%6];
-            blobURL = [NSURL URLWithString:blobFolderFullPath];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
             break;
         case FPSoundBlobTypeTwice:
             blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobTwice"];
             blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
-            blobURL = [NSURL URLWithString:blobFolderFullPath];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
             break;
         case FPSoundBlobTypeApear:
             blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobApear"];
             blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
-            blobURL = [NSURL URLWithString:blobFolderFullPath];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
             break;
     }
-    [self playSoundAsync:blobURL];
 }
 
 - (void) vibrateWithMode:(FPVibrateMode)vibrateMode{

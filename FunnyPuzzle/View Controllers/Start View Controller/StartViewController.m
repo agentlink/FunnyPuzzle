@@ -141,7 +141,7 @@
     if (type == FPGameTypeFirst) {
         [GameModel sharedInstance].gameType = type;
         FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
         [controller.view setHidden:YES];
         [controller setGameType:FPGameTypeFirst];
         [controller setParrent:self];
@@ -163,7 +163,7 @@
     } else {
         [GameModel sharedInstance].gameType = type;
         FPLevelPresentationViewController *controller = (FPLevelPresentationViewController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:nil] instantiateInitialViewController];
-        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
         [controller.view setHidden:YES];
         [self presentViewController:controller animated:NO completion:^{
             controller.gameType=type;
@@ -182,14 +182,6 @@
             }];
         }];
     }
-//    UIToolbar* blurredView = [[UIToolbar alloc] initWithFrame:self.view.bounds];
-//    [blurredView setBarStyle:UIBarStyleDefault];
-//    blurredView.alpha = 0;
-//    [self.view insertSubview:blurredView atIndex:0];
-//    blurredView.layer.zPosition = 1;
-//    [UIView animateWithDuration:kAnimationDuration animations:^{
-//        blurredView.alpha = 1;
-//    }];
 }
 
 - (void)returnFromLevelSelection
@@ -206,7 +198,7 @@
         } completion:^(BOOL finished) {
         }];
     }
-    self.navigationController.modalPresentationStyle = UIModalPresentationNone;
+    self.modalPresentationStyle = UIModalPresentationNone;
 }
 
 - (IBAction)goToSettings:(id)sender {

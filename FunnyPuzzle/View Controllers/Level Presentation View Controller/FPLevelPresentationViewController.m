@@ -148,6 +148,7 @@
     [self presentViewController:controller animated:YES completion:^{
         controller.view.alpha = 0;
         controller.view.hidden = YES;
+        controller.levelsCount = self.levels.count;
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [[present layer] setBorderWidth:0];
             imView.frame = controller.fieldFrame;
@@ -233,6 +234,7 @@
             nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
             nextController.view.layer.shadowOpacity = 1;
             nextController.view.layer.shadowRadius = 10;
+            nextController.levelsCount = self.levels.count;
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, -imageView.bounds.size.width*0.8, 0);
             [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -267,9 +269,9 @@
             nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
             nextController.view.layer.shadowOpacity = 1;
             nextController.view.layer.shadowRadius = 10;
+            nextController.levelsCount = self.levels.count;
             CGAffineTransform transform = CGAffineTransformIdentity;
             
-            //transform = CGAffineTransformScale(transform, 0.8, 0.8);
             transform = CGAffineTransformTranslate(transform, imageView.bounds.size.height, 0);
             [UIView animateWithDuration:kAnimationDuration animations:^{
                 [imageView setTransform:transform];
@@ -287,17 +289,7 @@
 {
 
     FPGamePlayController *currentGamePlay = (FPGamePlayController *)[self presentedViewController];
-    UICollectionViewScrollPosition scrollPosition = UICollectionViewScrollPositionRight;
-    int itemNumber = currentGamePlay.indexPath.row;
-    if (!(itemNumber%2)) {
-        if (!((itemNumber/2)%2)) {
-            scrollPosition = UICollectionViewScrollPositionLeft;
-        }
-    } else if (!((itemNumber/2)%2)) {
-        scrollPosition = UICollectionViewScrollPositionLeft;
-    }
 
-    [self.collection scrollToItemAtIndexPath:currentGamePlay.indexPath atScrollPosition:scrollPosition animated:NO];
     FPLevelCell *cell = (FPLevelCell *)[self.collection cellForItemAtIndexPath:currentGamePlay.indexPath];
 
     UIView *present = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -323,6 +315,18 @@
 #pragma mark - Publick
 - (void)updateColleCellAtIndexPath:(NSIndexPath *)indexPath
 {
+    UICollectionViewScrollPosition scrollPosition = UICollectionViewScrollPositionRight;
+    int itemNumber = indexPath.row;
+    if (!(itemNumber%2)) {
+        if (!((itemNumber/2)%2)) {
+            scrollPosition = UICollectionViewScrollPositionLeft;
+        }
+    } else if (!((itemNumber/2)%2)) {
+        scrollPosition = UICollectionViewScrollPositionLeft;
+    }
+
+    [self.collection scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:NO];
+
     NSArray *indexPaths;
     _levels = [FPLevelManager allLevels:_gameType];
     if (indexPath.row < _levels.count-1) {

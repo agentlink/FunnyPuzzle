@@ -17,6 +17,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *back;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) int levelNumber;
+@property (nonatomic) int levelsCount;
 @property (nonatomic) CGRect fieldFrame;
 
 

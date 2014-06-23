@@ -32,7 +32,6 @@
 @property (nonatomic) NSUInteger dragingElementIndex;
 @property (nonatomic) CGPoint dragingPoint;
 @property (nonatomic) CGPoint dragingWinPoint;
-@property (nonatomic) int levelsCount;
 @property (nonatomic) NSUInteger elementsLeft;
 @property (nonatomic) FPGameType levelType;
 @property (nonatomic) NSString *compleetKey;
@@ -91,6 +90,11 @@
 {
     _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [self configureGameplayWithAnimationType:!_levelDone];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning
@@ -208,14 +212,17 @@
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
                 [array addObjectsFromArray:@[_back]];
                 if (self.indexPath.row != 0) {
-                    [array addObjectsFromArray:@[_prew]];
+                    [array addObject:_prew];
                 }
                 [self bounceElements:array isInSuperView:YES];
             } else {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back, _next]];
+                [array addObject:_back];
                 if (self.indexPath.row != 0) {
-                    [array addObjectsFromArray:@[_prew]];
+                    [array addObject:_prew];
+                }
+                if (self.indexPath.row+1<self.levelsCount) {
+                    [array addObject:_next];
                 }
                 [self bounceElements:array isInSuperView:YES];
             }
@@ -236,6 +243,7 @@
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
             [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
             element.alpha = 1;
+            //[[FPSoundManager sharedInstance] playBlob:FPSoundBlobTypeApear];
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
