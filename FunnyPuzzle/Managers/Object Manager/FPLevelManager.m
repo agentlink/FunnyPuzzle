@@ -42,10 +42,9 @@
     }
     return self;
 }
-- (void)dealloc
-{
-    
-}
+#pragma makr - Custom Accssesors
+
+#pragma mark - Private
 - (void)parce
 {
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Levels/items" ofType:@"plist"];
@@ -82,6 +81,7 @@
     [_mcLevel setObject:notFull forKey:@"notFull"];
     _levelName = [level valueForKey:@"name"];
     _mcElements = [self getMCSegmentsFromElements:[level valueForKey:@"elements"]];
+    _levelDone = [[FPLevelManager getLevelCompletation:level] boolValue];
     _soundURL = [self getSoundURL];
     
 }
@@ -104,9 +104,9 @@
                     [level valueForKey:@"folder"],
                     nil];
     _pathToColor = [NSString stringWithFormat:@"%@/%@", _pathToLevel, [level valueForKey:@"color"]];
-    PDFImage *color = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_result", _pathToColor]];
-    PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
-    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"%@_bordered", _pathToColor]];
+    PDFImage *color = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_result", _pathToColor]];
+    PDFImage *gray = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_gray", _pathToColor]];
+    PDFImage *gray_lined = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@_bordered", _pathToColor]];
     [self calcMultiplayerFromSize:color.size];
     _fieldFrame = [self getAdaptedRectFromSize:color.size];
     _colorField = [[PDFImageView alloc] initWithFrame:_fieldFrame];
@@ -130,7 +130,7 @@
                           _pathToColor,
                           i, nil];
         
-        PDFImage *image = [PDFImage imageNamed:path];
+        PDFImage *image = [PDFImage imageWithContentsOfFile:path];
         CGRect adaptedFrame = CGRectMake(((nativePoint.x)*multiplayer)+CGRectGetMinX(_fieldFrame), ((nativePoint.y)*multiplayer)+CGRectGetMinY(_fieldFrame), image.size.width*multiplayer, image.size.height*multiplayer);
         Segment *segment = [[Segment alloc] initWithFrame:[self getAdaptedRectFromSize:image.size]];
         segment.image = image;
@@ -147,10 +147,10 @@
 }
 - (void)configFields:(NSDictionary *)level
 {
-    PDFImage *color = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"color"]]];
+    PDFImage *color = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"color"]]];
     [self calcMultiplayer:CGRectMake(0, 0, color.size.width, color.size.height)];
-    PDFImage *gray = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray"]]];
-    PDFImage *gray_lined = [PDFImage imageNamed:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray_lined"]]];
+    PDFImage *gray = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray"]]];
+    PDFImage *gray_lined = [PDFImage imageWithContentsOfFile:[NSString stringWithFormat:@"Levels/%@/%@", [level valueForKey:@"folder"], [level valueForKey:@"gray_lined"]]];
     CGRect rect = CGRectMake(0, 0, color.size.width*multiplayer, color.size.height*multiplayer);
     _colorField = [[PDFImageView alloc] initWithFrame:rect];
     _colorField.image = color;
@@ -237,7 +237,7 @@
 }
 + (FPLevelManager *)loadLevel:(int)level type:(FPGameType)type
 {
-    FPLevelManager *manager = [FPLevelManager new];
+    FPLevelManager *manager = [[FPLevelManager alloc] init];
     manager.gameType = type;
     manager.level = level;
     [manager memoryCareParce];
@@ -263,26 +263,43 @@
         NSString *gray_lined = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *full = [NSString stringWithFormat:@"Levels/%@/%@_full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
         NSString *notFull = [NSString stringWithFormat:@"Levels/%@/%@_not-full", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
-        NSNumber *compleet = [[NSUserDefaults standardUserDefaults] valueForKey:
-                              [self localStringForKey:[level valueForKey:@"name"]]] ? @1 : @0;
+        NSNumber *compleet = [self getLevelCompletation:level];
         [levels addObject:@{@"color": color, @"gray":gray, @"gray_lined":gray_lined, @"name":[level valueForKey:@"name"], @"full":full, @"notFull":notFull, @"compleet":compleet}];
     }
     return [NSArray arrayWithArray:levels];
 }
-
++ (NSNumber *)getLevelCompletation:(NSDictionary *)level
+{
+    return [level valueForKey:[FPGameManager sharedInstance].language]?@1:@0;
+}
 
 #pragma mark - Private
 + (NSString *)localStringForKey:(NSString *)key
 {
-        return  NSLocalizedStringFromTableInBundle(key, @"Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE]ofType:@"lproj"]], nil);
+    NSBundle *bundle =[ NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE] ofType:@"lproj"]];
+        return  NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
 }
+
 #pragma mark - Class Methods
 + (NSString *)gameLocalizedStringForKey:(NSString *)key
 {
     NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]];
 
-    NSString *result = NSLocalizedStringFromTableInBundle(key, @"Localizable", bundle, nil);
+    NSString *result = NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
 
     return result;
+}
++ (PDFImage *)imageNamed:(NSString *)name
+{
+    NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
+    resourcesPath = [resourcesPath stringByAppendingString:[NSString stringWithFormat:@"/%@.pdf",name]];
+    return [PDFImage imageWithContentsOfFile:resourcesPath];
+}
++ (void)saveLevel:(NSUInteger)level gameType:(FPGameType)type
+{
+    NSString *plistFile = [FPLevelManager itemsPlistPath];
+    NSMutableArray *savedLevels = [NSMutableArray arrayWithContentsOfFile:plistFile];
+    [savedLevels[type][level] setObject:@1 forKey:[FPGameManager sharedInstance].language];
+    [savedLevels writeToFile:plistFile atomically:YES];
 }
 @end

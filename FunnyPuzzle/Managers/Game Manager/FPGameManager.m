@@ -18,7 +18,7 @@
 @end
 
 @implementation FPGameManager
-
+@synthesize candiesCount = _candiesCount;
 
 static FPGameManager *_instance=nil;
 
@@ -29,18 +29,31 @@ static FPGameManager *_instance=nil;
             [_instance loadNewAdv];
             _instance.languages = @{@"en":@"English",
                                    @"ru":@"Русский",
-                                   @"fr":@"Français",
+                                    @"uk":@"Українська"
+                                   /*@"fr":@"Français",
                                    @"de":@"Deutschland",
                                    @"es":@"Español",
                                    @"uk":@"Українська",
                                    @"hi":@"हिन्दी",
                                    @"zh-Hant":@"汉语",
                                    @"ar":@"العربية",
-                                   @"hu":@"Magyar"};
-            _instance.langCodes = @[@"en",@"ru",@"fr",@"de",@"es",@"uk",@"hi",@"zh-Hant",@"ar",@"hu"];
+                                   @"hu":@"Magyar"*/};
+            _instance.langCodes = @[@"en",@"ru", @"uk"/*@"fr",@"de",@"es",@"uk",@"hi",@"zh-Hant",@"ar",@"hu"*/];
         }
     }
     return _instance;
+}
+#pragma mark - Custom Accssesors
+-(int)candiesCount
+{
+    _candiesCount = [[NSUserDefaults standardUserDefaults] integerForKey:CANDIES_COUNT];
+    return _candiesCount;
+}
+- (void) setCandiesCount:(int)candiesCount
+{
+    _candiesCount = candiesCount;
+    [[NSUserDefaults standardUserDefaults] setInteger:candiesCount forKey:CANDIES_COUNT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) setSettings{

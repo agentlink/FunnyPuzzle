@@ -57,7 +57,8 @@
 "Strawberries" = "فراولة ";
 "Crab" = "كابوريا";
 "Corn" = "ذرة";
-"Jug with milk" = "أبريق من الحليب";
+
+"Jug_with_milk" = "أبريق من الحليب";
 "Lightbulb"	= "لمبة";
 "Stork" = "طائر اللقلق";
 "Pepper" = "فلفل";

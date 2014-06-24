@@ -203,7 +203,7 @@
 
 - (void)startWinAnimations:(UIView *)view
 {
-    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    PDFImage *star = [PDFImage imageWithContentsOfFile:@"Levels/star"];
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:CGRectMake(0, 0, star.size.width, star.size.height)];
     imageView.image = star;
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
@@ -397,10 +397,10 @@
 
 - (void) showBasket{
     _basketView=[[UIImageView alloc] initWithFrame:CGRectMake(_leftView.center.x-75.5,-150, 120, 120) ];
-    [_basketView setImage:[UIImage imageNamed:@"basket_full"]];
+    [_basketView setImage:[UIImage imageWithContentsOfFile:@"basket_full"]];
     _basketView.tag=99;
     [self.view addSubview:_basketView];
-    _candyView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"candy_orange"]];
+    _candyView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:@"candy_orange"]];
     _candyView.tag=98;
     _candyView.alpha=0;
     _candyView.frame = CGRectMake(_basketView.frame.origin.x+_basketView.frame.size.width/2.5, CGRectGetMidY(self.leftView.frame)-70, 55, 55);

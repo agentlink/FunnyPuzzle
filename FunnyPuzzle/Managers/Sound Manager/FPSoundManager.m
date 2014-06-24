@@ -91,19 +91,29 @@ static FPSoundManager *_instance=nil;
         //_soundPlayer.delegate=(id)self;
         [_soundPlayer prepareToPlay];
         [_soundPlayer play];
-
-//        NSURL *url;
-//        int random=1+arc4random()%2;
-//        if (random==1) {
-//            url=_well_done;
-//        }
-//        else{
-//            url=_excellent;
-//        }
-//        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-//        _soundPlayer.delegate=(id)self;
-//        [_soundPlayer prepareToPlay];
-//        [_soundPlayer play];
+        NSLog(@"%@", error);
+    }
+}
+- (void)playBlob:(FPSoundBlobType)type
+{
+    NSURL *blobURL;
+    NSString *blobFolderFullPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Levels/Blobs/"];
+    switch (type) {
+        case FPSoundBlobTypeOnce:
+            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blob"];
+            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%6];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+            break;
+        case FPSoundBlobTypeTwice:
+            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobTwice"];
+            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+            break;
+        case FPSoundBlobTypeApear:
+            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobApear"];
+            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
+            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+            break;
     }
 }
 
@@ -158,7 +168,9 @@ static FPSoundManager *_instance=nil;
     
     soundPath = [[NSBundle mainBundle] pathForResource:@"well_done" ofType:@"mp3"];
     fileURL = [NSURL URLWithString:soundPath];
-    _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+    _instance.soundPlayer = nil;
+    
+//    _instance.soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
     _instance.soundPlayer.numberOfLoops=0;
     [_instance.soundPlayer prepareToPlay];
     //set sounds path
@@ -235,9 +247,16 @@ int timerTick;
 #pragma mark - AudioPlayerDelegate
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+#pragma mark - AVAudioPlayer delegate
+
+//    if (![_soundPlayer isEqual:player]) {
+//        [player stop];
+//        player = nil;
+//    }
     if (flag==YES) {
         if (_soundToPlay) {
             [_soundPlayer stop];
+            _soundPlayer = nil;
             _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundToPlay error:nil];
             _soundPlayer.numberOfLoops=0;
             [_soundPlayer prepareToPlay];

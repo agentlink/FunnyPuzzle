@@ -12,6 +12,7 @@
 #import "FPSoundManager.h"
 #import "AccelerometerManager.h"
 #import "FPGameManager.h"
+#import "FPBonusViewController.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -32,16 +33,16 @@
 @property (nonatomic) NSUInteger dragingElementIndex;
 @property (nonatomic) CGPoint dragingPoint;
 @property (nonatomic) CGPoint dragingWinPoint;
-@property (nonatomic) int levelsCount;
 @property (nonatomic) NSUInteger elementsLeft;
 @property (nonatomic) FPGameType levelType;
 @property (nonatomic) NSString *compleetKey;
 @property (nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
-
 @property (nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
 @property (nonatomic) UICollisionBehavior *collision;
+
+@property (assign, nonatomic) int leftToBonus;
 
 
 @property (nonatomic) UISnapBehavior *basketSnap;
@@ -57,6 +58,7 @@
 @end
 
 @implementation FPGamePlayController
+@synthesize leftToBonus = _leftToBonus;
 #pragma mark - Lifecicle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,6 +75,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view
     //[self.view setBackgroundColor:[UIColor clearColor]];
+    self.leftToBonus = (unsigned)[[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
     _levelName.alpha = 0;
     _back.alpha = 0;
     _next.alpha = 0;
@@ -89,8 +92,13 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _levelDone = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
+    _levelDone = self.levelManager.levelDone;
     [self configureGameplayWithAnimationType:!_levelDone];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,6 +146,8 @@
 }
 - (void)dealloc
 {
+    self.field.image = nil;
+    self.elements = nil;
     [self.animator removeAllBehaviors];
     self.animator = nil;
 }
@@ -148,13 +158,23 @@
     _levelNumber = levelNumber;
     _indexPath = [NSIndexPath indexPathForRow:levelNumber inSection:0];
 }
+- (void)setLeftToBonus:(int)leftToBonus
+{
+    _leftToBonus = leftToBonus;
+    [[NSUserDefaults standardUserDefaults] setInteger:leftToBonus forKey:@"leftToBonus"];
+}
+- (int)leftToBonus
+{
+    _leftToBonus = [[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
+    return _leftToBonus;
+}
 #pragma mark - Animations
 
 - (void)startAnimationForNewLevel
 {
     [_field setBackgroundColor:[UIColor clearColor]];
     NSString *path = [[_levelManager mcLevel] objectForKey:_notCompleetKey];
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
 
 
     _field.hidden = YES;
@@ -177,7 +197,7 @@
 - (void)startAnimationForCompleetLevel
 {
     NSString *path = [[_levelManager mcLevel] objectForKey:_compleetKey];
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
     _field.hidden = YES;
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:_field.frame];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -204,11 +224,20 @@
             [_field.layer setTransform:transform];
             if (!_levelDone) {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back, _prew]];
+                [array addObjectsFromArray:@[_back]];
+                if (self.indexPath.row != 0) {
+                    [array addObject:_prew];
+                }
                 [self bounceElements:array isInSuperView:YES];
             } else {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back, _next, _prew]];
+                [array addObject:_back];
+                if (self.indexPath.row != 0) {
+                    [array addObject:_prew];
+                }
+                if (self.indexPath.row+1<self.levelsCount) {
+                    [array addObject:_next];
+                }
                 [self bounceElements:array isInSuperView:YES];
             }
         }];
@@ -226,9 +255,9 @@
             [self.view addSubview:element];
         }
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
-            [element layoutIfNeeded];
             [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
             element.alpha = 1;
+            //[[FPSoundManager sharedInstance] playBlob:FPSoundBlobTypeApear];
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
@@ -261,9 +290,9 @@
     oldImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:oldImage];
     
-    PDFImage *image = [PDFImage imageNamed:path];
+    PDFImage *image = [FPLevelManager imageNamed:path];
     PDFImageView *newImage = [[PDFImageView alloc] initWithFrame:_field.frame];
-    newImage.image = [PDFImage imageNamed:path];
+    newImage.image = [FPLevelManager imageNamed:path];
     newImage.contentMode = UIViewContentModeScaleAspectFit;
     [[self view] addSubview:newImage];
 
@@ -305,11 +334,9 @@
     [[self levelName] setAlpha:1];
     [[self animator] addBehavior:snap];
 }
-
 - (void)showRays
 {
-    return;
-    PDFImage *star = [PDFImage imageNamed:@"Levels/star"];
+    PDFImage *star = [FPLevelManager imageNamed:@"Levels/star"];
     CGRect frame = CGRectMake((-star.size.width/2)+CGRectGetMidX(_field.frame), (-star.size.height/2)+CGRectGetMidY(_field.frame), star.size.width, star.size.height);
     PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:frame];
     imageView.tag = FPTagRay;
@@ -421,7 +448,7 @@
     _elementsLeft =  self.levelType==FPGameTypeFirst? [[_levelManager mcElements] count] : 1;
     for (int i = 0; i<[[_levelManager mcElements] count]; i++) {
         NSString *path = [[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"path"];
-        PDFImage *image = [PDFImage imageNamed:path];
+        PDFImage *image = [FPLevelManager imageNamed:path];
         FPElement *imageView = [[FPElement alloc] initWithFrame:[self adaptRectSize:image.size]];
         imageView.layer.zPosition = i;
         imageView.tag = i;
@@ -430,6 +457,7 @@
         [imageView setAlpha:0];
         //[imageView setHidden:YES];
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
+
     }
     _elements = [NSArray arrayWithArray:elements];
     //[self bounceElements:_elements isInSuperView:NO];
@@ -474,12 +502,12 @@
 }
 - (void)levelCompleet
 {
-    BOOL level = [[NSUserDefaults standardUserDefaults] boolForKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
-    if (!level) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[FPLevelManager gameLocalizedStringForKey:self.levelManager.levelName]];
+    if (!self.levelDone) {
+        [FPLevelManager saveLevel:self.levelNumber gameType:self.levelType];
+        [FPGameManager sharedInstance].candiesCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
+        self.leftToBonus++;
     }
-    //[self updateCollectionView];
     [self compleetAnimation];
 }
 - (void)restartLevel
@@ -487,22 +515,18 @@
     [self startAnimationForNewLevel];
 }
 #pragma mark - IBAction
-+ (UIImage *)renderImageFromView:(UIView *)view withRect:(CGRect)frame {
-    
-    UIGraphicsBeginImageContextWithOptions(frame.size, YES, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    
-    UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return renderedImage;
-}
 
 
 - (IBAction)next:(id)sender;
 {
-    [[self updateCollectionView] nextLevel];
+    if (self.leftToBonus >=3) {
+        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+        [self presentViewController:bonusViewController animated:YES completion:^{
+            self.leftToBonus = 0;
+        }];
+    } else {
+        [[self updateCollectionView] nextLevel];
+    }
 }
 - (IBAction)prew:(id)sender
 {
@@ -537,7 +561,7 @@
     _dragingPoint = CGPointZero;
     NSMutableArray *tapElements = [[NSMutableArray alloc] init];
     for (FPElement *element in _elements) {
-        if (CGRectContainsPoint(element.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:element] inView:element] && !element.inPlace) {
+        if (CGRectContainsPoint(element.frame, touchLocation) && ![self zoneIsTransparent:[touch1 locationInView:element] inView:element] && !element.inPlace) {
             [tapElements addObject:element];
         }
     }
@@ -575,19 +599,15 @@
                                     [touch1 locationInView:element].y/element.frame.size.height);
         _dragingWinPoint = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue]];
     }
-    UITouch *touch = [[event allTouches] anyObject];
     if (_levelDone) {
         
-        if (_field==[touch view])
+        if (_field==[touch1 view])
         {
-            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch locationInView:_field] inView:_field]) {
-                NSLog(@"ok");
+            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
                 [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
             }
-            
         }
     }
-    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -624,8 +644,6 @@
         if (_elementsLeft<=0) {
             [self levelCompleet];
         }
-        //_dragingElement.layer.anchorPoint = CGPointZero;
-        //_dragingElement.layer.position = rightPoint;
     }
 }
 
@@ -648,6 +666,30 @@
     
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
     return CGColorGetAlpha([color CGColor])==0;
+}
+- (BOOL) zoneIsTransparent:(CGPoint)point inView:(UIView *)view
+{
+    int pixels = 40;
+    //pixel count: pixels*pixels*4
+    unsigned char pixel[6400] = {0};
+
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+    CGContextRef context = CGBitmapContextCreate(pixel, pixels, pixels, 8, pixels*4, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
+
+    CGContextTranslateCTM(context, -(point.x-(pixels*0.5)), -(point.y-(pixels*0.5)));
+
+    [view.layer renderInContext:context];
+
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+
+    for (int i = 3; i<1600; i+=4) {
+        if ((pixel[i]/255)>=1) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void) resetImageProgress

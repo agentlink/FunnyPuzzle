@@ -8,6 +8,7 @@
 
 #import "FPLevelCell.h"
 #import "UIImage+ImageEffects.h"
+#import "FPLevelManager.h"
 
 //#import "JMIBlur.h"
 @interface FPLevelCell ()
@@ -52,18 +53,17 @@
 {
     _isFinished = isFinished;
     if (isFinished) {
-        PDFImage *star = [PDFImage imageNamed:@"Levels/star_s"];
+        PDFImage *star = [FPLevelManager imageNamed:@"Levels/star_s"];
         _star = [[PDFImageView alloc] initWithFrame:CGRectMake(0, -self.frame.size.width/5, self.frame.size.width, self.frame.size.width)];
         _star.image = star;
         CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         rotate.fromValue = @0;
-        rotate.toValue = [NSNumber numberWithFloat:M_PI*2];
+        rotate.toValue = @(M_PI);
         rotate.duration = INFINITY;
-        [_star.layer addAnimation:rotate forKey:@"rotate"];
         [_name sizeToFit];
         _height.constant = _name.frame.size.height;
-        //[self layoutIfNeeded];
         [self insertSubview:_star atIndex:0];
+        [_star.layer addAnimation:rotate forKey:@"rotate"];
     } else {
         _name.text = @"";
         _height.constant = 0;
@@ -76,7 +76,7 @@
     _isLocked = isLocked;
     if (isLocked) {
         [self setIsFinished:NO];
-        self.imageVeiw.image = [PDFImage imageNamed:@"Levels/locked"];
+        self.imageVeiw.image = [FPLevelManager imageNamed:@"Levels/locked"];
         self.tintColor = [UIColor greenColor];
         PDFImageOptions *imageOptions = [PDFImageOptions optionsWithSize:self.imageVeiw.image.size];
         imageOptions.tintColor = [UIColor blueColor];
