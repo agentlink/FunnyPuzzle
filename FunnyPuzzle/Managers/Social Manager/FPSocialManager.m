@@ -23,15 +23,13 @@ static FPSocialManager *instance = nil;
 }
 
 -(void) shareWithTwitter:(UIViewController*)target{
-    SLComposeViewController *tweet = [SLComposeViewController
-                                           composeViewControllerForServiceType:SLServiceTypeTwitter];
+    SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     tweet = [self configurePost:tweet];
     [target presentViewController:tweet animated:YES completion:nil];
 }
 
 -(void) shareWithFacebook:(UIViewController*)target{
-    SLComposeViewController *facebook = [SLComposeViewController
-                                           composeViewControllerForServiceType:SLServiceTypeFacebook];
+    SLComposeViewController *facebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     facebook = [self configurePost:facebook];
     [target presentViewController:facebook animated:YES completion:nil];
 }

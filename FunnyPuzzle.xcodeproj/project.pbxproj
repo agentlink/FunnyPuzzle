@@ -73,6 +73,14 @@
 		84A7319619597AAF00D95A59 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7319519597AAF00D95A59 /* Social.framework */; };
 		84A7319A19597AF600D95A59 /* FPSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7319919597AF600D95A59 /* FPSocialManager.m */; };
 		84AD278619599CAA006ABE7D /* Icon_puzzly_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AD278519599CAA006ABE7D /* Icon_puzzly_1024.png */; };
+		84AD27881959A16E006ABE7D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD27871959A16E006ABE7D /* Security.framework */; };
+		84AD289C1959B043006ABE7D /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD289B1959B043006ABE7D /* GooglePlus.framework */; };
+		84AD289E1959B10B006ABE7D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD289D1959B10B006ABE7D /* AddressBook.framework */; };
+		84AD28A01959B11D006ABE7D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD289F1959B11D006ABE7D /* AssetsLibrary.framework */; };
+		84AD28A21959B12B006ABE7D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD28A11959B12B006ABE7D /* CoreLocation.framework */; };
+		84AD28A41959B13F006ABE7D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD28A31959B13F006ABE7D /* CoreText.framework */; };
+		84AD28A61959B175006ABE7D /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84AD28A51959B175006ABE7D /* GooglePlus.bundle */; };
+		84AD28A81959B189006ABE7D /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD28A71959B189006ABE7D /* GoogleOpenSource.framework */; };
 		84E962D6192F512700DC785C /* FPLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPLevelManager.m */; };
 		84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
 		84E962E6192F737000DC785C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962E5192F737000DC785C /* libGoogleAdMobAds.a */; };
@@ -193,6 +201,14 @@
 		84A7319819597AF600D95A59 /* FPSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSocialManager.h; sourceTree = "<group>"; };
 		84A7319919597AF600D95A59 /* FPSocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSocialManager.m; sourceTree = "<group>"; };
 		84AD278519599CAA006ABE7D /* Icon_puzzly_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_puzzly_1024.png; sourceTree = "<group>"; };
+		84AD27871959A16E006ABE7D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84AD289B1959B043006ABE7D /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		84AD289D1959B10B006ABE7D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		84AD289F1959B11D006ABE7D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		84AD28A11959B12B006ABE7D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84AD28A31959B13F006ABE7D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		84AD28A51959B175006ABE7D /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../Downloads/google-plus-ios-sdk-1.7.0/GooglePlus.bundle"; sourceTree = "<group>"; };
+		84AD28A71959B189006ABE7D /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../Downloads/google-plus-ios-sdk-1.7.0/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		84AEB9BC1933256C00DF942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84E962D4192F512700DC785C /* FPLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLevelManager.h; sourceTree = "<group>"; };
 		84E962D5192F512700DC785C /* FPLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLevelManager.m; sourceTree = "<group>"; };
@@ -230,12 +246,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A7319619597AAF00D95A59 /* Social.framework in Frameworks */,
 				045E3EEB19360B3000258680 /* MediaPlayer.framework in Frameworks */,
+				84AD28A41959B13F006ABE7D /* CoreText.framework in Frameworks */,
+				84AD28A21959B12B006ABE7D /* CoreLocation.framework in Frameworks */,
+				84AD28A01959B11D006ABE7D /* AssetsLibrary.framework in Frameworks */,
+				84AD289E1959B10B006ABE7D /* AddressBook.framework in Frameworks */,
+				84AD289C1959B043006ABE7D /* GooglePlus.framework in Frameworks */,
+				84AD27881959A16E006ABE7D /* Security.framework in Frameworks */,
+				84A7319619597AAF00D95A59 /* Social.framework in Frameworks */,
 				7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */,
 				84E962F3192F80B200DC785C /* SystemConfiguration.framework in Frameworks */,
 				84E962F1192F80A300DC785C /* StoreKit.framework in Frameworks */,
 				84E962EF192F809C00DC785C /* MessageUI.framework in Frameworks */,
+				84AD28A81959B189006ABE7D /* GoogleOpenSource.framework in Frameworks */,
 				84E962ED192F808E00DC785C /* AudioToolbox.framework in Frameworks */,
 				84E962EB192F807900DC785C /* AdSupport.framework in Frameworks */,
 				7FA57033192EA8A400CE84F8 /* QuartzCore.framework in Frameworks */,
@@ -476,6 +499,14 @@
 		7FA4BA40192C9AFD00A772BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84AD28A71959B189006ABE7D /* GoogleOpenSource.framework */,
+				84AD28A51959B175006ABE7D /* GooglePlus.bundle */,
+				84AD28A31959B13F006ABE7D /* CoreText.framework */,
+				84AD28A11959B12B006ABE7D /* CoreLocation.framework */,
+				84AD289F1959B11D006ABE7D /* AssetsLibrary.framework */,
+				84AD289D1959B10B006ABE7D /* AddressBook.framework */,
+				84AD289B1959B043006ABE7D /* GooglePlus.framework */,
+				84AD27871959A16E006ABE7D /* Security.framework */,
 				84A7319519597AAF00D95A59 /* Social.framework */,
 				045E3EEA19360B3000258680 /* MediaPlayer.framework */,
 				7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */,
@@ -766,6 +797,7 @@
 				7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */,
 				84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */,
 				7FA57041192F399A00CE84F8 /* ground3.pdf in Resources */,
+				84AD28A61959B175006ABE7D /* GooglePlus.bundle in Resources */,
 				7FA57039192F1B3000CE84F8 /* cloud3.pdf in Resources */,
 				84FDADF91935D49F00366C6E /* prefs.pdf in Resources */,
 				84FDADFB1936210C00366C6E /* candy.pdf in Resources */,
@@ -997,6 +1029,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
+					"$(PROJECT_DIR)",
+					"/Users/Admin/Downloads/google-plus-ios-sdk-1.7.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
@@ -1022,6 +1056,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
+					"$(PROJECT_DIR)",
+					"/Users/Admin/Downloads/google-plus-ios-sdk-1.7.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
