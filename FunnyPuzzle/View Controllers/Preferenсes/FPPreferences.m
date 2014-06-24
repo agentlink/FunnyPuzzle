@@ -9,13 +9,13 @@
 #import "FPPreferences.h"
 #import "FPGameManager.h"
 #import "FPSoundManager.h"
+#import "FPSocialManager.h"
 
 @interface FPPreferences () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *musicBTN;
 @property (weak, nonatomic) IBOutlet UIButton *soundBTN;
 @property (weak, nonatomic) IBOutlet UIButton *bordersBTN;
-@property (weak, nonatomic) IBOutlet UIButton *vibrateBTN;
 @property (weak, nonatomic) IBOutlet UIButton *backBTN;
 @property (weak, nonatomic) IBOutlet UILabel *settingsLBL;
 @property (weak, nonatomic) IBOutlet UILabel *languageLBL;
@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *musicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *soundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bordersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *vibrateLabel;
 
 @property (weak, nonatomic) NSArray *languageCodes;
 @property (weak, nonatomic) NSDictionary *languages;
@@ -33,14 +32,21 @@
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerHeight;
 @property (weak, nonatomic) IBOutlet UIButton *languageButton;
+@property (weak, nonatomic) IBOutlet UILabel *languageLabel;
+@property (weak, nonatomic) IBOutlet UIView *topBar;
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
+@property (weak, nonatomic) IBOutlet UIView *bottomBar;
 
 - (IBAction)done:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)playMusic:(id)sender;
 - (IBAction)playSound:(id)sender;
 - (IBAction)displayInnerBoarders:(id)sender;
-- (IBAction)vibrate:(id)sender;
 - (IBAction)changeLanguage:(id)sender;
+- (IBAction)tweet:(id)sender;
+- (IBAction)fbShare:(id)sender;
+- (IBAction)googleShare:(id)sender;
+
 
 @end
 
@@ -56,6 +62,8 @@
         [_dataSource addObject:[_languages valueForKey:code]];
     }
     [self setControlsState];
+    [self configureUI];
+    
 }
 
 - (void) dealloc{
@@ -98,13 +106,6 @@
     
 }
 
-- (IBAction)vibrate:(id)sender{
-    [FPGameManager sharedInstance].vibrate=![FPGameManager sharedInstance].vibrate;
-    [[FPGameManager sharedInstance] changeSettings:[FPGameManager sharedInstance].vibrate forKey:VIBRATE];
-    [self setControlsState];
-    
-}
-
 - (IBAction)done:(id)sender{
     [self showPickerView:NO];
 }
@@ -113,7 +114,39 @@
     [self showPickerView:YES];
 }
 
+- (IBAction)tweet:(id)sender {
+    [[FPSocialManager sharedInstance] shareWithTwitter:self];
+}
+
+- (IBAction)fbShare:(id)sender {
+    [[FPSocialManager sharedInstance] shareWithFacebook:self];
+}
+
+- (IBAction)googleShare:(id)sender {
+}
+
 #pragma mark - Other methods
+
+- (void) configureUI{
+    _topBar.backgroundColor = [UIColor colorWithRed:(52.0/255.0) green:(73.0/255.0) blue:(94.0/255.0) alpha:1];
+    _bottomBar.backgroundColor = [UIColor colorWithRed:(52.0/255.0) green:(73.0/255.0) blue:(94.0/255.0) alpha:1];
+    _musicLabel.textColor = [UIColor colorWithRed:(44.0/255.0) green:(87.0/255.0) blue:(112.0/255.0) alpha:1];
+    _soundLabel.textColor = [UIColor colorWithRed:(44.0/255.0) green:(87.0/255.0) blue:(112.0/255.0) alpha:1];
+    _bordersLabel.textColor = [UIColor colorWithRed:(44.0/255.0) green:(87.0/255.0) blue:(112.0/255.0) alpha:1];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    [gradient setStartPoint:CGPointMake(0.0, 0.5)];
+    [gradient setEndPoint:CGPointMake(1.0, 0.5)];
+    CGRect frame = _gradientView.bounds;
+    frame.size.width = self.view.frame.size.height;
+    gradient.frame = frame;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:(30.0/255.0) green:(139.0/255.0) blue:(195.0/255.0) alpha:1] CGColor], (id)[[UIColor colorWithRed:(113.0/255.0) green:(188/255.0) blue:(241.0/255.0) alpha:1] CGColor], nil];
+    [_gradientView.layer insertSublayer:gradient atIndex:0];
+}
+
+- (void) changeLanguage {
+    [self showPickerView:YES];
+}
 
 - (void) setControlsState{
     if ([FPGameManager sharedInstance].music==YES) {
@@ -134,19 +167,12 @@
     else{
         [self.bordersBTN setImage:[UIImage imageNamed:@"Unchecked"] forState:UIControlStateNormal];
     }
-    if ([FPGameManager sharedInstance].vibrate==YES) {
-        [self.vibrateBTN setImage:[UIImage imageNamed:@"Check4"] forState:UIControlStateNormal];
-    }
-    else{
-        [self.vibrateBTN setImage:[UIImage imageNamed:@"Unchecked"] forState:UIControlStateNormal];
-    }
     [self.languageButton setTitle:[self getCurrentLanguage] forState:UIControlStateNormal];
 }
 
 - (void) setLabelsText{
     self.musicLabel.text=NSLocalizedString(@"playMusic", nil);
     self.soundLabel.text=NSLocalizedString(@"playSound", nil);
-    self.vibrateLabel.text=NSLocalizedString(@"vibrate", nil);
     self.bordersLabel.text=NSLocalizedString(@"borders", nil);
     self.settingsLBL.text=NSLocalizedString(@"settings", nil);
     self.languageLBL.text=NSLocalizedString(@"language", nil);

@@ -15,7 +15,8 @@
 {
     return YES;
     [[FPGameManager sharedInstance] setSettings];
+    
 }
-							
+					
 
 @end

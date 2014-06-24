@@ -117,32 +117,6 @@ static FPSoundManager *_instance=nil;
     }
 }
 
-- (void) vibrateWithMode:(FPVibrateMode)vibrateMode{
-    if ([FPGameManager sharedInstance].vibrate==YES){
-        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-        NSMutableArray* arr = [NSMutableArray array ];
-        switch (vibrateMode) {
-            case VibrateModeDragOrDrop:{
-                [arr addObject:[NSNumber numberWithBool:YES]];
-                [arr addObject:[NSNumber numberWithInt:50]];
-            }
-            break;
-            case VibrateModeInPlace:{
-                [arr addObject:[NSNumber numberWithBool:YES]]; //vibrate for 2000ms
-                [arr addObject:[NSNumber numberWithInt:50]];
-                [arr addObject:[NSNumber numberWithBool:NO]];  //stop for 1000ms
-                [arr addObject:[NSNumber numberWithInt:100]];
-                [arr addObject:[NSNumber numberWithBool:YES]];  //vibrate for 1000ms
-                [arr addObject:[NSNumber numberWithInt:50]];
-            }
-            break;
-        }
-        [dict setObject:arr forKey:@"VibePattern"];
-        [dict setObject:[NSNumber numberWithInt:1] forKey:@"Intensity"];
-       // AudioServicesPlaySystemSoundWithVibration(4095,nil,dict);
-    }
-}
-
 + (void) loadData{
     NSError *error;
     

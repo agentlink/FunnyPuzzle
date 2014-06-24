@@ -19,8 +19,6 @@
 - (void) playGameMusic;
 - (void) stopGameMusic;
 - (void) playSound:(NSURL*)sound;
-- (void)playBlob:(FPSoundBlobType)type;
-
-- (void) vibrateWithMode:(FPVibrateMode)vibrateMode;
+- (void) playBlob:(FPSoundBlobType)type;
 
 @end
