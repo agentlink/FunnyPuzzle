@@ -11,7 +11,6 @@
 #import "FPFlover.h"
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "GamePlayViewController.h"
 #import "FPGameManager.h"
 
 
@@ -507,7 +506,7 @@ int tick=0;
 
 
 - (IBAction)DeleteViewController:(id)sender {
-    
+    //_completion();
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

@@ -14,7 +14,6 @@
 #import "FPPreferences.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FPSoundManager.h"
-#import "GamePlayViewController.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPGameManager.h"
 #import "JMIBlur.h"

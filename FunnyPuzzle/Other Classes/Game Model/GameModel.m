@@ -61,8 +61,6 @@ static GameModel *_instance = nil;
             [segment setInPlase:YES];
             if (_objectsLeft<=1) {
                 [defaults setBool:YES forKey:_level.levelName];
-                if ([_gamePlayViewController respondsToSelector:@selector(levelFinish)])
-                    [_gamePlayViewController levelFinish];
             } else {
                 _objectsLeft--;
             }
@@ -88,7 +86,7 @@ static GameModel *_instance = nil;
     {
         _lastLevel--;
     } else {
-        _lastLevel = _level.levelsCount-1;
+        _lastLevel = (int)_level.levelsCount-1;
     }
     _level = [FPLevelManager loadLevelWithType:_gameType mode:_gameMode level:_lastLevel];
     [defaults setInteger:_lastLevel forKey:@"LastLevel"];
