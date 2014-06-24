@@ -58,8 +58,7 @@ static FPGameManager *_instance=nil;
 
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:VIBRATE]) {
-        [defaults setBool:YES forKey:VIBRATE];
+    if (![defaults objectForKey:CANDIES_COUNT]) {
         [defaults setBool:YES forKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         [defaults setBool:YES forKey:DISPLAY_INNER_BORDERS];
         [defaults setBool:YES forKey:DISPLAY_WORDS];
@@ -67,14 +66,12 @@ static FPGameManager *_instance=nil;
         [defaults setInteger:0 forKey:CANDIES_COUNT];
         [defaults setObject:[self getDefaultLanguage] forKey:LANGUAGE];
         [defaults synchronize];
-        _vibrate=YES;
         _playSoundWhenImageAppear=YES;
         _displayInnerBorders=YES;
         _candiesCount = 0;
         _language = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     }
     else{
-        _vibrate=[defaults boolForKey:VIBRATE];
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
         _music=[defaults boolForKey:MUSIC];

@@ -11,7 +11,6 @@
 #define DISPLAY_INNER_BORDERS @"displayInnerBorders"
 #define PLAY_SOUND_WHEN_IMAGE_APPEAR @"playSoundWhenImageAppear"
 #define DISPLAY_WORDS @"displayWords"
-#define VIBRATE @"vibrate"
 #define MUSIC @"music"
 #define LANGUAGE @"language"
 #define CANDIES_COUNT @"candiesCount"
@@ -19,7 +18,7 @@
 //AdMob ID
 #define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"
 
-
+#define ITUNES_LINK @"https://itunes.apple.com/us/app/funny-puzzle/id892755717"
 
 #endif
 

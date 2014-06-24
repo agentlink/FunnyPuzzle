@@ -116,20 +116,19 @@ static GameModel *_instance = nil;
 
 - (void)itemSelected
 {
-    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
 }
 - (void)itemDrop
 {
-    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeDragOrDrop];
+    
 }
 
 - (void)itemDropInPlace
 {
-    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeInPlace];
+    
 }
 - (void)itemWillSelectFromPlace
 {
-    [[FPSoundManager sharedInstance] vibrateWithMode:VibrateModeInPlace];   
+    
 }
 
 - (void)levelComplete:(NSURL*)url
