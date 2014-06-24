@@ -578,7 +578,6 @@
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
     {
-
         [[self updateCollectionView] closeGameplay];
     }
 
