@@ -102,6 +102,8 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [[NSUserDefaults standardUserDefaults] synchronize];
+    self.ACManager.delegate = nil;
+    [self.ACManager stopShakeDetect];
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,6 +151,7 @@
 }
 - (void)dealloc
 {
+
     self.field.image = nil;
     self.elements = nil;
     [self.animator removeAllBehaviors];
@@ -640,7 +643,7 @@
         if (_field==[touch1 view])
         {
             if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
-                [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
+               // [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
             }
         }
     }

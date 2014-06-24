@@ -31,9 +31,9 @@ static FPGameManager *_instance=nil;
                                    @"ru":@"Русский",
                                     @"uk":@"Українська"
                                    /*@"fr":@"Français",
-                                   @"de":@"Deutschland",
+                                   @"de":@"Deutschland"*/,
                                    @"es":@"Español",
-                                   @"uk":@"Українська",
+                                  /* @"uk":@"Українська",
                                    @"hi":@"हिन्दी",
                                    @"zh-Hant":@"汉语",
                                    @"ar":@"العربية",

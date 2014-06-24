@@ -180,6 +180,8 @@
 		7FC9A6CF195845CA0045D9ED /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/altLocalization.strings; sourceTree = "<group>"; };
 		7FC9A6D019584B930045D9ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/altLocalization.strings; sourceTree = "<group>"; };
 		7FC9A6D11959449C0045D9ED /* Maim_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maim_iPad.storyboard; sourceTree = "<group>"; };
+		7FC9A6D31959ABC80045D9ED /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/altLocalization.strings; sourceTree = "<group>"; };
+		7FC9A6D41959B0D50045D9ED /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/altLocalization.strings; sourceTree = "<group>"; };
 		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
 		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
 		7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -903,6 +905,8 @@
 				7FC9A6CE195845BC0045D9ED /* uk */,
 				7FC9A6CF195845CA0045D9ED /* ru */,
 				7FC9A6D019584B930045D9ED /* en */,
+				7FC9A6D31959ABC80045D9ED /* hi */,
+				7FC9A6D41959B0D50045D9ED /* es */,
 			);
 			name = altLocalization.strings;
 			path = FunnyPuzzle/Resources;
