@@ -8,6 +8,7 @@
 
 #import "FPAppDelegate.h"
 #import "FPGameManager.h"
+#import <GooglePlus/GooglePlus.h>
 
 @implementation FPAppDelegate
 
@@ -17,6 +18,9 @@
     [[FPGameManager sharedInstance] setSettings];
     
 }
-					
+
+- (BOOL)application: (UIApplication *)application openURL: (NSURL *)url  sourceApplication: (NSString *)sourceApplication annotation: (id)annotation {
+    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+}
 
 @end

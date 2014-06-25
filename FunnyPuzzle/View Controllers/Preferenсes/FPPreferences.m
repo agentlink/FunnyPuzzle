@@ -10,8 +10,10 @@
 #import "FPGameManager.h"
 #import "FPSoundManager.h"
 #import "FPSocialManager.h"
+#import <GooglePlus/GooglePlus.h>
+#import <GoogleOpenSource/GoogleOpenSource.h>
 
-@interface FPPreferences () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface FPPreferences () <UIPickerViewDataSource, UIPickerViewDelegate, GPPSignInDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *musicBTN;
 @property (weak, nonatomic) IBOutlet UIButton *soundBTN;
@@ -63,7 +65,6 @@
     }
     [self setControlsState];
     [self configureUI];
-    
 }
 
 - (void) dealloc{
@@ -123,6 +124,15 @@
 }
 
 - (IBAction)googleShare:(id)sender {
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.clientID = CLIENT_ID;
+    signIn.scopes = [NSArray arrayWithObjects:
+                     kGTLAuthScopePlusLogin,
+                     nil];
+    signIn.delegate = self;
+    if (![signIn trySilentAuthentication]){
+        [signIn authenticate];
+    }
 }
 
 #pragma mark - Other methods
@@ -240,6 +250,18 @@
 {
     [self.languageButton setTitle:[_dataSource objectAtIndex:row] forState:UIControlStateNormal];
     [self setlanguage];
+}
+
+#pragma mark - GPPSignIn delegate
+
+- (void) finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error{
+    if (!error) {
+        id<GPPShareBuilder> shareBuilder = [[GPPShare sharedInstance]
+                                            nativeShareDialog];
+        [shareBuilder setURLToShare:[NSURL URLWithString:ITUNES_LINK]];
+        [shareBuilder setPrefillText:@"Funny Puzzle!!!"];
+        [shareBuilder open];
+    }
 }
 
 @end
