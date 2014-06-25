@@ -504,8 +504,8 @@
     double maxX, maxY;
     maxX = CGRectGetHeight(self.view.bounds)-size.width;
     maxY = CGRectGetHeight(self.view.bounds)-size.height-40;
-    double x = arc4random_uniform(maxX - 39) + 40;
-    double y = arc4random_uniform(maxY - 40) + 40;
+    double x = arc4random_uniform(maxX) + 40;
+    double y = arc4random_uniform(maxY) + 40;
     return CGRectMake(x, y, size.width, size.height);
 }
 - (CGPoint)getAdaptedPoint:(CGPoint)point
