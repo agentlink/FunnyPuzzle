@@ -554,7 +554,7 @@
 #pragma mark - IBAction
 
 
-- (IBAction)next:(id)sender;
+- (IBAction)next:(id)sender
 {
     self.next.userInteractionEnabled = NO;
     if (self.leftToBonus >=3) {
@@ -567,9 +567,10 @@
         }];
     } else {
         [[self updateCollectionView] nextLevel];
-        self.leftToBonus = 0;
+       // self.leftToBonus = 0;
     }
 }
+
 - (IBAction)prew:(id)sender
 {
     self.next.userInteractionEnabled = NO;
