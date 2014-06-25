@@ -127,7 +127,9 @@
         [objectsCandies insertObject:c atIndex:i-1];
         x+=deltaX;
         [c Move:true];
-   }
+    }
+ 
+   
 }
 
 -(void)SecondBonusLevelLoad
@@ -203,15 +205,6 @@
         [self.view addSubview:c];
         [c Move:true];
     }
-}
-
-- (UIImage *)screenshot
-{
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
-    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return snapshotImage;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -369,8 +362,7 @@ int tick=0;
         }
     }
     if (m!=-1) {
-        if (objectsCandies[m]!=nil)
-        {
+        if (objectsCandies[m]!=nil){
             Candy *c=[Candy new];
             c=objectsCandies[m];
             [c Move:false];
@@ -422,13 +414,11 @@ int tick=0;
             [objectsFlowers removeObjectAtIndex:m];
             UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
             c.backgroundColor=[UIColor colorWithPatternImage:im];
-            [UIView animateWithDuration:2.0 animations:^
-             {
+            [UIView animateWithDuration:2.0 animations:^{
                  f.frame=rec1;
                  CGRect rec=CGRectMake(f.frame.origin.x+20, f.frame.origin.y+17, im.size.height, im.size.width);
                  c.frame=rec;
-             } completion:^(BOOL finished)
-             {
+             } completion:^(BOOL finished){
                  [c Move:true];
              } ];
         }
@@ -443,16 +433,14 @@ int tick=0;
     if (objectsCandies.count!=0) {
         m=arc4random()%objectsCandies.count;
     }
-    else
-    {
+    else{
         if (objectsCandies.count==0) {
             m=-1;
         }
     }
     if (m!=-1)
     {
-        if (objectsCandies[m]!=nil)
-        {
+        if (objectsCandies[m]!=nil){
             Candy *c=[Candy new];
             c=objectsCandies[m];
             [objectsCandies removeObjectAtIndex:m];
@@ -479,16 +467,14 @@ int tick=0;
 {
     for (int i=0; i<objectsCandies2.count; i++) {
         Candy *candy=[objectsCandies2 objectAtIndex:i];
-        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
-        {
+        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers){
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
     }
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *candy=[objectsCandies objectAtIndex:i];
-        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
-        {
+        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers){
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
@@ -504,9 +490,15 @@ int tick=0;
    // [UIView commitAnimations];
 }
 
+-(void)BonusLevelFinished
+{
+    NSLog(@"BonusLevel Finished");
+}
 
-- (IBAction)DeleteViewController:(id)sender {
-    //_completion();
+
+- (IBAction)DeleteViewController:(id)sender
+{
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
