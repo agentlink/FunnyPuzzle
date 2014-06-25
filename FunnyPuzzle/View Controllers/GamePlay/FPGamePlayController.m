@@ -654,9 +654,7 @@
     } else {
         _dragingElement.layer.anchorPoint = _dragingPoint;
         _dragingElement.layer.position = touchLocation;
-//        [self.attachmentBehavior setAnchorPoint:touchLocation];
         [self checkForRightPlace:_dragingElementIndex];
-//        [self.collision addItem:_dragingElement];
     }
 }
 
