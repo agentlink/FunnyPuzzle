@@ -57,5 +57,6 @@ static double kAnimationDuration = .3;
 #pragma mark - Views tag
 typedef enum {
     FPTagRay = 42,
-    FPTagBasket
+    FPTagBasket,
+    FPTagWinImageFiled
 } FPTag;

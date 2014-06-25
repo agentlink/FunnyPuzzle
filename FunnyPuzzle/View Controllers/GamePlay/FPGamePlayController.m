@@ -322,8 +322,9 @@
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
             [self showBasket:nil];
-            [self bounceElements:@[_next] isInSuperView:YES];
-
+            if (_next.alpha ==0) {
+                [self bounceElements:@[_next] isInSuperView:YES];
+            }
         }];
     }];
     _field.image = image;
@@ -529,6 +530,7 @@
         [FPGameManager sharedInstance].candiesCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
         self.leftToBonus++;
+        self.levelDone = YES;
     }
     [self compleetAnimation];
 }
@@ -638,14 +640,8 @@
         _dragingPoint = CGPointMake([touch1 locationInView:element].x/element.frame.size.width,
                                     [touch1 locationInView:element].y/element.frame.size.height);
     }
-    if (_levelDone) {
-        
-        if (_field==[touch1 view])
-        {
-            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
-               // [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
-            }
-        }
+    if (!_elementsLeft && CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:[touch1 view]] inView:[touch1 view]]) {
+        [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
     }
 }
 
