@@ -5,7 +5,7 @@
   Created by Misha on 22.05.14.
   Copyright (c) 2014 Mobilez365. All rights reserved.
 */
-"Ice сream"	= "Ice Cream";
+"Ice cream"	= "Ice cream";
 "Pencil" = "Pencil";
 "Frogling" = "Frogling";
 
@@ -34,7 +34,7 @@
 "Turtle" = "Turtle";
 "Dolphin" = "Dolphin";
 "Hippo"	= "Hippo";
-"Teddy_bear" = "Teddy-bear";
+"Teddy bear" = "Teddy bear";
 "Penguin" = "Penguin";
 "Snake" = "Snake";
 "Flamingo" = "Flamingo";
@@ -48,8 +48,8 @@
 "Car" = "Car";
 "Eggplant" = "Eggplant";
 "Bread"	= "Bread";
-"Baseball Cap" = "Baseball cap";
-"Computer_chair" = "Computer chair";
+"Baseball cap" = "Baseball cap";
+"Computer chair" = "Computer chair";
 "Train" = "Train";
 "Wagon"	= "Wagon";
 "Peas" = "Peas";
@@ -60,12 +60,12 @@
 "Strawberries" = "Strawberries";
 "Crab" = "Crab";
 "Corn" = "Corn";
-"Jug_with_milk" = "Jug with milk";
+"Jug with milk" = "Jug with milk";
 "Lightbulb"	= "Lightbulb";
 "Stork" = "Stork";
 "Pepper" = "Pepper";
 "Cock" = "Cock";
-"Cancer" = "Cancer";
+"Crawfish" = "Crawfish";
 "Backpack" = "Backpack";
 "Wizard hat" = "Wizard hat";
 "Soother" = "Soother";
@@ -93,8 +93,8 @@
 "Pitching" = "Pitching";
 "Radish" = "Radish";
 "Rhino" = "Rhino";
-"Sea_bear" = "Sea bear";
-"Tea_cup" = "Tea cup";
+"Sea bear" = "Sea bear";
+"Tea cup" = "Tea cup";
 
 
 
@@ -102,3 +102,6 @@
 "Wonderfull" = "Wonderfull";
 "Well done" = "Well done";
 "Good job" = "Good job";
+
+
+"Puzly Game" = "Puzzly is an interesting, fun and educational game for kids aged 2 to 6 years. The children will learn a lot and the parents will get that much awaited moment of calmness in their house.\nIf you like the app, please leave your review.";

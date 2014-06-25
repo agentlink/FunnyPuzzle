@@ -13,7 +13,7 @@
 "Hen" = "Hähnchen";
 "Octopus" = "Krake";
 "Pencil" = "Bleistift";
-"Ice Cream"	= "Eis";
+"Ice cream"	= "Eis";
 
 
 "Fingerling" = "Fischlein";
@@ -31,7 +31,7 @@
 "Turtle" = "Schildkrötchen";
 "Dolphin" = "Delfin";
 "Hippo"	= "Nilpferdchen";
-"Teddy_bear" = "Bärchen";
+"Teddy bear" = "Bärchen";
 "Penguin" = "Pinguin";
 "Snake" = "Schlange";
 "Flamingo" = "Flamingo";
@@ -45,8 +45,8 @@
 "Car" = "Auto";
 "Eggplant" = "Aubergine";
 "Bread"	= "Brot";
-"Baseball Cap" = "Baseballkappe";
-"Computer_chair" = "Computersessel";
+"Baseball cap" = "Baseballkappe";
+"Computer chair" = "Computersessel";
 "Train" = "Dampflock";
 "Wagon"	= "Wagen";
 "Peas" = "Erbsen";
@@ -58,12 +58,12 @@
 "Crab" = "Krabbe";
 "Corn" = "Mais";
 
-"Jug_with_milk" = "Krug mit Milch";
+"Jug with milk" = "Krug mit Milch";
 "Lightbulb"	= "Glühbirne";
 "Stork" = "Storch";
 "Pepper" = "Pfeffer";
 "Cock" = "Hahn";
-"Cancer" = "Krebs";
+"Crawfish" = "Krebs";
 "Backpack" = "Rücksack";
 "Wizard hat" = "Zauberer Hut";
 "Soother" = "Schnuller";
@@ -91,8 +91,8 @@
 "Pitching" = "Ente";
 "Radish" = "Radieschen";
 "Rhino" = "Nashorn";
-"Sea_bear" = "Seabär";
-"Tea_cup" = "Tasse";
+"Sea bear" = "Seabär";
+"Tea cup" = "Tasse";
 
 
 
@@ -100,3 +100,6 @@
 "Wonderfull" = "Wonderfull";
 "Well done" = "Gut gemacht";
 "Good job" = "Gute Arbeit";
+
+
+"Puzly Game" = "Puzzly ist eine interessante Spiel für Kinder im Alter von 2 bis 6 Jahren. Das interessante und leichte Kinderspiel, fähig, die Ruhe in Ihrem Haus zu gewährleisten. Das Spiel in «Puzzly» trägt zur Entwicklung der Feinmotorik, der Aufmerksamkeit und dem Studium der Sprachen im Vorschulalter bei.";

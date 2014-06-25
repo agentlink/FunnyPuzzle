@@ -26,10 +26,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>mobilez365.FunnyPuzzle</string>
+			<string>com.mobilez365.FunnyPuzzle</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>mobilez365.FunnyPuzzle</string>
+				<string>com.mobilez365.FunnyPuzzle</string>
 			</array>
 		</dict>
 	</array>

@@ -20,7 +20,7 @@
 
 #define ITUNES_LINK @"https://itunes.apple.com/us/app/funny-puzzle/id892755717"
 
-#define CLIENT_ID @"640872702054-bjnl2cirt187pf3ea72p1dil7eu8hj2c.apps.googleusercontent.com";
+#define CLIENT_ID @"640872702054-144cgnd8ukdb2s0vf2b22oc1dmg22q6v.apps.googleusercontent.com"
 
 #endif
 
