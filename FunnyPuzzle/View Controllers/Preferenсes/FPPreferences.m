@@ -260,7 +260,6 @@
                                             nativeShareDialog];
         [shareBuilder setURLToShare:[NSURL URLWithString:ITUNES_LINK]];
         [shareBuilder setPrefillText:@"Funny Puzzle!!!"];
-        
         [shareBuilder open];
     }
 }
