@@ -523,7 +523,7 @@
     }
     return CGPointMake((point.x*multiplier)+_field.frame.origin.x+widthShift, (point.y*multiplier)+_field.frame.origin.y+heightShift);
 }
-- (void)levelCompleet
+- (void)levelComplete
 {
     if (!self.levelDone) {
         [FPLevelManager saveLevel:self.levelNumber gameType:self.levelType];
@@ -675,7 +675,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-            [self levelCompleet];
+            [self levelComplete];
         }
     }
 }

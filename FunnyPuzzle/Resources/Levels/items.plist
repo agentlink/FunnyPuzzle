@@ -3463,7 +3463,7 @@
 			<key>bgColor</key>
 			<string>d2e9f9</string>
 			<key>color</key>
-			<string>pot</string>
+			<string>pot_with_honey</string>
 			<key>elements</key>
 			<array>
 				<dict>
@@ -3504,7 +3504,7 @@
 				</dict>
 			</array>
 			<key>folder</key>
-			<string>Game 2/pot</string>
+			<string>Game 2/pot_with_honey</string>
 			<key>name</key>
 			<string>Pot With Honey</string>
 		</dict>
