@@ -9,7 +9,6 @@
 #import "FPLevelPresentationViewController.h"
 #import "FPLevelManager.h"
 #import "FPLevelCell.h"
-#import "GamePlayViewController.h"
 #import "GameModel.h"
 #import "FPGamePlayController.h"
 #import "UIImage+ImageEffects.h"
@@ -146,7 +145,7 @@
     [self presentViewController:controller animated:YES completion:^{
         controller.view.alpha = 0;
         controller.view.hidden = YES;
-        controller.levelsCount = self.levels.count;
+        controller.levelsCount = (unsigned)self.levels.count;
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [[present layer] setBorderWidth:0];
             imView.frame = controller.fieldFrame;
@@ -268,7 +267,7 @@
             nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
             nextController.view.layer.shadowOpacity = 1;
             nextController.view.layer.shadowRadius = 10;
-            nextController.levelsCount = self.levels.count;
+            nextController.levelsCount = (unsigned)self.levels.count;
             CGAffineTransform transform = CGAffineTransformIdentity;
             
             transform = CGAffineTransformTranslate(transform, imageView.bounds.size.height, 0);
@@ -314,7 +313,7 @@
 - (void)scrollCollectionToIndexPath:(NSIndexPath *)indexPath animate:(BOOL)animate
 {
     UICollectionViewScrollPosition scrollPosition = UICollectionViewScrollPositionRight;
-    int itemNumber = indexPath.row;
+    int itemNumber =(int)indexPath.row;
     if (!(itemNumber%2)) {
         if (!((itemNumber/2)%2)) {
             scrollPosition = UICollectionViewScrollPositionLeft;

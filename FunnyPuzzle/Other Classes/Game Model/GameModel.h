@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FPLevelManager.h"
-#import "GamePlayViewController.h"
 
 @interface GameModel : NSObject
 
@@ -20,7 +19,6 @@
 @property (nonatomic) CGRect fieldFrame;
 @property (nonatomic) CGPoint fieldOrigin;
 @property (nonatomic) PDFImageView *currentField;
-@property (nonatomic, weak) GamePlayViewController *gamePlayViewController;
 @property (nonatomic) NSInteger objectsLeft;
 
 

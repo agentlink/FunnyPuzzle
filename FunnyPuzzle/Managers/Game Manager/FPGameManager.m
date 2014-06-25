@@ -31,9 +31,9 @@ static FPGameManager *_instance=nil;
                                    @"ru":@"Русский",
                                     @"uk":@"Українська"
                                    /*@"fr":@"Français",
-                                   @"de":@"Deutschland",
+                                   @"de":@"Deutschland"*/,
                                    @"es":@"Español",
-                                   @"uk":@"Українська",
+                                  /* @"uk":@"Українська",
                                    @"hi":@"हिन्दी",
                                    @"zh-Hant":@"汉语",
                                    @"ar":@"العربية",
@@ -46,7 +46,7 @@ static FPGameManager *_instance=nil;
 #pragma mark - Custom Accssesors
 -(int)candiesCount
 {
-    _candiesCount = [[NSUserDefaults standardUserDefaults] integerForKey:CANDIES_COUNT];
+    _candiesCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:CANDIES_COUNT];
     return _candiesCount;
 }
 - (void) setCandiesCount:(int)candiesCount

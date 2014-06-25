@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FPBonusViewController : UIViewController
-
+@property (assign, nonatomic) void (^completion)(void);
 @property(nonatomic) int candiesCount;
 
 @end

@@ -181,7 +181,7 @@ int timerTick;
         }
     }
     else {
-        if (_backGroundMusicPlayer.volume>=0.95){
+        if (_backGroundMusicPlayer.volume>=0.55){
             [_backgoroundMusicTimer invalidate];
         }
     }
@@ -202,7 +202,7 @@ int timerTick;
         }
     }
     else {
-        if (_backGroundGamePlayer.volume>=0.95){
+        if (_backGroundGamePlayer.volume>=0.55){
             [_gameMusicMusicTimer invalidate];
         }
     }

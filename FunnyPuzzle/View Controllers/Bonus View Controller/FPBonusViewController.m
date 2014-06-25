@@ -11,7 +11,6 @@
 #import "FPFlover.h"
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "GamePlayViewController.h"
 #import "FPGameManager.h"
 
 

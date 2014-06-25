@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="NFO-ti-pAN">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Start View Controller-->
+        <scene sceneID="ZkX-sT-keM">
+            <objects>
+                <viewController id="NFO-ti-pAN" customClass="StartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IB4-eG-0Cw"/>
+                        <viewControllerLayoutGuide type="bottom" id="bYZ-U3-nIp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gOA-je-doa">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52l-4C-7FE" userLabel="rightView">
+                                <rect key="frame" x="491" y="0.0" width="533" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-kx-C7U">
+                                        <rect key="frame" x="205" y="50" width="124" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-vR-gEi" customClass="BallView">
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="124" id="5uU-yg-Pus"/>
+                                                    <constraint firstAttribute="width" constant="124" id="HRj-0B-ztu"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="AE5-qR-LII"/>
+                                            <constraint firstAttribute="width" constant="124" id="CGX-ZG-9F5"/>
+                                            <constraint firstAttribute="centerY" secondItem="Zim-vR-gEi" secondAttribute="centerY" id="QqG-9U-pWl"/>
+                                            <constraint firstAttribute="centerX" secondItem="Zim-vR-gEi" secondAttribute="centerX" id="udq-zv-YQs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4XN-kx-C7U" firstAttribute="top" secondItem="52l-4C-7FE" secondAttribute="top" constant="50" id="L8f-X0-pMg"/>
+                                    <constraint firstAttribute="centerX" secondItem="4XN-kx-C7U" secondAttribute="centerX" id="Y4M-RE-0CE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAM-YI-3bR" userLabel="leftView">
+                                <rect key="frame" x="0.0" y="0.0" width="490" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lty-8k-UQ3">
+                                        <rect key="frame" x="183" y="50" width="124" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b5-oa-kgc" customClass="BallView">
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="6b5-oa-kgc" secondAttribute="height" multiplier="1:1" id="L5V-8u-gnm"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="6b5-oa-kgc" secondAttribute="centerY" id="d5v-2a-0dU"/>
+                                            <constraint firstAttribute="centerX" secondItem="6b5-oa-kgc" secondAttribute="centerX" id="lFY-7s-fNF"/>
+                                            <constraint firstAttribute="width" secondItem="6b5-oa-kgc" secondAttribute="height" multiplier="1:1" id="pGi-oe-oj7"/>
+                                            <constraint firstAttribute="width" constant="124" id="ww2-Qu-yXA"/>
+                                            <constraint firstAttribute="height" constant="124" id="xX7-Bx-UDN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lty-8k-UQ3" firstAttribute="top" secondItem="hAM-YI-3bR" secondAttribute="top" constant="50" id="0xF-ow-qYN"/>
+                                    <constraint firstAttribute="centerX" secondItem="lty-8k-UQ3" secondAttribute="centerX" id="2mf-b6-R05"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6AL-Cx-zgJ" userLabel="groundForSettingsIcon">
+                                <rect key="frame" x="299" y="718" width="480" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hCw-hd-7Lz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QkA-b7-z40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="-96"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

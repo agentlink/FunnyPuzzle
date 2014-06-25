@@ -24,37 +24,40 @@
 @end
 
 @interface FPGamePlayController () <ShakeHappendDelegate>
-@property (nonatomic) FPLevelManager *levelManager;
-@property (nonatomic) NSArray *elements;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *fieldRightConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *fieldHeightConstraint;
-@property (nonatomic, weak) IBOutlet UILabel *levelName;
-@property (nonatomic) FPElement *dragingElement;
-@property (nonatomic) NSUInteger dragingElementIndex;
-@property (nonatomic) CGPoint dragingPoint;
-@property (nonatomic) CGPoint dragingWinPoint;
-@property (nonatomic) NSUInteger elementsLeft;
-@property (nonatomic) FPGameType levelType;
-@property (nonatomic) NSString *compleetKey;
-@property (nonatomic) NSString *notCompleetKey;
+@property (strong, nonatomic) FPLevelManager *levelManager;
+@property (strong, nonatomic) NSArray *elements;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fieldRightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fieldHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *levelName;
+@property (strong, nonatomic) FPElement *dragingElement;
+@property (assign, nonatomic) NSUInteger dragingElementIndex;
+@property (assign, nonatomic) CGPoint dragingPoint;
+@property (assign, nonatomic) NSUInteger elementsLeft;
+@property (assign, nonatomic) FPGameType levelType;
+@property (strong, nonatomic) NSString *compleetKey;
+@property (strong, nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
-@property (nonatomic) UIDynamicAnimator *animator;
-@property (nonatomic) UIAttachmentBehavior *attachmentBehavior;
-@property (nonatomic) UICollisionBehavior *collision;
+@property (strong, nonatomic) UIDynamicAnimator *animator;
+@property (strong, nonatomic) UIAttachmentBehavior *attachmentBehavior;
+@property (strong, nonatomic) UICollisionBehavior *collision;
+
+@property (assign, nonatomic) BOOL replay;
 
 @property (assign, nonatomic) int leftToBonus;
 
 
-@property (nonatomic) UISnapBehavior *basketSnap;
-@property (nonatomic) UIView *basketView;
+@property (strong, nonatomic) UISnapBehavior *basketSnap;
+@property (strong, nonatomic) UISnapBehavior *levelNameSnap;
+@property (strong, nonatomic) UIView *basketView;
 
-@property (nonatomic) AccelerometerManager *ACManager;
-@property (nonatomic) int resetImage;
+@property (strong, nonatomic) AccelerometerManager *ACManager;
+@property (assign, nonatomic) int resetImage;
 
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
 - (IBAction)back:(id)sender;
+
 @end
 
 @implementation FPGamePlayController
@@ -99,6 +102,8 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [[NSUserDefaults standardUserDefaults] synchronize];
+    self.ACManager.delegate = nil;
+    [self.ACManager stopShakeDetect];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,10 +140,10 @@
             break;
         case FPGameplayAnimationModeLevelCompleet:
             [self startAnimationForCompleetLevel];
-//            self.ACManager = [AccelerometerManager new];
-//            [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.8];
-//            self.ACManager.delegate = self;
-//            [self.ACManager startShakeDetect];
+            self.ACManager = [AccelerometerManager new];
+            [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.9];
+            self.ACManager.delegate = self;
+            [self.ACManager startShakeDetect];
             break;
         default:
             break;
@@ -146,6 +151,7 @@
 }
 - (void)dealloc
 {
+
     self.field.image = nil;
     self.elements = nil;
     [self.animator removeAllBehaviors];
@@ -165,7 +171,7 @@
 }
 - (int)leftToBonus
 {
-    _leftToBonus = [[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
+    _leftToBonus = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
     return _leftToBonus;
 }
 #pragma mark - Animations
@@ -257,7 +263,6 @@
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
             [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
             element.alpha = 1;
-            //[[FPSoundManager sharedInstance] playBlob:FPSoundBlobTypeApear];
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
@@ -317,8 +322,9 @@
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
             [self showBasket:nil];
-            [self bounceElements:@[_next] isInSuperView:YES];
-
+            if (_next.alpha ==0) {
+                [self bounceElements:@[_next] isInSuperView:YES];
+            }
         }];
     }];
     _field.image = image;
@@ -329,10 +335,13 @@
     [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
     [_levelName setText:[FPLevelManager gameLocalizedStringForKey:_levelManager.levelName]];
     [_levelName sizeToFit];
-    CGPoint snapPoint = CGPointMake(CGRectGetMidX([[self view] bounds]), CGRectGetMaxY([[self view] bounds])-[self levelName].bounds.size.height);
-    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
-    [[self levelName] setAlpha:1];
-    [[self animator] addBehavior:snap];
+    CGPoint snapPoint = CGPointMake(CGRectGetMidX([self.view bounds]), CGRectGetMaxY([self.view bounds])-self.levelName.bounds.size.height);
+    if (self.levelNameSnap) {
+        [self.animator removeBehavior:self.levelNameSnap];
+    }
+    self.levelNameSnap = [[UISnapBehavior alloc] initWithItem:[self levelName] snapToPoint:snapPoint];
+    [self.levelName setAlpha:1];
+    [self.animator addBehavior:self.levelNameSnap];
 }
 - (void)showRays
 {
@@ -360,7 +369,10 @@
 
 - (void) showBasket:(void (^)())completion
 {
-    //[[FPSoundManager sharedInstance] playPrise];
+    if (self.replay) {
+        [self moveFieldToCenter:nil];
+        return;
+    }
     float xShift = 0.5;
     _basketView = [[UIView alloc] initWithFrame:CGRectMake(-CGRectGetMidX(self.view.bounds)*0.4, CGRectGetMidX(self.view.bounds)*0.3, 120, 120)];
     UIImageView *imageVeiw = [[UIImageView alloc] initWithFrame:_basketView.bounds];
@@ -429,7 +441,18 @@
         star.frame = frame;
         _basketView.transform = CGAffineTransformMakeTranslation(-(_basketView.frame.origin.x+_basketView.frame.size.width), 0);
     } completion:^(BOOL finished) {
+        [_basketView removeFromSuperview];
     }];
+}
+
+- (void)moveFieldToLeft:(void(^)())completion
+{
+    PDFImageView *imageView = [[PDFImageView alloc] initWithFrame:self.field.frame];
+    imageView.image = [FPLevelManager imageNamed:[self.levelManager.mcLevel objectForKey:self.notCompleetKey]];
+}
+- (void)hiddeLevelName:(void(^)())completion
+{
+
 }
 
 #pragma mark - Publick
@@ -507,39 +530,59 @@
         [FPGameManager sharedInstance].candiesCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:_levelNumber forKey:@"lastLevel"];
         self.leftToBonus++;
+        self.levelDone = YES;
     }
     [self compleetAnimation];
 }
 - (void)restartLevel
 {
+
+    [[self.view viewWithTag:FPTagRay] removeFromSuperview];
+    [self configElements];
+    [self loadLevel:self.levelNumber type:self.levelType];
+    self.replay = YES;
+
+    CGRect levelNameFrame = self.levelName.frame;
+    [self.animator removeBehavior:self.levelNameSnap];
+    self.levelNameSnap = [[UISnapBehavior alloc] initWithItem:self.levelName snapToPoint:CGPointMake(CGRectGetMidX(levelNameFrame), CGRectGetMaxY(levelNameFrame)*2)];
+    [self.animator addBehavior:self.levelNameSnap];
+
+
     [self startAnimationForNewLevel];
+    [self bounceField];
 }
 #pragma mark - IBAction
 
 
 - (IBAction)next:(id)sender;
 {
-    if (self.leftToBonus >=3) {
-        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
-        [self presentViewController:bonusViewController animated:YES completion:^{
-            self.leftToBonus = 0;
-        }];
-    } else {
+    self.next.userInteractionEnabled = NO;
+//    if (self.leftToBonus >=3) {
+//        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+////        bonusViewController.completion = ^{
+////            [self next:self];
+////        };
+////        [self presentViewController:bonusViewController animated:YES completion:^{
+////            self.leftToBonus = 0;
+////        }];
+//    } else {
         [[self updateCollectionView] nextLevel];
-    }
+        //self.leftToBonus = 0;
+//    }
 }
 - (IBAction)prew:(id)sender
 {
+    self.next.userInteractionEnabled = NO;
     [[self updateCollectionView] previousLevel];
 
 }
 - (IBAction)back:(id)sender
 {
+    self.next.userInteractionEnabled = NO;
     if ([self navigationController]) {
         [[self navigationController] popViewControllerAnimated:YES];
     } else if ([self presentingViewController])
     {
-
         [[self updateCollectionView] closeGameplay];
     }
 
@@ -578,7 +621,6 @@
             FPElement *element = [tapElements firstObject];
             _dragingElement = element;
             _dragingPoint = CGPointMake([touch1 locationInView:element].x/element.frame.size.width, [touch1 locationInView:element].y/element.frame.size.height);
-            _dragingWinPoint = [[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue];
         }
     } else if (tapElements.count == 1) {
         FPElement *element = [tapElements firstObject];
@@ -597,16 +639,9 @@
         _dragingElement = element;
         _dragingPoint = CGPointMake([touch1 locationInView:element].x/element.frame.size.width,
                                     [touch1 locationInView:element].y/element.frame.size.height);
-        _dragingWinPoint = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:[_elements indexOfObject:element]] valueForKey:@"nativePoint"] CGPointValue]];
     }
-    if (_levelDone) {
-        
-        if (_field==[touch1 view])
-        {
-            if (CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:_field] inView:_field]) {
-                [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
-            }
-        }
+    if (!_elementsLeft && CGRectContainsPoint(_field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:[touch1 view]] inView:[touch1 view]]) {
+        [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
     }
 }
 
@@ -619,9 +654,7 @@
     } else {
         _dragingElement.layer.anchorPoint = _dragingPoint;
         _dragingElement.layer.position = touchLocation;
-//        [self.attachmentBehavior setAnchorPoint:touchLocation];
         [self checkForRightPlace:_dragingElementIndex];
-//        [self.collision addItem:_dragingElement];
     }
 }
 
@@ -706,9 +739,8 @@
     NSLog(@"%i",_resetImage);
     switch (_resetImage) {
         case 10:
-//            [self restartLevel];
-//            [self loadLevel:self.levelNumber type:self.levelType];
-//            [self.ACManager stopShakeDetect];
+            [self restartLevel];
+            [self.ACManager stopShakeDetect];
         break;
             
         default:
