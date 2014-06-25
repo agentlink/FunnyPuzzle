@@ -506,10 +506,10 @@ int tick=0;
 
 -(void)BonusLevelFinished
 {
-    //[self bounceElements:@[_next] isInSuperView:YES];
+    
     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
    
-    [parent bounceElements:@[parent.next] isInSuperView:self.view];
+   // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
 }
 
