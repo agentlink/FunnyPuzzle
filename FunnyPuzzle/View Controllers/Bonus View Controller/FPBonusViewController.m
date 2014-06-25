@@ -15,7 +15,7 @@
 
 
 
-@interface FPBonusViewController ()<ShakeHappendDelegate>
+@interface FPBonusViewController ()<ShakeHappendDelegate,BonusLevelFinished>
 
 {
     NSMutableArray *objectsCandies2,*objectsCandies,*objectsFlowers;
@@ -113,6 +113,7 @@
     float y=20;
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
     objectsCandies=[[NSMutableArray alloc] init];
+    _candiesCount=9;
     for(int i=1; i<10; i++)
     {
         Candy *c=[Candy new];
@@ -123,11 +124,14 @@
         CGRect r=CGRectMake(x, y, im.size.height, im.size.width);
         c.frame = r;
         c.BonusLevelKind=0;
+        c.delegate=self;
         [self.view addSubview:c];
         [objectsCandies insertObject:c atIndex:i-1];
         x+=deltaX;
         [c Move:true];
-   }
+    }
+ 
+   
 }
 
 -(void)SecondBonusLevelLoad
@@ -137,6 +141,7 @@
     MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake( self.view.frame.size.height/2-im2.size.height/2, self.view.frame.size.width/2-im2.size.width,  im2.size.height, im2.size.width)];
     imView.image=im2;
+    _candiesCount=5;
     [self.view addSubview:imView];
     [self SunMove:imView];
     objectsCandies=[[NSMutableArray alloc] init];
@@ -154,6 +159,7 @@
         Candy *c=[[Candy alloc] initWithFrame:CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width)];
         c.layer.zPosition=1;
         c.BonusLevelKind=1;
+        c.delegate=self;
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         x+=deltaX;
@@ -189,6 +195,7 @@
     int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
     [self.view addSubview:imView];
+    _candiesCount=6;
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
      
@@ -199,19 +206,11 @@
         UIImage *im2=[self imageWithImage:im scaledToSize:size];
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.BonusLevelKind=2;
+        c.delegate=self;
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         [c Move:true];
     }
-}
-
-- (UIImage *)screenshot
-{
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
-    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return snapshotImage;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -253,6 +252,7 @@
     MainRec=CGRectMake( -80, -70, 80, 68);
     int x=0;
     float deltaX=0;
+    _candiesCount=20;
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<20; i++) {
         Candy *c=[Candy new];
@@ -303,7 +303,7 @@
         animation.removedOnCompletion = NO;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [c.layer addAnimation:animation forKey:@"position"];
-        
+        c.delegate=self;
         x+=55;
         deltaX-=55;
 
@@ -369,8 +369,7 @@ int tick=0;
         }
     }
     if (m!=-1) {
-        if (objectsCandies[m]!=nil)
-        {
+        if (objectsCandies[m]!=nil){
             Candy *c=[Candy new];
             c=objectsCandies[m];
             [c Move:false];
@@ -422,13 +421,11 @@ int tick=0;
             [objectsFlowers removeObjectAtIndex:m];
             UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
             c.backgroundColor=[UIColor colorWithPatternImage:im];
-            [UIView animateWithDuration:2.0 animations:^
-             {
+            [UIView animateWithDuration:2.0 animations:^{
                  f.frame=rec1;
                  CGRect rec=CGRectMake(f.frame.origin.x+20, f.frame.origin.y+17, im.size.height, im.size.width);
                  c.frame=rec;
-             } completion:^(BOOL finished)
-             {
+             } completion:^(BOOL finished){
                  [c Move:true];
              } ];
         }
@@ -443,16 +440,14 @@ int tick=0;
     if (objectsCandies.count!=0) {
         m=arc4random()%objectsCandies.count;
     }
-    else
-    {
+    else{
         if (objectsCandies.count==0) {
             m=-1;
         }
     }
     if (m!=-1)
     {
-        if (objectsCandies[m]!=nil)
-        {
+        if (objectsCandies[m]!=nil){
             Candy *c=[Candy new];
             c=objectsCandies[m];
             [objectsCandies removeObjectAtIndex:m];
@@ -479,16 +474,14 @@ int tick=0;
 {
     for (int i=0; i<objectsCandies2.count; i++) {
         Candy *candy=[objectsCandies2 objectAtIndex:i];
-        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
-        {
+        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers){
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
     }
     for (int i=0; i<objectsCandies.count; i++) {
         Candy *candy=[objectsCandies objectAtIndex:i];
-        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers)
-        {
+        for(UIGestureRecognizer *recognizer in candy.gestureRecognizers){
             [candy removeGestureRecognizer:recognizer];
         }
         [candy cleanObject];
@@ -504,9 +497,15 @@ int tick=0;
    // [UIView commitAnimations];
 }
 
+-(void)BonusLevelFinished
+{
+    NSLog(@"BonusLevel Finished");
+}
 
-- (IBAction)DeleteViewController:(id)sender {
-    //_completion();
+
+- (IBAction)DeleteViewController:(id)sender
+{
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -514,6 +513,14 @@ int tick=0;
 -(void)dealloc
 {
     NSLog(@"vsdv");
+}
+
+-(void)PickUpCandy
+{
+    _candiesCount--;
+    if (_candiesCount==0) {
+        [self BonusLevelFinished];
+    }
 }
 
 

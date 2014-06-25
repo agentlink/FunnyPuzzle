@@ -504,8 +504,8 @@
     double maxX, maxY;
     maxX = CGRectGetHeight(self.view.bounds)-size.width;
     maxY = CGRectGetHeight(self.view.bounds)-size.height-40;
-    double x = arc4random_uniform(maxX - 39) + 40;
-    double y = arc4random_uniform(maxY - 40) + 40;
+    double x = arc4random_uniform(maxX) + 40;
+    double y = arc4random_uniform(maxY) + 40;
     return CGRectMake(x, y, size.width, size.height);
 }
 - (CGPoint)getAdaptedPoint:(CGPoint)point
@@ -557,18 +557,18 @@
 - (IBAction)next:(id)sender;
 {
     self.next.userInteractionEnabled = NO;
-//    if (self.leftToBonus >=3) {
-//        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
-////        bonusViewController.completion = ^{
-////            [self next:self];
-////        };
-////        [self presentViewController:bonusViewController animated:YES completion:^{
-////            self.leftToBonus = 0;
-////        }];
-//    } else {
+    if (self.leftToBonus >=3) {
+        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+        bonusViewController.completion = ^{
+            [self next:self];
+        };
+        [self presentViewController:bonusViewController animated:YES completion:^{
+            self.leftToBonus = 0;
+        }];
+    } else {
         [[self updateCollectionView] nextLevel];
-        //self.leftToBonus = 0;
-//    }
+        self.leftToBonus = 0;
+    }
 }
 - (IBAction)prew:(id)sender
 {

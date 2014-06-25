@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BonusLevelFinished <NSObject>
+
+-(void)PickUpCandy;
+
+@end
+
 @interface Candy : UIView
 
 @property (nonatomic) CGRect centrBascket;
@@ -18,6 +24,8 @@
 
 @property (nonatomic, strong) UIDynamicItemBehavior *CandiesPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
+
+@property (nonatomic) id<BonusLevelFinished> delegate;
 
 - (void)Move:(bool)animate;
 - (void) cleanObject;
