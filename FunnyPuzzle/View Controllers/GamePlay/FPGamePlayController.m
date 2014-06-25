@@ -557,18 +557,18 @@
 - (IBAction)next:(id)sender;
 {
     self.next.userInteractionEnabled = NO;
-//    if (self.leftToBonus >=3) {
-//        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
-////        bonusViewController.completion = ^{
-////            [self next:self];
-////        };
-////        [self presentViewController:bonusViewController animated:YES completion:^{
-////            self.leftToBonus = 0;
-////        }];
-//    } else {
+    if (self.leftToBonus >=3) {
+        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+        bonusViewController.completion = ^{
+            [self next:self];
+        };
+        [self presentViewController:bonusViewController animated:YES completion:^{
+            self.leftToBonus = 0;
+        }];
+    } else {
         [[self updateCollectionView] nextLevel];
-        //self.leftToBonus = 0;
-//    }
+        self.leftToBonus = 0;
+    }
 }
 - (IBAction)prew:(id)sender
 {
