@@ -277,7 +277,7 @@
 + (NSString *)localStringForKey:(NSString *)key
 {
     NSBundle *bundle =[ NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE] ofType:@"lproj"]];
-        return  NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
+        return  NSLocalizedStringFromTableInBundle(key, FPLocalizedTable, bundle, nil);
 }
 
 #pragma mark - Class Methods
@@ -285,7 +285,7 @@
 {
     NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]];
 
-    NSString *result = NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
+    NSString *result = NSLocalizedStringFromTableInBundle(key, FPLocalizedTable, bundle, nil);
 
     return result;
 }

@@ -11,14 +11,14 @@
 
 
 @interface FPGamePlayController : UIViewController
-@property (nonatomic, weak) IBOutlet PDFImageView *field;
-@property (nonatomic, weak) IBOutlet UIButton *next;
-@property (nonatomic, weak) IBOutlet UIButton *prew;
-@property (nonatomic, weak) IBOutlet UIButton *back;
-@property (nonatomic) NSIndexPath *indexPath;
-@property (nonatomic) int levelNumber;
-@property (nonatomic) int levelsCount;
-@property (nonatomic) CGRect fieldFrame;
+@property (weak, nonatomic) IBOutlet PDFImageView *field;
+@property (weak, nonatomic) IBOutlet UIButton *next;
+@property (weak, nonatomic) IBOutlet UIButton *prew;
+@property (weak, nonatomic) IBOutlet UIButton *back;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (assign, nonatomic) int levelNumber;
+@property (assign, nonatomic) int levelsCount;
+@property (assign, nonatomic) CGRect fieldFrame;
 
 
 - (void)loadLevel:(int)level type:(FPGameType)type;

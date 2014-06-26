@@ -34,4 +34,5 @@
 + (NSString *)gameLocalizedStringForKey:(NSString *)key;
 + (PDFImage *)imageNamed:(NSString *)name;
 +  (void)saveLevel:(NSUInteger)level gameType:(FPGameType)type;
+
 @end

@@ -1032,7 +1032,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/Admin/Downloads/google-plus-ios-sdk-1.7.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";
@@ -1060,7 +1059,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FunnyPuzzle/Frameworks",
 					"$(PROJECT_DIR)",
-					"/Users/Admin/Downloads/google-plus-ios-sdk-1.7.0",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FunnyPuzzle/Supporting Files/FunnyPuzzle-Prefix.pch";

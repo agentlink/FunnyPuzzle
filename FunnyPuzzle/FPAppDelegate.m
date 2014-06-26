@@ -9,7 +9,7 @@
 #import "FPAppDelegate.h"
 #import "FPGameManager.h"
 #import <GooglePlus/GooglePlus.h>
-
+#import <bitstring.h>
 @implementation FPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
