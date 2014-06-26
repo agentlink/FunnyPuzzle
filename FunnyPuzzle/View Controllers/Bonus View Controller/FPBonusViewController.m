@@ -565,9 +565,10 @@ int tick=0;
 - (IBAction)next:(id)sender {
     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
     FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[parent presentingViewController];
-    NSIndexPath *indexPath=[parent indexPath];
+    int levelNumber =[parent levelNumber];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:levelNumber+1 inSection:0];
     [presentationController updateColleCellAtIndexPath:indexPath];
-
+   
    // [self dismissViewControllerAnimated:YES completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
     
