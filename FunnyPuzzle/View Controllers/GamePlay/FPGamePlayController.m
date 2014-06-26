@@ -33,7 +33,7 @@
 @property (assign, nonatomic) NSUInteger dragingElementIndex;
 @property (assign, nonatomic) CGPoint dragingPoint;
 @property (assign, nonatomic) NSUInteger elementsLeft;
-@property (assign, nonatomic) FPGameType levelType;
+
 @property (strong, nonatomic) NSString *compleetKey;
 @property (strong, nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
@@ -49,10 +49,12 @@
 @property (strong, nonatomic) UISnapBehavior *basketSnap;
 @property (strong, nonatomic) UISnapBehavior *levelNameSnap;
 @property (strong, nonatomic) UIView *basketView;
+@property (strong, nonatomic) NSMutableArray *imagesChache;
 
 @property (strong, nonatomic) AccelerometerManager *ACManager;
 @property (assign, nonatomic) int resetImage;
 
+@property (strong, nonatomic) dispatch_queue_t animationQueue;
 
 - (IBAction)next:(id)sender;
 - (IBAction)prew:(id)sender;
@@ -76,21 +78,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view
-    //[self.view setBackgroundColor:[UIColor clearColor]];
     self.leftToBonus = (unsigned)[[NSUserDefaults standardUserDefaults] integerForKey:@"leftToBonus"];
     _levelName.alpha = 0;
-    _back.alpha = 0;
     _next.alpha = 0;
     _prew.alpha = 0;
-    _field.layer.zPosition = -2;
-    _next.backgroundColor = [UIColor clearColor];
     _prew.backgroundColor = [UIColor clearColor];
+    _next.backgroundColor = [UIColor clearColor];
+    _field.layer.zPosition = -2;
     _back.backgroundColor = [UIColor clearColor];
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     self.collision = [[UICollisionBehavior alloc] init];
     self.collision.translatesReferenceBoundsIntoBoundary = YES;
     [self.animator addBehavior:self.collision];
+    self.animationQueue = dispatch_queue_create("animations", DISPATCH_QUEUE_CONCURRENT);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -109,7 +109,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)loadLevel:(int)level type:(FPGameType)type
@@ -230,20 +229,11 @@
             [_field.layer setTransform:transform];
             if (!_levelDone) {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObjectsFromArray:@[_back]];
-                if (self.indexPath.row != 0) {
-                    [array addObject:_prew];
-                }
+                [self navigationAnimation];
                 [self bounceElements:array isInSuperView:YES];
             } else {
                 NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [array addObject:_back];
-                if (self.indexPath.row != 0) {
-                    [array addObject:_prew];
-                }
-                if (self.indexPath.row+1<self.levelsCount) {
-                    [array addObject:_next];
-                }
+                [self navigationAnimation];
                 [self bounceElements:array isInSuperView:YES];
             }
         }];
@@ -253,11 +243,11 @@
 {
     for (UIView *element in elements) {
         CATransform3D transform = [[element layer] transform];
-        if ([[[self view] subviews ] containsObject:element]) {
-            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+        if ([self.view.subviews containsObject:element]) {
+            [element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
             element.alpha = 1;
         } else {
-            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+            [element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
             [self.view addSubview:element];
         }
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -266,7 +256,7 @@
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
                 [[element layer] setTransform:transform];
-                [element layoutIfNeeded];
+                //[element layoutIfNeeded];
             }];
         }];
     }
@@ -281,6 +271,87 @@
             element.transform = CGAffineTransformMakeScale(1, 1);
         }];
     }];
+}
+- (void)animateAssinc:(NSArray *)array
+{
+
+}
+int binary_decimal(int binary) /* Function to convert binary to decimal.*/
+
+{
+    int decimal=0, i=0, rem;
+    while (binary!=0)
+    {
+        rem = binary%10;
+        binary/=10;
+        decimal += rem*pow(2,i);
+        ++i;
+    }
+    return decimal;
+}
+- (void)navigationAnimation //  =)
+{
+    NSMutableArray *navigation = [[NSMutableArray alloc] init];
+    int nextButton, prewButton;
+
+    prewButton = self.levelNumber == 0 ? 0 : 10;
+    nextButton = self.levelNumber==self.levelsCount-1 ? 0 : 1;
+    FPGameplayNavigationType navigationType = binary_decimal(prewButton+nextButton);
+
+    switch (navigationType) {
+        case FPGameplayNavigationTypeNext:
+            [navigation addObject:_next];
+            break;
+        case FPGameplayNavigationTypeNextPrew:
+            [navigation addObjectsFromArray:@[_prew, _next]];
+        case FPGameplayNavigationTypePrew:
+            [navigation addObject:_prew];
+        default:
+            break;
+    }
+    if (self.replay) {
+        if (!self.levelDone) {
+            [self bounceNavigation:navigation];
+        } else {
+            [self popElements:navigation remove:NO];
+        }
+    } else if (!self.replay && self.levelDone) {
+         [self bounceNavigation:navigation];
+    } else {
+        [self popElements:@[_prew, _next] remove:NO];
+    }
+}
+- (void)bounceNavigation:(NSArray *)navigation
+{
+    for (UIView *element in navigation) {
+        CABasicAnimation *animation = [CABasicAnimation animation];
+        animation.fromValue = @0;
+        animation.toValue = @1;
+        animation.keyPath = @"opacity";
+        animation.duration = kAnimationDuration;
+        animation.removedOnCompletion = NO;
+        [element.layer addAnimation:animation forKey:@"alpha"];
+        element.layer.opacity = 1;
+    }
+}
+- (void)popElements:(NSArray *)elements remove:(BOOL)remove
+{
+    for (UIView *element in elements) {
+        CATransform3D transform = element.layer.transform;
+        [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
+            [element.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
+                //[element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
+                element.alpha = 0;
+            } completion:^(BOOL finished) {
+                element.layer.transform = transform;
+                if (remove) {
+                    [element removeFromSuperview];
+                }
+            }];
+        }];
+    }
 }
 - (void)compleetAnimation
 {
@@ -322,9 +393,7 @@
             [oldImage removeFromSuperview];
             [newImage removeFromSuperview];
             [self showBasket:nil];
-            if (_next.alpha ==0) {
-                [self bounceElements:@[_next] isInSuperView:YES];
-            }
+            [self navigationAnimation];
         }];
     }];
     _field.image = image;
@@ -478,8 +547,9 @@
         imageView.image = image;
         [elements addObject:imageView];
         [imageView setAlpha:0];
-        //[imageView setHidden:YES];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
+        imageView = [self newFrame:imageView];
 
     }
     _elements = [NSArray arrayWithArray:elements];
@@ -489,6 +559,25 @@
 {
     double multiplayer = _field.frame.size.width/_field.image.size.width;
     return CGRectMake(rect.origin.x*multiplayer, rect.origin.y*multiplayer, rect.size.width*multiplayer, rect.size.height*multiplayer);
+}
+- (FPElement *)newFrame:(FPElement *)element
+{
+    CGSize elementSize = element.frame.size;
+    CGPoint winPlace = element.winPlace;
+    if (elementSize.width<elementSize.height && elementSize.width<50) {
+        int a = 50 - elementSize.width;
+        elementSize.width += a;
+        winPlace.x = element.winPlace.x-(a/2);
+    } else if (elementSize.height<elementSize.width && elementSize.height<50) {
+        int a = 50 - elementSize.height;
+        elementSize.height += a;
+       winPlace.y = element.winPlace.y-(a/2);
+    } else {
+        return element;
+    }
+    element.frame = CGRectMake(element.frame.origin.x, element.frame.origin.y, elementSize.width, elementSize.height);
+    element.winPlace = winPlace;
+    return element;
 }
 - (CGRect)adaptRectSize:(CGSize)size
 {
@@ -502,10 +591,10 @@
     size.width = size.width*multiplier;
     size.height = size.height*multiplier;
     double maxX, maxY;
-    maxX = CGRectGetHeight(self.view.bounds)-size.width;
+    maxX = CGRectGetHeight(self.view.bounds)-_field.frame.size.width;
     maxY = CGRectGetHeight(self.view.bounds)-size.height-40;
-    double x = arc4random_uniform(maxX) + 40;
-    double y = arc4random_uniform(maxY) + 40;
+    double x = arc4random_uniform(maxX);
+    double y = arc4random_uniform(maxY);
     return CGRectMake(x, y, size.width, size.height);
 }
 - (CGPoint)getAdaptedPoint:(CGPoint)point
@@ -523,7 +612,7 @@
     }
     return CGPointMake((point.x*multiplier)+_field.frame.origin.x+widthShift, (point.y*multiplier)+_field.frame.origin.y+heightShift);
 }
-- (void)levelComplete
+- (void)levelCompleet
 {
     if (!self.levelDone) {
         [FPLevelManager saveLevel:self.levelNumber gameType:self.levelType];
@@ -532,6 +621,7 @@
         self.leftToBonus++;
         self.levelDone = YES;
     }
+    self.levelDone = self.replay ? NO : YES;
     [self compleetAnimation];
 }
 - (void)restartLevel
@@ -547,14 +637,14 @@
     self.levelNameSnap = [[UISnapBehavior alloc] initWithItem:self.levelName snapToPoint:CGPointMake(CGRectGetMidX(levelNameFrame), CGRectGetMaxY(levelNameFrame)*2)];
     [self.animator addBehavior:self.levelNameSnap];
 
-
+    //[self navigationAnimation];
     [self startAnimationForNewLevel];
     [self bounceField];
 }
 #pragma mark - IBAction
 
 
-- (IBAction)next:(id)sender;
+- (IBAction)next:(id)sender
 {
     self.next.userInteractionEnabled = NO;
     if (self.leftToBonus >=3) {
@@ -567,9 +657,10 @@
         }];
     } else {
         [[self updateCollectionView] nextLevel];
-        self.leftToBonus = 0;
+       // self.leftToBonus = 0;
     }
 }
+
 - (IBAction)prew:(id)sender
 {
     self.next.userInteractionEnabled = NO;
@@ -675,7 +766,7 @@
         [self bounceElement:_dragingElement];
         _elementsLeft--;
         if (_elementsLeft<=0) {
-            [self levelComplete];
+            [self levelCompleet];
         }
     }
 }
@@ -702,6 +793,10 @@
 }
 - (BOOL) zoneIsTransparent:(CGPoint)point inView:(UIView *)view
 {
+    if (![self pointIsTransparent:point inView:view])
+    {
+        return NO;
+    }
     int pixels = 40;
     //pixel count: pixels*pixels*4
     unsigned char pixel[6400] = {0};
@@ -710,7 +805,7 @@
 
     CGContextRef context = CGBitmapContextCreate(pixel, pixels, pixels, 8, pixels*4, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
 
-    CGContextTranslateCTM(context, -(point.x-(pixels*0.5)), -(point.y-(pixels*0.5)));
+    //CGContextTranslateCTM(context, -(point.x-(pixels*0.5)), -(point.y-(pixels*0.5)));
 
     [view.layer renderInContext:context];
 

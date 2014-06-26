@@ -56,6 +56,7 @@ typedef NS_ENUM (int, FPSoundBlobType)
 static double kAnimationDuration = 0.3;
 //const double kAnimationDurationFull = 0.3;
 
+static NSString *FPLocalizedTable = @"Localizable";
 
 #pragma mark - Views tag
 typedef enum {

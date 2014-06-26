@@ -79,7 +79,30 @@
     _levels = nil;
 }
 #pragma mark - Navigation
-
+//int binary_decimal(int binary) /* Function to convert binary to decimal.*/
+//
+//{
+//    int decimal=0, i=0, rem;
+//    while (binary!=0)
+//    {
+//        rem = binary%10;
+//        binary/=10;
+//        decimal += rem*pow(2,i);
+//        ++i;
+//    }
+//    return decimal;
+//}
+//- (FPGameplayNavigationType)gameNavigationType:(NSDictionary *)level level:(int)levelNumber
+//{
+//    FPGameplayNavigationType navigationType;
+//    int nextButton, prewButton;
+//
+//    prewButton = levelNumber==0 ? 0 : level[@"compleet"]? 10 : 0;
+//    nextButton = levelNumber==self.levels.count-1 ? 0 : level[@"compleet"]? 1 : 0;
+//    navigationType = binary_decimal(prewButton+nextButton);
+//
+//    return navigationType;
+//}
 
 
 #pragma mark - CollectionView DataSource
@@ -123,7 +146,6 @@
 
     [controller loadLevel:(int)[indexPath row] type:_gameType];
     controller.indexPath = indexPath;
-
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
 
 
@@ -228,10 +250,10 @@
         [self dismissViewControllerAnimated:NO completion:nil];
         [self presentViewController:nextController animated:NO completion:^{
             [[nextController view] setFrame:CGRectMake(0, nextController.view.frame.size.height+10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
-            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
-            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
-            nextController.view.layer.shadowOpacity = 1;
-            nextController.view.layer.shadowRadius = 10;
+//            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
+//            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
+//            nextController.view.layer.shadowOpacity = 1;
+//            nextController.view.layer.shadowRadius = 10;
             nextController.levelsCount = (unsigned)self.levels.count;
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, -imageView.bounds.size.width*0.8, 0);
@@ -263,10 +285,10 @@
         [self dismissViewControllerAnimated:NO completion:nil];
         [self presentViewController:nextController animated:NO completion:^{
             [[nextController view] setFrame:CGRectMake(0, -nextController.view.frame.size.height-10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
-            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
-            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
-            nextController.view.layer.shadowOpacity = 1;
-            nextController.view.layer.shadowRadius = 10;
+//            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
+//            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
+//            nextController.view.layer.shadowOpacity = 1;
+//            nextController.view.layer.shadowRadius = 10;
             nextController.levelsCount = (unsigned)self.levels.count;
             CGAffineTransform transform = CGAffineTransformIdentity;
             
@@ -275,8 +297,8 @@
                 [imageView setTransform:transform];
                 [[nextController view] setFrame:CGRectMake(0, 0, nextController.view.frame.size.width, nextController.view.frame.size.height)];
             } completion:^(BOOL finished) {
-                [nextController bounceField];
                 [imageView removeFromSuperview];
+                [nextController bounceField];
                 nextController.view.layer.shadowOpacity = 0;
                 nextController.view.layer.shadowRadius = 0;
             }];

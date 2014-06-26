@@ -12,6 +12,7 @@
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "FPGameManager.h"
+#import "FPLevelPresentationViewController.h"
 
 
 
@@ -36,7 +37,14 @@
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
+
+- (IBAction)next:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *next;
+
+
+
 @end
+
 
 @implementation FPBonusViewController
 
@@ -51,6 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _next.alpha = 0;
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     MainRec=CGRectMake( 0, 0,  80, 68);
@@ -233,6 +242,7 @@
                [c cleanObject];
                [[FPGameManager sharedInstance] pickUpCandies:1];
                c.click=true;
+                [self PickUpCandy];
             }];
             
             break;
@@ -499,6 +509,11 @@ int tick=0;
 
 -(void)BonusLevelFinished
 {
+    
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+    [self bounceElements:@[_next] isInSuperView:self.view];
+    
+   // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
 }
 
@@ -521,6 +536,44 @@ int tick=0;
     if (_candiesCount==0) {
         [self BonusLevelFinished];
     }
+}
+
+- (void)bounceElements:(NSArray *)elements isInSuperView:(BOOL)inSuperview
+{
+    for (UIView *element in elements) {
+        CATransform3D transform = [[element layer] transform];
+        if ([[[self view] subviews ] containsObject:element]) {
+            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+            element.alpha = 1;
+        } else {
+            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+            [self.view addSubview:element];
+        }
+        [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
+            [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
+            element.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
+                [[element layer] setTransform:transform];
+                [element layoutIfNeeded];
+            }];
+        }];
+    }
+}
+
+
+- (IBAction)next:(id)sender {
+
+   // [self dismissViewControllerAnimated:YES completion:nil];
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+
+    FPLevelPresentationViewController *levelPresentatin = (FPLevelPresentationViewController *)[parent presentingViewController];
+    [levelPresentatin nextLevel];
+
+    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
+    NSLog(@"BonusLevel Finished");
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

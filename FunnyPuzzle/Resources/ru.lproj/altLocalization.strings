@@ -46,13 +46,13 @@
 "Strawberries" = "Клубника";
 "Rhino" = "Носорог";
 "Pumpkin" = "Тыква";
-"Scrambled Eggs" = "Яичница";
+"Scrambled_Eggs" = "Яичница";
 "Apple" = "Яблочко";
 "Turtle" = "Черепашка";
 "Banan" = "Банан";
 "Dog" = "Собака";
 "Eggplant" = "Баклажан";
-"Fox" = "Лисица";
+"Fox" = "Лиса";
 "Peas" = "Горох";
 "Сrawfish" = "Рак";
 "Pepper" = "Перец";
@@ -67,7 +67,7 @@
 "Owl" = "Сова";
 "Lion" = "Лев";
 "Dolphin" = "Дельфин";
-"Soother" = "Соска";
+"Soother" = "Пустышка";
 "Hippo" = "Бегемотик";
 "Toucan" = "Тукан";
 "Lightbulb" = "Лампочка";

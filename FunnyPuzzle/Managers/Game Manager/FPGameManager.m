@@ -68,7 +68,6 @@ static FPGameManager *_instance=nil;
         [defaults synchronize];
         _playSoundWhenImageAppear=YES;
         _displayInnerBorders=YES;
-        _music = YES;
         _candiesCount = 0;
         _language = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     }
