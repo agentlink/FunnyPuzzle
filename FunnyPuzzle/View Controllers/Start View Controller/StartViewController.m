@@ -17,6 +17,7 @@
 #import "FPLevelPresentationViewController.h"
 #import "FPGameManager.h"
 #import "JMIBlur.h"
+#import "FPReminderViewController.h"
 
 @interface StartViewController () //<UIViewControllerTransitioningDelegate>
 
@@ -56,7 +57,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 //    _needToDropButtons = NO;
     _gamemodeFirst.image = [FPLevelManager imageNamed:@"ball1"];
     _gamemodeSecond.image = [FPLevelManager imageNamed:@"ball2"];

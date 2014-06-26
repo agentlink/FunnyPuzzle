@@ -70,6 +70,7 @@
 		7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE17A8119353913008BBC3F /* AccelerometerManager.m */; };
 		8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */; };
 		8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */; };
+		84684F7D195C6F8E007571D0 /* MyReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84684F7C195C6F8E007571D0 /* MyReachability.m */; };
 		84A7319619597AAF00D95A59 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7319519597AAF00D95A59 /* Social.framework */; };
 		84A7319A19597AF600D95A59 /* FPSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7319919597AF600D95A59 /* FPSocialManager.m */; };
 		84AD278619599CAA006ABE7D /* Icon_puzzly_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AD278519599CAA006ABE7D /* Icon_puzzly_1024.png */; };
@@ -81,6 +82,7 @@
 		84AD28A41959B13F006ABE7D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD28A31959B13F006ABE7D /* CoreText.framework */; };
 		84AD28AC195AA1F7006ABE7D /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84AD28AB195AA1F7006ABE7D /* GooglePlus.bundle */; };
 		84AD28AE195AA205006ABE7D /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AD28AD195AA205006ABE7D /* GoogleOpenSource.framework */; };
+		84D9189C195B0DE700B1DCC7 /* FPReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9189B195B0DE700B1DCC7 /* FPReminderViewController.m */; };
 		84E962D6192F512700DC785C /* FPLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E962D5192F512700DC785C /* FPLevelManager.m */; };
 		84E962D7192F537E00DC785C /* FPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */; };
 		84E962E6192F737000DC785C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E962E5192F737000DC785C /* libGoogleAdMobAds.a */; };
@@ -197,6 +199,8 @@
 		7FE17A8119353913008BBC3F /* AccelerometerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerManager.m; sourceTree = "<group>"; };
 		8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_background_music.mp3; sourceTree = "<group>"; };
 		8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_background_music.mp3; sourceTree = "<group>"; };
+		84684F7B195C6F8E007571D0 /* MyReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyReachability.h; sourceTree = "<group>"; };
+		84684F7C195C6F8E007571D0 /* MyReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReachability.m; sourceTree = "<group>"; };
 		848CC491193C715A00E13C93 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84A7319519597AAF00D95A59 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84A7319819597AF600D95A59 /* FPSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSocialManager.h; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		84AD28AB195AA1F7006ABE7D /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
 		84AD28AD195AA205006ABE7D /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
 		84AEB9BC1933256C00DF942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84D9189A195B0DE700B1DCC7 /* FPReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPReminderViewController.h; sourceTree = "<group>"; };
+		84D9189B195B0DE700B1DCC7 /* FPReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPReminderViewController.m; sourceTree = "<group>"; };
 		84E962D4192F512700DC785C /* FPLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLevelManager.h; sourceTree = "<group>"; };
 		84E962D5192F512700DC785C /* FPLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLevelManager.m; sourceTree = "<group>"; };
 		84E962D9192F737000DC785C /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 		7F31616B192CA01500C49EAE /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84684F7A195C6F69007571D0 /* Reachability */,
 				7F8C5E22194ED9A5001BA8A2 /* JMIBlur */,
 				8443DE07192F4F16009F1EF8 /* Game Model */,
 				84E962E7192F75D200DC785C /* Constants */,
@@ -410,6 +417,7 @@
 		7F316178192CA06100C49EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84D91899195B0DD300B1DCC7 /* Reminder View Controller */,
 				7F3161D8192DBB9C00C49EAE /* Preferences Controller */,
 				7F316179192CA08300C49EAE /* Gameplay Controller */,
 				7F31617A192CA08F00C49EAE /* Start Controller */,
@@ -611,6 +619,16 @@
 			name = "Game Model";
 			sourceTree = "<group>";
 		};
+		84684F7A195C6F69007571D0 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				84684F7B195C6F8E007571D0 /* MyReachability.h */,
+				84684F7C195C6F8E007571D0 /* MyReachability.m */,
+			);
+			name = Reachability;
+			path = Rechability;
+			sourceTree = "<group>";
+		};
 		84A7319719597AEA00D95A59 /* Social Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +646,16 @@
 			);
 			name = "Social Sharing";
 			path = "Resources/Social Sharing";
+			sourceTree = "<group>";
+		};
+		84D91899195B0DD300B1DCC7 /* Reminder View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84D9189A195B0DE700B1DCC7 /* FPReminderViewController.h */,
+				84D9189B195B0DE700B1DCC7 /* FPReminderViewController.m */,
+			);
+			name = "Reminder View Controller";
+			path = "View Controllers/Reminder View Controller";
 			sourceTree = "<group>";
 		};
 		84E962D3192F512700DC785C /* Level Manager */ = {
@@ -850,9 +878,11 @@
 				7F8DAE6219376FC8007E154E /* FPLevelCollectionFlowLayout.m in Sources */,
 				7F316168192C9FF500C49EAE /* GameModel.m in Sources */,
 				84E962D6192F512700DC785C /* FPLevelManager.m in Sources */,
+				84D9189C195B0DE700B1DCC7 /* FPReminderViewController.m in Sources */,
 				7F8DAE5C19373BBB007E154E /* FPLevelCell.m in Sources */,
 				047D58A3192F2C0A003CE8BC /* FPFlover.m in Sources */,
 				7F8DAE7A19389E32007E154E /* FPGamePlayController.m in Sources */,
+				84684F7D195C6F8E007571D0 /* MyReachability.m in Sources */,
 				7FE17A8219353913008BBC3F /* AccelerometerManager.m in Sources */,
 				7F316177192CA05A00C49EAE /* StartViewController.m in Sources */,
 				7FA4BA4E192C9AFD00A772BA /* main.m in Sources */,

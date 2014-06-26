@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyReachability.h"
 
 @interface FPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic) BOOL isInternet;
+@property (nonatomic) NSTimer *rateAppTimer;
+@property (nonatomic) NSTimer *internetTimer;
+@property (nonatomic)  MyReachability *internet;
 
 @end

@@ -98,7 +98,7 @@
         prewLevelDone = [[[_levels objectAtIndex:indexPath.row-1] valueForKey:@"compleet"] boolValue];
     }
     PDFImage *image;
-    if ([[level valueForKey:@"compleet"] boolValue]) {
+    if ([[level valueForKey:@"compleet"] boolValue] || YES) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.name.text = [FPLevelManager gameLocalizedStringForKey:[level valueForKey:@"name"]];//NSLocalizedString([level valueForKey:@"name"], nil);
         cell.isFinished = YES;
