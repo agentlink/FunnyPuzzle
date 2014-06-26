@@ -19,7 +19,7 @@
 @property (assign, nonatomic) int levelNumber;
 @property (assign, nonatomic) int levelsCount;
 @property (assign, nonatomic) CGRect fieldFrame;
-
+@property (assign, nonatomic) FPGameType levelType;
 
 - (void)loadLevel:(int)level type:(FPGameType)type;
 - (void)configureGameplayWithAnimationType:(FPGameplayAnimationMode)animationMode;

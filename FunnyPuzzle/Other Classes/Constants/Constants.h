@@ -62,7 +62,7 @@ typedef NS_ENUM (int, FPGameplayNavigationType)
 
 static const double kAnimationDuration = 0.3f;
 
-static NSString *FPLocalizedTable = @"altLocalization";
+static NSString *FPLocalizedTable = @"Localizable";
 
 #pragma mark - Views tag
 typedef enum {

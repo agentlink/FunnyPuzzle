@@ -547,7 +547,6 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
         imageView.image = image;
         [elements addObject:imageView];
         [imageView setAlpha:0];
-        //imageView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.2];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
         imageView = [self newFrame:imageView];

@@ -563,13 +563,16 @@ int tick=0;
 
 
 - (IBAction)next:(id)sender {
-    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
-    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[parent presentingViewController];
-    NSIndexPath *indexPath=[parent indexPath];
-    [presentationController updateColleCellAtIndexPath:indexPath];
 
    // [self dismissViewControllerAnimated:YES completion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+
+    FPLevelPresentationViewController *levelPresentatin = (FPLevelPresentationViewController *)[parent presentingViewController];
+    [levelPresentatin nextLevel];
+
+    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
+    NSLog(@"BonusLevel Finished");
+    //[self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
