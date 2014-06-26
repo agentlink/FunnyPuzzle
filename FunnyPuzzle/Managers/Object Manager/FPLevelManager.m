@@ -285,7 +285,7 @@
 {
     NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[FPGameManager sharedInstance].language ofType:@"lproj"]];
 
-    NSString *result = NSLocalizedStringFromTableInBundle(key, @"altLocalization", bundle, nil);
+    NSString *result = NSLocalizedStringFromTableInBundle(key, @"Localizable", bundle, nil);
 
     return result;
 }

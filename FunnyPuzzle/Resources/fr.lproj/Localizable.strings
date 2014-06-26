@@ -24,14 +24,14 @@
 "Squirrel" = "Ecureuil";
 "Apple"	= "Pomme";
 "Carrot" = "Carotte";
-"Ice Cream"	= "Glace";
+"Ice cream"	= "Glace";
 
 "Goat" = "Chevre";
 "Bee" = "Abeille";
 "Turtle" = "Tortue";
 "Dolphin" = "Dauphin";
 "Hippo"	= "Hippopotame";
-"Teddy_bear" = "Nounours";
+"Teddy bear" = "Nounours";
 "Penguin" = "Pinguin";
 "Snake" = "Serpent";
 "Flamingo" = "Flammand rose";
@@ -45,8 +45,8 @@
 "Car" = "Voiture";
 "Eggplant" = "Aubergine";
 "Bread"	= "Pain";
-"Baseball Cap" = "Casquette de base ball";
-"Computer_chair" = "Chaise de bureau";
+"Baseball cap" = "Casquette de base ball";
+"Computer chair" = "Chaise de bureau";
 "Train" = "Train";
 "Wagon"	= "Wagon";
 "Peas" = "Petit pois";
@@ -58,12 +58,12 @@
 "Crab" = "Crabe";
 "Corn" = "Mais";
 
-"Jug_with_milk" = "Pot a lait";
+"Jug with milk" = "Pot a lait";
 "Lightbulb"	= "Ampoule";
 "Stork" = "Cigogne";
 "Pepper" = "Poivre";
 "Cock" = "Coq";
-"Cancer" = "Ecrevisse";
+"Crawfish" = "Ecrevisse";
 "Backpack" = "Sac a dos";
 "Wizard hat" = "Chapeau de magicien";
 "Soother" = "Sucette";
@@ -91,10 +91,10 @@
 "Pitching" = "Canard";
 "Radish" = "Radis";
 "Rhino" = "Rhinoceros";
-"Sea_bear" = "Otarie";
-"Tea_cup" = "Tasse de the";
+"Sea bear" = "Otarie";
+"Tea cup" = "Tasse de the";
 
-
+"Puzly Game" = "Puzzly - un jeu intéressant et passionnant pour des enfants 2 à 6 ans. Les enfants apprendront beaucoup et les parents obtiendront des moments du calme dans la maison autant attendues. Le jeu  aidera votre enfant à apprendre à mieux concentrer son attention et apprendre beaucoup de mots utiles dans les langues étrangères.";
 
 
 "Perfect" = "parfait";

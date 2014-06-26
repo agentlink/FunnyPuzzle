@@ -14,7 +14,7 @@
 "Hen" = "母鸡";
 "Octopus" = "章鱼";
 "Pencil" = "铅笔";
-"Ice Cream"	= "冰淇淋";
+"Ice cream"	= "冰淇淋";
 
 
 
@@ -33,7 +33,7 @@
 "Turtle" = "乌龟";
 "Dolphin" = "海豚";
 "Hippo"	= "河马";
-"Teddy_bear" = "泰迪熊";
+"Teddy bear" = "泰迪熊";
 "Penguin" = "企鵝";
 "Snake" = "蛇";
 "Flamingo" = "火烈鳥";
@@ -51,8 +51,8 @@
 "Car" = "车";
 "Eggplant" = "茄子";
 "Bread"	= "面包";
-"Baseball Cap" = "棒球帽";
-"Computer_chair" = "电脑椅";
+"Baseball cap" = "棒球帽";
+"Computer chair" = "电脑椅";
 "Train" = "火车";
 "Wagon"	= "货车";
 "Peas" = "豆";
@@ -64,12 +64,12 @@
 "Crab" = "螃蟹";
 "Corn" = "玉米";
 
-"Jug_with_milk" = "奶壶";
+"Jug with milk" = "奶壶";
 "Lightbulb"	= "电灯泡";
 "Stork" = "鸛";
 "Pepper" = "胡椒";
 "Cock" = "公鸡";
-"Cancer" = "小龙虾";
+"Crawfish" = "小龙虾";
 "Backpack" = "背包";
 "Wizard hat" = "巫师帽";
 "Soother" = "奶嘴";
@@ -97,8 +97,8 @@
 "Pitching" = "投球";
 "Radish" = "萝卜";
 "Rhino" = "犀牛";
-"Sea_bear" = "海熊";
-"Tea_cup" = "茶杯";
+"Sea bear" = "海熊";
+"Tea cup" = "茶杯";
 
 
 
@@ -108,3 +108,5 @@
 "Wonderfull" = "太棒了";
 "Well done" = "干得好";
 "Good job" = "做得不错";
+
+"Puzly Game" = "Puzzly 是个有趣，好玩，以及十分益智的游戏，它适合任何2至6岁的孩子使用。\n小孩子可透过此游戏学习很多新知识，而父母则可以在小孩子专注于此小游戏的同时，于家中享受一片难得的安宁。";

@@ -12,7 +12,7 @@
 "Hen" = "Kiscsirke";
 "Octopus" = "Polip";
 "Pencil" = "Ceruza";
-"Ice Cream"	= "Fagylalt";
+"Ice cream"	= "Fagylalt";
 
 
 
@@ -30,7 +30,7 @@
 "Turtle" = "Teknősbéka";
 "Dolphin" = "Delfin";
 "Hippo"	= "Viziló";
-"Teddy_bear" = "Medve";
+"Teddy bear" = "Medve";
 "Penguin" = "Pingvin";
 "Snake" = "Kígyó";
 "Flamingo" = "Flamingó";
@@ -45,8 +45,8 @@
 "Car" = "Autó";
 "Eggplant" = "Padlizsán";
 "Bread"	= "Kenyér";
-"Baseball Cap" = "Baseball sapka";
-"Computer_chair" = "Számítógép szék";
+"Baseball cap" = "Baseball sapka";
+"Computer chair" = "Számítógép szék";
 "Train" = "Vonat";
 "Wagon"	= "Vagon";
 "Peas" = "Borsó";
@@ -58,12 +58,12 @@
 "Crab" = "Rák";
 "Corn" = "Kukorica";
 
-"Jug_with_milk" = "Tejeskancsó";
+"Jug with milk" = "Tejeskancsó";
 "Lightbulb"	= "Villanykörte";
 "Stork" = "Gólya";
 "Pepper" = "Bors";
 "Cock" = "Kakas";
-"Cancer" = "Rák";
+"Crawfish" = "Rák";
 "Backpack" = "Hátizsák";
 "Wizard hat" = "Varázsló sapka";
 "Soother" = "Cumi";
@@ -92,8 +92,8 @@
 "Pitching" = "Kacsa";
 "Radish" = "Retek";
 "Rhino" = "Orrszarvú";
-"Sea_bear" = "Medvefóka";
-"Tea_cup" = "Teáscsésze";
+"Sea bear" = "Medvefóka";
+"Tea cup" = "Teáscsésze";
 
 
 
@@ -101,3 +101,5 @@
 "Wonderfull" = "Wonderfull";
 "Well done" = "Remek";
 "Good job" = "Szép munka";
+
+"Puzly Game" = "Puzzly egy érdekes és fejlesztő játék 2-től 6 éves korú gyerekek számára. Puzzly egy érdekességekkel és izgalmakkal teli játék a gyerekek számára, amely nem csak a koncentraciót növeli, hanem a játék során alkalom nyílik különféle idegen nyelvek megtanulására.";

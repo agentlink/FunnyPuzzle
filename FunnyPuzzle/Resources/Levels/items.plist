@@ -358,7 +358,7 @@
 						<key>x</key>
 						<integer>8</integer>
 						<key>y</key>
-						<integer>147</integer>
+						<integer>174</integer>
 					</dict>
 				</dict>
 				<dict>
@@ -1052,7 +1052,7 @@
 			<key>folder</key>
 			<string>Game 1/teddy_bear</string>
 			<key>name</key>
-			<string>Teddy Bear</string>
+			<string>Teddy bear</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1320,7 +1320,7 @@
 			<key>folder</key>
 			<string>Game 1/tea_cup</string>
 			<key>name</key>
-			<string>Tea Cup</string>
+			<string>Tea cup</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1463,7 +1463,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Baseball Cap</string>
+			<string>Baseball cap</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -1937,7 +1937,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Computer Chair</string>
+			<string>Computer chair</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -2022,7 +2022,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>Sea Bear</string>
+			<string>Sea bear</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -2967,7 +2967,7 @@
 			<key>folder</key>
 			<string>Game 2/scrambled_eggs</string>
 			<key>name</key>
-			<string>Scrambled Eggs</string>
+			<string>Scrambled eggs</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3114,7 +3114,7 @@
 			<key>folder</key>
 			<string>Game 2/banan</string>
 			<key>name</key>
-			<string>Banan</string>
+			<string>Banana</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3604,7 +3604,7 @@
 			<key>folder</key>
 			<string>Game 2/wizard_hat</string>
 			<key>name</key>
-			<string>Wizard Hat</string>
+			<string>Wizard hat</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3702,7 +3702,7 @@
 			<key>folder</key>
 			<string>Game 2/crew_cut</string>
 			<key>name</key>
-			<string>Crew Cut</string>
+			<string>Crew cut</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
@@ -3751,7 +3751,7 @@
 			<key>folder</key>
 			<string>Game 2/jug_with_milk</string>
 			<key>name</key>
-			<string>Jug With Milk</string>
+			<string>Jug with milk</string>
 		</dict>
 		<dict>
 			<key>bgColor</key>
