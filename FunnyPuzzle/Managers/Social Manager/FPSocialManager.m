@@ -35,7 +35,7 @@ static FPSocialManager *instance = nil;
 }
 
 - (SLComposeViewController*) configurePost:(SLComposeViewController*)composeViewController{
-    [composeViewController setInitialText:@"Funny Puzzle!!!"];
+    [composeViewController setInitialText:NSLocalizedString(@"Puzly Game", nil)];
     [composeViewController addURL:[NSURL URLWithString:ITUNES_LINK]];
     [composeViewController addImage:[UIImage imageNamed:@"Icon_puzzly_1024"]];
     return composeViewController;

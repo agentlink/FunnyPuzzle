@@ -12,10 +12,11 @@
 #import "AccelerometerManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "FPGameManager.h"
+#import "FPLevelPresentationViewController.h"
 
 
 
-@interface FPBonusViewController ()<ShakeHappendDelegate>
+@interface FPBonusViewController ()<ShakeHappendDelegate,BonusLevelFinished>
 
 {
     NSMutableArray *objectsCandies2,*objectsCandies,*objectsFlowers;
@@ -36,7 +37,14 @@
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
+
+- (IBAction)next:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *next;
+
+
+
 @end
+
 
 @implementation FPBonusViewController
 
@@ -51,6 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _next.alpha = 0;
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     MainRec=CGRectMake( 0, 0,  80, 68);
@@ -113,6 +122,7 @@
     float y=20;
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/10;
     objectsCandies=[[NSMutableArray alloc] init];
+    _candiesCount=9;
     for(int i=1; i<10; i++)
     {
         Candy *c=[Candy new];
@@ -123,6 +133,7 @@
         CGRect r=CGRectMake(x, y, im.size.height, im.size.width);
         c.frame = r;
         c.BonusLevelKind=0;
+        c.delegate=self;
         [self.view addSubview:c];
         [objectsCandies insertObject:c atIndex:i-1];
         x+=deltaX;
@@ -139,6 +150,7 @@
     MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake( self.view.frame.size.height/2-im2.size.height/2, self.view.frame.size.width/2-im2.size.width,  im2.size.height, im2.size.width)];
     imView.image=im2;
+    _candiesCount=5;
     [self.view addSubview:imView];
     [self SunMove:imView];
     objectsCandies=[[NSMutableArray alloc] init];
@@ -156,6 +168,7 @@
         Candy *c=[[Candy alloc] initWithFrame:CGRectMake(x+20, f.frame.origin.y+17, im2.size.height, im2.size.width)];
         c.layer.zPosition=1;
         c.BonusLevelKind=1;
+        c.delegate=self;
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         x+=deltaX;
@@ -191,6 +204,7 @@
     int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
     [self.view addSubview:imView];
+    _candiesCount=6;
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
      
@@ -201,6 +215,7 @@
         UIImage *im2=[self imageWithImage:im scaledToSize:size];
         c.backgroundColor=[UIColor colorWithPatternImage:im2];
         c.BonusLevelKind=2;
+        c.delegate=self;
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         [c Move:true];
@@ -227,6 +242,7 @@
                [c cleanObject];
                [[FPGameManager sharedInstance] pickUpCandies:1];
                c.click=true;
+                [self PickUpCandy];
             }];
             
             break;
@@ -246,6 +262,7 @@
     MainRec=CGRectMake( -80, -70, 80, 68);
     int x=0;
     float deltaX=0;
+    _candiesCount=20;
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<20; i++) {
         Candy *c=[Candy new];
@@ -296,7 +313,7 @@
         animation.removedOnCompletion = NO;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [c.layer addAnimation:animation forKey:@"position"];
-        
+        c.delegate=self;
         x+=55;
         deltaX-=55;
 
@@ -492,6 +509,11 @@ int tick=0;
 
 -(void)BonusLevelFinished
 {
+    
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+    [self bounceElements:@[_next] isInSuperView:self.view];
+    
+   // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
 }
 
@@ -506,6 +528,49 @@ int tick=0;
 -(void)dealloc
 {
     NSLog(@"vsdv");
+}
+
+-(void)PickUpCandy
+{
+    _candiesCount--;
+    if (_candiesCount==0) {
+        [self BonusLevelFinished];
+    }
+}
+
+- (void)bounceElements:(NSArray *)elements isInSuperView:(BOOL)inSuperview
+{
+    for (UIView *element in elements) {
+        CATransform3D transform = [[element layer] transform];
+        if ([[[self view] subviews ] containsObject:element]) {
+            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+            element.alpha = 1;
+        } else {
+            [[element layer] setTransform:CATransform3DMakeScale(0, 0, 0)];
+            [self.view addSubview:element];
+        }
+        [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
+            [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
+            element.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
+                [[element layer] setTransform:transform];
+                [element layoutIfNeeded];
+            }];
+        }];
+    }
+}
+
+
+- (IBAction)next:(id)sender {
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[parent presentingViewController];
+    NSIndexPath *indexPath=[parent indexPath];
+    [presentationController updateColleCellAtIndexPath:indexPath];
+
+   // [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

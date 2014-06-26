@@ -33,7 +33,7 @@
 @property (assign, nonatomic) NSUInteger dragingElementIndex;
 @property (assign, nonatomic) CGPoint dragingPoint;
 @property (assign, nonatomic) NSUInteger elementsLeft;
-@property (assign, nonatomic) FPGameType levelType;
+
 @property (strong, nonatomic) NSString *compleetKey;
 @property (strong, nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
@@ -645,22 +645,23 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
 #pragma mark - IBAction
 
 
-- (IBAction)next:(id)sender;
+- (IBAction)next:(id)sender
 {
     self.next.userInteractionEnabled = NO;
-//    if (self.leftToBonus >=3) {
-//        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
-////        bonusViewController.completion = ^{
-////            [self next:self];
-////        };
-////        [self presentViewController:bonusViewController animated:YES completion:^{
-////            self.leftToBonus = 0;
-////        }];
-//    } else {
+    if (self.leftToBonus >=3) {
+        FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+        bonusViewController.completion = ^{
+            [self next:self];
+        };
+        [self presentViewController:bonusViewController animated:YES completion:^{
+            self.leftToBonus = 0;
+        }];
+    } else {
         [[self updateCollectionView] nextLevel];
-        //self.leftToBonus = 0;
-//    }
+       // self.leftToBonus = 0;
+    }
 }
+
 - (IBAction)prew:(id)sender
 {
     self.next.userInteractionEnabled = NO;

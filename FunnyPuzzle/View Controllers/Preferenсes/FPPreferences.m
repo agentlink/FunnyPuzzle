@@ -259,7 +259,7 @@
         id<GPPShareBuilder> shareBuilder = [[GPPShare sharedInstance]
                                             nativeShareDialog];
         [shareBuilder setURLToShare:[NSURL URLWithString:ITUNES_LINK]];
-        [shareBuilder setPrefillText:@"Funny Puzzle!!!"];
+        [shareBuilder setPrefillText:NSLocalizedString(@"Puzly Game", nil)];
         [shareBuilder open];
     }
 }

@@ -13,7 +13,7 @@
 "Hen" = "Pollito";
 "Octopus" = "Pulpo";
 "Pencil" = "Lápiz";
-"Ice Cream"	= "Helado";
+"Ice cream"	= "Helado";
 
 
 "Fingerling" = "Alevîn - pez";
@@ -31,7 +31,7 @@
 "Turtle" = "Tortuga";
 "Dolphin" = "Delfín";
 "Hippo"	= "Hipopôtamo";
-"Teddy_bear" = "Osito de peluche";
+"Teddy bear" = "Osito de peluche";
 "Penguin" = "Pinguîno";
 "Snake" = "Serpiente";
 "Flamingo" = "Flamenco";
@@ -45,8 +45,8 @@
 "Car" = "Coche";
 "Eggplant" = "Berenjena";
 "Bread"	= "Pan";
-"Baseball Cap" = "Gorra de bêisbol";
-"Computer_chair" = "Sillâ";
+"Baseball cap" = "Gorra de bêisbol";
+"Computer chair" = "Sillâ";
 "Train" = "Tren";
 "Wagon"	= "Vâgon";
 "Peas" = "Guisante";
@@ -58,12 +58,12 @@
 "Crab" = "Cangrejo";
 "Corn" = "Maiz";
 
-"Jug_with_milk" = "Pote de leche";
+"Jug with milk" = "Pote de leche";
 "Lightbulb"	= "Bombilla";
 "Stork" = "Cigüeña";
 "Pepper" = "Pimienta";
 "Cock" = "Gallo";
-"Cancer" = "Cangrejo de rîo";
+"Crawfish" = "Cangrejo de rîo";
 "Backpack" = "Mochila";
 "Wizard hat" = "Sombrero de mago";
 "Soother" = "Chupete";
@@ -91,8 +91,8 @@
 "Pitching" = "Pato";
 "Radish" = "Rábano";
 "Rhino" = "Rinoceronte";
-"Sea_bear" = "Lêon marino";
-"Tea_cup" = "Taza de tê";
+"Sea bear" = "Lêon marino";
+"Tea cup" = "Taza de tê";
 
 
 
@@ -100,3 +100,5 @@
 "Wonderfull" = "Wonderfull";
 "Well done" = "Bien hecho ";
 "Good job" = "Buen trabajo";
+
+"Puzly Game" = "Puzzly-un juego de rompecabezas apasionante para niños de 2 a 6 años de edad. Los niños aprenderán mucho y los padres conseguirán el momento tan esperado de calma en la casa.";

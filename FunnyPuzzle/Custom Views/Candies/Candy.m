@@ -86,6 +86,7 @@
                     [self cleanObject];
                 }];
                 self.click=true;
+                [self.delegate PickUpCandy];
             }
              ];
         }
@@ -102,8 +103,10 @@
                  } completion:^(BOOL finished) {
                    self.backgroundColor=[UIColor clearColor];
                    self.click=true;
+                     [self.delegate PickUpCandy];
                    [[FPGameManager sharedInstance] pickUpCandies:1];
                    [self cleanObject];
+                     
                  }];
             }];
         }
@@ -113,6 +116,7 @@
         if (self.Animation) {
             self.backgroundColor=[UIColor clearColor];
             self.click=true;
+            [self.delegate PickUpCandy];
             [[FPGameManager sharedInstance] pickUpCandies:1];
             [self cleanObject];
         }
@@ -120,11 +124,14 @@
     
 }
 
+
+
 - (void) cleanObject{
     [self.layer removeAnimationForKey:@"position"];
     [UIView commitAnimations];
     animation=nil;
     aPath=nil;
+    self.delegate=nil;
 }
 
 -(void)setCentrBascket:(CGRect)centrBascket
