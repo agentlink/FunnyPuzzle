@@ -563,10 +563,15 @@ int tick=0;
 
 
 - (IBAction)next:(id)sender {
-     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
-    FPGameType gameType=[parent gameType];
-    int levelNumber=[parent levelNumber];
+    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[parent presentingViewController];
+    NSIndexPath *indexPath=[parent indexPath];
+    [presentationController updateColleCellAtIndexPath:indexPath];
+
+   // [self dismissViewControllerAnimated:YES completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [parent loadLevel:levelNumber+1 type:_gameType];
+    
 }
+
+
 @end

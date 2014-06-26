@@ -33,7 +33,7 @@
 @property (assign, nonatomic) NSUInteger dragingElementIndex;
 @property (assign, nonatomic) CGPoint dragingPoint;
 @property (assign, nonatomic) NSUInteger elementsLeft;
-@property (assign, nonatomic) FPGameType levelType;
+
 @property (strong, nonatomic) NSString *compleetKey;
 @property (strong, nonatomic) NSString *notCompleetKey;
 @property (nonatomic) BOOL levelDone;
