@@ -53,8 +53,17 @@ typedef NS_ENUM (int, FPSoundBlobType)
     FPSoundBlobTypeTwice,
     FPSoundBlobTypeApear
 };
+typedef NS_ENUM (int, FPGameplayNavigationType)
+{
+    FPGameplayNavigationTypeNone,
+    FPGameplayNavigationTypeNext,
+    FPGameplayNavigationTypePrew,
+    FPGameplayNavigationTypeNextPrew
+};
+
 static double kAnimationDuration = 0.3;
-//const double kAnimationDurationFull = 0.3;
+
+static const double kAnimationDuration = 0.3f;
 
 static NSString *FPLocalizedTable = @"Localizable";
 

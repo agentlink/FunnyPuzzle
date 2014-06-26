@@ -10,6 +10,7 @@
 #import "FPGameManager.h"
 #import <GooglePlus/GooglePlus.h>
 #import "FPReminderViewController.h"
+#import <bitstring.h>
 
 @implementation FPAppDelegate
 
