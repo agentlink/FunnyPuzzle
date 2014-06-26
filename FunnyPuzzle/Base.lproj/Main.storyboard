@@ -592,20 +592,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcu-f4-vQV">
-                                <rect key="frame" x="113" y="156" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC7-5k-eFv">
+                                <rect key="frame" x="428" y="126" width="46" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="bt">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="DeleteViewController:" destination="fZu-IS-JoB" eventType="touchUpInside" id="Ojx-4L-0Jh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC7-5k-eFv">
-                                <rect key="frame" x="414" y="145" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="fM8-rI-CDG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title=">">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -614,12 +609,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215688593685627" green="0.89411771297454834" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HC7-5k-eFv" secondAttribute="trailing" constant="6" id="8Mg-Ui-WD5"/>
+                            <constraint firstItem="fTF-Mt-lPc" firstAttribute="top" secondItem="HC7-5k-eFv" secondAttribute="bottom" constant="144" id="YiV-1T-W94"/>
+                            <constraint firstItem="HC7-5k-eFv" firstAttribute="top" secondItem="yA9-dq-Qjv" secondAttribute="bottom" constant="106" id="poX-Dd-Np4"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="gnL-g2-nfh"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="Bt" destination="bcu-f4-vQV" id="0pG-zl-eCP"/>
                         <outlet property="next" destination="HC7-5k-eFv" id="dct-GP-0FY"/>
                     </connections>
                 </viewController>
