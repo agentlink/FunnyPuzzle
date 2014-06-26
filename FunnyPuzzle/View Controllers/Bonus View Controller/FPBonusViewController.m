@@ -38,6 +38,8 @@
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
 
+- (IBAction)next:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *next;
 
 
 
@@ -57,6 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _next.alpha = 0;
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     MainRec=CGRectMake( 0, 0,  80, 68);
@@ -508,7 +511,7 @@ int tick=0;
 {
     
     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
-   
+    [self bounceElements:@[_next] isInSuperView:self.view];
    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
 }
@@ -558,9 +561,7 @@ int tick=0;
 }
 
 
-
-- (IBAction)nextAction:(id)sender {
-    
+- (IBAction)next:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

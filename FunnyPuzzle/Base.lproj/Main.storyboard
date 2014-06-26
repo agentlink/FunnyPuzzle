@@ -602,6 +602,16 @@
                                     <action selector="DeleteViewController:" destination="fZu-IS-JoB" eventType="touchUpInside" id="Ojx-4L-0Jh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC7-5k-eFv">
+                                <rect key="frame" x="414" y="145" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="next:" destination="fZu-IS-JoB" eventType="touchUpInside" id="6FR-ZF-FAH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215688593685627" green="0.89411771297454834" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -610,6 +620,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="Bt" destination="bcu-f4-vQV" id="0pG-zl-eCP"/>
+                        <outlet property="next" destination="HC7-5k-eFv" id="dct-GP-0FY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEf-oI-tqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
