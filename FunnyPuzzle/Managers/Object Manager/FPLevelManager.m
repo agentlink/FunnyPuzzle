@@ -249,8 +249,7 @@
     NSString* plistPath = [FPLevelManager itemsPlistPath];
     NSMutableArray *_plist = [NSMutableArray arrayWithContentsOfFile:plistPath];
     NSMutableDictionary *_levels = [_plist objectAtIndex:gameType];
-    for (NSDictionary *level in _levels) {
-//        Level *levelObj = [Level new];
+    for (NSDictionary *level in _levels) { //        Level *levelObj = [Level new];
 //        levelObj.colorPath = [NSString stringWithFormat:@"Levels/%@/%@_result", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
 //        levelObj.grayPath =  [NSString stringWithFormat:@"Levels/%@/%@_gray", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
 //        levelObj.borderedPath = [NSString stringWithFormat:@"Levels/%@/%@_bordered", [level valueForKey:@"folder"], [level valueForKey:@"color"]];
