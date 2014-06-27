@@ -13,6 +13,7 @@
 #import "AccelerometerManager.h"
 #import "FPGameManager.h"
 #import "FPBonusViewController.h"
+#import "Animations.h"
 
 @interface FPElement:PDFImageView
 @property (nonatomic) CGPoint winPlace;
@@ -221,43 +222,32 @@
 
 - (void)bounceField
 {
-    CATransform3D transform = [[_field layer] transform];
-    [UIView animateWithDuration:kAnimationDuration*0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [_field.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-            [_field.layer setTransform:transform];
-            if (!_levelDone) {
-                NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [self navigationAnimation];
-                [self bounceElements:array isInSuperView:YES];
-            } else {
-                NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
-                [self navigationAnimation];
-                [self bounceElements:array isInSuperView:YES];
-            }
-        }];
+    //CATransform3D transform = [[_field layer] transform];
+    [Animations bounceIn:_field duration:kAnimationDuration completion:^{
+        if (!_levelDone) {
+            NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
+            [self navigationAnimation];
+            [self bounceElements:array];
+        } else {
+            NSMutableArray *array = [NSMutableArray arrayWithArray:_elements];
+            [self navigationAnimation];
+            [self bounceElements:array];
+        }
     }];
 }
-- (void)bounceElements:(NSArray *)elements isInSuperView:(BOOL)inSuperview
+- (void)bounceElements:(NSArray *)elements
 {
     for (UIView *element in elements) {
-        CATransform3D transform = [[element layer] transform];
+        //CATransform3D transform = [[element layer] transform];
         if ([self.view.subviews containsObject:element]) {
-            [element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
+            //[element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
             element.alpha = 1;
         } else {
-            [element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
+            //[element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
             [self.view addSubview:element];
         }
-        [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
-            [[element layer] setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
-            element.alpha = 1;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-                [[element layer] setTransform:transform];
-                //[element layoutIfNeeded];
-            }];
+        [Animations scaleIn:element duration:kAnimationDuration delay:([elements indexOfObject:element]*0.09) completion:^{
+
         }];
     }
 }
@@ -324,32 +314,16 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
 - (void)bounceNavigation:(NSArray *)navigation
 {
     for (UIView *element in navigation) {
-        CABasicAnimation *animation = [CABasicAnimation animation];
-        animation.fromValue = @0;
-        animation.toValue = @1;
-        animation.keyPath = @"opacity";
-        animation.duration = kAnimationDuration;
-        animation.removedOnCompletion = NO;
-        [element.layer addAnimation:animation forKey:@"alpha"];
-        element.layer.opacity = 1;
+        [Animations scaleIn:element duration:kAnimationDuration completion:nil];
     }
 }
 - (void)popElements:(NSArray *)elements remove:(BOOL)remove
 {
     for (UIView *element in elements) {
-        CATransform3D transform = element.layer.transform;
-        [UIView animateWithDuration:kAnimationDuration*0.6 delay:[elements indexOfObject:element]*0.09 options:UIViewAnimationOptionCurveLinear animations:^{
-            [element.layer setTransform:CATransform3DMakeScale(1.2, 1.2, 1.2)];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:kAnimationDuration*0.6 animations:^{
-                //[element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
-                element.alpha = 0;
-            } completion:^(BOOL finished) {
-                element.layer.transform = transform;
-                if (remove) {
-                    [element removeFromSuperview];
-                }
-            }];
+        [Animations scaleOut:element duration:kAnimationDuration completion:^{
+            if (remove) {
+                [element removeFromSuperview];
+            }
         }];
     }
 }
@@ -527,6 +501,14 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
 #pragma mark - Publick
 - (UIImage *)screenshot
 {
+    if ([self presentedViewController])
+    {
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
+        [self.presentedViewController.view drawViewHierarchyInRect:self.presentedViewController.view.bounds afterScreenUpdates:NO];
+        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return snapshotImage;
+    }
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, self.view.window.screen.scale);
     [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -550,6 +532,7 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.winPlace = [self getAdaptedPoint:[[[[_levelManager mcElements] objectAtIndex:i] valueForKey:@"nativePoint"] CGPointValue]];
         imageView = [self newFrame:imageView];
+        imageView.clipsToBounds = NO;
 
     }
     _elements = [NSArray arrayWithArray:elements];
@@ -591,10 +574,10 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
     size.width = size.width*multiplier;
     size.height = size.height*multiplier;
     double maxX, maxY;
-    maxX = CGRectGetHeight(self.view.bounds)-_field.frame.size.width;
-    maxY = CGRectGetHeight(self.view.bounds)-size.height-40;
-    double x = arc4random_uniform(maxX);
-    double y = arc4random_uniform(maxY);
+    maxX = CGRectGetMinX(_field.frame)-size.width;
+    maxY = CGRectGetHeight(self.view.bounds)-size.height-_back.frame.size.height;//-40;
+    double x = maxX>0 ? arc4random_uniform(maxX) : 0;
+    double y = arc4random_uniform(maxY)+_back.frame.size.height;
     return CGRectMake(x, y, size.width, size.height);
 }
 - (CGPoint)getAdaptedPoint:(CGPoint)point
@@ -623,6 +606,10 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
     }
     self.levelDone = self.replay ? NO : YES;
     [self compleetAnimation];
+    self.ACManager = [AccelerometerManager new];
+    [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.9];
+    self.ACManager.delegate = self;
+    [self.ACManager startShakeDetect];
 }
 - (void)restartLevel
 {
