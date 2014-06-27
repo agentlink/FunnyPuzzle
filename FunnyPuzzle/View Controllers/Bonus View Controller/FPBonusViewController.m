@@ -59,7 +59,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _next.alpha = 0;
+    //_next.alpha = 0;
+    _next.backgroundColor = [UIColor clearColor];
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
     MainRec=CGRectMake( 0, 0,  80, 68);
@@ -511,7 +512,7 @@ int tick=0;
 {
     
     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
-    [self bounceElements:@[_next] isInSuperView:self.view];
+    //[self bounceElements:@[_next] isInSuperView:self.view];
     
    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
@@ -563,22 +564,14 @@ int tick=0;
 
 
 - (IBAction)next:(id)sender {
-//    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
-//    FPLevelPresentationViewController *presentationController = (FPLevelPresentationViewController *)[parent presentingViewController];
-//    int levelNumber =[parent levelNumber];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:levelNumber+1 inSection:0];
-//    [presentationController updateColleCellAtIndexPath:indexPath];
-   
-   // [self dismissViewControllerAnimated:YES completion:nil];
+
     FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
 
     FPLevelPresentationViewController *levelPresentatin = (FPLevelPresentationViewController *)[parent presentingViewController];
     [levelPresentatin nextLevel];
 
-    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
     NSLog(@"BonusLevel Finished");
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    
+
 }
 
 

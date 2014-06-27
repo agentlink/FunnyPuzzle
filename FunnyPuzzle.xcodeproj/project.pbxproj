@@ -64,6 +64,7 @@
 		7FC90C7F19479C78001E1E2E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC90C7E19479C78001E1E2E /* UIImage+ImageEffects.m */; };
 		7FC9A6CB195845B50045D9ED /* altLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9A6CD195845B50045D9ED /* altLocalization.strings */; };
 		7FC9A6D21959449C0045D9ED /* Maim_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9A6D11959449C0045D9ED /* Maim_iPad.storyboard */; };
+		7FC9A71B195CA32B0045D9ED /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC9A71A195CA32B0045D9ED /* Animations.m */; };
 		7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */; };
 		7FC9D1FB19337F9F002878BD /* KBCuriousSoul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */; };
 		7FC9D1FD1934C4FE002878BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */; };
@@ -192,6 +193,8 @@
 		7FC9A6D11959449C0045D9ED /* Maim_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maim_iPad.storyboard; sourceTree = "<group>"; };
 		7FC9A6D31959ABC80045D9ED /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/altLocalization.strings; sourceTree = "<group>"; };
 		7FC9A6D41959B0D50045D9ED /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/altLocalization.strings; sourceTree = "<group>"; };
+		7FC9A719195CA32B0045D9ED /* Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animations.h; path = Animations/Animations.h; sourceTree = "<group>"; };
+		7FC9A71A195CA32B0045D9ED /* Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animations.m; path = Animations/Animations.m; sourceTree = "<group>"; };
 		7FC9D1F819337F9F002878BD /* iO0J6mji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iO0J6mji.ttf; sourceTree = "<group>"; };
 		7FC9D1F919337F9F002878BD /* KBCuriousSoul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KBCuriousSoul.ttf; sourceTree = "<group>"; };
 		7FC9D1FC1934C4FE002878BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -373,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				84684F7A195C6F69007571D0 /* Reachability */,
+				7FC9A71D195CA33B0045D9ED /* Animation */,
 				7F8C5E22194ED9A5001BA8A2 /* JMIBlur */,
 				8443DE07192F4F16009F1EF8 /* Game Model */,
 				84E962E7192F75D200DC785C /* Constants */,
@@ -579,6 +583,15 @@
 				7FA4BA69192C9AFD00A772BA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7FC9A71D195CA33B0045D9ED /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7FC9A719195CA32B0045D9ED /* Animations.h */,
+				7FC9A71A195CA32B0045D9ED /* Animations.m */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		7FC9D1F719337F9F002878BD /* Fonts */ = {
@@ -890,6 +903,7 @@
 				84A7319A19597AF600D95A59 /* FPSocialManager.m in Sources */,
 				7F316182192D092300C49EAE /* FPPreferences.m in Sources */,
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
+				7FC9A71B195CA32B0045D9ED /* Animations.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
 				7F8C5E29194ED9A5001BA8A2 /* BlurLayer.m in Sources */,

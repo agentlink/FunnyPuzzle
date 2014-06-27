@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -592,34 +592,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC7-5k-eFv">
-                                <rect key="frame" x="428" y="126" width="46" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3d-Oq-0gl">
+                                <rect key="frame" x="420" y="100" width="60" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="fM8-rI-CDG"/>
+                                    <constraint firstAttribute="width" constant="60" id="IUf-07-Qa1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="bl9-mT-A8m"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title=">">
+                                <state key="normal" image="arrowRight">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="next:" destination="fZu-IS-JoB" eventType="touchUpInside" id="6FR-ZF-FAH"/>
+                                    <action selector="next:" destination="fZu-IS-JoB" eventType="touchUpInside" id="m7Y-vA-7Je"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215688593685627" green="0.89411771297454834" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="HC7-5k-eFv" secondAttribute="trailing" constant="6" id="8Mg-Ui-WD5"/>
-                            <constraint firstItem="fTF-Mt-lPc" firstAttribute="top" secondItem="HC7-5k-eFv" secondAttribute="bottom" constant="144" id="YiV-1T-W94"/>
-                            <constraint firstItem="HC7-5k-eFv" firstAttribute="top" secondItem="yA9-dq-Qjv" secondAttribute="bottom" constant="106" id="poX-Dd-Np4"/>
+                            <constraint firstItem="fTF-Mt-lPc" firstAttribute="top" secondItem="S3d-Oq-0gl" secondAttribute="bottom" constant="100" id="9gr-Vo-MOw"/>
+                            <constraint firstAttribute="trailing" secondItem="S3d-Oq-0gl" secondAttribute="trailing" id="EbL-aw-OAq"/>
+                            <constraint firstItem="S3d-Oq-0gl" firstAttribute="top" secondItem="Zl1-aV-xGU" secondAttribute="top" constant="100" id="NLa-Am-yfN"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="gnL-g2-nfh"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="next" destination="HC7-5k-eFv" id="dct-GP-0FY"/>
+                        <outlet property="next" destination="S3d-Oq-0gl" id="Me1-1u-DRq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEf-oI-tqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -747,6 +748,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowRight" width="31" height="49"/>
         <image name="facebook" width="46" height="46"/>
         <image name="google" width="46" height="46"/>
         <image name="twitter" width="46" height="46"/>
