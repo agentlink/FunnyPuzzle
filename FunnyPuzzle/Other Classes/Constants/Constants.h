@@ -63,7 +63,7 @@ typedef NS_ENUM (int, FPGameplayNavigationType)
 
 static double kAnimationDuration = 0.3;
 
-static const double kAnimationDuration = 0.3f;
+//static const double kAnimationDuration = 0.3f;
 
 static NSString *FPLocalizedTable = @"Localizable";
 
