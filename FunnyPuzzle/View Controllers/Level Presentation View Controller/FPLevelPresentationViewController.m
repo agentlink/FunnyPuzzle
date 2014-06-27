@@ -268,6 +268,7 @@
             }];
         }];
     }
+    [self.collection reloadItemsAtIndexPaths:[self.collection indexPathsForVisibleItems]];
 }
 - (void)previousLevel
 {
@@ -304,6 +305,7 @@
             }];
         }];
     }
+    [self.collection reloadItemsAtIndexPaths:[self.collection indexPathsForVisibleItems]];
 }
 - (void)closeGameplay
 {

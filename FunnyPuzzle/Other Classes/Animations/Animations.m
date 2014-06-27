@@ -108,6 +108,45 @@
     });
 }
 
+
++ (void)move:(UIView *)view to:(CGPoint)newPosition duration:(double)duration completion:(void(^)(void))completion
+{
+    float keys = 30;
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CAKeyframeAnimation *ancorPointAnimation = [CAKeyframeAnimation animationWithKeyPath:@"anchorPoint"];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    NSMutableArray *keyTimes = [[NSMutableArray alloc] init];
+    ancorPointAnimation.values = @[[NSValue valueWithCGPoint:view.layer.anchorPoint],
+                                   [NSValue valueWithCGPoint:CGPointZero]];
+    ancorPointAnimation.keyTimes = @[@0, @0.2];
+
+    float x = view.layer.position.x;
+    float y = view.layer.position.y;
+    float newX = newPosition.x;
+    float newY = newPosition.y;
+    Animations *animations = [[Animations alloc] init];
+    view.layer.anchorPoint = CGPointMake(0, 0);
+    for (float i = 0; i<=duration; i+=(duration/keys)) {
+        float scale = [animations easeOutElastic:(i/duration) shift:0];
+        float currentX, currentY;
+        currentX = newX==x ? x : newX*scale+(x-(x*scale));
+        currentY = newY==y ? y : newY*scale+(y-(y*scale));
+        NSValue *value = [NSValue valueWithCGPoint:CGPointMake(currentX, currentY)];
+        [values addObject:value];
+        [keyTimes addObject:@(i/duration)];
+    }
+    animation.values = values;
+    animation.keyTimes = keyTimes;
+
+    animations.completionBlock = completion;
+    animationGroup.delegate = animations;
+    view.layer.position = newPosition;
+    animationGroup.animations = @[animation, ancorPointAnimation];
+    animationGroup.duration = duration;
+    [view.layer addAnimation:animationGroup forKey:@"move"];
+}
+
 #pragma mark - Custom Accssesors
 
 
@@ -118,4 +157,11 @@
             _completionBlock();
         }
 }
+#pragma mark -  Timing Functions
+- (float)easeOutElastic:(double)time shift:(double)shift
+{
+    shift = shift ? shift : 0.3;
+    return pow(2, -10*time)*sin((time-shift/4)*(2*M_PI)/shift)+1;
+}
+
 @end
