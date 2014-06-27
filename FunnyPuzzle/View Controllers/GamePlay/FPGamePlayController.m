@@ -548,19 +548,38 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
     CGSize elementSize = element.frame.size;
     CGPoint winPlace = element.winPlace;
     if (elementSize.width<elementSize.height && elementSize.width<50) {
-        int a = 50 - elementSize.width;
-        elementSize.width += a;
-        winPlace.x = element.winPlace.x-(a/2);
+        int delta = 50 - elementSize.width;
+        elementSize.width += delta;
+        winPlace.x = element.winPlace.x-(delta/2);
     } else if (elementSize.height<elementSize.width && elementSize.height<50) {
-        int a = 50 - elementSize.height;
-        elementSize.height += a;
-       winPlace.y = element.winPlace.y-(a/2);
+        int delta = 50 - elementSize.height;
+        elementSize.height += delta;
+       winPlace.y = element.winPlace.y-(delta/2);
     } else {
         return element;
     }
     element.frame = CGRectMake(element.frame.origin.x, element.frame.origin.y, elementSize.width, elementSize.height);
     element.winPlace = winPlace;
     return element;
+}
+- (void)checkElement:(UIView*)view
+{
+    CGRect frame = view.frame;
+    CGRect newFrame = frame;
+    CGRect viewFrame = self.view.frame;
+    BOOL animate = NO;
+    if (CGRectGetMaxX(frame)>CGRectGetHeight(viewFrame))
+    {
+        newFrame.origin.x = CGRectGetHeight(viewFrame)-CGRectGetHeight(frame);
+        animate = YES;
+    }
+    if (CGRectGetMaxY(frame)>CGRectGetWidth(viewFrame)) {
+        newFrame.origin.y = CGRectGetWidth(viewFrame)- CGRectGetWidth(frame);
+        animate = YES;
+    }
+    if (!CGRectEqualToRect(newFrame, frame)) {
+        [Animations move:view to:newFrame.origin duration:kAnimationDuration completion:nil];
+    }
 }
 - (CGRect)adaptRectSize:(CGSize)size
 {
@@ -738,7 +757,13 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.collision removeItem:_dragingElement];
+    //[self.collision removeItem:_dragingElement];
+//    [Animations move:_dragingElement to:_dragingElement.winPlace duration:2 completion:^{
+//
+//    }];
+    if (_dragingElement) {
+        [self checkElement:_dragingElement];
+    }
 }
 - (void)checkForRightPlace:(NSUInteger)index
 {
@@ -757,7 +782,6 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
         }
     }
 }
-
 
 
 - (BOOL) pointIsTransparent:(CGPoint)point inView:(UIView *)view
