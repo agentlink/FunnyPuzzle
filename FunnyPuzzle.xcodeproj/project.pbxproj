@@ -375,6 +375,7 @@
 		7F31616B192CA01500C49EAE /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84684F7A195C6F69007571D0 /* Reachability */,
 				7FC9A71D195CA33B0045D9ED /* Animation */,
 				7F8C5E22194ED9A5001BA8A2 /* JMIBlur */,
 				8443DE07192F4F16009F1EF8 /* Game Model */,
