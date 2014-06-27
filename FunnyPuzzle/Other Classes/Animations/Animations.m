@@ -130,8 +130,8 @@
     for (float i = 0; i<=duration; i+=(duration/keys)) {
         float scale = [animations easeOutElastic:(i/duration) shift:0];
         float currentX, currentY;
-        currentX = newX>x ? newX*scale-(x-(x*scale)) : newX*scale+(x-(x*scale));
-        currentY = newY>y ? newY*scale-(y-(y*scale)) : newY*scale+(y-(y*scale));
+        currentX = newX==x ? x : newX*scale+(x-(x*scale));
+        currentY = newY==y ? y : newY*scale+(y-(y*scale));
         NSValue *value = [NSValue valueWithCGPoint:CGPointMake(currentX, currentY)];
         [values addObject:value];
         [keyTimes addObject:@(i/duration)];

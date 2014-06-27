@@ -141,7 +141,7 @@
         case FPGameplayAnimationModeLevelCompleet:
             [self startAnimationForCompleetLevel];
             self.ACManager = [AccelerometerManager new];
-            [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.9];
+            [self.ACManager setShakeRangeWithMinValue:.5 MaxValue:.9];
             self.ACManager.delegate = self;
             [self.ACManager startShakeDetect];
             break;
@@ -567,15 +567,16 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
     CGRect frame = view.frame;
     CGRect newFrame = frame;
     CGRect viewFrame = self.view.frame;
-    BOOL animate = NO;
     if (CGRectGetMaxX(frame)>CGRectGetHeight(viewFrame))
     {
-        newFrame.origin.x = CGRectGetHeight(viewFrame)-CGRectGetHeight(frame);
-        animate = YES;
+        newFrame.origin.x = CGRectGetHeight(viewFrame)-CGRectGetWidth(frame);
+    } else if (CGRectGetMinX(frame)<0) {
+        newFrame.origin.x = 0;
     }
     if (CGRectGetMaxY(frame)>CGRectGetWidth(viewFrame)) {
-        newFrame.origin.y = CGRectGetWidth(viewFrame)- CGRectGetWidth(frame);
-        animate = YES;
+        newFrame.origin.y = CGRectGetWidth(viewFrame)- CGRectGetHeight(frame);
+    } else if (CGRectGetMinY(frame)<0) {
+        newFrame.origin.y = 0;
     }
     if (!CGRectEqualToRect(newFrame, frame)) {
         [Animations move:view to:newFrame.origin duration:kAnimationDuration completion:nil];
