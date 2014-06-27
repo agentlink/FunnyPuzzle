@@ -50,7 +50,7 @@
 "Train" = "Паравозик";
 "Wagon"	= "Вагончик";
 "Peas" = "Горох";
-"Pot with honey" = "Горшочек с медом";
+"Pot With Honey" = "Горшочек с медом";
 "Mushrooms" = "Грибы";
 "Potato" = "Картошка";
 "Key" = "Ключ";
@@ -73,6 +73,7 @@
 "Shuttlecocks" = "Воланчик";
 "Hamburger" = "Гамбургер";
 "Yacht"	= "Яхта";
+
 "Scrambled Eggs" = "Яичница";
 "Umbrella" = "Зонтик";
 

@@ -46,7 +46,8 @@
 "Strawberries" = "Клубника";
 "Rhino" = "Носорог";
 "Pumpkin" = "Тыква";
-"Scrambled_Eggs" = "Яичница";
+
+
 "Apple" = "Яблочко";
 "Turtle" = "Черепашка";
 "Banan" = "Банан";
@@ -79,3 +80,5 @@
 "Cock" = "Петух";
 "Cherry" = "Вишня";
 "Pear" = "Груш";
+
+"Scrambled Eggs" = "Яичница";
