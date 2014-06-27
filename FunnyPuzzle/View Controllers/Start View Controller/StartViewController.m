@@ -71,7 +71,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
 //
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-    [[FPGameManager sharedInstance] setSettings];
     [self setSettingsControl];
     NSString *addr = [NSString stringWithFormat:@"%p", _leftView];
     NSLog(@"leftView %@",addr);

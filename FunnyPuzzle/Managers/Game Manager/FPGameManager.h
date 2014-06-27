@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL playSoundWhenImageAppear;
 @property (nonatomic, weak) NSString* language;
 @property (nonatomic) int candiesCount;
+@property (nonatomic) NSMutableArray* BonusLevels;
 
 - (void) setSettings;
 - (void) changeSettings:(BOOL)value forKey:(NSString*)key;

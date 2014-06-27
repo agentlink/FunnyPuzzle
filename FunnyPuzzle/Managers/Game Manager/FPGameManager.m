@@ -18,7 +18,7 @@
 @end
 
 @implementation FPGameManager
-@synthesize candiesCount = _candiesCount;
+
 
 static FPGameManager *_instance=nil;
 
@@ -44,17 +44,6 @@ static FPGameManager *_instance=nil;
     return _instance;
 }
 #pragma mark - Custom Accssesors
--(int)candiesCount
-{
-    _candiesCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:CANDIES_COUNT];
-    return _candiesCount;
-}
-- (void) setCandiesCount:(int)candiesCount
-{
-    _candiesCount = candiesCount;
-    [[NSUserDefaults standardUserDefaults] setInteger:candiesCount forKey:CANDIES_COUNT];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (void) setSettings{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -65,18 +54,24 @@ static FPGameManager *_instance=nil;
         [defaults setBool:YES forKey:MUSIC];
         [defaults setInteger:0 forKey:CANDIES_COUNT];
         [defaults setObject:[self getDefaultLanguage] forKey:LANGUAGE];
+        NSMutableArray *bonusLvl = [NSMutableArray arrayWithObjects:[NSNumber numberWithInt:0],
+                                                                    [NSNumber numberWithInt:0],
+                                                                    [NSNumber numberWithInt:0],  nil];
+        [defaults setObject:bonusLvl forKey:@"bonusLvl"];
         [defaults synchronize];
         _playSoundWhenImageAppear=YES;
         _displayInnerBorders=YES;
-        _candiesCount = 0;
+        self.candiesCount = 0;
+        _BonusLevels = bonusLvl;
         _language = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     }
     else{
+        _BonusLevels = [defaults objectForKey:@"bonusLvl"];
         _playSoundWhenImageAppear=[defaults boolForKey:PLAY_SOUND_WHEN_IMAGE_APPEAR];
         _displayInnerBorders=[defaults boolForKey:DISPLAY_INNER_BORDERS];
         _music=[defaults boolForKey:MUSIC];
         _language = [defaults objectForKey:LANGUAGE];
-        _candiesCount = (int)[defaults integerForKey:CANDIES_COUNT];
+        self.candiesCount = (int)[defaults integerForKey:CANDIES_COUNT];
     }
 }
 
@@ -122,9 +117,9 @@ static FPGameManager *_instance=nil;
 }
 
 - (void) pickUpCandies:(int)candies{
-    _candiesCount+=candies;
+    self.candiesCount+=candies;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:_candiesCount forKey:@"candiesCount"];
+    [defaults setInteger:self.candiesCount forKey:@"candiesCount"];
     [defaults synchronize];
 }
          
@@ -141,7 +136,6 @@ static FPGameManager *_instance=nil;
 - (void) interstitialDidDismissScreen:(GADInterstitial *)ad{
     [_instance loadNewAdv];
 }
-
 
 
 @end

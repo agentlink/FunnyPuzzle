@@ -69,6 +69,7 @@
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     imagesCandySmall=[NSArray arrayWithObjects:@"candy_blue_small",@"candy_orange_small",@"candy_yellow_blue_small", nil];
     Numb=arc4random()%4;
+    
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -85,34 +86,58 @@
         default:
             break;
     }
-    NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
-    NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
-    moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-    [moviePlayerController.view setFrame:MainRec];
-    moviePlayerController.controlStyle=MPMovieControlStyleNone;
-    moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
-    [moviePlayerController prepareToPlay];
-    moviePlayerController.view.backgroundColor=[UIColor clearColor];
-    moviePlayerController.view.layer.zPosition=5;
-    [self.view addSubview:moviePlayerController.view];
-    [moviePlayerController play];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playMediaFinished:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:moviePlayerController];
-    tick=0;
-    timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
-                                             target: self
-                                           selector: @selector(handleTimer)
-                                           userInfo: nil
-                                            repeats: YES];
-}
 
+    if ((Numb<3) && ([[[FPGameManager sharedInstance].BonusLevels objectAtIndex:Numb] intValue] == 0))
+    {
+    
+        NSMutableArray *levels = [FPGameManager sharedInstance].BonusLevels;
+        [levels removeObjectAtIndex:Numb];
+        [levels insertObject:[NSNumber numberWithInt:1] atIndex:Numb];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:levels forKey:@"bonusLvl"];
+        [defaults synchronize];
+
+        NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
+        NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
+        moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
+        [moviePlayerController.view setFrame:MainRec];
+        moviePlayerController.controlStyle=MPMovieControlStyleNone;
+        moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
+        [moviePlayerController prepareToPlay];
+        moviePlayerController.view.backgroundColor=[UIColor clearColor];
+        moviePlayerController.view.layer.zPosition=5;
+        [self.view addSubview:moviePlayerController.view];
+        [moviePlayerController play];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(playMediaFinished:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:moviePlayerController];
+        tick=0;
+        timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
+                                                 target: self
+                                               selector: @selector(handleTimer)
+                                               userInfo: nil
+                                                repeats: YES];
+    
+        }
+    else
+    {
+        if (Numb<3)
+            //&&([[FPGameManager sharedInstance].BonusLevels objectAtIndex:Numb] == [NSNumber numberWithInt:1])) {
+        {   _accelerometer = [AccelerometerManager new];
+            _accelerometer.delegate=self;
+            [_accelerometer setShakeRangeWithMinValue:0.70 MaxValue:0.80];
+            [_accelerometer startShakeDetect];
+        }
+    }
+}
 
 
 -(void)FirstBonusLevelLoad
 {
-    MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+ 
+        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+ 
     UIImage *im=[UIImage imageNamed:@"basket_icon"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/2, self.view.frame.size.width/2-im.size.width/2, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
@@ -146,9 +171,12 @@
 
 -(void)SecondBonusLevelLoad
 {
+   
+        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
+  
     UIImage *im2=[UIImage imageNamed:@"sun_img"];
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
-    MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
+    
     UIImageView *imView=[[UIImageView alloc]initWithFrame:CGRectMake( self.view.frame.size.height/2-im2.size.height/2, self.view.frame.size.width/2-im2.size.width,  im2.size.height, im2.size.width)];
     imView.image=im2;
     _candiesCount=5;
@@ -194,11 +222,14 @@
 
 -(void)ThirdBonusLevelLoad
 {
-    objectsCandies2=[[NSMutableArray alloc]init];
+        objectsCandies2=[[NSMutableArray alloc]init];
     UIImage *im=[UIImage imageNamed:@"tree_img"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/4, self.view.frame.size.width/2-im.size.width/2-50, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
-    MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
+   
+        MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
+
+
     imView.image=im;
     int x=imView.frame.origin.x;
     int y=imView.frame.origin.y;
@@ -511,7 +542,7 @@ int tick=0;
 -(void)BonusLevelFinished
 {
     
-    FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
+   // FPGamePlayController *parent=(FPGamePlayController *)[self presentingViewController];
     //[self bounceElements:@[_next] isInSuperView:self.view];
     
    // [parent bounceElements:@[parent.next] isInSuperView:self.view];
