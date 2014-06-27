@@ -19,6 +19,7 @@
 #define GOOGLE_ADMOBS_ID @"ca-app-pub-1787934849363418/8173411882"
 
 #define ITUNES_LINK @"https://itunes.apple.com/us/app/funny-puzzle/id892755717"
+#define RATE_APP_LINK @"https://itunes.apple.com/ua/app/tic-tac-toe-online/id885035754?mt=8"
 
 #define CLIENT_ID @"640872702054-144cgnd8ukdb2s0vf2b22oc1dmg22q6v.apps.googleusercontent.com"
 
@@ -59,6 +60,8 @@ typedef NS_ENUM (int, FPGameplayNavigationType)
     FPGameplayNavigationTypePrew,
     FPGameplayNavigationTypeNextPrew
 };
+
+static double kAnimationDuration = 0.3;
 
 static const double kAnimationDuration = 0.3f;
 
