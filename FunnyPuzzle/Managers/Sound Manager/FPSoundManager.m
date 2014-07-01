@@ -8,8 +8,9 @@
 
 #import "FPSoundManager.h"
 #import "FPGameManager.h"
+#import "FPBulbSound.h"
 
-@interface FPSoundManager()<AVAudioPlayerDelegate>
+@interface FPSoundManager()<AVAudioPlayerDelegate, deleteBlob>
 
 @property (nonatomic, strong) AVAudioPlayer *backGroundMusicPlayer;
 @property (nonatomic, strong) AVAudioPlayer *backGroundGamePlayer;
@@ -23,6 +24,7 @@
 @property (nonatomic, weak) NSTimer *gameMusicMusicTimer;
 @property (nonatomic) BOOL gameVolumeUp;
 @property (nonatomic) BOOL backgroundVolumeUp;
+@property (nonatomic) NSMutableArray *blobs;
 
 @end
 
@@ -94,30 +96,31 @@ static FPSoundManager *_instance=nil;
         NSLog(@"%@", error);
     }
 }
-- (void)playBlob:(FPSoundBlobType)type
-{
-    NSURL *blobURL;
-    NSString *blobFolderFullPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Levels/Blobs/"];
-    switch (type) {
-        case FPSoundBlobTypeOnce:
-            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blob"];
-            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%6];
-            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
-            break;
-        case FPSoundBlobTypeTwice:
-            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobTwice"];
-            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
-            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
-            break;
-        case FPSoundBlobTypeApear:
-            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobApear"];
-            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
-            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
-            break;
-    }
-}
+//- (void)playBlob:(FPSoundBlobType)type
+//{
+//    NSURL *blobURL;
+//    NSString *blobFolderFullPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Levels/Blobs/"];
+//    switch (type) {
+//        case FPSoundBlobTypeOnce:
+//            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blob"];
+//            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%6];
+//            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+//            break;
+//        case FPSoundBlobTypeTwice:
+//            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobTwice"];
+//            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
+//            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+//            break;
+//        case FPSoundBlobTypeApear:
+//            blobFolderFullPath = [blobFolderFullPath stringByAppendingString:@"blobApear"];
+//            blobFolderFullPath = [NSString stringWithFormat:@"%@%i.mp3", blobFolderFullPath, arc4random()%3];
+//            blobURL = [NSURL fileURLWithPath:blobFolderFullPath];
+//            break;
+//    }
+//}
 
 + (void) loadData{
+    _instance.blobs = [NSMutableArray new];
     NSError *error;
     
     //initialize Menu background player
@@ -218,15 +221,16 @@ int timerTick;
     _soundToPlay=nil;
 }
 
+- (void) playBlob{
+    FPBulbSound *blop = [FPBulbSound new];
+    blop.delegate = _instance;
+    [_instance.blobs addObject:blop];
+    [blop play];
+}
+
 #pragma mark - AudioPlayerDelegate
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-#pragma mark - AVAudioPlayer delegate
-
-//    if (![_soundPlayer isEqual:player]) {
-//        [player stop];
-//        player = nil;
-//    }
     if (flag==YES) {
         if (_soundToPlay) {
             [_soundPlayer stop];
@@ -238,6 +242,13 @@ int timerTick;
             _soundToPlay=nil;
         }
     }
+}
+
+#pragma mark - deleteBlobDelegate
+
+- (void) deleteBlobById:(FPBulbSound *)blobID
+{
+    [_instance.blobs removeObject:blobID];
 }
 
 @end
