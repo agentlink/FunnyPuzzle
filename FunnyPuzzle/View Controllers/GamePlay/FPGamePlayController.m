@@ -141,7 +141,7 @@
         case FPGameplayAnimationModeLevelCompleet:
             [self startAnimationForCompleetLevel];
             self.ACManager = [AccelerometerManager new];
-            [self.ACManager setShakeRangeWithMinValue:.5 MaxValue:.9];
+            [self.ACManager setShakeRangeWithMinValue:.4 MaxValue:.9];
             self.ACManager.delegate = self;
             [self.ACManager startShakeDetect];
             break;
@@ -627,7 +627,7 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
     self.levelDone = self.replay ? NO : YES;
     [self compleetAnimation];
     self.ACManager = [AccelerometerManager new];
-    [self.ACManager setShakeRangeWithMinValue:.75 MaxValue:.9];
+    [self.ACManager setShakeRangeWithMinValue:.4 MaxValue:.9];
     self.ACManager.delegate = self;
     [self.ACManager startShakeDetect];
 }
@@ -758,10 +758,6 @@ int binary_decimal(int binary) /* Function to convert binary to decimal.*/
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //[self.collision removeItem:_dragingElement];
-//    [Animations move:_dragingElement to:_dragingElement.winPlace duration:2 completion:^{
-//
-//    }];
     if (_dragingElement) {
         [self checkElement:_dragingElement];
     }

@@ -14,5 +14,7 @@
 + (void)scaleIn:(UIView *)view duration:(double)duration delay:(double)delay completion:(void(^)(void))completion;
 + (void)scaleOut:(UIView *)view duration:(double)duration deley:(double)deley completion:(void(^)(void))completion;
 + (void)bounceIn:(UIView *)view duration:(double)duration completion:(void(^)(void))completion;
++ (void)bouncedScaleIn:(UIView *)view duration:(double)duratin completion:(void(^)(void))completion;
 + (void)move:(UIView *)view to:(CGPoint)newPosition duration:(double)duration completion:(void(^)(void))completion;
+
 @end

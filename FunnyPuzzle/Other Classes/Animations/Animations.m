@@ -117,16 +117,26 @@
     CAKeyframeAnimation *ancorPointAnimation = [CAKeyframeAnimation animationWithKeyPath:@"anchorPoint"];
     NSMutableArray *values = [[NSMutableArray alloc] init];
     NSMutableArray *keyTimes = [[NSMutableArray alloc] init];
-    ancorPointAnimation.values = @[[NSValue valueWithCGPoint:view.layer.anchorPoint],
-                                   [NSValue valueWithCGPoint:CGPointZero]];
-    ancorPointAnimation.keyTimes = @[@0, @0.2];
 
+    CGRect frame = view.frame;
     float x = view.layer.position.x;
     float y = view.layer.position.y;
     float newX = newPosition.x;
     float newY = newPosition.y;
+
+    CGPoint newCenter = CGPointZero;
+    if (newX == frame.origin.x) {
+        newCenter.x = view.layer.anchorPoint.x;
+    }
+    if (newY == frame.origin.y) {
+        newCenter.y = view.layer.anchorPoint.y;
+    }
+    ancorPointAnimation.values = @[[NSValue valueWithCGPoint:view.layer.anchorPoint],
+                                   [NSValue valueWithCGPoint:CGPointZero]];
+    ancorPointAnimation.keyTimes = @[@0, @0.2];
+
     Animations *animations = [[Animations alloc] init];
-    view.layer.anchorPoint = CGPointMake(0, 0);
+    view.layer.anchorPoint = CGPointZero;
     for (float i = 0; i<=duration; i+=(duration/keys)) {
         float scale = [animations easeOutElastic:(i/duration) shift:0];
         float currentX, currentY;
@@ -146,7 +156,36 @@
     animationGroup.duration = duration;
     [view.layer addAnimation:animationGroup forKey:@"move"];
 }
++ (void)bouncedScaleIn:(UIView *)view duration:(double)duration completion:(void(^)(void))completion
+{
+    float keys = 30;
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    CAKeyframeAnimation *alphaAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    NSMutableArray *keyTimes = [[NSMutableArray alloc] init];
 
+    alphaAnimation.values = @[@0, @1];
+    alphaAnimation.keyTimes = @[@0, @1];
+
+    Animations *animations = [[Animations alloc] init];
+    for (float i = 0; i<=duration; i+=(duration/keys)) {
+        float scale = [animations easeOutElastic:(i/duration) shift:0];
+        NSValue *value = [NSValue valueWithCATransform3D:CATransform3DMakeScale(scale, scale, scale)];
+        [values addObject:value];
+        [keyTimes addObject:@(i/duration)];
+    }
+    scaleAnimation.values = values;
+    scaleAnimation.keyTimes = keyTimes;
+
+    animations.completionBlock = completion;
+    animationGroup.delegate = animations;
+    view.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    view.layer.opacity = 1;
+    animationGroup.animations = @[scaleAnimation, alphaAnimation];
+    animationGroup.duration = duration;
+    [view.layer addAnimation:animationGroup forKey:@"scaleIn"];
+}
 #pragma mark - Custom Accssesors
 
 
