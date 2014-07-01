@@ -246,9 +246,9 @@
             //[element.layer setTransform:CATransform3DMakeScale(0, 0, 0)];
             [self.view addSubview:element];
         }
-        [Animations scaleIn:element duration:kAnimationDuration delay:([elements indexOfObject:element]*0.09) completion:^{
-
-        }];
+        [Animations scaleIn:element duration:kAnimationDuration delay:([elements indexOfObject:element]*0.09) start:^{
+            [[FPSoundManager sharedInstance] playBlob];
+        } completion:nil];
     }
 }
 - (void)bounceElement:(FPElement *)element
