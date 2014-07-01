@@ -28,12 +28,10 @@
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
     int ii;
-    CGRect  MainRec;
+    CGRect  RectForVideo;
     int lichulnuk;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *Bt;
-- (IBAction)DeleteViewController:(id)sender;
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
@@ -59,17 +57,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //_next.alpha = 0;
     _next.backgroundColor = [UIColor clearColor];
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-    MainRec=CGRectMake( 0, 0,  80, 68);
+    RectForVideo=CGRectMake( 0, 0,  80, 68);
     xx=20;
     lichulnuk=0;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     imagesCandySmall=[NSArray arrayWithObjects:@"candy_blue_small",@"candy_orange_small",@"candy_yellow_blue_small", nil];
     Numb=arc4random()%4;
-    
+    Numb=0;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -100,7 +97,7 @@
         NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
         NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
         moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-        [moviePlayerController.view setFrame:MainRec];
+        [moviePlayerController.view setFrame:RectForVideo];
         moviePlayerController.controlStyle=MPMovieControlStyleNone;
         moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
         [moviePlayerController prepareToPlay];
@@ -123,7 +120,7 @@
     else
     {
         if (Numb<3)
-            //&&([[FPGameManager sharedInstance].BonusLevels objectAtIndex:Numb] == [NSNumber numberWithInt:1])) {
+            
         {   _accelerometer = [AccelerometerManager new];
             _accelerometer.delegate=self;
             [_accelerometer setShakeRangeWithMinValue:0.70 MaxValue:0.80];
@@ -136,7 +133,7 @@
 -(void)FirstBonusLevelLoad
 {
  
-        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+        RectForVideo=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
  
     UIImage *im=[UIImage imageNamed:@"basket_icon"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/2, self.view.frame.size.width/2-im.size.width/2, im.size.width, im.size.height);
@@ -163,7 +160,7 @@
         [self.view addSubview:c];
         [objectsCandies insertObject:c atIndex:i-1];
         x+=deltaX;
-        [c Move:true];
+        [c Move:YES];
     }
  
    
@@ -172,7 +169,7 @@
 -(void)SecondBonusLevelLoad
 {
    
-        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
+        RectForVideo=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
   
     UIImage *im2=[UIImage imageNamed:@"sun_img"];
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
@@ -201,7 +198,7 @@
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         x+=deltaX;
-        [c Move:true];
+        [c Move:YES];
     }
 }
 
@@ -227,7 +224,7 @@
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/4, self.view.frame.size.width/2-im.size.width/2-50, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
    
-        MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
+        RectForVideo=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
 
 
     imView.image=im;
@@ -291,7 +288,7 @@
     imView.image=im;
     imView.layer.zPosition=0;
     [self.view addSubview:imView];
-    MainRec=CGRectMake( -80, -70, 80, 68);
+    RectForVideo=CGRectMake( -80, -70, 80, 68);
     int x=0;
     float deltaX=0;
     _candiesCount=20;
