@@ -72,6 +72,8 @@
 		8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB5192F4796009F1EF8 /* game_background_music.mp3 */; };
 		8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */; };
 		84684F7D195C6F8E007571D0 /* MyReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84684F7C195C6F8E007571D0 /* MyReachability.m */; };
+		84684FCE195DA622007571D0 /* Plimps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84684FCD195DA622007571D0 /* Plimps.mp3 */; };
+		84684FD1195DA67F007571D0 /* FPBulbSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 84684FD0195DA67F007571D0 /* FPBulbSound.m */; };
 		84A7319619597AAF00D95A59 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7319519597AAF00D95A59 /* Social.framework */; };
 		84A7319A19597AF600D95A59 /* FPSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7319919597AF600D95A59 /* FPSocialManager.m */; };
 		84AD278619599CAA006ABE7D /* Icon_puzzly_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AD278519599CAA006ABE7D /* Icon_puzzly_1024.png */; };
@@ -204,6 +206,9 @@
 		8443DDB6192F4796009F1EF8 /* menu_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_background_music.mp3; sourceTree = "<group>"; };
 		84684F7B195C6F8E007571D0 /* MyReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyReachability.h; sourceTree = "<group>"; };
 		84684F7C195C6F8E007571D0 /* MyReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReachability.m; sourceTree = "<group>"; };
+		84684FCD195DA622007571D0 /* Plimps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Plimps.mp3; sourceTree = "<group>"; };
+		84684FCF195DA67F007571D0 /* FPBulbSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBulbSound.h; sourceTree = "<group>"; };
+		84684FD0195DA67F007571D0 /* FPBulbSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBulbSound.m; sourceTree = "<group>"; };
 		848CC491193C715A00E13C93 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84A7319519597AAF00D95A59 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84A7319819597AF600D95A59 /* FPSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSocialManager.h; sourceTree = "<group>"; };
@@ -713,6 +718,7 @@
 		84F85B9C192E489400BDECB5 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				84684FCD195DA622007571D0 /* Plimps.mp3 */,
 				8443DDB4192F4796009F1EF8 /* Background music */,
 			);
 			name = Music;
@@ -724,6 +730,8 @@
 			children = (
 				84F85BBF192E97BB00BDECB5 /* FPSoundManager.h */,
 				84F85BC0192E97BB00BDECB5 /* FPSoundManager.m */,
+				84684FCF195DA67F007571D0 /* FPBulbSound.h */,
+				84684FD0195DA67F007571D0 /* FPBulbSound.m */,
 			);
 			name = "Sound Manager";
 			path = "Managers/Sound Manager";
@@ -835,6 +843,7 @@
 				04460FEA1951DFFD00F810E8 /* (null) in Resources */,
 				7FA57040192F399A00CE84F8 /* ground2.pdf in Resources */,
 				7FA4BA55192C9AFD00A772BA /* Main.storyboard in Resources */,
+				84684FCE195DA622007571D0 /* Plimps.mp3 in Resources */,
 				7FA57046192F42C000CE84F8 /* GameField.storyboard in Resources */,
 				84F85BA5192E6A5B00BDECB5 /* ball2.pdf in Resources */,
 				7FA57041192F399A00CE84F8 /* ground3.pdf in Resources */,
@@ -905,6 +914,7 @@
 				7F316160192C9FC200C49EAE /* CloudView.m in Sources */,
 				7FC9A71B195CA32B0045D9ED /* Animations.m in Sources */,
 				7F31615B192C9F9D00C49EAE /* BallView.m in Sources */,
+				84684FD1195DA67F007571D0 /* FPBulbSound.m in Sources */,
 				7F316164192C9FDA00C49EAE /* Segment.m in Sources */,
 				7F8C5E29194ED9A5001BA8A2 /* BlurLayer.m in Sources */,
 				046691A0192CE99A0095E1A8 /* Candy.m in Sources */,
