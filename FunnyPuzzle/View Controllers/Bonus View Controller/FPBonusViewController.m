@@ -73,7 +73,6 @@
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     imagesCandySmall=[NSArray arrayWithObjects:@"candy_blue_small",@"candy_orange_small",@"candy_yellow_blue_small", nil];
     Numb=arc4random()%4;
-    Numb=2;
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -235,12 +234,11 @@
 
 
     imView.image=im;
-    int y=self.view.frame.size.height;
-    int x=0;
-    //int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
-    //int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
-    int pointsX[6]={x,x+56,x+107,x+160,x+220,x+280};
-    int pointsY[6]={y,y,y,y,y,y};
+    int y=imView.frame.origin.y;
+    int x=imView.frame.origin.x;
+    int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
+    int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
+    
 
     [self.view addSubview:imView];
     _candiesCount=6;
