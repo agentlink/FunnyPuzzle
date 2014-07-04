@@ -24,6 +24,7 @@
 - (void)loadLevel:(int)level type:(FPGameType)type;
 - (void)configureGameplayWithAnimationType:(FPGameplayAnimationMode)animationMode;
 - (void)bounceField;
+- (void)start;
 - (UIImage *)screenshot;
 
 @end

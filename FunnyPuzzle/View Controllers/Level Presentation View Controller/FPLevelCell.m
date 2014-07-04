@@ -76,30 +76,30 @@
     _isLocked = isLocked;
     if (isLocked) {
         [self setIsFinished:NO];
-        self.imageVeiw.image = [FPLevelManager imageNamed:@"Levels/locked"];
+        self.imageView.image = [FPLevelManager imageNamed:@"Levels/locked"];
         self.tintColor = [UIColor greenColor];
-        PDFImageOptions *imageOptions = [PDFImageOptions optionsWithSize:self.imageVeiw.image.size];
+        PDFImageOptions *imageOptions = [PDFImageOptions optionsWithSize:self.imageView.image.size];
         imageOptions.tintColor = [UIColor blueColor];
         CGRect frame = CGRectMake(0, 10, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)-20);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.image = [self.imageVeiw.image imageWithOptions:imageOptions];
+        imageView.image = [self.imageView.image imageWithOptions:imageOptions];
         imageView.alpha = 0.3;
         imageView.tag = 3;
         [self addSubview:imageView];
-        self.imageVeiw.hidden = YES;
+        self.imageView.hidden = YES;
 
     } else {
         [[(UIImageView *)self viewWithTag:3] removeFromSuperview];
-        self.imageVeiw.image = nil;
+        self.imageView.image = nil;
         self.tintColor = [UIColor clearColor];
-        self.imageVeiw.hidden = NO;
+        self.imageView.hidden = NO;
     }
 }
 - (void)changeFrameWithAnimationToRect:(CGRect)rect
 {
     [UIView animateWithDuration:0.3 animations:^{
-        [[self imageVeiw] setFrame:rect];
+        [[self imageView] setFrame:rect];
     }];
 }
 

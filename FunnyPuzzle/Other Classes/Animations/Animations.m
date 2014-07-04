@@ -60,6 +60,7 @@
     animationGroup.delegate = animation;
     [view.layer addAnimation:animationGroup forKey:@"scale"];
     view.layer.opacity = 1;
+    view.layer.transform = CATransform3DIdentity;
 }
 
 + (void)scaleOut:(UIView *)view duration:(double)duration completion:(void(^)(void))completion
@@ -245,6 +246,45 @@
     animationGroup.animations = @[scaleAnimation, alphaAnimation];
     animationGroup.duration = duration;
     [view.layer addAnimation:animationGroup forKey:@"scaleIn"];
+}
+
++ (void)push:(UIView *)view duration:(double)duration
+{
+    float keys = 30;
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = duration;
+
+    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    CAKeyframeAnimation *ancorPointAnimation = [CAKeyframeAnimation animationWithKeyPath:@"anchorPoint"];
+
+    NSMutableArray *ancorValues = [[NSMutableArray alloc] init];
+
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    NSMutableArray *keyTimes = [[NSMutableArray alloc] init];
+
+
+    Animations *animations = [[Animations alloc] init];
+    for (float i = 0; i<=duration; i+=(duration/keys)) {
+        float scale = [animations easeOutElastic:(i/duration) shift:0.4];
+        float ancorPoint = 1-(i/duration);
+        NSLog(@"%f", ancorPoint);
+        NSValue *value = [NSValue valueWithCATransform3D:CATransform3DMakeScale(scale, scale, scale)];
+        //NSValue *ancorValue = [NSValue valueWithCGPoint:CGPointMake(ancorPoint, ancorPoint)];
+        //[ancorValues addObject:ancorValue];
+        [values addObject:value];
+        [keyTimes addObject:@(i/duration)];
+    }
+    scaleAnimation.values = values;
+    scaleAnimation.keyTimes = keyTimes;
+
+    ancorPointAnimation.values = ancorValues;
+    ancorPointAnimation.keyTimes = keyTimes;
+
+    animationGroup.delegate = animations;
+    animationGroup.animations = @[scaleAnimation, ancorPointAnimation];
+    view.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    //view.layer.anchorPoint = [[ancorValues lastObject] CGPointValue];
+    [view.layer addAnimation:scaleAnimation forKey:@"push"];
 }
 #pragma mark - Custom Accssesors
 

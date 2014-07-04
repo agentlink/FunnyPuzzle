@@ -18,4 +18,7 @@
 + (void)bouncedScaleIn:(UIView *)view duration:(double)duratin completion:(void(^)(void))completion;
 + (void)move:(UIView *)view to:(CGPoint)newPosition duration:(double)duration completion:(void(^)(void))completion;
 
+
++ (void)push:(UIView *)view duration:(double)duration;
+
 @end

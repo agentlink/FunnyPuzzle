@@ -20,7 +20,7 @@
 
 - (id) init{
     NSError *error;
-    self.soundUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"Plimps" ofType:@"mp3"]];
+    self.soundUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"Blop" ofType:@"mp3"]];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.soundUrl error:&error];
     self.player.numberOfLoops = 0;
     self.player.volume = 0.6;
@@ -30,7 +30,7 @@
 }
 
 - (void) play
-{    
+{
     [self.player play];
 }
 

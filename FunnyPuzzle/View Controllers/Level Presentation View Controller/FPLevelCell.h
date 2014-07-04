@@ -10,7 +10,7 @@
 #import <PDFImage/PDFImage.h>
 
 @interface FPLevelCell : UICollectionViewCell
-@property (nonatomic, weak) IBOutlet PDFImageView *imageVeiw;
+@property (nonatomic, weak) IBOutlet PDFImageView *imageView;
 @property (nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL isLocked;
 @property (nonatomic) IBOutlet UILabel *name;

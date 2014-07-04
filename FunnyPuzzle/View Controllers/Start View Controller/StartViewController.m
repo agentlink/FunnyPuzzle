@@ -16,7 +16,7 @@
 #import "FPSoundManager.h"
 #import "FPLevelPresentationViewController.h"
 #import "FPGameManager.h"
-#import "JMIBlur.h"
+#import "Blur.h"
 #import "FPReminderViewController.h"
 
 @interface StartViewController () //<UIViewControllerTransitioningDelegate>

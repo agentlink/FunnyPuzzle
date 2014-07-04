@@ -71,5 +71,6 @@ static NSString *FPLocalizedTable = @"Localizable";
 typedef enum {
     FPTagRay = 42,
     FPTagBasket,
-    FPTagWinImageFiled
+    FPTagWinImageFiled,
+    FPTagDefaultField
 } FPTag;

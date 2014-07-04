@@ -12,7 +12,7 @@
 #import "GameModel.h"
 #import "FPGamePlayController.h"
 #import "UIImage+ImageEffects.h"
-#import "JMIBlur.h"
+#import "Blur.h"
 
 @interface FPLevelPresentationViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *back;
@@ -121,15 +121,15 @@
         prewLevelDone = [[[_levels objectAtIndex:indexPath.row-1] valueForKey:@"compleet"] boolValue];
     }
     PDFImage *image;
-    if ([[level valueForKey:@"compleet"] boolValue] || YES) {
+    if ([[level valueForKey:@"compleet"] boolValue]) {
         image = [PDFImage imageNamed:[level valueForKey:_compleetKey]];
         cell.name.text = [FPLevelManager gameLocalizedStringForKey:[level valueForKey:@"name"]];//NSLocalizedString([level valueForKey:@"name"], nil);
         cell.isFinished = YES;
-        cell.imageVeiw.image = image;
+        cell.imageView.image = image;
     } else if (prewLevelDone) {
         image = [PDFImage imageNamed:[level valueForKey:_notCompleet]];
         cell.isFinished = NO;
-        cell.imageVeiw.image = image;
+        cell.imageView.image = image;
     } else {
         cell.isLocked = YES;
     }
@@ -140,12 +140,14 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FPLevelCell *cell = (FPLevelCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (cell.isLocked)
+    if (cell.isLocked) {
         return NO;
+    }
     FPGamePlayController *controller = (FPGamePlayController *)[[UIStoryboard storyboardWithName:@"GameField" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"gameplay"];
-
+    
     [controller loadLevel:(int)[indexPath row] type:_gameType];
     controller.indexPath = indexPath;
+
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
 
 
@@ -153,9 +155,9 @@
     UIView *present = [[UIView alloc] initWithFrame:[[self view] convertRect:cell.frame fromView:collectionView]];
     present.frame = [[self view] convertRect:cell.frame fromView:collectionView];
     present.backgroundColor = cell.backgroundColor;
-    PDFImageView *imView = [[PDFImageView alloc] initWithFrame:cell.imageVeiw.frame];
+    PDFImageView *imView = [[PDFImageView alloc] initWithFrame:cell.imageView.frame];
     [imView setContentMode:UIViewContentModeScaleAspectFit];
-    imView.image = cell.imageVeiw.image;
+    imView.image = cell.imageView.image;
     [[present layer] setBorderColor:[[UIColor grayColor] CGColor]];
     [[present layer] setBorderWidth:3];
     [present addSubview:imView];
@@ -164,20 +166,29 @@
 
     [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastLevel"];
 
+
+
     [self presentViewController:controller animated:YES completion:^{
+        controller.field.image = cell.imageView.image;
+        [controller start];
         controller.view.alpha = 0;
-        controller.view.hidden = YES;
         controller.levelsCount = (unsigned)self.levels.count;
+    
+
+
         [UIView animateWithDuration:kAnimationDuration*0.6 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [[present layer] setBorderWidth:0];
             imView.frame = controller.fieldFrame;
             present.frame = CGRectMake(0, 0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame));
-            controller.view.alpha = 1;
+
 
         } completion:^(BOOL finished) {
-            controller.view.hidden = NO;
+            if (finished) {
+
+            controller.view.alpha = 1;
             [controller bounceField];
             [present removeFromSuperview];
+                }
 
         }];
     }];
@@ -245,16 +256,15 @@
         currentLevelNumber+=1;
         [nextController loadLevel:currentLevelNumber type:[self gameType]];
         UIImage *screenshot = [currentGamePlay screenshot];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:screenshot];
+        __block UIImageView *imageView = [[UIImageView alloc] initWithImage:screenshot];
         [self.view addSubview:imageView];
         [self dismissViewControllerAnimated:NO completion:nil];
+        [self updateColleCellAtIndexPath:nextController.indexPath];
         [self presentViewController:nextController animated:NO completion:^{
-            [[nextController view] setFrame:CGRectMake(0, nextController.view.frame.size.height+10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
-//            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
-//            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
-//            nextController.view.layer.shadowOpacity = 1;
-//            nextController.view.layer.shadowRadius = 10;
+            nextController.view.frame = CGRectMake(0, nextController.view.frame.size.height+10, nextController.view.frame.size.width, nextController.view.frame.size.height);
             nextController.levelsCount = (unsigned)self.levels.count;
+            nextController.field.image = ((FPLevelCell *)[self.collection cellForItemAtIndexPath:nextController.indexPath]).imageView.image;
+            [nextController start];
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, -imageView.bounds.size.width*0.8, 0);
             [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -284,8 +294,11 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:screenshot];
         [self.view addSubview:imageView];
         [self dismissViewControllerAnimated:NO completion:nil];
+        [self updateColleCellAtIndexPath:nextController.indexPath];
         [self presentViewController:nextController animated:NO completion:^{
             [[nextController view] setFrame:CGRectMake(0, -nextController.view.frame.size.height-10, nextController.view.frame.size.width, nextController.view.frame.size.height)];
+            nextController.field.image = ((FPLevelCell *)[self.collection cellForItemAtIndexPath:nextController.indexPath]).imageView.image;
+            [nextController start];
 //            nextController.view.layer.shadowColor = [[UIColor grayColor] CGColor];
 //            nextController.view.layer.shadowOffset = CGSizeMake(0, 0);
 //            nextController.view.layer.shadowOpacity = 1;
@@ -316,16 +329,28 @@
 
     UIView *present = [[UIView alloc] initWithFrame:self.view.bounds];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[currentGamePlay screenshot]];
-    PDFImageView *field = currentGamePlay.field;
-    [present addSubview:field];
+    UIImageView *field = [[UIImageView alloc] initWithFrame:currentGamePlay.field.frame];
+
+    PDFImageOptions *options = [PDFImageOptions optionsWithSize:currentGamePlay.field.image.size];
+    //options.contentMode = UIViewContentModeScaleAspectFit;
+    field.image = [currentGamePlay.field.image imageWithOptions:options];
+
+    //PDFImageView *field = [[PDFImageView alloc] initWithFrame:currentGamePlay.field.frame];
+    field.contentMode = UIViewContentModeScaleAspectFit;
+    //field.image = currentGamePlay.field.image;
+    [field removeConstraints:field.constraints];
+
     [present addSubview:imageView];
+    [present addSubview:field];
     present.backgroundColor = currentGamePlay.view.backgroundColor;
     currentGamePlay.view.alpha = 0;
     [self.view addSubview:present];
+    //field.backgroundColor = [UIColor grayColor];
+
     [UIView animateWithDuration:kAnimationDuration animations:^{
         present.frame = [[self view] convertRect:cell.frame fromView:self.collection];
-        field.frame = cell.imageVeiw.frame;
         imageView.frame = CGRectMake(0, 0, CGRectGetWidth(present.frame), CGRectGetHeight(present.frame));
+        field.frame = cell.imageView.frame;
         imageView.alpha = 0;
     } completion:^(BOOL finished) {
         [present removeFromSuperview];

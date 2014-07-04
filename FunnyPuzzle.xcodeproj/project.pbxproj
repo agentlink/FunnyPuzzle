@@ -29,6 +29,10 @@
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
 		7F316182192D092300C49EAE /* FPPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* FPPreferences.m */; };
+		7F4FEFF71962B093009E42B2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FEFF61962B093009E42B2 /* Settings.bundle */; };
+		7F4FEFFD1962B2E7009E42B2 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FEFFC1962B2E7009E42B2 /* Property List.plist */; };
+		7F5316EC1962E58E002FDE4F /* bc.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F5316EB1962E58E002FDE4F /* bc.mp3 */; };
+		7F5316EE1962EA36002FDE4F /* Blop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F5316ED1962EA36002FDE4F /* Blop.mp3 */; };
 		7F8A15B9192E0FFC006A9D6B /* PDFImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */; };
 		7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C2192E2069006A9D6B /* Localizable.strings */; };
 		7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A15C3192E389A006A9D6B /* ball1.pdf */; };
@@ -141,11 +145,16 @@
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
 		7F316180192D092300C49EAE /* FPPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPreferences.h; path = "View Controllers/Preferenсes/FPPreferences.h"; sourceTree = "<group>"; };
 		7F316181192D092300C49EAE /* FPPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPreferences.m; path = "View Controllers/Preferenсes/FPPreferences.m"; sourceTree = "<group>"; };
+		7F4FEFF61962B093009E42B2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7F4FEFFC1962B2E7009E42B2 /* Property List.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = "Property List.plist"; sourceTree = "<group>"; };
+		7F5316EA1962DC95002FDE4F /* blob.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = blob.aif; sourceTree = "<group>"; };
+		7F5316EB1962E58E002FDE4F /* bc.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bc.mp3; sourceTree = "<group>"; };
+		7F5316ED1962EA36002FDE4F /* Blop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blop.mp3; sourceTree = "<group>"; };
 		7F8A15B8192E0FFC006A9D6B /* PDFImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFImage.framework; path = FunnyPuzzle/Frameworks/PDFImage.framework; sourceTree = "<group>"; };
 		7F8A15C1192E2069006A9D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8A15C3192E389A006A9D6B /* ball1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball1.pdf; path = Resources/General/ball1.pdf; sourceTree = "<group>"; };
 		7F8A15C4192E389A006A9D6B /* ball2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ball2.pdf; path = Resources/General/ball2.pdf; sourceTree = "<group>"; };
-		7F8C5E23194ED9A5001BA8A2 /* JMIBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMIBlur.h; sourceTree = "<group>"; };
+		7F8C5E23194ED9A5001BA8A2 /* Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blur.h; sourceTree = "<group>"; };
 		7F8C5E24194ED9A5001BA8A2 /* BlurLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurLayer.h; sourceTree = "<group>"; };
 		7F8C5E25194ED9A5001BA8A2 /* BlurLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurLayer.m; sourceTree = "<group>"; };
 		7F8C5E26194ED9A5001BA8A2 /* BlurStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurStyle.h; sourceTree = "<group>"; };
@@ -467,7 +476,7 @@
 		7F8C5E22194ED9A5001BA8A2 /* JMIBlur */ = {
 			isa = PBXGroup;
 			children = (
-				7F8C5E23194ED9A5001BA8A2 /* JMIBlur.h */,
+				7F8C5E23194ED9A5001BA8A2 /* Blur.h */,
 				7F8C5E24194ED9A5001BA8A2 /* BlurLayer.h */,
 				7F8C5E25194ED9A5001BA8A2 /* BlurLayer.m */,
 				7F8C5E26194ED9A5001BA8A2 /* BlurStyle.h */,
@@ -495,6 +504,8 @@
 		7FA4BA35192C9AFD00A772BA = {
 			isa = PBXGroup;
 			children = (
+				7F4FEFFC1962B2E7009E42B2 /* Property List.plist */,
+				7F4FEFF61962B093009E42B2 /* Settings.bundle */,
 				7FC9A6CD195845B50045D9ED /* altLocalization.strings */,
 				7FA4BA47192C9AFD00A772BA /* FunnyPuzzle */,
 				7FA4BA66192C9AFD00A772BA /* FunnyPuzzleTests */,
@@ -718,7 +729,10 @@
 		84F85B9C192E489400BDECB5 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				7F5316EA1962DC95002FDE4F /* blob.aif */,
 				84684FCD195DA622007571D0 /* Plimps.mp3 */,
+				7F5316EB1962E58E002FDE4F /* bc.mp3 */,
+				7F5316ED1962EA36002FDE4F /* Blop.mp3 */,
 				8443DDB4192F4796009F1EF8 /* Background music */,
 			);
 			name = Music;
@@ -860,10 +874,13 @@
 				7FC9A6D21959449C0045D9ED /* Maim_iPad.storyboard in Resources */,
 				04460FE51951DFFD00F810E8 /* (null) in Resources */,
 				04460FE81951DFFD00F810E8 /* (null) in Resources */,
+				7F5316EC1962E58E002FDE4F /* bc.mp3 in Resources */,
 				7FC9D1FA19337F9F002878BD /* iO0J6mji.ttf in Resources */,
 				84AD278619599CAA006ABE7D /* Icon_puzzly_1024.png in Resources */,
+				7F5316EE1962EA36002FDE4F /* Blop.mp3 in Resources */,
 				7F31617F192CCBE200C49EAE /* Levels in Resources */,
 				7F8A15C5192E389A006A9D6B /* ball1.pdf in Resources */,
+				7F4FEFF71962B093009E42B2 /* Settings.bundle in Resources */,
 				7F8A15C0192E2069006A9D6B /* Localizable.strings in Resources */,
 				7FA57037192F1B3000CE84F8 /* cloud1.pdf in Resources */,
 				7FA57043192F399A00CE84F8 /* ground5.pdf in Resources */,
@@ -873,6 +890,7 @@
 				7FA57042192F399A00CE84F8 /* ground4.pdf in Resources */,
 				04460FFC1951DFFD00F810E8 /* (null) in Resources */,
 				04460FF01951DFFD00F810E8 /* (null) in Resources */,
+				7F4FEFFD1962B2E7009E42B2 /* Property List.plist in Resources */,
 				8443DDE0192F4796009F1EF8 /* menu_background_music.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
