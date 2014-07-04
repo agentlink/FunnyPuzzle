@@ -18,6 +18,7 @@
 #import "FPGameManager.h"
 #import "Blur.h"
 #import "FPReminderViewController.h"
+#import "FPBonusViewController.h"
 
 @interface StartViewController () //<UIViewControllerTransitioningDelegate>
 
@@ -47,6 +48,7 @@
 
 - (void)play:(id)sender type:(FPGameType)type;
 - (IBAction)goToSettings:(id)sender;
+
 
 
 

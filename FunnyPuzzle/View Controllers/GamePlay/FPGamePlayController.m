@@ -694,6 +694,7 @@ int binaryTodecimal(int binary) /* Function to convert binary to decimal.*/
     self.next.userInteractionEnabled = NO;
     if (self.leftToBonus >=3) {
         FPBonusViewController *bonusViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"BonusLevel"];
+ 
         bonusViewController.completion = ^{
             [self next:self];
         };

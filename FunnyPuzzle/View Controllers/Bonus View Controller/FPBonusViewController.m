@@ -28,12 +28,10 @@
     CAKeyframeAnimation *animation;
     CGMutablePathRef aPath;
     int ii;
-    CGRect  MainRec;
+    CGRect  RectForVideo;
     int lichulnuk;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *Bt;
-- (IBAction)DeleteViewController:(id)sender;
 @property (nonatomic, strong) UIDynamicItemBehavior *BTPropertiesBehavior;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) AccelerometerManager *accelerometer;
@@ -59,17 +57,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //_next.alpha = 0;
+    UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidLoad];
     _next.backgroundColor = [UIColor clearColor];
     UIImage *IM=[UIImage imageNamed:@"bonus_game_bg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage:IM];
-    MainRec=CGRectMake( 0, 0,  80, 68);
+    RectForVideo=CGRectMake( 0, 0,  80, 68);
     xx=20;
     lichulnuk=0;
     imagesCandy=[NSArray arrayWithObjects:@"candy_blue",@"candy_green",@"candy_orange",@"candy_yellow_blue", nil];
     imagesCandySmall=[NSArray arrayWithObjects:@"candy_blue_small",@"candy_orange_small",@"candy_yellow_blue_small", nil];
     Numb=arc4random()%4;
-    
     switch (Numb) {
         case 0:
             [self FirstBonusLevelLoad];
@@ -86,21 +89,21 @@
         default:
             break;
     }
-
+    
     if ((Numb<3) && ([[[FPGameManager sharedInstance].BonusLevels objectAtIndex:Numb] intValue] == 0))
     {
-    
+        
         NSMutableArray *levels = [FPGameManager sharedInstance].BonusLevels;
         [levels removeObjectAtIndex:Numb];
         [levels insertObject:[NSNumber numberWithInt:1] atIndex:Numb];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:levels forKey:@"bonusLvl"];
         [defaults synchronize];
-
+        
         NSString *filepath   =   [[NSBundle mainBundle] pathForResource:@"Comp4_1" ofType:@"mp4"];
         NSURL    *fileURL    =   [NSURL fileURLWithPath:filepath];
         moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-        [moviePlayerController.view setFrame:MainRec];
+        [moviePlayerController.view setFrame:RectForVideo];
         moviePlayerController.controlStyle=MPMovieControlStyleNone;
         moviePlayerController.scalingMode =MPMovieScalingModeAspectFit;
         [moviePlayerController prepareToPlay];
@@ -118,25 +121,25 @@
                                                selector: @selector(handleTimer)
                                                userInfo: nil
                                                 repeats: YES];
-    
-        }
+        
+    }
     else
     {
         if (Numb<3)
-            //&&([[FPGameManager sharedInstance].BonusLevels objectAtIndex:Numb] == [NSNumber numberWithInt:1])) {
+            
         {   _accelerometer = [AccelerometerManager new];
             _accelerometer.delegate=self;
             [_accelerometer setShakeRangeWithMinValue:0.70 MaxValue:0.80];
             [_accelerometer startShakeDetect];
         }
     }
-}
 
+}
 
 -(void)FirstBonusLevelLoad
 {
  
-        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
+        RectForVideo=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2-34,  80, 68);
  
     UIImage *im=[UIImage imageNamed:@"basket_icon"];
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/2, self.view.frame.size.width/2-im.size.width/2, im.size.width, im.size.height);
@@ -163,16 +166,16 @@
         [self.view addSubview:c];
         [objectsCandies insertObject:c atIndex:i-1];
         x+=deltaX;
-        [c Move:true];
+        [c Move:YES];
     }
- 
+
    
 }
 
 -(void)SecondBonusLevelLoad
 {
    
-        MainRec=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
+        RectForVideo=CGRectMake( self.view.frame.size.height/2-40, self.view.frame.size.width/2,  80, 68);
   
     UIImage *im2=[UIImage imageNamed:@"sun_img"];
     float deltaX=CGRectGetHeight([[UIScreen mainScreen] bounds])/6;
@@ -201,7 +204,7 @@
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
         x+=deltaX;
-        [c Move:true];
+        [c Move:YES];
     }
 }
 
@@ -227,30 +230,30 @@
     CGRect rec=CGRectMake(self.view.frame.size.height/2-im.size.height/4, self.view.frame.size.width/2-im.size.width/2-50, im.size.width, im.size.height);
     UIImageView *imView=[[UIImageView alloc]initWithFrame:rec];
    
-        MainRec=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
+        RectForVideo=CGRectMake( rec.origin.x+40, rec.origin.y+34,  80, 68);
 
 
     imView.image=im;
-    int x=imView.frame.origin.x;
     int y=imView.frame.origin.y;
+    int x=imView.frame.origin.x;
     int pointsX[6]={x+11,x+56,x+107,x+18,x+62,x+102};
     int pointsY[6]={y+30,y+5,y+30,y+80,y+57,y+80};
+    
+
     [self.view addSubview:imView];
     _candiesCount=6;
     objectsCandies=[[NSMutableArray alloc] init];
     for (int i=0; i<6; i++) {
      
-        UIImage *im = [UIImage imageNamed:[imagesCandy objectAtIndex:arc4random()%(imagesCandy.count)]];
-        Candy *c=[[Candy alloc] initWithFrame:CGRectMake(pointsX[i], pointsY[i], im.size.height*0.9, im.size.width*0.9)];
+        UIImage *im = [UIImage imageNamed:[imagesCandySmall objectAtIndex:arc4random()%(imagesCandySmall.count)]];
+        Candy *c=[[Candy alloc] initWithFrame:CGRectMake(pointsX[i], pointsY[i], im.size.height, im.size.width)];
         c.layer.zPosition=1;
-        CGSize size=CGSizeMake(im.size.height*0.9, im.size.width*0.9);
-        UIImage *im2=[self imageWithImage:im scaledToSize:size];
-        c.backgroundColor=[UIColor colorWithPatternImage:im2];
+        c.backgroundColor=[UIColor colorWithPatternImage:im];
         c.BonusLevelKind=2;
         c.delegate=self;
         [objectsCandies insertObject:c atIndex:i];
         [self.view addSubview:c];
-        [c Move:true];
+        [c Move:YES];
     }
 }
 
@@ -291,7 +294,7 @@
     imView.image=im;
     imView.layer.zPosition=0;
     [self.view addSubview:imView];
-    MainRec=CGRectMake( -80, -70, 80, 68);
+    RectForVideo=CGRectMake( -80, -70, 80, 68);
     int x=0;
     float deltaX=0;
     _candiesCount=20;

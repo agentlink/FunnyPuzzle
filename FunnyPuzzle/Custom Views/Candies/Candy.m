@@ -114,11 +114,27 @@
     
     if (self.BonusLevelKind==2) {
         if (self.Animation) {
-            self.backgroundColor=[UIColor clearColor];
-            self.click=true;
-            [self.delegate PickUpCandy];
-            [[FPGameManager sharedInstance] pickUpCandies:1];
-            [self cleanObject];
+            CATransform3D transform = [[self layer] transform];
+            [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [self.layer setTransform:CATransform3DMakeScale(1.5, 1.5, 1.5)];
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    [self.layer setTransform:transform];
+                } completion:^(BOOL finished) {
+                    self.backgroundColor=[UIColor clearColor];
+                    self.click=true;
+                    [self.delegate PickUpCandy];
+                    [[FPGameManager sharedInstance] pickUpCandies:1];
+                    [self cleanObject];
+                    
+                }];
+            }];
+
+//            self.backgroundColor=[UIColor clearColor];
+//            self.click=true;
+//            [self.delegate PickUpCandy];
+//            [[FPGameManager sharedInstance] pickUpCandies:1];
+//            [self cleanObject];
         }
     }
     
