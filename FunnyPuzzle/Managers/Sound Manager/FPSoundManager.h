@@ -20,5 +20,7 @@
 - (void) stopGameMusic;
 - (void) playSound:(NSURL*)sound;
 - (void) playBlob;
+- (void)playBlobUp;
+- (void)playBlobDown;
 
 @end

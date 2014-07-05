@@ -227,7 +227,20 @@ int timerTick;
     [_instance.blobs addObject:blop];
     [blop play];
 }
-
+- (void)playBlobUp
+{
+    FPBulbSound *blob = [[FPBulbSound alloc] initWithSoundURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"Blop" ofType:@"mp3"]]];
+    blob.delegate = _instance;
+    [_instance.blobs addObject:blob];
+    [blob play];
+}
+- (void)playBlobDown
+{
+    FPBulbSound *blob = [[FPBulbSound alloc] initWithSoundURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"Plimps" ofType:@"mp3"]]];
+    blob.delegate = _instance;
+    [_instance.blobs addObject:blob];
+    [blob play];
+}
 #pragma mark - AudioPlayerDelegate
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{

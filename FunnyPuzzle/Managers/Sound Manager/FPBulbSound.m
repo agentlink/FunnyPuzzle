@@ -28,10 +28,27 @@
     [self.player prepareToPlay];
     return self;
 }
+- (instancetype)initWithSoundURL:(NSURL *)url
+{
+    self = [super init];
+    if (self) {
+        _soundUrl = url;
+        _player = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundUrl error:nil];
+        _player.numberOfLoops = 0;
+        _player.volume = 0.6;
+        _player.delegate = self;
+        [_player prepareToPlay];
+    }
+    return self;
+}
 
 - (void) play
 {
     [self.player play];
+}
+- (void)playElementUp
+{
+
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{

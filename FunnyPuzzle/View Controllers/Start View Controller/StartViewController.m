@@ -88,6 +88,7 @@
     [self.animator removeBehavior:_snapCandyBehavior];
     [self.animator removeBehavior:_snapSettingsBehavior];
     _CandiesCountLabel.text = [NSString stringWithFormat:@"%d",[FPGameManager sharedInstance].candiesCount];
+    //[self configLeftHand];
 }
 
 - (void) dealloc{
@@ -95,7 +96,20 @@
 //    _snapCandyBehavior=nil;
 //    _snapSettingsBehavior=nil;
 }
+- (void)configLeftHand
+{
+    UIImageView *hand = [[UIImageView alloc] init];
+    UIImage *image = [UIImage imageNamed:@"handL_img@2x"];
+    CGRect rect;
+    rect.size = image.size;
+    rect.origin.x = CGRectGetMidX(self.gamemodeFirst.frame);
+    rect.origin.y = CGRectGetMidY(self.gamemodeFirst.frame);
+    hand.image = image;
+    [self.view addSubview:hand];
+    hand.backgroundColor = [UIColor grayColor];
+    hand.layer.zPosition = 255;
 
+}
 - (void)cofigGround
 {
     UIInterpolatingMotionEffect *horisontal1 =

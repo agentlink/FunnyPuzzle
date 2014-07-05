@@ -29,6 +29,7 @@
 		7F316177192CA05A00C49EAE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316175192CA05A00C49EAE /* StartViewController.m */; };
 		7F31617F192CCBE200C49EAE /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 7F31617E192CCBE200C49EAE /* Levels */; };
 		7F316182192D092300C49EAE /* FPPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F316181192D092300C49EAE /* FPPreferences.m */; };
+		7F4DE85D1967438C0047B9AF /* handL_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F4DE85C1967438C0047B9AF /* handL_img@2x.png */; };
 		7F4FEFF71962B093009E42B2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FEFF61962B093009E42B2 /* Settings.bundle */; };
 		7F4FEFFD1962B2E7009E42B2 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F4FEFFC1962B2E7009E42B2 /* Property List.plist */; };
 		7F5316EC1962E58E002FDE4F /* bc.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F5316EB1962E58E002FDE4F /* bc.mp3 */; };
@@ -145,6 +146,7 @@
 		7F31617E192CCBE200C49EAE /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Levels; path = Resources/Levels; sourceTree = "<group>"; };
 		7F316180192D092300C49EAE /* FPPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPreferences.h; path = "View Controllers/Preferenсes/FPPreferences.h"; sourceTree = "<group>"; };
 		7F316181192D092300C49EAE /* FPPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPreferences.m; path = "View Controllers/Preferenсes/FPPreferences.m"; sourceTree = "<group>"; };
+		7F4DE85C1967438C0047B9AF /* handL_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handL_img@2x.png"; sourceTree = "<group>"; };
 		7F4FEFF61962B093009E42B2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7F4FEFFC1962B2E7009E42B2 /* Property List.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = "Property List.plist"; sourceTree = "<group>"; };
 		7F5316EA1962DC95002FDE4F /* blob.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = blob.aif; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 		7F316171192CA04200C49EAE /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				7F4DE85C1967438C0047B9AF /* handL_img@2x.png */,
 				84FDADFA1936210C00366C6E /* candy.pdf */,
 				84FDADF81935D49F00366C6E /* prefs.pdf */,
 				7FA5703A192F399A00CE84F8 /* ground1.pdf */,
@@ -851,6 +854,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8443DDDF192F4796009F1EF8 /* game_background_music.mp3 in Resources */,
+				7F4DE85D1967438C0047B9AF /* handL_img@2x.png in Resources */,
 				7FA4BA5A192C9AFD00A772BA /* Images.xcassets in Resources */,
 				7FA57038192F1B3000CE84F8 /* cloud2.pdf in Resources */,
 				7FA4BA4C192C9AFD00A772BA /* InfoPlist.strings in Resources */,

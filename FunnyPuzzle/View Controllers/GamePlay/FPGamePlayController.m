@@ -277,7 +277,7 @@
     rRect.size.height = self.view.frame.size.width-40;
     rRect.size.width = rRect.size.height;
 
-    rRect.origin.x = CGRectGetMaxX(self.view.bounds)-(self.field.frame.size.width+40);
+    rRect.origin.x = CGRectGetMaxX(self.view.bounds)-(rRect.size.width+40);
     rRect.origin.y = (CGRectGetMaxY(self.view.bounds)-(rRect.size.height))/2;
     return rRect;
 }
@@ -572,6 +572,7 @@ int binaryTodecimal(int binary) /* Function to convert binary to decimal.*/
     }
     element.frame = CGRectMake(element.frame.origin.x, element.frame.origin.y, elementSize.width, elementSize.height);
     element.winPlace = winPlace;
+    element.contentMode = UIViewContentModeScaleAspectFit;
     return element;
 }
 - (void)checkElement:(UIView*)view
@@ -756,6 +757,7 @@ int binaryTodecimal(int binary) /* Function to convert binary to decimal.*/
             FPElement *element = [tapElements firstObject];
             self.dragingElement = element;
             self.dragingPoint = CGPointMake([touch1 locationInView:element].x/element.frame.size.width, [touch1 locationInView:element].y/element.frame.size.height);
+            [[FPSoundManager sharedInstance] playBlobUp];
         }
     } else if (tapElements.count == 1) {
         FPElement *element = [tapElements firstObject];
@@ -774,6 +776,7 @@ int binaryTodecimal(int binary) /* Function to convert binary to decimal.*/
         self.dragingElement = element;
         self.dragingPoint = CGPointMake([touch1 locationInView:element].x/element.frame.size.width,
                                     [touch1 locationInView:element].y/element.frame.size.height);
+        [[FPSoundManager sharedInstance] playBlobUp];
     }
     if (!self.elementsLeft && CGRectContainsPoint(self.field.frame, touchLocation) && ![self pointIsTransparent:[touch1 locationInView:[touch1 view]] inView:[touch1 view]]) {
         [[FPSoundManager sharedInstance] playSound:self.levelManager.soundURL];
@@ -807,6 +810,7 @@ int binaryTodecimal(int binary) /* Function to convert binary to decimal.*/
     BOOL yPosition = 20>=abs(rightPoint.y-currentPoint.y);
     
     if (xPosition&&yPosition&&self.dragingElement) {
+        [[FPSoundManager sharedInstance] playBlobDown];
         self.dragingElement.inPlace = YES;
         self.dragingElement.layer.zPosition = -1;
         [self bounceElement:self.dragingElement];

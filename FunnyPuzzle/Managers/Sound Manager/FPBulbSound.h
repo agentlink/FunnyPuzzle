@@ -20,7 +20,7 @@
 
 @property (nonatomic) id<deleteBlob> delegate;
 
+- (instancetype)initWithSoundURL:(NSURL *)url;
 - (void) play;
-
 @end
 
